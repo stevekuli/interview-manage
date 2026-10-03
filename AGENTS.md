@@ -1,4 +1,57 @@
-<!-- intent-skills:start -->
+# 项目规范（interview-manage）
+
+## 目标与当前阶段
+
+基于 Reactive Resume，为校招、社招求职者提供真实经历管理、岗位录入、AI 定制简历和投递跟踪。当前已完成 P0 前置：规划文件、初始规范，并引入上游固定提交作为开发基线（见下方"上游基线"）。
+
+## 工作原则
+
+- 默认中文沟通，代码、命令、变量名和 commit message 使用英文。
+- 用户体验优先；复用底座已有能力，避免重复建设。重复三次的操作优先考虑自动化。
+- 开发前阅读本文件与开发计划。调整规范时先改文档，再改实践。
+- 不编造简历经历、学历、任职时间、技能或业绩数字；AI 不得回写已确认的主经历事实。
+- 密钥、密码、真实简历和用户截图不得进入 Git；日志不得记录明文密钥及简历正文。
+- 改动后执行适当的测试、类型检查和构建；分别报告真实验证、Mock 和未验证结果。
+- 不自动 git push，不自动公网部署；部署使用项目自有命令。
+
+## 目录与文件约定
+
+- `docs/plans/`：开发计划，命名为 `YYYY-MM-DD-主题.md`；保留决策记录，修订时同步日期与状态。
+- `docs/acceptance/`：验收与基线检查记录，命名为 `YYYY-MM-DD-主题.md`。
+- 引入 Reactive Resume 后保留其 monorepo 结构，并合并上游 AGENTS.md 的工程规范（见下半部分），不覆盖本项目约束。
+- 前端进入上游 web 功能目录；API 业务进入对应功能包；数据库和迁移、PDF/DOCX 渲染分别归其现有包管理。
+- `tooling/`：开发、部署和维护脚本；不得混入业务包。
+- `data/`：本地持久数据（上游本地文件存储默认写入此处），禁止进入 Git；用户原件、历史导出按业务删除规则管理，不作为临时文件清理。
+- `artifacts/`：未来验证产物，禁止进入 Git；交付时仅保留脱敏验收证据，清除无用中间产物。
+- 临时处理文件成功后立即清理；异常遗留文件在 24 小时内清理。
+
+## 实施与验证约定
+
+- 工作区：`D:\program\interview-manage`。
+- 开发计划：`docs/plans/2026-10-02-ai-job-resume-management.md`。
+- 上游基线：`reactive-resume/reactive-resume` 的提交 `b53c43c3722741946603ac46beda173931aeb646`（已通过 git 历史核实，main 分支初始提交即该提交）；MIT 许可证及版权声明（Copyright (c) 2026 Amruth Pillai）随上游 `LICENSE` 保留。
+- 依赖和命令以固定提交的实际配置为准；不可把文档中的示例当作已经执行成功。
+- 底座引入后运行适用的 `pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm test:e2e`、`pnpm exec turbo boundaries`。
+- 上游 `pnpm check` 会修改文件；只读检查使用无写入参数的 Biome 命令。
+- 未获得真实模型、样本或运行环境时，明确标记相关验收缺口，不用静态配置或 Mock 代替真实验证。
+
+### 本机 Windows 运行约定（P0 基线实测，详见 `docs/acceptance/2026-10-03-p0-baseline.md`）
+
+- Node 用 **24.9.0+**（`D:\Development_environment\nvm\v24.9.0`）：24.0.2 的 Windows EMFILE 回归会破坏服务端 PDF 渲染与多个测试包。
+- git `core.autocrlf` 保持 **false**（本仓已设置）；否则 tooling 的 committed 生成物断言失败。
+- 宿主机 5432 被本机 PostgreSQL 16 服务占用；基础设施用 `docker compose -f compose.dev.yml -f tooling/compose.dev.win.yml up -d postgres redis`，`DATABASE_URL` 指向 `localhost:5433`。
+- 跑单元测试前临时移走根目录 `.env`（测完恢复）：`packages/env` 会自动加载它，导致测试连上真实 Redis 相互污染。
+- e2e：`DATABASE_URL=... pnpm exec playwright test --workers=2`，服务器需以 `FLAG_DISABLE_API_RATE_LIMIT=true` 运行（上游 CI 同款），否则并行注册触发 429。
+- 生产模式验证服务器：`NODE_ENV=production PORT=3000 node apps/server/dist/index.mjs`（读取根目录 `.env`）。
+
+## 与上游合并的工程规范说明
+
+- 合并自上游 `AGENTS.md`（提交 `b53c43c3`），仅保留工程规范内容。
+- 上游的 `caveman` 人格指令块与本项目"默认中文沟通、完整可读表达"的要求冲突，未合并；`intent-skills` 技能加载流程保留。
+- 上游更新合入时，重新执行此合并流程，并保持本项目约束在文件前部。
+
+<!-- 上游工程规范开始（origin: reactive-resume/reactive-resume @ b53c43c3722741946603ac46beda173931aeb646, AGENTS.md） -->
+
 ## Skill Loading
 
 Before editing files for a substantial task:
@@ -7,25 +60,6 @@ Before editing files for a substantial task:
 - Use the loaded `SKILL.md` guidance while making the change.
 - Monorepos: when working across packages, run the skill check from the workspace root and prefer the local skill for the package being changed.
 - Multiple matches: prefer the most specific local skill for the package or concern you are changing; load additional skills only when the task spans multiple packages or concerns.
-<!-- intent-skills:end -->
-
-<!-- caveman-begin -->
-Respond terse like smart caveman. All technical substance stay. Only fluff die.
-
-Rules:
-- Drop: articles (a/an/the), filler (just/really/basically), pleasantries, hedging
-- Fragments OK. Short synonyms. Technical terms exact. Code unchanged.
-- Pattern: [thing] [action] [reason]. [next step].
-- Not: "Sure! I'd be happy to help you with that."
-- Yes: "Bug in auth middleware. Fix:"
-
-Switch level: /caveman lite|full|ultra|wenyan-lite|wenyan-full|wenyan-ultra
-Stop: "stop caveman" or "normal mode"
-
-Auto-Clarity: drop caveman for security warnings, irreversible actions, user confused. Resume after.
-
-Boundaries: code/commits/PRs written normal.
-<!-- caveman-end -->
 
 ## Agent skills
 
@@ -37,7 +71,7 @@ Reactive Resume is a pnpm monorepo (Turborepo) with two deployable apps: `apps/w
 
 Internal packages are source-consumed through `package.json` export maps pointing at `src` files. Do not assume package-local `dist` output exists unless a package explicitly adds it.
 
-Prerequisites: **Node.js 24** (pinned in `.nvmrc`; matches Dockerfile `ARG NODE_VERSION=24`), **pnpm 12.3.4** (pinned by `packageManager` in the root `package.json`; pnpm self-manages to it, so any recent pnpm can bootstrap — the Dockerfile's `ARG PNPM_VERSION` only picks the base image) ([install guide](https://pnpm.io/installation)), and **Docker** for PostgreSQL (`sudo dockerd &` if the daemon isn't running).
+Prerequisites: **Node.js 24** (pinned in `.nvmrc`; matches Dockerfile `ARG NODE_VERSION=24`), **pnpm 12.6.0** (pinned by `packageManager` in the root `package.json`; pnpm self-manages to it, so any recent pnpm can bootstrap — the Dockerfile's `ARG PNPM_VERSION` only picks the base image) ([install guide](https://pnpm.io/installation)), and **Docker** for PostgreSQL.
 
 ## Ownership map
 
@@ -104,8 +138,8 @@ Copy `.env.example` to `.env.local`. Three required vars: `APP_URL` (default `ht
 Dev server and migration scripts load `.env.local` through the project-local `dotenvx`. Tests, typechecks, linters, boundary checks, and `pnpm build` do not load it automatically.
 
 ```
-sudo docker compose -f compose.dev.yml up -d postgres                                    # DB only
-sudo docker compose -f compose.dev.yml up -d postgres redis seaweedfs seaweedfs_create_bucket   # full infra
+docker compose -f compose.dev.yml up -d postgres                                    # DB only
+docker compose -f compose.dev.yml up -d postgres redis seaweedfs seaweedfs_create_bucket   # full infra
 pnpm dev                                          # port 3000 (dev:web for web only)
 pnpm db:generate                                  # db:migrate to apply
 pnpm check                                       # Biome — WRITE-CAPABLE (--write --unsafe)
@@ -122,3 +156,5 @@ Prefer package filters over repo-wide runs, e.g. `pnpm --filter web typecheck`, 
 - Biome: tabs, double quotes, line width 120, organized import groups, sorted Tailwind classes for `clsx`, `cva`, `cn`.
 - Most packages typecheck with `tsgo --noEmit` and test with `vitest run --passWithNoTests`.
 - There may be unrelated local edits in the worktree. Check `git status --short` first; do not revert files you did not touch.
+
+<!-- 上游工程规范结束 -->

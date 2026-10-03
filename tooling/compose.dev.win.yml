@@ -1,0 +1,15 @@
+# Windows host adaptation for compose.dev.yml
+#
+# The host machine runs a native PostgreSQL 16 Windows service that owns port 5432, so the
+# dev containers cannot bind 127.0.0.1:5432. Docker Desktop's engine also restarts
+# independently of this compose project, so containers may keep running with a dead port
+# mapping. Start the dev infra with:
+#
+#   docker compose -f compose.dev.yml -f tooling/compose.dev.win.yml up -d postgres redis
+#
+# and point DATABASE_URL at localhost:5433. Only the host-side port changes; the container
+# still listens on 5432 internally.
+services:
+  postgres:
+    ports: !override
+      - "127.0.0.1:5433:5432"

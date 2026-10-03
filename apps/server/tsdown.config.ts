@@ -1,6 +1,6 @@
 import type { TsdownPlugin } from "tsdown";
 import { readdirSync, readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { dirname, isAbsolute, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "tsdown";
 
@@ -37,7 +37,10 @@ const shouldExternalizeThirdParty = (id: string) => {
 		.slice(0, id.startsWith("@") ? 2 : 1)
 		.join("/");
 	if (id.startsWith("@reactive-resume/") || bundledInteropPackages.has(packageName)) return false;
-	if (id.startsWith("@/") || id.startsWith(".") || id.startsWith("/") || id.startsWith("\0")) return false;
+	// Rolldown hands this hook already-resolved Windows drive-letter paths (D:\...) for
+	// workspace and relative modules; isAbsolute covers those where the "/" prefix check
+	// would leave them externalized as bare .ts source imports on Windows.
+	if (id.startsWith("@/") || id.startsWith(".") || isAbsolute(id) || id.startsWith("\0")) return false;
 
 	return true;
 };
