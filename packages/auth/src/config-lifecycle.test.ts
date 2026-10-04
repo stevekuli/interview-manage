@@ -1,5 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
+// Each test dynamically imports the real better-auth module tree, which sits close
+// to the default 5s budget on cold transforms and slower machines.
+vi.setConfig({ testTimeout: 20_000 });
+
 const mocks = vi.hoisted(() => ({ betterAuth: vi.fn() }));
 
 vi.mock("better-auth", async (importOriginal) => ({

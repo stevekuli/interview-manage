@@ -127,14 +127,12 @@ describe("generateOpenApiSpec", () => {
 		const spec = await generateSpec();
 
 		expect(spec.info).toMatchObject({
-			title: "Reactive Resume",
+			title: "求职管理",
 			version: "9.8.7",
 		});
 		expect(spec.servers).toEqual([{ url: "https://rxresu.me/api/openapi" }]);
-		expect(spec.externalDocs).toEqual({
-			url: "https://docs.rxresu.me",
-			description: "Reactive Resume Documentation",
-		});
+		expect(spec.externalDocs).toBeUndefined();
+		expect(JSON.stringify(spec.info)).not.toContain("amruthpillai");
 	}, 15_000);
 
 	it("documents the public health endpoint at its actual URL", async () => {

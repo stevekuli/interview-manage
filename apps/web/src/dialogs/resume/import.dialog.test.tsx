@@ -155,7 +155,7 @@ describe("ImportResumeDialog — detected files without MIME metadata", () => {
 			target: { files: [new File([JSON.stringify(data)], "resume.json", { type: "" })] },
 		});
 
-		await screen.findByText("Reactive Resume (JSON)");
+		await screen.findByText("Resume backup (JSON)");
 		fireEvent.click(screen.getByRole("button", { name: "Import" }));
 
 		await waitFor(() => {

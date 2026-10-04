@@ -25,6 +25,15 @@
 - `artifacts/`：未来验证产物，禁止进入 Git；交付时仅保留脱敏验收证据，清除无用中间产物。
 - 临时处理文件成功后立即清理；异常遗留文件在 24 小时内清理。
 
+## 产品展示与品牌规范（2026-10-04 起）
+
+- 产品展示名暂定"求职管理"，集中定义在 `packages/utils/src/brand.ts`（`./brand` 导出）；页面、邮件、认证、SEO 使用该单一来源，不得在各处散落硬编码。
+- 面向用户的展示文案不得出现原项目（Reactive Resume）的推广内容：作者介绍、GitHub 星标/仓库推广、社区统计、捐赠与赞助入口、原站（rxresu.me / docs.rxresu.me）链接和 Crowdin 翻译征集。
+- 根目录 `LICENSE` 的 MIT 许可与原作者版权声明原样保留；内部文档、Git 历史和上游基线信息不变。`@reactive-resume/*` 包名、导入格式兼容标识和必要第三方声明不是展示文案，允许保留。
+- 未实现的能力不得宣传：首页、导航和帮助文案只描述已上线的功能；AI 相关文案须写明当前实际支持的操作与配置要求。
+- 站点 URL 一律取当前 origin 或 `APP_URL`，不得把公网 IP 或原站地址写死进展示代码。
+- 隐私与数据说明必须描述本服务真实的数据存储、AI 数据流和删除方式，不沿用其他网站的承诺，不虚构运营主体或联系方式。
+
 ## 实施与验证约定
 
 - 工作区：`D:\program\interview-manage`。
@@ -41,8 +50,15 @@
 - git `core.autocrlf` 保持 **false**（本仓已设置）；否则 tooling 的 committed 生成物断言失败。
 - 宿主机 5432 被本机 PostgreSQL 16 服务占用；基础设施用 `docker compose -f compose.dev.yml -f tooling/compose.dev.win.yml up -d postgres redis`，`DATABASE_URL` 指向 `localhost:5433`。
 - 跑单元测试前临时移走根目录 `.env`（测完恢复）：`packages/env` 会自动加载它，导致测试连上真实 Redis 相互污染。
-- e2e：`DATABASE_URL=... pnpm exec playwright test --workers=2`，服务器需以 `FLAG_DISABLE_API_RATE_LIMIT=true` 运行（上游 CI 同款），否则并行注册触发 429。
+- e2e：`DATABASE_URL=... pnpm exec playwright test --workers=2`，服务器需以 `FLAG_DISABLE_API_RATE_LIMIT=true` 运行（上游 CI 同款），否则并行注册触发 429。服务端 PDF 渲染要外联 fonts.gstatic.com；本机直连下 Node fetch 默认 IPv6 优先会超时，e2e 进程需带 `NODE_OPTIONS=--dns-result-order=ipv4first`。并行 worker 数更高时本机资源会饿死用例，auth `config-lifecycle` 与 pdf 渲染类测试尤其敏感，失败时先隔离单跑复核。
 - 生产模式验证服务器：`NODE_ENV=production PORT=3000 node apps/server/dist/index.mjs`（读取根目录 `.env`）。
+
+### 服务器部署约定（2026-10-04 起生效，详见 `docs/acceptance/2026-10-04-server-deployment.md`）
+
+- 公网入口 `http://8.148.199.165:3012`（Nginx → `127.0.0.1:3001` → 容器 3000）；部署文件在 `tooling/deployment/server/`，服务器目录 `/opt/interview-manage/`。
+- 镜像在本机构建后传输（`docker save | gzip`，约 300MB）；SSH 大流量会被链路间歇掐断，用追加式断点续传，必要时走阿里云云助手（`aliyun ecs RunCommand --profile deploy`）。
+- 服务器无公网出口：镜像 tag 需用服务器已有镜像；app 字体等出站 fetch 依赖宿主机 mihomo（compose 内 `NODE_USE_ENV_PROXY` 已配）。
+- 测试自连一律用 `127.0.0.1:3012`，hairpin 公网 IP 不可靠；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致。
 
 ## 与上游合并的工程规范说明
 

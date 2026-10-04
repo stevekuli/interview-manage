@@ -8,7 +8,6 @@ import {
 	Heading,
 	Hr,
 	Html,
-	Img,
 	Link,
 	Preview,
 	pixelBasedPreset,
@@ -16,12 +15,10 @@ import {
 	Tailwind,
 	Text,
 } from "react-email";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 
 // ponytail: server dev consumes this source through tsx, which emits React.createElement here.
 void React;
-
-const appName = "Reactive Resume";
-const logoUrl = "https://rxresu.me/icon/dark.svg";
 
 interface AuthEmailLayoutProps {
 	preview: string;
@@ -74,7 +71,9 @@ function AuthEmailLayout({ preview, heading, intro, details, actionLabel, action
 					<Preview>{preview}</Preview>
 					<Container className="mx-auto w-full max-w-xl bg-zinc-900 p-6 text-zinc-50">
 						<Section>
-							<Img src={logoUrl} alt={appName} width="48" height="48" className="block" />
+							{/* Text wordmark: an <img> would need an absolute URL on some domain this
+								    template does not know, so keep the header independent of hosting. */}
+							<Text className="font-heading font-medium text-2xl tracking-tight">{APP_NAME}</Text>
 						</Section>
 
 						<Section className="mt-6">
@@ -111,21 +110,7 @@ function AuthEmailLayout({ preview, heading, intro, details, actionLabel, action
 
 							<Hr className="my-10 border-zinc-700" />
 
-							<Text className="mt-8 text-xs leading-1 opacity-40">By the community, for the community.</Text>
-							<Text className="text-xs leading-1 opacity-40">
-								A passion project by{" "}
-								<Link
-									target="_blank"
-									rel="noopener noreferrer"
-									href="https://amruthpillai.com"
-									className="text-inherit underline underline-offset-2"
-								>
-									Amruth Pillai
-								</Link>
-								.
-							</Text>
-
-							<Text className="mt-8 font-heading font-medium text-base tracking-tight opacity-80">Reactive Resume</Text>
+							<Text className="mt-8 font-heading font-medium text-base tracking-tight opacity-80">{APP_NAME}</Text>
 						</Section>
 					</Container>
 				</Body>
@@ -141,13 +126,13 @@ interface ResetPasswordEmailProps {
 export function ResetPasswordEmail({ url }: ResetPasswordEmailProps) {
 	return (
 		<AuthEmailLayout
-			preview={`Reset your ${appName} password`}
+			preview={`Reset your ${APP_NAME} password`}
 			heading="Password Reset"
-			intro={`We received a request to reset your ${appName} password.`}
+			intro={`We received a request to reset your ${APP_NAME} password.`}
 			details="If this was not you, you can ignore this message and your password will remain unchanged."
 			actionLabel="Create New Password"
 			actionUrl={url}
-			outro="For security, only use links from emails sent by Reactive Resume."
+			outro={`For security, only use links from emails sent by ${APP_NAME}.`}
 		/>
 	);
 }
@@ -159,9 +144,9 @@ interface VerifyEmailProps {
 export function VerifyEmail({ url }: VerifyEmailProps) {
 	return (
 		<AuthEmailLayout
-			preview={`Verify your email for ${appName}`}
+			preview={`Verify your email for ${APP_NAME}`}
 			heading="Verify Email"
-			intro={`Thanks for signing up for ${appName}. Please verify your email address to continue.`}
+			intro={`Thanks for signing up for ${APP_NAME}. Please verify your email address to continue.`}
 			details="This confirms the address belongs to you, which keeps your account secure."
 			actionLabel="Verify Email"
 			actionUrl={url}
@@ -179,9 +164,9 @@ interface VerifyEmailChangeProps {
 export function VerifyEmailChange({ url, previousEmail, newEmail }: VerifyEmailChangeProps) {
 	return (
 		<AuthEmailLayout
-			preview={`Confirm your new ${appName} email address`}
+			preview={`Confirm your new ${APP_NAME} email address`}
 			heading="Confirm Email Change"
-			intro={`You asked to change your ${appName} email from ${previousEmail} to ${newEmail}.`}
+			intro={`You asked to change your ${APP_NAME} email from ${previousEmail} to ${newEmail}.`}
 			details="The change takes effect once you confirm it here."
 			actionLabel="Verify New Email"
 			actionUrl={url}

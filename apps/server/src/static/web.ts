@@ -3,6 +3,7 @@ import fs from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { env } from "@reactive-resume/env/server";
+import { APP_DESCRIPTION, APP_NAME, APP_TAGLINE } from "@reactive-resume/utils/brand";
 
 function resolveWebDistPath() {
 	const candidates = [
@@ -67,39 +68,26 @@ const BASE_SECURITY_HEADERS = {
 		"default-src 'self'; img-src 'self' data: blob:; font-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; connect-src 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'",
 };
 
-const ROOT_TITLE = "Reactive Resume — A free and open-source resume builder";
+const ROOT_TITLE = `${APP_NAME} — ${APP_TAGLINE}`;
 // Keep under ~120 characters so Google's mobile SERP snippet is not truncated at 3 lines.
-const ROOT_DESCRIPTION =
-	"Free, open-source resume builder. Create, update, and share your resume, with no ads and no paywall.";
-const ROOT_POSTER_PATH = "/videos/timelapse-v1.webp";
+const ROOT_DESCRIPTION = APP_DESCRIPTION;
 const ROOT_FAQ_ITEMS = [
 	{
-		question: "Is Reactive Resume really free?",
+		question: "这个服务是做什么的？",
+		answer: "把求职岗位、简历和投递进度放在一起管理：录入岗位、编辑简历、导出 PDF 和 Word，并跟踪每次投递的状态。",
+	},
+	{
+		question: "AI 功能如何处理我的数据？",
 		answer:
-			"Yes. Reactive Resume is free to use, with no hidden costs, premium tiers, or subscription fees. It's open source, and it will stay free.",
+			"AI 辅助仅在你配置了自己的模型服务后可用。使用时，相关简历与岗位文本会发送给你所配置的模型服务商；未配置时所有功能都可以手动完成。",
 	},
 	{
-		question: "How is my data protected?",
-		answer:
-			"Your data is stored securely and never shared with third parties. If you want full control over it, you can self-host Reactive Resume on your own servers.",
+		question: "我的简历和投递记录存在哪里？",
+		answer: "存储在本服务的数据库中。你可以在应用内随时删除某份简历、某条投递记录，或在账户设置中删除整个账户。",
 	},
 	{
-		question: "Can I export my resume to PDF?",
-		answer: "Yes. One click exports your resume to PDF, with your formatting and styling intact.",
-	},
-	{
-		question: "Is Reactive Resume available in multiple languages?",
-		answer:
-			"Yes. Pick your language on the settings page, or with the language switcher in the top right corner. If your language is missing, or the existing translation could be better, you can contribute to the translations on Crowdin.",
-	},
-	{
-		question: "What makes Reactive Resume different from other resume builders?",
-		answer:
-			"Reactive Resume is open source, private, and free. It shows no ads, doesn't track what you do, and doesn't lock features behind a paywall.",
-	},
-	{
-		question: "How do I share my resume?",
-		answer: "Share it with a public URL, put a password on that URL, or download the PDF and send it yourself.",
+		question: "可以导出简历吗？",
+		answer: "可以。编辑器支持将简历导出为 PDF 和 Word（DOCX）文件。",
 	},
 ] as const;
 
@@ -111,29 +99,17 @@ function createRootSeoMarkup(canonicalUrl: string) {
 		"@graph": [
 			{
 				"@type": "WebSite",
-				name: "Reactive Resume",
+				name: APP_NAME,
 				url: canonicalUrl,
 			},
 			{
 				"@type": ["SoftwareApplication", "WebApplication"],
-				name: "Reactive Resume",
+				name: APP_NAME,
 				url: canonicalUrl,
 				description: ROOT_DESCRIPTION,
 				applicationCategory: "BusinessApplication",
 				operatingSystem: "Web",
 				isAccessibleForFree: true,
-				offers: {
-					"@type": "Offer",
-					price: "0",
-					priceCurrency: "USD",
-				},
-				codeRepository: "https://github.com/reactive-resume/reactive-resume",
-			},
-			{
-				"@type": "Project",
-				name: "Reactive Resume",
-				url: canonicalUrl,
-				sameAs: ["https://github.com/reactive-resume/reactive-resume"],
 			},
 			{
 				"@type": "FAQPage",
@@ -151,9 +127,8 @@ function createRootSeoMarkup(canonicalUrl: string) {
 
 	return `
 		<link rel="canonical" href="${canonicalUrl}">
-		<link rel="preload" href="${ROOT_POSTER_PATH}" as="image" fetchpriority="high">
 		<meta property="og:type" content="website">
-		<meta property="og:site_name" content="Reactive Resume">
+		<meta property="og:site_name" content="${APP_NAME}">
 		<meta property="og:title" content="${ROOT_TITLE}">
 		<meta property="og:description" content="${ROOT_DESCRIPTION}">
 		<meta property="og:url" content="${canonicalUrl}">
@@ -162,11 +137,11 @@ function createRootSeoMarkup(canonicalUrl: string) {
 		<meta name="twitter:title" content="${ROOT_TITLE}">
 		<meta name="twitter:description" content="${ROOT_DESCRIPTION}">
 		<meta name="twitter:image" content="${imageUrl}">
-		<script id="reactive-resume-structured-data" type="application/ld+json">${JSON.stringify(structuredData)}</script>
+		<script id="root-structured-data" type="application/ld+json">${JSON.stringify(structuredData)}</script>
 	`;
 }
 
-const ATS_CHECKER_TITLE = "ATS Checker - Reactive Resume";
+const ATS_CHECKER_TITLE = `ATS Checker - ${APP_NAME}`;
 // Keep under ~120 characters so Google's mobile SERP snippet is not truncated at 3 lines.
 const ATS_CHECKER_DESCRIPTION =
 	"Check whether software can read your resume PDF. Runs entirely in your browser, so your file is never uploaded.";
@@ -184,13 +159,13 @@ function createAtsCheckerSeoMarkup(origin: string) {
 		operatingSystem: "Web",
 		isAccessibleForFree: true,
 		offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-		isPartOf: { "@type": "WebSite", name: "Reactive Resume", url: `${origin}/` },
+		isPartOf: { "@type": "WebSite", name: APP_NAME, url: `${origin}/` },
 	};
 
 	return `
 		<link rel="canonical" href="${canonicalUrl}">
 		<meta property="og:type" content="website">
-		<meta property="og:site_name" content="Reactive Resume">
+		<meta property="og:site_name" content="${APP_NAME}">
 		<meta property="og:title" content="${ATS_CHECKER_TITLE}">
 		<meta property="og:description" content="${ATS_CHECKER_DESCRIPTION}">
 		<meta property="og:url" content="${canonicalUrl}">
@@ -225,7 +200,7 @@ async function createPublicResumeSeoMarkup(pathname: string, origin: string) {
 
 	const canonicalUrl = `${origin}/${username}/${slug}`;
 	const imageUrl = `${origin}/opengraph/banner.jpg`;
-	const pageTitle = escapeAttribute(`${meta.name} - Reactive Resume`);
+	const pageTitle = escapeAttribute(`${meta.name} - ${APP_NAME}`);
 	const title = escapeAttribute(meta.title);
 	const description = escapeAttribute(meta.description);
 
@@ -235,7 +210,7 @@ async function createPublicResumeSeoMarkup(pathname: string, origin: string) {
 		markup: `
 		<link rel="canonical" href="${canonicalUrl}">
 		<meta property="og:type" content="profile">
-		<meta property="og:site_name" content="Reactive Resume">
+		<meta property="og:site_name" content="${APP_NAME}">
 		<meta property="og:title" content="${title}">
 		<meta property="og:description" content="${description}">
 		<meta property="og:url" content="${canonicalUrl}">
@@ -250,11 +225,6 @@ async function createPublicResumeSeoMarkup(pathname: string, origin: string) {
 
 export const serveWebDistStatic = serveStatic({
 	root: staticRoot,
-	onFound: (_path, context) => {
-		if (/^\/videos\/.*-v\d+\.(?:mp4|webp)$/.test(context.req.path)) {
-			context.header("Cache-Control", "public, max-age=31536000, immutable");
-		}
-	},
 });
 
 function getFallbackResponseHeaders(pathname: string) {
@@ -311,7 +281,7 @@ export async function handleWebApp(request: Request) {
 		// Root configuration never discloses a target in the HTML shell. The public API
 		// gates data and browser metadata; shell requests must not count extra views.
 		const shell = html
-			.replace(/<title>[^<]*<\/title>/, "<title>Reactive Resume</title>")
+			.replace(/<title>[^<]*<\/title>/, `<title>${APP_NAME}</title>`)
 			.replace(/<meta\s+name="description"[^>]*>/, '<meta name="description" content="">');
 		const markup = `<link rel="canonical" href="${escapeAttribute(canonicalUrl)}" data-root-resume-shell><meta name="robots" content="noindex, follow" data-root-resume-shell>`;
 		return new Response(shell.replace("</head>", `${markup}</head>`), { headers });

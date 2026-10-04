@@ -8,7 +8,7 @@ import { isRTL, localeSchema } from "@reactive-resume/utils/locale";
 export { isRTL };
 
 const storageKey = "locale";
-const defaultLocale: Locale = "en-US";
+const defaultLocale: Locale = "zh-CN";
 const messageLoaders = import.meta.glob<{ messages: Messages }>("../../locales/*.po");
 const relativeTimeDivisions: Array<{ amount: number; unit: Intl.RelativeTimeFormatUnit }> = [
 	{ amount: 31_536_000_000, unit: "year" },
@@ -97,10 +97,31 @@ export function formatRelativeTime(value: Date | string, formatter: Intl.Relativ
 		: formatter.format(0, "second");
 }
 
+const supportedLocales = Object.keys(localeMap) as Locale[];
+
+/**
+ * Preferred UI locale: the explicit cookie wins, then the browser's languages
+ * (exact match, then language-prefix match), then the product default. Chinese
+ * browsers land on zh-CN; e2e and English browsers stay on en-US.
+ */
 export const getLocale = () => {
 	const locale = Cookies.get(storageKey);
-	if (!locale || !isLocale(locale)) return defaultLocale;
-	return locale;
+	if (locale && isLocale(locale)) return locale;
+
+	if (typeof navigator !== "undefined") {
+		for (const candidate of navigator.languages ?? []) {
+			const normalized = candidate.toLowerCase();
+			const exact = supportedLocales.find((supported) => supported.toLowerCase() === normalized);
+			if (exact) return exact;
+			const language = normalized.split("-")[0];
+			const partial = language
+				? supportedLocales.find((supported) => supported.toLowerCase().startsWith(language))
+				: undefined;
+			if (partial) return partial;
+		}
+	}
+
+	return defaultLocale;
 };
 
 const loadMessages = async (locale: Locale) => {

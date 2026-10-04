@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { m } from "motion/react";
 import { lazy, Suspense } from "react";
 import { Skeleton } from "@reactive-resume/ui/components/skeleton";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { Spotlight } from "@/components/animation/spotlight";
 import { AiReviewCard } from "@/features/ats-checker/ai-review/ai-review-card";
 import { LockedAiCard } from "@/features/ats-checker/ai-review/locked-card";
@@ -11,7 +12,7 @@ import { ParsePreview } from "@/features/ats-checker/parse-preview";
 import { EASE_OUT_STRONG } from "@/libs/motion";
 import { Footer } from "./-sections/footer";
 
-const PAGE_TITLE = "ATS Checker - Reactive Resume";
+const PAGE_TITLE = `ATS Checker - ${APP_NAME}`;
 const PAGE_DESCRIPTION =
 	"Check whether software can read your resume PDF. Runs entirely in your browser, so your file is never uploaded.";
 
@@ -23,7 +24,7 @@ const AtsCheckerTool = lazy(() =>
 export const Route = createFileRoute("/_home/ats-checker")({
 	component: RouteComponent,
 	head: () => {
-		const origin = typeof window === "undefined" ? "https://rxresu.me" : window.location.origin;
+		const origin = typeof window === "undefined" ? "/" : window.location.origin;
 		const canonicalUrl = new URL("/ats-checker", origin).toString();
 		const imageUrl = new URL("/opengraph/ats-checker.png", origin).toString();
 

@@ -1,11 +1,14 @@
-const productionRootUrl = "https://rxresu.me/";
-const appName = "Reactive Resume";
-const repositoryUrl = "https://github.com/reactive-resume/reactive-resume";
+import { APP_DESCRIPTION, APP_NAME } from "@reactive-resume/utils/brand";
 
 type JsonLd = Record<string, unknown>;
 
-export const getCanonicalRootUrl = (origin?: string): string => {
-	if (!origin) return productionRootUrl;
+/**
+ * Canonical root URL for the current origin. There is no hardcoded production
+ * host: when no origin is available (e.g. non-browser test environments) the
+ * canonical link is dropped by the callers instead of pointing at some domain.
+ */
+export const getCanonicalRootUrl = (origin?: string): string | undefined => {
+	if (!origin) return undefined;
 
 	const url = new URL(origin);
 	url.pathname = "/";
@@ -65,30 +68,17 @@ const createStructuredDataScript = (id: string, data: JsonLd) => ({
 export const getRootStructuredData = (canonicalUrl: string): JsonLd[] => [
 	{
 		"@type": "WebSite",
-		name: appName,
+		name: APP_NAME,
 		url: canonicalUrl,
 	},
 	{
 		"@type": ["SoftwareApplication", "WebApplication"],
-		name: appName,
+		name: APP_NAME,
 		url: canonicalUrl,
-		description:
-			"Reactive Resume is a free and open-source resume builder that makes it easy to create, update, and share your resume.",
+		description: APP_DESCRIPTION,
 		applicationCategory: "BusinessApplication",
 		operatingSystem: "Web",
 		isAccessibleForFree: true,
-		offers: {
-			"@type": "Offer",
-			price: "0",
-			priceCurrency: "USD",
-		},
-		codeRepository: repositoryUrl,
-	},
-	{
-		"@type": "Project",
-		name: appName,
-		url: canonicalUrl,
-		sameAs: [repositoryUrl],
 	},
 	{
 		"@type": "FAQPage",
@@ -104,38 +94,27 @@ export const getRootStructuredData = (canonicalUrl: string): JsonLd[] => [
 ];
 
 export const createRootStructuredDataScript = (canonicalUrl: string) =>
-	createStructuredDataScript("reactive-resume-structured-data", {
+	createStructuredDataScript("root-structured-data", {
 		"@context": "https://schema.org",
 		"@graph": getRootStructuredData(canonicalUrl),
 	});
 
 const homeFaqJsonLdItems = [
 	{
-		question: "Is Reactive Resume really free?",
+		question: "这个服务是做什么的？",
+		answer: "把求职岗位、简历和投递进度放在一起管理：录入岗位、编辑简历、导出 PDF 和 Word，并跟踪每次投递的状态。",
+	},
+	{
+		question: "AI 功能如何处理我的数据？",
 		answer:
-			"Yes. Reactive Resume is free to use, with no hidden costs, premium tiers, or subscription fees. It's open source, and it will stay free.",
+			"AI 辅助仅在你配置了自己的模型服务后可用。使用时，相关简历与岗位文本会发送给你所配置的模型服务商；未配置时所有功能都可以手动完成。",
 	},
 	{
-		question: "How is my data protected?",
-		answer:
-			"Your data is stored securely and never shared with third parties. If you want full control over it, you can self-host Reactive Resume on your own servers.",
+		question: "我的简历和投递记录存在哪里？",
+		answer: "存储在本服务的数据库中。你可以在应用内随时删除某份简历、某条投递记录，或在账户设置中删除整个账户。",
 	},
 	{
-		question: "Can I export my resume to PDF?",
-		answer: "Yes. One click exports your resume to PDF, with your formatting and styling intact.",
-	},
-	{
-		question: "Is Reactive Resume available in multiple languages?",
-		answer:
-			"Yes. Pick your language on the settings page, or with the language switcher in the top right corner. If your language is missing, or the existing translation could be better, you can contribute to the translations on Crowdin.",
-	},
-	{
-		question: "What makes Reactive Resume different from other resume builders?",
-		answer:
-			"Reactive Resume is open source, private, and free. It shows no ads, doesn't track what you do, and doesn't lock features behind a paywall.",
-	},
-	{
-		question: "How do I share my resume?",
-		answer: "Share it with a public URL, put a password on that URL, or download the PDF and send it yourself.",
+		question: "可以导出简历吗？",
+		answer: "可以。编辑器支持将简历导出为 PDF 和 Word（DOCX）文件。",
 	},
 ] as const;

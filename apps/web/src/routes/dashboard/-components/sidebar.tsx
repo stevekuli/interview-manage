@@ -36,6 +36,7 @@ import {
 	SidebarSeparator,
 	useSidebarState,
 } from "@reactive-resume/ui/components/sidebar";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { getInitials } from "@reactive-resume/utils/string";
 import { Copyright } from "@/components/ui/copyright";
 import { useCommandPaletteStore } from "@/features/command-palette/store";
@@ -48,26 +49,26 @@ type SidebarItem = {
 	href: React.ComponentProps<typeof Link>["to"];
 };
 
+// Primary flow first: jobs, then resumes. Cover letters and the ATS checker are
+// secondary tools; agents, API keys, and integrations live under "Advanced".
 const appSidebarItems = [
-	{
-		icon: <ReadCvLogoIcon />,
-		label: msg`Resumes`,
-		href: "/dashboard/resumes",
-	},
 	{
 		icon: <BriefcaseIcon />,
 		label: msg`Applications`,
 		href: "/dashboard/applications",
 	},
 	{
+		icon: <ReadCvLogoIcon />,
+		label: msg`Resumes`,
+		href: "/dashboard/resumes",
+	},
+] as const satisfies SidebarItem[];
+
+const toolSidebarItems = [
+	{
 		icon: <EnvelopeSimpleIcon />,
 		label: msg`Cover Letters`,
 		href: "/dashboard/cover-letters",
-	},
-	{
-		icon: <ChatCircleDotsIcon />,
-		label: msg`Agents`,
-		href: "/agent",
 	},
 	{
 		icon: <SealCheckIcon />,
@@ -93,6 +94,19 @@ const settingsSidebarItems = [
 		href: "/dashboard/settings/authentication",
 	},
 	{
+		icon: <UserGearIcon />,
+		label: msg`Account`,
+		href: "/dashboard/settings/account",
+	},
+] as const satisfies SidebarItem[];
+
+const advancedSidebarItems = [
+	{
+		icon: <ChatCircleDotsIcon />,
+		label: msg`Agents`,
+		href: "/agent",
+	},
+	{
 		icon: <KeyIcon />,
 		label: msg`API Keys`,
 		href: "/dashboard/settings/api-keys",
@@ -101,11 +115,6 @@ const settingsSidebarItems = [
 		icon: <BrainIcon />,
 		label: msg`Integrations`,
 		href: "/dashboard/settings/integrations",
-	},
-	{
-		icon: <UserGearIcon />,
-		label: msg`Account`,
-		href: "/dashboard/settings/account",
 	},
 ] as const satisfies SidebarItem[];
 
@@ -172,7 +181,7 @@ export function DashboardSidebar() {
 							render={
 								<Link to="/">
 									<BrandIcon variant="icon" className="size-6" />
-									<h1 className="sr-only">Reactive Resume</h1>
+									<h1 className="sr-only">{APP_NAME}</h1>
 								</Link>
 							}
 						/>
@@ -187,10 +196,19 @@ export function DashboardSidebar() {
 			<SidebarContent aria-label={i18n.t(msg`Dashboard`)} role="navigation">
 				<SidebarGroup>
 					<SidebarGroupLabel>
-						<Trans>App</Trans>
+						<Trans>Job search</Trans>
 					</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarItemList items={appSidebarItems} />
+					</SidebarGroupContent>
+				</SidebarGroup>
+
+				<SidebarGroup>
+					<SidebarGroupLabel>
+						<Trans>Tools</Trans>
+					</SidebarGroupLabel>
+					<SidebarGroupContent>
+						<SidebarItemList items={toolSidebarItems} />
 					</SidebarGroupContent>
 				</SidebarGroup>
 
@@ -200,6 +218,15 @@ export function DashboardSidebar() {
 					</SidebarGroupLabel>
 					<SidebarGroupContent>
 						<SidebarItemList items={settingsSidebarItems} />
+					</SidebarGroupContent>
+				</SidebarGroup>
+
+				<SidebarGroup>
+					<SidebarGroupLabel>
+						<Trans>Advanced</Trans>
+					</SidebarGroupLabel>
+					<SidebarGroupContent>
+						<SidebarItemList items={advancedSidebarItems} />
 					</SidebarGroupContent>
 				</SidebarGroup>
 			</SidebarContent>

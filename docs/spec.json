@@ -1,21 +1,16 @@
 {
 	"info": {
-		"title": "Reactive Resume",
-		"version": "5.3.1",
-		"description": "Reactive Resume API",
+		"title": "求职管理",
+		"version": "5.3.2",
+		"description": "求职管理 API",
 		"license": {
 			"name": "MIT",
 			"url": "https://github.com/reactive-resume/reactive-resume/blob/main/LICENSE"
-		},
-		"contact": {
-			"name": "Amruth Pillai",
-			"email": "hello@amruthpillai.com",
-			"url": "https://amruthpillai.com"
 		}
 	},
 	"servers": [
 		{
-			"url": "https://rxresu.me/api/openapi"
+			"url": "http://localhost:3000/api/openapi"
 		}
 	],
 	"paths": {
@@ -29,7 +24,7 @@
 				"description": "Checks database and storage availability. Does not require authentication.",
 				"servers": [
 					{
-						"url": "https://rxresu.me"
+						"url": "http://localhost:3000"
 					}
 				],
 				"security": [],
@@ -584,33 +579,6 @@
 												"status",
 												"message"
 											]
-										}
-									]
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/ai/chat": {
-			"post": {
-				"operationId": "aiChat",
-				"summary": "Chat with AI to modify resume",
-				"description": "Streams a chat response from the configured AI provider. The LLM can call the propose_resume_patches tool to generate JSON Patch proposals for explicit user approval. Requires authentication and AI provider credentials.",
-				"tags": [
-					"AI"
-				],
-				"responses": {
-					"200": {
-						"description": "OK",
-						"content": {
-							"application/json": {
-								"schema": {
-									"anyOf": [
-										{},
-										{
-											"not": {}
 										}
 									]
 								}
@@ -2443,7 +2411,7 @@
 														"type": "null"
 													}
 												],
-												"description": "The linked Reactive Resume, if any."
+												"description": "The linked resume, if any."
 											},
 											"source": {
 												"anyOf": [
@@ -2675,6 +2643,55 @@
 																"at",
 																"type",
 																"text"
+															]
+														},
+														{
+															"type": "object",
+															"properties": {
+																"id": {
+																	"type": "string",
+																	"minLength": 1
+																},
+																"at": {
+																	"type": "string",
+																	"format": "date-time",
+																	"x-native-type": "date"
+																},
+																"type": {
+																	"const": "interview"
+																},
+																"kind": {
+																	"enum": [
+																		"screening",
+																		"technical",
+																		"behavioral",
+																		"onsite",
+																		"other"
+																	],
+																	"type": "string"
+																},
+																"durationMinutes": {
+																	"type": "integer",
+																	"minimum": 5,
+																	"maximum": 1440,
+																	"default": 60
+																},
+																"location": {
+																	"type": "string",
+																	"maxLength": 500,
+																	"default": ""
+																},
+																"notes": {
+																	"type": "string",
+																	"maxLength": 5000,
+																	"default": ""
+																}
+															},
+															"required": [
+																"id",
+																"at",
+																"type",
+																"kind"
 															]
 														}
 													]
@@ -2918,7 +2935,7 @@
 												"type": "null"
 											}
 										],
-										"description": "The linked Reactive Resume, if any."
+										"description": "The linked resume, if any."
 									},
 									"tags": {
 										"type": "array",
@@ -3050,7 +3067,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -3282,6 +3299,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -3534,7 +3600,7 @@
 												"type": "null"
 											}
 										],
-										"description": "The linked Reactive Resume, if any."
+										"description": "The linked resume, if any."
 									},
 									"tags": {
 										"type": "array",
@@ -3627,7 +3693,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -3859,6 +3925,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -4148,7 +4263,7 @@
 															"type": "null"
 														}
 													],
-													"description": "The linked Reactive Resume, if any."
+													"description": "The linked resume, if any."
 												},
 												"tags": {
 													"type": "array",
@@ -4323,7 +4438,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -4555,6 +4670,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -4705,7 +4869,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -4937,6 +5101,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -5100,7 +5313,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -5333,6 +5546,992 @@
 															"type",
 															"text"
 														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
+														]
+													}
+												]
+											}
+										},
+										"appliedAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										},
+										"createdAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										},
+										"updatedAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										}
+									},
+									"required": [
+										"id",
+										"company",
+										"role",
+										"location",
+										"salary",
+										"status",
+										"archived",
+										"resumeId",
+										"source",
+										"tags",
+										"sourceUrl",
+										"jobDescription",
+										"matchScore",
+										"aiMetadata",
+										"notes",
+										"resumeFileUrl",
+										"resumeFileName",
+										"coverLetterUrl",
+										"coverLetterName",
+										"followUpAt",
+										"followUpNote",
+										"contacts",
+										"activity",
+										"appliedAt",
+										"createdAt",
+										"updatedAt"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/applications/{id}/interviews": {
+			"post": {
+				"operationId": "addApplicationInterview",
+				"summary": "Schedule an interview",
+				"description": "Adds an interview (screening, technical, behavioral, onsite or other) with a scheduled date-time to the application's activity timeline. Applications can have any number of interviews. Requires authentication.",
+				"tags": [
+					"Applications"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"kind": {
+										"enum": [
+											"screening",
+											"technical",
+											"behavioral",
+											"onsite",
+											"other"
+										],
+										"type": "string"
+									},
+									"durationMinutes": {
+										"type": "integer",
+										"minimum": 5,
+										"maximum": 1440,
+										"default": 60
+									},
+									"location": {
+										"type": "string",
+										"maxLength": 500,
+										"default": ""
+									},
+									"notes": {
+										"type": "string",
+										"maxLength": 5000,
+										"default": ""
+									},
+									"at": {
+										"type": "string",
+										"format": "date-time",
+										"description": "Scheduled start, as an ISO 8601 date-time."
+									}
+								},
+								"required": [
+									"kind",
+									"at"
+								]
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "The updated application.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"description": "The ID of the application."
+										},
+										"company": {
+											"type": "string",
+											"minLength": 1,
+											"description": "The company applied to."
+										},
+										"role": {
+											"type": "string",
+											"minLength": 1,
+											"description": "The role / job title."
+										},
+										"location": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"salary": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"status": {
+											"enum": [
+												"saved",
+												"applied",
+												"screening",
+												"interview",
+												"offer",
+												"rejected"
+											],
+											"type": "string",
+											"description": "The current pipeline stage."
+										},
+										"archived": {
+											"type": "boolean"
+										},
+										"resumeId": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											],
+											"description": "The linked resume, if any."
+										},
+										"source": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"tags": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"sourceUrl": {
+											"anyOf": [
+												{
+													"type": "string",
+													"format": "uri"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"jobDescription": {
+											"anyOf": [
+												{
+													"type": "string",
+													"maxLength": 20000
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"matchScore": {
+											"anyOf": [
+												{
+													"type": "integer",
+													"minimum": 0,
+													"maximum": 100
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"aiMetadata": {
+											"anyOf": [
+												{
+													"type": "object",
+													"propertyNames": {
+														"type": "string"
+													},
+													"additionalProperties": {}
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"notes": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"resumeFileUrl": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"resumeFileName": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"coverLetterUrl": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"coverLetterName": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"followUpAt": {
+											"anyOf": [
+												{
+													"type": "string",
+													"format": "date-time",
+													"x-native-type": "date"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"followUpNote": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"contacts": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "string",
+														"minLength": 1
+													},
+													"role": {
+														"type": "string",
+														"default": ""
+													},
+													"type": {
+														"type": "string",
+														"default": ""
+													},
+													"email": {
+														"type": "string",
+														"default": ""
+													},
+													"phone": {
+														"type": "string",
+														"default": ""
+													}
+												},
+												"required": [
+													"name"
+												]
+											}
+										},
+										"activity": {
+											"type": "array",
+											"items": {
+												"anyOf": [
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "stage"
+															},
+															"stage": {
+																"enum": [
+																	"saved",
+																	"applied",
+																	"screening",
+																	"interview",
+																	"offer",
+																	"rejected"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"stage"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "note"
+															},
+															"text": {
+																"type": "string",
+																"minLength": 1
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
+														]
+													}
+												]
+											}
+										},
+										"appliedAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										},
+										"createdAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										},
+										"updatedAt": {
+											"type": "string",
+											"format": "date-time",
+											"x-native-type": "date"
+										}
+									},
+									"required": [
+										"id",
+										"company",
+										"role",
+										"location",
+										"salary",
+										"status",
+										"archived",
+										"resumeId",
+										"source",
+										"tags",
+										"sourceUrl",
+										"jobDescription",
+										"matchScore",
+										"aiMetadata",
+										"notes",
+										"resumeFileUrl",
+										"resumeFileName",
+										"coverLetterUrl",
+										"coverLetterName",
+										"followUpAt",
+										"followUpNote",
+										"contacts",
+										"activity",
+										"appliedAt",
+										"createdAt",
+										"updatedAt"
+									]
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/applications/{id}/interviews/{entryId}": {
+			"put": {
+				"operationId": "updateApplicationInterview",
+				"summary": "Update a scheduled interview",
+				"description": "Updates an interview timeline entry (date-time, kind, duration, location, notes). Only provided fields are changed. Delete interviews with the timeline entry delete endpoint. Requires authentication.",
+				"tags": [
+					"Applications"
+				],
+				"parameters": [
+					{
+						"name": "id",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"name": "entryId",
+						"in": "path",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": false,
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"at": {
+										"type": "string",
+										"format": "date-time",
+										"description": "Scheduled start, as an ISO 8601 date-time."
+									},
+									"kind": {
+										"enum": [
+											"screening",
+											"technical",
+											"behavioral",
+											"onsite",
+											"other"
+										],
+										"type": "string"
+									},
+									"durationMinutes": {
+										"type": "integer",
+										"minimum": 5,
+										"maximum": 1440
+									},
+									"location": {
+										"type": "string",
+										"maxLength": 500
+									},
+									"notes": {
+										"type": "string",
+										"maxLength": 5000
+									}
+								}
+							}
+						}
+					}
+				},
+				"responses": {
+					"200": {
+						"description": "The updated application.",
+						"content": {
+							"application/json": {
+								"schema": {
+									"type": "object",
+									"properties": {
+										"id": {
+											"type": "string",
+											"description": "The ID of the application."
+										},
+										"company": {
+											"type": "string",
+											"minLength": 1,
+											"description": "The company applied to."
+										},
+										"role": {
+											"type": "string",
+											"minLength": 1,
+											"description": "The role / job title."
+										},
+										"location": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"salary": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"status": {
+											"enum": [
+												"saved",
+												"applied",
+												"screening",
+												"interview",
+												"offer",
+												"rejected"
+											],
+											"type": "string",
+											"description": "The current pipeline stage."
+										},
+										"archived": {
+											"type": "boolean"
+										},
+										"resumeId": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											],
+											"description": "The linked resume, if any."
+										},
+										"source": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"tags": {
+											"type": "array",
+											"items": {
+												"type": "string"
+											}
+										},
+										"sourceUrl": {
+											"anyOf": [
+												{
+													"type": "string",
+													"format": "uri"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"jobDescription": {
+											"anyOf": [
+												{
+													"type": "string",
+													"maxLength": 20000
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"matchScore": {
+											"anyOf": [
+												{
+													"type": "integer",
+													"minimum": 0,
+													"maximum": 100
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"aiMetadata": {
+											"anyOf": [
+												{
+													"type": "object",
+													"propertyNames": {
+														"type": "string"
+													},
+													"additionalProperties": {}
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"notes": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"resumeFileUrl": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"resumeFileName": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"coverLetterUrl": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"coverLetterName": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"followUpAt": {
+											"anyOf": [
+												{
+													"type": "string",
+													"format": "date-time",
+													"x-native-type": "date"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"followUpNote": {
+											"anyOf": [
+												{
+													"type": "string"
+												},
+												{
+													"type": "null"
+												}
+											]
+										},
+										"contacts": {
+											"type": "array",
+											"items": {
+												"type": "object",
+												"properties": {
+													"name": {
+														"type": "string",
+														"minLength": 1
+													},
+													"role": {
+														"type": "string",
+														"default": ""
+													},
+													"type": {
+														"type": "string",
+														"default": ""
+													},
+													"email": {
+														"type": "string",
+														"default": ""
+													},
+													"phone": {
+														"type": "string",
+														"default": ""
+													}
+												},
+												"required": [
+													"name"
+												]
+											}
+										},
+										"activity": {
+											"type": "array",
+											"items": {
+												"anyOf": [
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "stage"
+															},
+															"stage": {
+																"enum": [
+																	"saved",
+																	"applied",
+																	"screening",
+																	"interview",
+																	"offer",
+																	"rejected"
+																],
+																"type": "string"
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"stage"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "note"
+															},
+															"text": {
+																"type": "string",
+																"minLength": 1
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
+														]
 													}
 												]
 											}
@@ -5392,7 +6591,7 @@
 			"put": {
 				"operationId": "updateApplicationTimelineEntry",
 				"summary": "Update a timeline entry",
-				"description": "Updates a timeline entry date, or note text for note entries. Requires authentication.",
+				"description": "Updates a stage or note timeline entry date, or note text for note entries. Interview entries are rejected; use updateApplicationInterview. Requires authentication.",
 				"tags": [
 					"Applications"
 				],
@@ -5500,7 +6699,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -5732,6 +6931,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -5878,7 +7126,7 @@
 													"type": "null"
 												}
 											],
-											"description": "The linked Reactive Resume, if any."
+											"description": "The linked resume, if any."
 										},
 										"source": {
 											"anyOf": [
@@ -6110,6 +7358,55 @@
 															"at",
 															"type",
 															"text"
+														]
+													},
+													{
+														"type": "object",
+														"properties": {
+															"id": {
+																"type": "string",
+																"minLength": 1
+															},
+															"at": {
+																"type": "string",
+																"format": "date-time",
+																"x-native-type": "date"
+															},
+															"type": {
+																"const": "interview"
+															},
+															"kind": {
+																"enum": [
+																	"screening",
+																	"technical",
+																	"behavioral",
+																	"onsite",
+																	"other"
+																],
+																"type": "string"
+															},
+															"durationMinutes": {
+																"type": "integer",
+																"minimum": 5,
+																"maximum": 1440,
+																"default": 60
+															},
+															"location": {
+																"type": "string",
+																"maxLength": 500,
+																"default": ""
+															},
+															"notes": {
+																"type": "string",
+																"maxLength": 5000,
+																"default": ""
+															}
+														},
+														"required": [
+															"id",
+															"at",
+															"type",
+															"kind"
 														]
 													}
 												]
@@ -7082,7 +8379,7 @@
 			"get": {
 				"operationId": "listAuthProviders",
 				"summary": "List authentication providers",
-				"description": "Returns a list of all authentication providers enabled on this Reactive Resume instance, along with their display names. Possible providers include password-based credentials, Google, GitHub, LinkedIn, and custom OAuth. No authentication required.",
+				"description": "Returns a list of all authentication providers enabled on this instance, along with their display names. Possible providers include password-based credentials, Google, GitHub, LinkedIn, and custom OAuth. No authentication required.",
 				"tags": [
 					"Authentication"
 				],
@@ -11474,7 +12771,7 @@
 			"get": {
 				"operationId": "exportCoverLetter",
 				"summary": "Export a cover letter",
-				"description": "Exports a saved cover letter as a standalone Reactive Resume cover-letter document.",
+				"description": "Exports a saved cover letter as a standalone cover-letter JSON document.",
 				"tags": [
 					"Cover Letters"
 				],
@@ -12014,7 +13311,7 @@
 			"post": {
 				"operationId": "importCoverLetter",
 				"summary": "Import a cover letter",
-				"description": "Creates a saved cover letter from an exported Reactive Resume cover-letter document.",
+				"description": "Creates a saved cover letter from an exported cover-letter JSON document.",
 				"tags": [
 					"Cover Letters"
 				],
@@ -13107,7 +14404,7 @@
 			"get": {
 				"operationId": "getFeatureFlags",
 				"summary": "Get feature flags",
-				"description": "Returns the current feature flags for this Reactive Resume instance. Feature flags control instance-wide settings such as whether new user signups or email-based authentication are disabled. No authentication required.",
+				"description": "Returns the current feature flags for this instance. Feature flags control instance-wide settings such as whether new user signups or email-based authentication are disabled. No authentication required.",
 				"tags": [
 					"Feature Flags"
 				],
@@ -32456,63 +33753,17 @@
 				}
 			}
 		},
-		"/statistics/users": {
-			"get": {
-				"operationId": "getUserCount",
-				"summary": "Get total number of users",
-				"description": "Returns the total number of registered users on this Reactive Resume instance. The count is cached for up to 6 hours for performance. No authentication required.",
-				"tags": [
-					"Platform Statistics"
-				],
-				"responses": {
-					"200": {
-						"description": "The total number of registered users.",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "number",
-									"description": "The total number of registered users."
-								}
-							}
-						}
-					}
-				}
-			}
-		},
-		"/statistics/resumes": {
-			"get": {
-				"operationId": "getResumeCount",
-				"summary": "Get total number of resumes",
-				"description": "Returns the total number of resumes created on this Reactive Resume instance. The count is cached for up to 6 hours for performance. No authentication required.",
-				"tags": [
-					"Platform Statistics"
-				],
-				"responses": {
-					"200": {
-						"description": "The total number of resumes created.",
-						"content": {
-							"application/json": {
-								"schema": {
-									"type": "number",
-									"description": "The total number of resumes created."
-								}
-							}
-						}
-					}
-				}
-			}
-		},
 		"/statistics/github/stars": {
 			"get": {
 				"operationId": "getGitHubStarCount",
 				"summary": "Get GitHub star count",
-				"description": "Returns the number of GitHub stars for the Reactive Resume repository. The count is cached for up to 6 hours and falls back to a last-known value if the GitHub API is unavailable. No authentication required.",
+				"description": "Returns the number of GitHub stars for the upstream repository. The count is cached for up to 6 hours and falls back to a last-known value if the GitHub API is unavailable. No authentication required.",
 				"tags": [
 					"Platform Statistics"
 				],
 				"responses": {
 					"200": {
-						"description": "The number of GitHub stars for the Reactive Resume repository.",
+						"description": "The number of GitHub stars for the upstream repository.",
 						"content": {
 							"application/json": {
 								"schema": {
@@ -32525,10 +33776,6 @@
 				}
 			}
 		}
-	},
-	"externalDocs": {
-		"url": "https://docs.rxresu.me",
-		"description": "Reactive Resume Documentation"
 	},
 	"components": {
 		"securitySchemes": {

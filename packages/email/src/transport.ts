@@ -3,6 +3,7 @@ import type { ReactElement } from "react";
 import nodemailer from "nodemailer";
 import { render } from "react-email";
 import { env } from "@reactive-resume/env/server";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 
 type SendEmailOptions = {
 	to: string | string[];
@@ -31,7 +32,9 @@ const getTransport = () => {
 
 export const sendEmail = async (options: SendEmailOptions) => {
 	const transport = getTransport();
-	const from = options.from ?? env.SMTP_FROM ?? "Reactive Resume <noreply@localhost>";
+	// Only used when SMTP_FROM is unset — in that case no transport exists and the
+	// message is logged, never delivered, so this display name is safe by construction.
+	const from = options.from ?? env.SMTP_FROM ?? `${APP_NAME} <noreply@localhost>`;
 	const payload: SendMailOptions = {
 		to: options.to,
 		from,

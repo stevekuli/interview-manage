@@ -17,6 +17,7 @@
 	},
 	"dependencies": {
 		"@reactive-resume/env": "workspace:*",
+		"@reactive-resume/utils": "workspace:*",
 		"nodemailer": "^10.0.11",
 		"react": "^19.3.0",
 		"react-email": "^6.11.0"

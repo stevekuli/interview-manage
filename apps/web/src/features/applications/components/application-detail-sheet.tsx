@@ -240,10 +240,10 @@ export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Pr
 								className="flex items-center gap-3 rounded-lg border border-border p-2.5 hover:bg-muted/50"
 							>
 								<span className="flex size-8 items-center justify-center rounded-md bg-primary/10 font-bold text-[10px] text-primary">
-									RXR
+									CV
 								</span>
 								<span className="min-w-0 flex-1 truncate text-sm">
-									<Trans>Linked Reactive Resume</Trans>
+									<Trans>Linked resume</Trans>
 								</span>
 								<ArrowSquareOutIcon className="text-muted-foreground" />
 							</Link>

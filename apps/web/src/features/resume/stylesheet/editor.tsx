@@ -547,19 +547,9 @@ function StylesheetEditorShell({ readOnly = false }: StylesheetEditorShellProps)
 			<p className="flex items-center gap-1.5 text-muted-foreground text-xs">
 				<BookOpenIcon aria-hidden="true" className="shrink-0" />
 				<span>
-					<Trans>Not sure what to write?</Trans>{" "}
-					<a
-						className="text-primary underline underline-offset-4"
-						href="https://docs.rxresu.me/applying-custom-styles"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<Trans>Read the Applying Custom Styles guide.</Trans>
-						<span className="sr-only">
-							{" "}
-							(<Trans>opens in new tab</Trans>)
-						</span>
-					</a>
+					<Trans>
+						Changes apply to the preview and to PDF/DOCX exports. Standard CSS targeting the resume root works here.
+					</Trans>
 				</span>
 			</p>
 

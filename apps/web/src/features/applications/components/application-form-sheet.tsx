@@ -331,14 +331,14 @@ export function ApplicationFormSheet({ open, onOpenChange, application }: Props)
 						</Field>
 					)}
 
-					{/* Resume: link a live Reactive Resume (unlocks AI) or upload the exact PDF you sent. */}
+					{/* Resume: link a live resume (unlocks AI) or upload the exact PDF you sent. */}
 					<Field label={t`Resume`}>
 						<div className="flex flex-col gap-2">
 							<Combobox
 								className="w-full"
 								value={form.resumeId || null}
 								options={resumeOptions}
-								placeholder={t`Link a Reactive Resume (recommended)`}
+								placeholder={t`Link a resume (recommended)`}
 								showClear
 								emptyMessage={t`No resumes yet.`}
 								onValueChange={(value) => set("resumeId", value ?? "")}
@@ -349,7 +349,7 @@ export function ApplicationFormSheet({ open, onOpenChange, application }: Props)
 								onChange={(value) => set("resumeFile", value)}
 							/>
 							<p className="text-[11px] text-muted-foreground">
-								<Trans>Link a Reactive Resume to use AI match scoring and tailoring.</Trans>
+								<Trans>Link a resume to use AI match scoring and tailoring.</Trans>
 							</p>
 						</div>
 					</Field>

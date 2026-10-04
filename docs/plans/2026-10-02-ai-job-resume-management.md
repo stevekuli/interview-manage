@@ -1,7 +1,7 @@
 # 基于 Reactive Resume 的 AI 求职管理系统开发计划
 
-- 制定日期：2026-10-02（P0 于 2026-10-03 完成）
-- 状态：P0 可运行基线已验收，下一步 P1
+- 制定日期：2026-10-02（P0 于 2026-10-03 完成；P0 基线于 2026-10-04 部署公网并验收）
+- 状态：P0 基线已部署公网验证（验收记录：`docs/acceptance/2026-10-04-server-deployment.md`）；2026-10-04 完成品牌整理与主入口收敛（见 `docs/plans/2026-10-04-product-branding-and-optimization.md`，P1—P5 不受影响，下一步 P1）
 - 工作区：`D:\program\interview-manage`
 - 前置规范：执行前阅读根目录 `AGENTS.md`
 - 执行顺序：P0 → P1 → P2 → P3 → P4 → P5；每阶段完成验收后进入下一阶段
@@ -63,7 +63,7 @@
 - [x] 验证现有文件访问权限、中文字体、导出运行依赖与数据库迁移。
 - [x] 记录上游原有失败，明确阻碍首版的修复项，避免把基线故障归因于新增功能。
 
-P0 补充说明：修复 `tsdown.config.ts` 的 Windows 路径外部化误判与 `selector.esm.test.ts` 的 Windows spawn 问题；Node 需 24.9.0+（24.0.2 的 Windows EMFILE 回归炸服务端 PDF 渲染）；本机 5432 被占，postgres 走 5433（`tooling/compose.dev.win.yml`）。DOCX 导出经 e2e 与单测覆盖；真实 AI 模型调用与生产 Docker 镜像留待后续阶段（见验收报告第六节缺口）。
+P0 补充说明：修复 `tsdown.config.ts` 的 Windows 路径外部化误判与 `selector.esm.test.ts` 的 Windows spawn 问题；Node 需 24.9.0+（24.0.2 的 Windows EMFILE 回归炸服务端 PDF 渲染）；本机 5432 被占，postgres 走 5433（`tooling/compose.dev.win.yml`）。DOCX 导出经 e2e 与单测覆盖；真实 AI 模型调用留待后续阶段（见验收报告第六节缺口）。生产 Docker 镜像已于 2026-10-04 构建并部署公网验证（`docs/acceptance/2026-10-04-server-deployment.md`）。
 
 **交付标准：**本地可启动；能创建账号、保存简历、添加岗位并导出中文文件；基线检查结果可追溯。
 
@@ -205,7 +205,7 @@ pnpm exec turbo boundaries
 
 ### 当前交接状态
 
-- 已完成：需求取舍、底座源码初步核查、开发计划、初始项目规范、P0 可运行基线（2026-10-03）。
-- P0 关键环境约束：Node 24.9.0+、git `core.autocrlf=false`、postgres 宿主端口 5433、单测前移走根目录 `.env`、e2e 关认证限流并带 `DATABASE_URL`。
-- 未完成：P1—P5 功能实现、生产 Docker 镜像验证、真实模型与真实样本验收。
+- 已完成：需求取舍、底座源码初步核查、开发计划、初始项目规范、P0 可运行基线（2026-10-03）、生产部署与公网验收（2026-10-04，验收记录见 `docs/acceptance/`）。
+- P0 关键环境约束：Node 24.9.0+、git `core.autocrlf=false`、postgres 宿主端口 5433、单测前移走根目录 `.env`、e2e 关认证限流并带 `DATABASE_URL`；生产部署约束见根目录 `AGENTS.md`「服务器部署约定」。
+- 未完成：P1—P5 功能实现、P5 部署交付物（备份/恢复与邀请管理命令）、真实模型与真实样本验收。
 - 后续执行起点：阅读根目录 `AGENTS.md` 与 P0 基线报告，从 P1（多用户内测入口与 AI 配置）开始。

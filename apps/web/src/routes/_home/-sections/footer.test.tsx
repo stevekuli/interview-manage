@@ -7,9 +7,18 @@ import { I18nProvider } from "@lingui/react";
 
 vi.stubGlobal("__APP_VERSION__", "9.9.9");
 
-// The footer module evaluates `socialLinks = [{ label: t`...`, ... }]` at module
-// scope. That `t` call needs an activated locale BEFORE the import, so do that
-// here instead of in beforeAll.
+type LinkProps = React.PropsWithChildren<{
+	to: string;
+}>;
+
+vi.mock("@tanstack/react-router", () => ({
+	Link: ({ children, to, ...rest }: LinkProps) => (
+		<a href={typeof to === "string" ? to : "#"} {...rest}>
+			{children}
+		</a>
+	),
+}));
+
 i18n.loadAndActivate({ locale: "en", messages: {} });
 
 const { Footer } = await import("./footer");
@@ -22,37 +31,21 @@ const renderFooter = () =>
 	);
 
 describe("Footer", () => {
-	it("renders Resources and Community link group headings", () => {
-		renderFooter();
-		expect(screen.getByText("Resources")).toBeInTheDocument();
-		expect(screen.getByText("Community")).toBeInTheDocument();
-	});
-
-	it("renders the documented resource links", () => {
+	it("renders the workspace and ATS checker links", () => {
 		const { container } = renderFooter();
-		const text = container.textContent ?? "";
-		for (const label of ["Documentation", "Sponsorships", "Source Code", "Changelog"]) {
-			expect(text, label).toContain(label);
-		}
+		const hrefs = Array.from(container.querySelectorAll<HTMLAnchorElement>("a")).map((a) => a.getAttribute("href"));
+		expect(hrefs).toContain("/dashboard");
+		expect(hrefs).toContain("/ats-checker");
 	});
 
-	it("renders the documented community links", () => {
+	it("keeps upstream promotion, donations, and socials out of the footer", () => {
 		const { container } = renderFooter();
-		const text = container.textContent ?? "";
-		for (const label of ["Report an issue", "Translations", "Subreddit", "Discord"]) {
-			expect(text, label).toContain(label);
-		}
+		const html = container.innerHTML;
+		expect(html).not.toMatch(/rxresu\.me|opencollective|crowdin|discord|reddit|amruthpillai|linkedin|x\.com/i);
+		expect(screen.queryByText("Sponsorships")).not.toBeInTheDocument();
 	});
 
-	it("renders social media icon links to GitHub, LinkedIn, and X", () => {
-		const { container } = renderFooter();
-		const hrefs = Array.from(container.querySelectorAll<HTMLAnchorElement>("a")).map((a) => a.href);
-		expect(hrefs.some((h) => h.includes("github.com/reactive-resume/reactive-resume"))).toBe(true);
-		expect(hrefs.some((h) => h.includes("linkedin.com/in/amruthpillai"))).toBe(true);
-		expect(hrefs.some((h) => h.includes("x.com/KingOKings"))).toBe(true);
-	});
-
-	it("includes Reactive Resume version copy via Copyright", () => {
+	it("includes the app version copy via Copyright", () => {
 		renderFooter();
 		// The version is wrapped in <bdi> for RTL isolation, so it is its own text node.
 		expect(screen.getByText("9.9.9")).toBeInTheDocument();

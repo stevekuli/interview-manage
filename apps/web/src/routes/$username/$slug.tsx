@@ -3,6 +3,7 @@ import type { RouterOutput } from "@/libs/orpc/client";
 import { ORPCError } from "@orpc/client";
 import { createFileRoute, lazyRouteComponent, notFound, redirect } from "@tanstack/react-router";
 import { getResumeSocialMeta } from "@reactive-resume/resume/social-meta";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { orpc } from "@/libs/orpc/client";
 import { createNoindexFollowMeta, createResumeSocialMeta, getCanonicalRootUrl } from "@/libs/seo";
 
@@ -21,30 +22,30 @@ export const Route = createFileRoute("/$username/$slug")({
 	},
 	head: ({ loaderData, params }) => {
 		const resume = loaderData?.resume;
-		const name = resume ? resume.data.basics.name || resume.name || "Resume" : "Reactive Resume";
+		const name = resume ? resume.data.basics.name || resume.name || "Resume" : APP_NAME;
 
 		if (!resume) {
-			return { meta: [{ title: `${name} - Reactive Resume` }, createNoindexFollowMeta()] };
+			return { meta: [{ title: `${name}` }, createNoindexFollowMeta()] };
 		}
 
 		const social = getResumeSocialMeta(resume.data, resume.name || "Resume");
 
 		const base = getCanonicalRootUrl(typeof window === "undefined" ? undefined : window.location.origin);
-		const canonicalUrl = `${base}${params.username}/${params.slug}`;
-		const imageUrl = `${base}opengraph/banner.jpg`;
+		const canonicalUrl = base ? `${base}${params.username}/${params.slug}` : undefined;
+		const imageUrl = `${base ?? "/"}opengraph/banner.jpg`;
 
 		return {
 			meta: [
-				{ title: `${social.name} - Reactive Resume` },
+				{ title: `${social.name} - ${APP_NAME}` },
 				createNoindexFollowMeta(),
 				...createResumeSocialMeta({
-					canonicalUrl,
+					canonicalUrl: canonicalUrl ?? "",
 					title: social.title,
 					description: social.description,
 					imageUrl,
 				}),
 			],
-			links: [{ rel: "canonical", href: canonicalUrl }],
+			...(canonicalUrl ? { links: [{ rel: "canonical", href: canonicalUrl }] } : {}),
 		};
 	},
 	onError: (error) => {

@@ -10,6 +10,7 @@ import {
 	registerResources,
 	registerTools,
 } from "@reactive-resume/mcp";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { appVersion } from "../app-version";
 import { getRequestLocale } from "../rpc/locale";
 
@@ -31,7 +32,7 @@ function createRequestClient(request: Request): RouterClient<typeof router> {
 export function createMcpServer(request: Request) {
 	const server = new McpServer(buildMcpServerInfo(appVersion), {
 		instructions: [
-			"You are connected to Reactive Resume over MCP.",
+			`You are connected to ${APP_NAME} over MCP.`,
 			"Authenticate with OAuth (recommended) or an API key (`x-api-key`).",
 			`Discover resume IDs with \`${MCP_TOOL_NAME.listResumes}\` (not \`resources/list\`).`,
 			`List distinct tags with \`${MCP_TOOL_NAME.listResumeTags}\`.`,

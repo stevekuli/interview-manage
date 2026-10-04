@@ -1,275 +1,64 @@
-> [!IMPORTANT]
-> **Repository moved:** Reactive Resume now lives at **[`reactive-resume/reactive-resume`](https://github.com/reactive-resume/reactive-resume)** on GitHub.
-> **Docker Hub stays at `amruthpillai/reactive-resume`.** GHCR builds now publish to `ghcr.io/reactive-resume/reactive-resume`.
-> Verified image tags: `latest`, `v5`, `v5.3`, and `v5.3.0` (AMD64 and ARM64). The current version was rebuilt and production redeployed for this rename; no new GitHub release or version bump was made. See [migration details](https://github.com/reactive-resume/reactive-resume/issues/3503).
-> GitHub Sponsors and Open Collective funding links remain unchanged.
+# 求职管理
 
-<div align="center">
-  <a href="https://rxresu.me">
-    <img src="apps/web/public/opengraph/banner.jpg" alt="Reactive Resume" />
-  </a>
+面向校招和社招求职者的求职工作区：把岗位、简历和投递进度放在一起。界面中文优先。
 
-  <h1>Reactive Resume</h1>
+当前已实现的能力：
 
-  <p>Reactive Resume is a free and open-source resume builder that makes it easy to create, update, and share your resume.</p>
+- **岗位与投递记录**：录入目标岗位，看板 / 表格 / 日历 / 洞察多种视图跟踪每份投递的阶段变化。
+- **简历编辑**：多份结构化简历、模板布局、富文本与自定义样式。
+- **导出**：一键导出 PDF 与 Word（DOCX）。
+- **分享**：简历可通过公开链接分享，支持设置访问密码。
+- **ATS 检查**：在浏览器本地解析简历 PDF，检查机器可读性，文件不上传。
+- **求职信**：独立求职信库，可单独导出。
+- **AI 辅助（可选）**：需自行配置模型服务后使用，当前支持岗位匹配评分、生成岗位定制简历副本、起草求职信与跟进消息；未配置时上述操作手动完成，核心功能不受影响。
 
-  <p>
-    <a href="https://rxresu.me"><strong>Get Started</strong></a>
-    ·
-    <a href="https://docs.rxresu.me"><strong>Learn More</strong></a>
-  </p>
+产品界面基于上游项目 [Reactive Resume](https://github.com/reactive-resume/reactive-resume)（MIT 许可证，见 [LICENSE](./LICENSE)）二次开发，上游许可声明原样保留。
 
-  <p>
-    <img src="https://img.shields.io/github/package-json/v/reactive-resume/reactive-resume?style=flat-square" alt="Reactive Resume Version">
-    <img src="https://img.shields.io/github/stars/reactive-resume/reactive-resume?style=flat-square" alt="GitHub Stars">
-    <img src="https://img.shields.io/github/license/reactive-resume/reactive-resume?style=flat-square" alt="License" />
-    <img src="https://img.shields.io/docker/pulls/amruthpillai/reactive-resume?style=flat-square" alt="Docker Pulls" />
-    <a href="https://discord.gg/aSyA5ZSxpb"><img src="https://img.shields.io/discord/1173518977851473940?style=flat-square&label=discord" alt="Discord" /></a>
-    <a href="https://crowdin.com/project/reactive-resume"><img src="https://badges.crowdin.net/reactive-resume/localized.svg?style=flat-square" alt="Crowdin" /></a>
-    <a href="https://github.com/sponsors/AmruthPillai"><img src="https://img.shields.io/github/sponsors/AmruthPillai?style=flat-square&label=sponsors" alt="Sponsors" /></a>
-    <a href="https://opencollective.com/reactive-resume/donate"><img src="https://img.shields.io/opencollective/backers/reactive-resume?style=flat-square&label=donations" alt="Donations" /></a>
-  </p>
+## 本地运行
 
-  <br />
-  <a href="https://vercel.com/open-source-program">
-    <img alt="Vercel OSS Program" src="https://vercel.com/oss/program-badge-2026.svg" />
-  </a>
-</div>
-
----
-
-Pick a template, fill in your details, and export to PDF. Basic use needs no account. If you want more control, you can run the whole application on your own infrastructure.
-
-You own your data. The codebase is open source under the MIT license, with no tracking, no ads, and no hidden costs.
-
-## Features
-
-**Resume Building**
-
-- Live preview as you type
-- Multiple export formats (PDF, JSON, DOCX)
-- Drag-and-drop section ordering
-- Custom sections for any content type
-- Rich text editor
-
-**Templates**
-
-- 15 templates to choose from
-- A4 and Letter page sizes
-- Customizable colors, fonts, and spacing
-- Structured Style Rules for section and text styling
-
-**Privacy & Control**
-
-- Self-host on your own infrastructure
-- No tracking or analytics by default
-- Full data export at any time
-- Delete your data permanently with one click
-
-**Extras**
-
-- AI integration (OpenAI, Google Gemini, Anthropic Claude)
-- Multi-language support
-- Share resumes via unique links
-- Import from JSON Resume format
-- Dark mode
-- Passkey and two-factor authentication
-
-## Templates
-
-<table>
-  <tr>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/azurill.jpg" alt="Azurill" width="150" />
-      <br /><sub><b>Azurill</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/bronzor.jpg" alt="Bronzor" width="150" />
-      <br /><sub><b>Bronzor</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/chikorita.jpg" alt="Chikorita" width="150" />
-      <br /><sub><b>Chikorita</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/ditto.jpg" alt="Ditto" width="150" />
-      <br /><sub><b>Ditto</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/gengar.jpg" alt="Gengar" width="150" />
-      <br /><sub><b>Gengar</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/glalie.jpg" alt="Glalie" width="150" />
-      <br /><sub><b>Glalie</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/kakuna.jpg" alt="Kakuna" width="150" />
-      <br /><sub><b>Kakuna</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/lapras.jpg" alt="Lapras" width="150" />
-      <br /><sub><b>Lapras</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/leafish.jpg" alt="Leafish" width="150" />
-      <br /><sub><b>Leafish</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/onyx.jpg" alt="Onyx" width="150" />
-      <br /><sub><b>Onyx</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/pikachu.jpg" alt="Pikachu" width="150" />
-      <br /><sub><b>Pikachu</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/rhyhorn.jpg" alt="Rhyhorn" width="150" />
-      <br /><sub><b>Rhyhorn</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/ditgar.jpg" alt="Ditgar" width="150" />
-      <br /><sub><b>Ditgar</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/meowth.jpg" alt="Meowth" width="150" />
-      <br /><sub><b>Meowth</b></sub>
-    </td>
-    <td align="center">
-      <img src="apps/web/public/templates/jpg/scizor.jpg" alt="Scizor" width="150" />
-      <br /><sub><b>Scizor</b></sub>
-    </td>
-  </tr>
-</table>
-
-## Quick Start
-
-The quickest way to run Reactive Resume locally:
+前置要求：Node.js 24+、pnpm 12（由 `packageManager` 固定）、Docker（PostgreSQL / Redis）。
 
 ```bash
-# Clone the repository
-git clone --depth=1  https://github.com/reactive-resume/reactive-resume.git reactive-resume
-cd reactive-resume
+# 1. 安装依赖
+pnpm install
 
-# Start all services
-docker compose up -d
+# 2. 准备环境变量
+cp .env.example .env.local   # 至少配置 APP_URL、DATABASE_URL、AUTH_SECRET
 
-# Access the app
-open http://localhost:3000
+# 3. 启动基础设施（compose 文件以仓库根目录为准）
+docker compose -f compose.dev.yml up -d postgres redis
+
+# 4. 启动开发服务器（自动执行数据库迁移）
+pnpm dev                     # http://localhost:3000
 ```
 
-For detailed setup instructions, environment configuration, and self-hosting guides, see the [documentation](https://docs.rxresu.me).
-
-## Tech Stack
-
-| Category         | Technology                      |
-| ---------------- | ------------------------------- |
-| Framework        | TanStack Router (React 19, Vite) |
-| Runtime          | Node.js                         |
-| Language         | TypeScript                      |
-| Database         | PostgreSQL with Drizzle ORM     |
-| API              | ORPC (Type-safe RPC)            |
-| Auth             | Better Auth                     |
-| Styling          | Tailwind CSS                    |
-| UI Components    | Base UI + shadcn-style package  |
-| State Management | Zustand + TanStack Query        |
-
-## Documentation
-
-The full documentation lives at [docs.rxresu.me](https://docs.rxresu.me):
-
-| Guide                                                                        | Description                      |
-| ---------------------------------------------------------------------------- | -------------------------------- |
-| [Getting Started](https://docs.rxresu.me/getting-started)                    | First-time setup and basic usage |
-| [Self-Hosting](https://docs.rxresu.me/self-hosting/docker)                   | Deploy on your own server        |
-| [Development setup](https://docs.rxresu.me/contributing/development)         | Local development environment    |
-| [Project architecture](https://docs.rxresu.me/contributing/architecture)     | Codebase structure and patterns  |
-| [Exporting Your Resume](https://docs.rxresu.me/guides/exporting-your-resume) | PDF and JSON export options      |
-
-## Self-Hosting
-
-Reactive Resume supports Docker and Vercel Hobby.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Freactive-resume%2Freactive-resume&project-name=reactive-resume&repository-name=reactive-resume&env=AUTH_SECRET%2CENCRYPTION_SECRET&envDescription=Generate+two+independent+secrets+with+openssl+rand+-hex+32.+Keep+these+values+across+deployments.&envLink=https%3A%2F%2Fdocs.rxresu.me%2Fself-hosting%2Fvercel&stores=%5B%7B%22type%22%3A%22integration%22%2C%22protocol%22%3A%22storage%22%2C%22integrationSlug%22%3A%22neon%22%2C%22productSlug%22%3A%22neon%22%7D%2C%7B%22type%22%3A%22integration%22%2C%22protocol%22%3A%22storage%22%2C%22integrationSlug%22%3A%22upstash%22%2C%22productSlug%22%3A%22upstash-kv%22%7D%2C%7B%22type%22%3A%22blob%22%2C%22access%22%3A%22private%22%7D%5D)
-
-Vercel provisions Neon PostgreSQL, private Blob storage, and Upstash Redis through its deployment wizard. Supply two persistent secrets, then deploy. See the [Vercel guide](docs/self-hosting/vercel.mdx) for setup, limits, and optional SMTP/OAuth configuration.
-
-For Docker, the stack includes:
-
-- **PostgreSQL** — Database for storing user data and resumes
-- **SeaweedFS** (optional) — S3-compatible storage for file uploads
-
-> **From v5.1.0 onwards** — PDF generation runs entirely client-side via `@react-pdf/renderer`. New deployments no longer need Browserless, Chromium, or any external print service. The `PRINTER_*` and `BROWSERLESS_*` environment variables are no longer read and can be removed from your `.env`.
-
-Pull the latest image from Docker Hub or GitHub Container Registry:
+生产构建与运行：
 
 ```bash
-# Docker Hub
-docker pull amruthpillai/reactive-resume:latest
-
-# GitHub Container Registry
-docker pull ghcr.io/reactive-resume/reactive-resume:latest
+pnpm build
+NODE_ENV=production PORT=3000 node apps/server/dist/index.mjs
 ```
 
-See the [self-hosting guide](https://docs.rxresu.me/self-hosting/docker) for complete instructions.
+## 配置
 
-## Support
+环境变量通过根目录 `.env.local` 提供（`packages/env` 负责校验）：
 
-Reactive Resume is and always will be free and open source. If it has helped you land a job or saved you time, please consider supporting continued development:
+- `APP_URL`：站点对外地址，用于分享链接、邮件与 SEO。
+- `DATABASE_URL`：PostgreSQL 连接串；生产模式启动时自动执行迁移。
+- `AUTH_SECRET`：认证签名密钥（任意非空字符串）。
+- `REDIS_URL`、`ENCRYPTION_SECRET`：可选；保存 AI 模型配置与使用 Agent 工作区时必需。
+- `SMTP_*`：可选；未配置时验证邮件内容打印到服务端日志。
+- `S3_ACCESS_KEY_ID` / `S3_SECRET_ACCESS_KEY` / `S3_BUCKET`：可选；不配置时使用本地文件存储。
 
-<p>
-  <a href="https://github.com/sponsors/AmruthPillai">
-    <img src="https://img.shields.io/badge/GitHub%20Sponsors-Support-ea4aaa?style=flat-square&logo=github-sponsors" alt="GitHub Sponsors" />
-  </a>
-  <a href="https://opencollective.com/reactive-resume/donate">
-    <img src="https://img.shields.io/badge/Open%20Collective-Contribute-7FADF2?style=flat-square&logo=open-collective" alt="Open Collective" />
-  </a>
-</p>
+本地持久数据写入 `data/` 目录（可用 `LOCAL_STORAGE_PATH` 覆盖），该目录不进入 Git。
 
-Other ways to support:
+## 仓库结构与开发
 
-- Star this repository
-- Report reproducible bugs and suggest actionable features
-- Help other users in [GitHub Discussions](https://github.com/reactive-resume/reactive-resume/discussions/categories/q-a)
-- Improve documentation
-- Help with translations
+- pnpm monorepo（Turborepo）：`apps/web`（React 19 SPA）+ `apps/server`（Hono 单进程，同时承载 API 与静态站点）。
+- 工程规范、目录归属和验证命令见 [AGENTS.md](./AGENTS.md)。
+- 开发计划与验收记录分别在 `docs/plans/`、`docs/acceptance/`。
+- 部署脚本与服务器部署说明见 `tooling/deployment/`。
 
-<a href="https://blacksmith.sh/">
-  <img width="368" height="126" alt="powered-by-blacksmith" src="https://github.com/user-attachments/assets/3e95d11b-4579-4082-8d0c-6b574f925625" />
-</a>
+## 许可证
 
-## Star History
-
-<a href="https://www.star-history.com/?repos=reactive-resume%2Freactive-resume&type=date&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/chart?repos=reactive-resume/reactive-resume&type=date&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/chart?repos=reactive-resume/reactive-resume&type=date&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/chart?repos=reactive-resume/reactive-resume&type=date&legend=top-left" />
- </picture>
-</a>
-
-## Contributing
-
-Every contribution helps, whether it is a typo fix or a new feature.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-See the [development setup guide](https://docs.rxresu.me/contributing/development) for how to run the project locally.
-
-Maintainers review the [`status: needs triage` queue](https://github.com/reactive-resume/reactive-resume/issues?q=is%3Aissue+is%3Aopen+label%3A%22status%3A+needs+triage%22)
-weekly. Triaged bugs become `status: confirmed`; feature proposals become `status: accepted`; reports that need details become
-`status: needs info`.
-
-## License
-
-[MIT](./LICENSE) — do whatever you want with it.
+[MIT](./LICENSE)。原始许可证与上游版权声明（Copyright (c) 2026 Amruth Pillai）原样保留。

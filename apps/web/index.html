@@ -1,32 +1,32 @@
 <!doctype html>
-<html lang="en" class="dark">
+<html lang="zh-CN" class="dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="theme-color" content="#09090B" />
-		<meta name="application-name" content="Reactive Resume" />
+		<meta name="application-name" content="求职管理" />
 		<meta name="mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		<meta name="apple-mobile-web-app-title" content="Reactive Resume" />
+		<meta name="apple-mobile-web-app-title" content="求职管理" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 		<!-- Keep under ~120 characters so Google's mobile SERP snippet is not truncated at 3 lines. -->
-		<meta name="description" content="Free, open-source resume builder. Create, update, and share a professional resume in minutes — no ads, no paywall.">
+		<meta name="description" content="管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。">
 
 		<link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="128x128" />
 		<link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="256x256 any" />
 		<link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png" type="image/png" sizes="180x180 any" />
 		<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
-		<title>Reactive Resume — A free and open-source resume builder</title>
+		<title>求职管理 — 把岗位、简历和投递进度放在一起</title>
 	</head>
 	<body>
 		<!-- Keep #app empty: main.tsx only mounts React when rootElement has no children. -->
 		<div id="app"></div>
 		<!-- Branded first paint; hidden once React populates #app (higher-specificity rule below). -->
 		<div id="initial-loader">
-			<img src="/icon/dark.svg" width="48" height="48" alt="Reactive Resume" />
+			<img src="/icon/dark.svg" width="48" height="48" alt="求职管理" />
 			<div class="initial-loader__spinner"></div>
-			<span class="initial-loader__sr-only">Loading</span>
+			<span class="initial-loader__sr-only">正在加载</span>
 		</div>
 		<style>
 			@keyframes app-spin { to { transform: rotate(360deg) } }

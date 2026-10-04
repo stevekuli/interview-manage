@@ -1,4 +1,5 @@
 import { toJsonSchemaCompat } from "@modelcontextprotocol/sdk/server/zod-json-schema-compat.js";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { MCP_TOOL_NAME as T } from "./mcp-tool-names";
 import { PROMPT_META } from "./prompts";
 import { TOOL_META } from "./tool-meta";
@@ -10,14 +11,8 @@ export function buildMcpServerInfo(version: string) {
 	return {
 		name: "reactive-resume",
 		version,
-		title: "Reactive Resume",
-		websiteUrl: "https://rxresu.me",
-		description:
-			"Reactive Resume is a free and open-source resume builder. Use this MCP server to interact with your resume using an LLM of your choice.",
-		icons: [
-			{ src: "https://rxresu.me/icon/light.svg", mimeType: "image/svg+xml", theme: "light" as const },
-			{ src: "https://rxresu.me/icon/dark.svg", mimeType: "image/svg+xml", theme: "dark" as const },
-		],
+		title: APP_NAME,
+		description: `${APP_NAME} job-search workspace. Use this MCP server to interact with your resumes and cover letters using an LLM of your choice.`,
 	};
 }
 

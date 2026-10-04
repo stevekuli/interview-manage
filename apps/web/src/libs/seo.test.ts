@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import {
 	createNoindexFollowMeta,
 	createRootStructuredDataScript,
@@ -7,13 +8,13 @@ import {
 } from "./seo";
 
 describe("getCanonicalRootUrl", () => {
-	it("uses the production root when no origin is available", () => {
-		expect(getCanonicalRootUrl()).toBe("https://rxresu.me/");
+	it("returns undefined when no origin is available instead of pointing at a hardcoded host", () => {
+		expect(getCanonicalRootUrl()).toBeUndefined();
 	});
 
 	it("normalizes an app origin to the root URL", () => {
 		expect(getCanonicalRootUrl("http://localhost:3000")).toBe("http://localhost:3000/");
-		expect(getCanonicalRootUrl("https://rxresu.me/")).toBe("https://rxresu.me/");
+		expect(getCanonicalRootUrl("https://example.com/")).toBe("https://example.com/");
 	});
 });
 
@@ -25,15 +26,15 @@ describe("createNoindexFollowMeta", () => {
 
 describe("createRootStructuredDataScript", () => {
 	it("serializes JSON-LD using the structured data script id", () => {
-		const script = createRootStructuredDataScript("https://rxresu.me/");
+		const script = createRootStructuredDataScript("https://example.com/");
 
-		expect(script.id).toBe("reactive-resume-structured-data");
+		expect(script.id).toBe("root-structured-data");
 		expect(script.type).toBe("application/ld+json");
 		expect(JSON.parse(script.children)).toMatchObject({ "@context": "https://schema.org" });
 	});
 
 	it("escapes script-breaking sequences in JSON-LD children", () => {
-		const script = createRootStructuredDataScript("https://rxresu.me/</script><!---->\u2028\u2029");
+		const script = createRootStructuredDataScript("https://example.com/</script><!---->\u2028\u2029");
 
 		expect(script.children).not.toContain("</script");
 		expect(script.children).not.toContain("<!--");
@@ -47,29 +48,31 @@ describe("createRootStructuredDataScript", () => {
 });
 
 describe("getRootStructuredData", () => {
-	it("describes only conservative visible product facts", () => {
-		const schemas = getRootStructuredData("https://rxresu.me/");
+	it("describes only this service without upstream repository or promo links", () => {
+		const schemas = getRootStructuredData("https://example.com/");
 
-		expect(schemas).toHaveLength(4);
+		expect(schemas).toHaveLength(3);
 		expect(schemas[0]).toMatchObject({
 			"@type": "WebSite",
-			name: "Reactive Resume",
-			url: "https://rxresu.me/",
+			name: APP_NAME,
+			url: "https://example.com/",
 		});
 		expect(schemas[1]).toMatchObject({
 			"@type": ["SoftwareApplication", "WebApplication"],
-			name: "Reactive Resume",
+			name: APP_NAME,
 			applicationCategory: "BusinessApplication",
 			operatingSystem: "Web",
-			offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
 		});
-		expect(schemas[3]).toMatchObject({
+		expect(schemas[2]).toMatchObject({
 			"@type": "FAQPage",
 			mainEntity: expect.arrayContaining([
 				expect.objectContaining({
-					name: "Is Reactive Resume really free?",
+					name: "这个服务是做什么的？",
 				}),
 			]),
 		});
+
+		const serialized = JSON.stringify(schemas);
+		expect(serialized).not.toMatch(/rxresu\.me|github\.com|open-source|开源/);
 	});
 });

@@ -63,3 +63,6 @@ graphify-out
 # Git Hooks
 .vite-hooks
 
+
+# Verification artifacts (AGENTS.md: 禁止进入 Git)
+artifacts/

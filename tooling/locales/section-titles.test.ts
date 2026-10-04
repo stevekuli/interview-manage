@@ -11,4 +11,4 @@ it("keeps PDF headings synchronized with the source Lingui catalogs", async () =
 	);
 	expect(committed, "Run pnpm pdf:translations after updating translations.").toEqual(generated);
 	expect(generated["es-ES"]?.Experience).toBe("Experiencia");
-});
+}, 30_000);

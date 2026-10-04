@@ -3,6 +3,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { createFileRoute, redirect } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { useIsMobile } from "@reactive-resume/ui/hooks/use-mobile";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { useBuilderResumeUpdateSubscription, useResumeCleanup, useResumeStore } from "@/features/resume/builder/draft";
 import { orpc } from "@/libs/orpc/client";
 import { createNoindexFollowMeta } from "@/libs/seo";
@@ -26,7 +27,7 @@ export const Route = createFileRoute("/builder/$resumeId")({
 	},
 	head: ({ loaderData }) => ({
 		meta: loaderData
-			? [{ title: `${loaderData.name} - Reactive Resume` }, createNoindexFollowMeta()]
+			? [{ title: `${loaderData.name} - ${APP_NAME}` }, createNoindexFollowMeta()]
 			: [createNoindexFollowMeta()],
 	}),
 });

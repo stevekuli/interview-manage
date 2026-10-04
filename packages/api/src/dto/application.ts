@@ -36,7 +36,7 @@ const applicationSchema = createSelectSchema(schema.application, {
 	salary: z.string().trim().nullable(),
 	status: applicationStatusSchema.describe("The current pipeline stage."),
 	archived: z.boolean(),
-	resumeId: z.string().nullable().describe("The linked Reactive Resume, if any."),
+	resumeId: z.string().nullable().describe("The linked resume, if any."),
 	source: z.string().trim().nullable(),
 	sourceUrl: httpUrlSchema.nullable(),
 	jobDescription: z.string().max(MAX_APPLICATION_JOB_DESCRIPTION_CHARS).nullable(),

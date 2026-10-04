@@ -1136,6 +1136,9 @@ importers:
       '@reactive-resume/env':
         specifier: workspace:*
         version: link:../env
+      '@reactive-resume/utils':
+        specifier: workspace:*
+        version: link:../utils
       nodemailer:
         specifier: ^10.0.11
         version: 10.0.11
@@ -1257,6 +1260,9 @@ importers:
       '@reactive-resume/schema':
         specifier: workspace:*
         version: link:../schema
+      '@reactive-resume/utils':
+        specifier: workspace:*
+        version: link:../utils
       zod:
         specifier: ^4.6.5
         version: 4.6.5
@@ -1537,6 +1543,9 @@ importers:
       pg:
         specifier: ^8.23.0
         version: 8.23.0
+      sharp:
+        specifier: ^0.35.5
+        version: 0.35.5(@types/node@26.6.3)
       tsx:
         specifier: ^4.23.15
         version: 4.23.15

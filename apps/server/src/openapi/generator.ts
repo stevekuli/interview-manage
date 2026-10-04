@@ -6,6 +6,7 @@ import router from "@reactive-resume/api/routers";
 import { resumeDataSchema } from "@reactive-resume/schema/resume/data";
 import { createResumeDataJsonSchema } from "@reactive-resume/schema/resume/json-schema";
 import { writableResumeDataSchema } from "@reactive-resume/schema/resume/write";
+import { APP_NAME } from "@reactive-resume/utils/brand";
 
 export const openAPIRouter = {
 	...router,
@@ -81,11 +82,10 @@ const healthResponseSchema = {
 export async function generateOpenApiSpec({ appUrl, version }: GenerateOpenApiSpecOptions) {
 	return await openAPIGenerator.generate(openAPIRouter, {
 		info: {
-			title: "Reactive Resume",
+			title: APP_NAME,
 			version,
-			description: "Reactive Resume API",
+			description: `${APP_NAME} API`,
 			license: { name: "MIT", url: "https://github.com/reactive-resume/reactive-resume/blob/main/LICENSE" },
-			contact: { name: "Amruth Pillai", email: "hello@amruthpillai.com", url: "https://amruthpillai.com" },
 		},
 		servers: [{ url: `${appUrl}/api/openapi` }],
 		paths: {
@@ -110,7 +110,6 @@ export async function generateOpenApiSpec({ appUrl, version }: GenerateOpenApiSp
 				},
 			},
 		},
-		externalDocs: { url: "https://docs.rxresu.me", description: "Reactive Resume Documentation" },
 		commonSchemas: {
 			ResumeData: { schema: writableResumeDataSchema, strategy: "input" },
 		},

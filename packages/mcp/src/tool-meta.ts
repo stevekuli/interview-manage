@@ -230,7 +230,7 @@ export const TOOL_META = {
 	[T.importResume]: {
 		title: "Import Resume",
 		description: [
-			"Create a new resume from a full ResumeData JSON object (e.g. an exported file from Reactive Resume).",
+			"Create a new resume from a full ResumeData JSON object (e.g. a resume backup file exported from this workspace).",
 			"A random name and slug are assigned automatically, like the web importer.",
 			`For small edits to an existing resume, prefer \`${T.patchResume}\` instead of re-importing.`,
 			"Large payloads may exceed MCP client message limits; in that case, use the web UI or the HTTP API.",
@@ -461,7 +461,7 @@ export const TOOL_META = {
 	[T.exportCoverLetter]: {
 		title: "Export Cover Letter",
 		description: [
-			"Export an independent library cover letter as versioned Reactive Resume cover-letter JSON.",
+			"Export an independent library cover letter as versioned cover-letter JSON.",
 			"This is not a full resume export and does not export an embedded cover letter directly.",
 		].join("\n"),
 		inputSchema: z.object({ id: coverLetterIdSchema }),
@@ -470,7 +470,7 @@ export const TOOL_META = {
 	[T.importCoverLetter]: {
 		title: "Import Cover Letter",
 		description: [
-			"Import a versioned Reactive Resume cover-letter JSON document as a new independent library letter.",
+			"Import a versioned cover-letter JSON document as a new independent library letter.",
 			"Use `export_cover_letter` to obtain the accepted document format.",
 		].join("\n"),
 		inputSchema: z.object({

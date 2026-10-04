@@ -232,8 +232,8 @@ export function ApplicationAiCopilot({ application }: Props) {
 			<div className="border-primary/10 border-t px-2 py-2">
 				<ActionRow
 					icon={<MagicWandIcon />}
-					title={<Trans>Tailor my resume</Trans>}
-					description={t`Create a copy tuned to this job`}
+					title={<Trans>Create a tailored copy</Trans>}
+					description={t`Copies the resume and rewrites its summary for this job`}
 					disabled={!canScore}
 					pending={tailorResume.isPending}
 					onClick={() => tailorResume.mutate({ id: application.id })}

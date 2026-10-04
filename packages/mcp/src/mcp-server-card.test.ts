@@ -10,15 +10,12 @@ describe("buildMcpServerCard", () => {
 		expect(card.serverInfo.version).toBe("1.2.3");
 	});
 
-	it("identifies the server as reactive-resume", () => {
+	it("identifies the server as reactive-resume without upstream promo links", () => {
 		expect(card.serverInfo.name).toBe("reactive-resume");
-		expect(card.serverInfo.title).toBe("Reactive Resume");
-		expect(card.serverInfo.websiteUrl).toBe("https://rxresu.me");
-	});
-
-	it("exposes light + dark theme icons", () => {
-		const themes = card.serverInfo.icons.map((icon) => icon.theme).sort();
-		expect(themes).toEqual(["dark", "light"]);
+		expect(card.serverInfo.title).toBe("求职管理");
+		expect("websiteUrl" in card.serverInfo).toBe(false);
+		expect("icons" in card.serverInfo).toBe(false);
+		expect(JSON.stringify(card.serverInfo)).not.toMatch(/rxresu\.me|open-source/);
 	});
 
 	it("requires authentication with oauth2 + bearer schemes", () => {

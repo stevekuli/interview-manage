@@ -23,15 +23,15 @@ const renderCopyright = (props?: React.ComponentProps<typeof Copyright>) =>
 describe("Copyright", () => {
 	it("renders the MIT license link", () => {
 		renderCopyright();
-		const link = screen.getByRole("link", { name: "MIT" });
+		const link = screen.getByRole("link", { name: "MIT License" });
 		expect(link.getAttribute("href")).toBe("https://github.com/reactive-resume/reactive-resume/blob/main/LICENSE");
 		expect(link.getAttribute("rel")).toBe("noopener noreferrer");
 	});
 
-	it("renders the Amruth Pillai attribution link", () => {
+	it("keeps author attribution out of the footer", () => {
 		renderCopyright();
-		const link = screen.getByRole("link", { name: "Amruth Pillai" });
-		expect(link.getAttribute("href")).toBe("https://amruthpillai.com");
+		expect(screen.queryByRole("link", { name: "Amruth Pillai" })).not.toBeInTheDocument();
+		expect(document.body.textContent).not.toContain("community");
 	});
 
 	it("includes the app version string", () => {
@@ -45,12 +45,5 @@ describe("Copyright", () => {
 		const wrapper = container.firstChild as HTMLElement;
 		expect(wrapper.className).toContain("extra-class");
 		expect(wrapper.className).toContain("text-muted-foreground");
-	});
-
-	it("opens external links in a new tab", () => {
-		renderCopyright();
-		for (const link of screen.getAllByRole("link")) {
-			expect(link.getAttribute("target")).toBe("_blank");
-		}
 	});
 });

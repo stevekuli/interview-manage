@@ -27,30 +27,15 @@ const renderInfo = () =>
 	);
 
 describe("InformationSectionBuilder", () => {
-	it("renders the donation prompt and CTA", () => {
+	it("renders local editing tips instead of donation prompts", () => {
 		renderInfo();
-		expect(screen.getByText("Support the app by doing what you can!")).toBeInTheDocument();
-		expect(screen.getByText("Donate to Reactive Resume")).toBeInTheDocument();
+		expect(screen.getByText("Editing tips")).toBeInTheDocument();
+		expect(screen.queryByText(/donate/i)).not.toBeInTheDocument();
 	});
 
-	it("links to the OpenCollective donation page", () => {
-		renderInfo();
-		const donateLink = screen.getByText("Donate to Reactive Resume").closest("a");
-		expect(donateLink?.getAttribute("href")).toBe("http://opencollective.com/reactive-resume");
-	});
-
-	it("includes external resource links (docs, source, bugs, translations, sponsors)", () => {
-		renderInfo();
-		const labels = ["Documentation", "Source Code", "Report a Bug", "Translations", "Sponsors"];
-		for (const label of labels) {
-			expect(screen.getByText(label).closest("a"), label).not.toBeNull();
-		}
-	});
-
-	it("opens external links in a new tab", () => {
-		renderInfo();
-		const docs = screen.getByText("Documentation").closest("a") as HTMLAnchorElement;
-		expect(docs.getAttribute("target")).toBe("_blank");
-		expect(docs.getAttribute("rel")).toBe("noopener noreferrer");
+	it("keeps upstream promotion and external links out of the panel", () => {
+		const { container } = renderInfo();
+		expect(container.innerHTML).not.toMatch(/opencollective|rxresu\.me|github\.com|crowdin/i);
+		expect(container.querySelector("a")).toBeNull();
 	});
 });

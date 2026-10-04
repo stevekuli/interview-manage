@@ -79,7 +79,7 @@ export function ApiKeysSettingsPage() {
 
 					<p className="text-muted-foreground leading-relaxed">
 						<Trans>
-							The API documentation shows how to connect Reactive Resume to your own applications. It covers the
+							The API specification describes how to connect this workspace to your own applications. It covers the
 							endpoints, the request format, and authentication.
 						</Trans>
 					</p>
@@ -88,7 +88,7 @@ export function ApiKeysSettingsPage() {
 						variant="link"
 						nativeButton={false}
 						render={
-							<a href="https://docs.rxresu.me/api-reference" target="_blank" rel="noopener noreferrer">
+							<a href="/api/openapi/spec.json" target="_blank" rel="noopener noreferrer">
 								<LinkSimpleIcon />
 								<Trans>API Reference</Trans>
 							</a>

@@ -1,3 +1,4 @@
+import { APP_NAME } from "@reactive-resume/utils/brand";
 import { cn } from "@reactive-resume/utils/style";
 
 type Props = React.ComponentProps<"img"> & {
@@ -9,13 +10,13 @@ export function BrandIcon({ variant = "logo", className, ...props }: Props) {
 		<>
 			<img
 				src={`/${variant}/dark.svg`}
-				alt="Reactive Resume"
+				alt={APP_NAME}
 				className={cn("hidden size-12 dark:block", className)}
 				{...props}
 			/>
 			<img
 				src={`/${variant}/light.svg`}
-				alt="Reactive Resume"
+				alt={APP_NAME}
 				className={cn("block size-12 dark:hidden", className)}
 				{...props}
 			/>

@@ -29,18 +29,7 @@ vi.mock("@reactive-resume/env/server", () => ({
 	env: mocks.env,
 }));
 
-type StaticOptions = {
-	onFound?: (
-		path: string,
-		context: {
-			req: { path: string };
-			header: (name: string, value: string) => void;
-		},
-	) => void | Promise<void>;
-};
-
 const { handleWebApp } = await import("./web");
-const staticOptions = mocks.serveStatic.mock.calls[0]?.[0] as StaticOptions | undefined;
 
 describe("web app fallback classification", () => {
 	beforeEach(() => {
@@ -78,10 +67,9 @@ describe("web app fallback classification", () => {
 		const html = await response.text();
 
 		expect(html).toContain('<link rel="canonical" href="https://rxresu.me/">');
-		expect(html).toContain('<link rel="preload" href="/videos/timelapse-v1.webp" as="image" fetchpriority="high">');
 		expect(html).toContain('<meta property="og:url" content="https://rxresu.me/">');
 		expect(html).toContain('<meta property="og:image" content="https://rxresu.me/opengraph/banner.jpg">');
-		expect(html).toContain('id="reactive-resume-structured-data"');
+		expect(html).toContain('id="root-structured-data"');
 		expect(html).toContain('"@type":["SoftwareApplication","WebApplication"]');
 		expect(html).toContain('"url":"https://rxresu.me/"');
 		expect(html).not.toContain("utm_source");
@@ -108,7 +96,7 @@ describe("web app fallback classification", () => {
 
 			const html = await (await handleWebApp(new Request("https://example.com/ats-checker"))).text();
 
-			expect(html).toContain("<title>ATS Checker - Reactive Resume</title>");
+			expect(html).toContain("<title>ATS Checker - 求职管理</title>");
 			expect(html).toContain('<link rel="canonical" href="https://rxresu.me/ats-checker">');
 			expect(html).toContain('<meta property="og:url" content="https://rxresu.me/ats-checker">');
 			expect(html).toContain('<meta property="og:image" content="https://rxresu.me/opengraph/ats-checker.png">');
@@ -146,7 +134,7 @@ describe("web app fallback classification", () => {
 			const html = await (await handleWebApp(new Request("https://example.com/jane/resume"))).text();
 
 			expect(mocks.getPublicResumeSocialMeta).toHaveBeenCalledWith({ username: "jane", slug: "resume" });
-			expect(html).toContain("<title>Jane Doe - Reactive Resume</title>");
+			expect(html).toContain("<title>Jane Doe - 求职管理</title>");
 			expect(html).toContain('<meta name="description" content="Builds resilient distributed systems.">');
 			expect(html).not.toContain("Marketing copy.");
 			expect(html).toContain('<link rel="canonical" href="https://rxresu.me/jane/resume">');
@@ -191,25 +179,6 @@ describe("web app fallback classification", () => {
 			expect(response.status).toBe(200);
 			await expect(response.text()).resolves.toBe(shell);
 		});
-	});
-
-	it("caches versioned homepage media immutably", async () => {
-		const headers = new Headers();
-
-		await staticOptions?.onFound?.("", {
-			req: { path: "/videos/timelapse-v1.mp4" },
-			header: (name, value) => headers.set(name, value),
-		});
-
-		expect(headers.get("Cache-Control")).toBe("public, max-age=31536000, immutable");
-
-		const unversionedHeaders = new Headers();
-		await staticOptions?.onFound?.("", {
-			req: { path: "/videos/timelapse.mp4" },
-			header: (name, value) => unversionedHeaders.set(name, value),
-		});
-
-		expect(unversionedHeaders.get("Cache-Control")).toBeNull();
 	});
 
 	it.each(["/", "/alice/resume"])("sets framing and report-only CSP security headers on %s", async (pathname) => {
