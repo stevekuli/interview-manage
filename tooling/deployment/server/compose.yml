@@ -1,0 +1,91 @@
+# Production stack for the interview-manage app on the Aliyun ECS host.
+# Isolated from the pre-existing `new-api` compose project: service DNS names
+# (`postgres`, `redis`) only resolve inside this project's network, and the app
+# port is bound to loopback so the host Nginx owns all public routing.
+name: interview-manage
+
+services:
+  postgres:
+    # Matches the image pre-pulled on the target host (no public egress);
+    # bump to a newer tag only after the host can pull it.
+    image: postgres:15
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:?POSTGRES_PASSWORD is required}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d postgres"]
+      start_period: 10s
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    mem_limit: 384m
+    networks:
+      - internal
+
+  redis:
+    image: redis:latest
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redisdata:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      start_period: 5s
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    mem_limit: 128m
+    networks:
+      - internal
+
+  app:
+    image: interview-manage:20261004
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    environment:
+      - APP_URL=${APP_URL:?APP_URL is required}
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      - AUTH_SECRET=${AUTH_SECRET:?AUTH_SECRET is required}
+      - ENCRYPTION_SECRET=${ENCRYPTION_SECRET:?ENCRYPTION_SECRET is required}
+      - REDIS_URL=redis://redis:6379
+      - LOCAL_STORAGE_PATH=/app/data
+      # The host has no direct IPv4 egress; the pre-existing mihomo proxy on the
+      # host (port 7890) is the server's outbound path. Node 24's built-in proxy
+      # support routes fetch() (e.g. CDN font downloads for PDF rendering)
+      # through it. NO_PROXY keeps self-hairpin and internal services direct.
+      - NODE_USE_ENV_PROXY=1
+      - HTTP_PROXY=http://host.docker.internal:7890
+      - HTTPS_PROXY=http://host.docker.internal:7890
+      - NO_PROXY=localhost,127.0.0.1,postgres,redis,8.148.199.165
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "127.0.0.1:3001:3000"
+    volumes:
+      - appdata:/app/data
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/api/health').then((r) => { if (!r.ok) process.exit(1); }).catch(() => process.exit(1));"]
+      start_period: 60s
+      interval: 30s
+      timeout: 10s
+      retries: 3
+    mem_limit: 800m
+    networks:
+      - internal
+
+volumes:
+  pgdata:
+  redisdata:
+  appdata:
+
+networks:
+  internal:
+    driver: bridge
