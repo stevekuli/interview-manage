@@ -50,15 +50,17 @@
 - git `core.autocrlf` 保持 **false**（本仓已设置）；否则 tooling 的 committed 生成物断言失败。
 - 宿主机 5432 被本机 PostgreSQL 16 服务占用；基础设施用 `docker compose -f compose.dev.yml -f tooling/compose.dev.win.yml up -d postgres redis`，`DATABASE_URL` 指向 `localhost:5433`。
 - 跑单元测试前临时移走根目录 `.env`（测完恢复）：`packages/env` 会自动加载它，导致测试连上真实 Redis 相互污染。
-- e2e：`DATABASE_URL=... pnpm exec playwright test --workers=2`，服务器需以 `FLAG_DISABLE_API_RATE_LIMIT=true` 运行（上游 CI 同款），否则并行注册触发 429。服务端 PDF 渲染要外联 fonts.gstatic.com；本机直连下 Node fetch 默认 IPv6 优先会超时，e2e 进程需带 `NODE_OPTIONS=--dns-result-order=ipv4first`。并行 worker 数更高时本机资源会饿死用例，auth `config-lifecycle` 与 pdf 渲染类测试尤其敏感，失败时先隔离单跑复核。
+- e2e：`DATABASE_URL=... pnpm exec playwright test --workers=2`，服务器需以 `FLAG_DISABLE_API_RATE_LIMIT=true` 运行（上游 CI 同款），否则并行注册触发 429。服务端 PDF 渲染要外联 fonts.gstatic.com；本机直连下 Node fetch 默认 IPv6 优先会超时，e2e 进程需带 `NODE_OPTIONS=--dns-result-order=ipv4first`。并行 worker 数更高时本机资源会饿死用例，auth `config-lifecycle` 与 pdf 渲染类测试尤其敏感，失败时先隔离单跑复核；隔离复跑通过只证明用例本身有效，不等于全量并行稳定，未复现定位前保留失败记录、不默认归因环境。
 - 生产模式验证服务器：`NODE_ENV=production PORT=3000 node apps/server/dist/index.mjs`（读取根目录 `.env`）。
 
-### 服务器部署约定（2026-10-04 起生效，详见 `docs/acceptance/2026-10-04-server-deployment.md`）
+### 服务器部署约定（2026-10-04 起生效，详见 `docs/acceptance/2026-10-04-server-deployment.md` 与 `docs/acceptance/2026-10-05-branding-deployment.md`）
 
 - 公网入口 `http://8.148.199.165:3012`（Nginx → `127.0.0.1:3001` → 容器 3000）；部署文件在 `tooling/deployment/server/`，服务器目录 `/opt/interview-manage/`。
-- 镜像在本机构建后传输（`docker save | gzip`，约 300MB）；SSH 大流量会被链路间歇掐断，用追加式断点续传，必要时走阿里云云助手（`aliyun ecs RunCommand --profile deploy`）。
+- 镜像在本机构建后传输（`docker save | gzip`，约 300MB）；SSH 大流量会被链路间歇掐断，用分片并行断点续传（每片独立续传、拼接后整体 sha256 校验，坏片单独重传），必要时走阿里云云助手（`aliyun ecs RunCommand --profile deploy`，数组参数写 `--InstanceId.1 i-xxx`；agent 可能停运需先确认）。
+- **增量补丁路径**：若仅改构建产物（依赖树与 migrations 未变，需核对 lockfile 与 `migrations/` diff），只传 `apps/web/dist + apps/server/dist` 的 gzip 包，服务器上 `docker create → docker cp → docker commit` 出新 tag，体积小一个数量级。
 - 服务器无公网出口：镜像 tag 需用服务器已有镜像；app 字体等出站 fetch 依赖宿主机 mihomo（compose 内 `NODE_USE_ENV_PROXY` 已配）。
-- 测试自连一律用 `127.0.0.1:3012`，hairpin 公网 IP 不可靠；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致。
+- 服务器磁盘小且容器日志可暴涨（mihomo 曾涨到 29GB 撑爆磁盘导致 postgres recovery），已配 `/etc/logrotate.d/docker-containers`；部署前后查 `df -h`。
+- 测试自连一律用 `127.0.0.1:3012`，hairpin 公网 IP 不可靠；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致（临时翻转 `.env` 的 APP_URL，冒烟后翻回）；远程长任务用 `nohup … < /dev/null > log 2>&1 &` 落盘后短连接轮询，远程 `pkill -f` 用括号正则避免匹配到自己的命令行。
 
 ## 与上游合并的工程规范说明
 

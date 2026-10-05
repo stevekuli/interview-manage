@@ -43,7 +43,7 @@ services:
       - internal
 
   app:
-    image: interview-manage:20261004
+    image: interview-manage:20261005
     restart: unless-stopped
     depends_on:
       postgres:
