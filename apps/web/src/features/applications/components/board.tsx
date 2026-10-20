@@ -1,5 +1,6 @@
 import type { DragEndEvent, DragStartEvent } from "@dnd-kit/core";
 import type { ApplicationStatus } from "@reactive-resume/schema/applications/data";
+import type { StageMeta } from "../labels";
 import type { Application } from "../types";
 import {
 	DndContext,
@@ -12,12 +13,13 @@ import {
 	useSensors,
 } from "@dnd-kit/core";
 import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useMemo, useState } from "react";
-import { STAGES } from "@reactive-resume/schema/applications/data";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { cn } from "@reactive-resume/utils/style";
 import { orpc } from "@/libs/orpc/client";
+import { localizedStages } from "../labels";
 import { applicationsListQueryKey } from "../queries";
 import { ApplicationCard } from "./application-card";
 
@@ -28,6 +30,7 @@ type Props = {
 };
 
 export function ApplicationBoard({ applications, onOpen, onEdit }: Props) {
+	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
 	const [activeId, setActiveId] = useState<string | null>(null);
 
@@ -54,11 +57,13 @@ export function ApplicationBoard({ applications, onOpen, onEdit }: Props) {
 		}),
 	);
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: i18n.locale is the cache key — labels must re-resolve when the locale changes
+	const stages = useMemo(() => localizedStages(), [i18n.locale]);
 	const byStage = useMemo(() => {
-		const map = new Map<ApplicationStatus, Application[]>(STAGES.map((s) => [s.value, []]));
+		const map = new Map<ApplicationStatus, Application[]>(stages.map((s) => [s.value, []]));
 		for (const app of applications) map.get(app.status)?.push(app);
 		return map;
-	}, [applications]);
+	}, [applications, stages]);
 
 	const activeApp = activeId ? applications.find((a) => a.id === activeId) : null;
 
@@ -77,7 +82,7 @@ export function ApplicationBoard({ applications, onOpen, onEdit }: Props) {
 	return (
 		<DndContext sensors={sensors} collisionDetection={pointerWithin} onDragStart={onDragStart} onDragEnd={onDragEnd}>
 			<div className="flex h-full min-h-0 gap-4 overflow-x-auto pb-4">
-				{STAGES.map((stage) => (
+				{stages.map((stage) => (
 					<Column
 						key={stage.value}
 						stage={stage}
@@ -97,7 +102,7 @@ export function ApplicationBoard({ applications, onOpen, onEdit }: Props) {
 }
 
 type ColumnProps = {
-	stage: (typeof STAGES)[number];
+	stage: StageMeta;
 	applications: Application[];
 	onOpen: (application: Application) => void;
 	onEdit: (application: Application) => void;

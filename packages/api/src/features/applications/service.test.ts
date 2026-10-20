@@ -25,6 +25,10 @@ vi.mock("@reactive-resume/db/schema", () => ({
 		resumeFileUrl: "resume_file_url",
 		coverLetterUrl: "cover_letter_url",
 	},
+	resume: {
+		id: "resume_id",
+		updatedAt: "updated_at",
+	},
 }));
 vi.mock("drizzle-orm", () => ({
 	and: (...a: unknown[]) => a,
@@ -608,5 +612,115 @@ describe("applicationService interviews", () => {
 			applicationService.updateTimelineEntry({ id: "app-1", userId: "user-1", entryId: "int-1", date: "2026-10-05" }),
 		).rejects.toMatchObject({ code: "BAD_REQUEST", message: expect.stringContaining("updateInterview") });
 		expect(set).not.toHaveBeenCalled();
+	});
+});
+
+describe("applicationService score invalidation", () => {
+	const captureSet = () => {
+		const set = vi.fn(() => ({ where: () => ({ returning: () => Promise.resolve([{ ...existing }]) }) }));
+		dbMock.update.mockReturnValue({ set });
+		return set;
+	};
+
+	it("clears the stored match score when the job description changes", async () => {
+		const set = captureSet();
+		await applicationService.update({ id: "app-1", userId: "user-1", jobDescription: "New posting text" });
+
+		const [[arg]] = set.mock.calls as unknown as [[Record<string, unknown>]];
+		expect(arg.matchScore).toBeNull();
+		expect(arg.aiMetadata).toBeNull();
+	});
+
+	it("clears the stored match score when the linked resume changes", async () => {
+		const set = captureSet();
+		await applicationService.update({ id: "app-1", userId: "user-1", resumeId: "resume-2" });
+
+		const [[arg]] = set.mock.calls as unknown as [[Record<string, unknown>]];
+		expect(arg.matchScore).toBeNull();
+		expect(arg.aiMetadata).toBeNull();
+	});
+
+	it("keeps the stored match score for unrelated updates", async () => {
+		const set = captureSet();
+		await applicationService.update({ id: "app-1", userId: "user-1", notes: "just a note" });
+
+		const [[arg]] = set.mock.calls as unknown as [[Record<string, unknown>]];
+		expect(arg.matchScore).toBeUndefined();
+		expect(arg.aiMetadata).toBeUndefined();
+	});
+});
+
+describe("applicationService.setAiResult atomic write-back", () => {
+	const expectInputs = {
+		jobDescription: "Current posting",
+		resumeId: "resume-1",
+		resumeUpdatedAt: new Date("2026-10-01T00:00:00.000Z"),
+	};
+
+	it("rejects with CONFLICT when the job description changed while scoring", async () => {
+		setSelectResults([{ ...existing, jobDescription: "Edited after the request started", resumeId: "resume-1" }]);
+
+		await expect(
+			applicationService.setAiResult({
+				id: "app-1",
+				userId: "user-1",
+				matchScore: 90,
+				expect: expectInputs,
+			}),
+		).rejects.toMatchObject({ code: "CONFLICT" });
+		expect(dbMock.transaction).toHaveBeenCalled();
+	});
+
+	it("rejects with CONFLICT when the linked resume was edited after scoring started", async () => {
+		setSelectResults([
+			{ ...existing, jobDescription: "Current posting", resumeId: "resume-1" },
+			[{ updatedAt: new Date("2026-10-02T00:00:00.000Z") }],
+		]);
+
+		await expect(
+			applicationService.setAiResult({
+				id: "app-1",
+				userId: "user-1",
+				matchScore: 90,
+				expect: expectInputs,
+			}),
+		).rejects.toMatchObject({ code: "CONFLICT" });
+	});
+
+	it("writes the score when the inputs are unchanged", async () => {
+		setSelectResults(
+			[{ ...existing, jobDescription: "Current posting", resumeId: "resume-1" }],
+			[{ updatedAt: new Date("2026-10-01T00:00:00.000Z") }],
+		);
+		const set = vi.fn(() => ({ where: () => ({ returning: () => Promise.resolve([{ ...existing }]) }) }));
+		dbMock.update.mockReturnValue({ set });
+
+		const updated = await applicationService.setAiResult({
+			id: "app-1",
+			userId: "user-1",
+			matchScore: 90,
+			aiMetadata: { matchScore: { score: 90 } },
+			expect: expectInputs,
+		});
+
+		expect(set).toHaveBeenCalledWith(expect.objectContaining({ matchScore: 90 }));
+		expect(updated).toMatchObject({ id: "app-1" });
+	});
+
+	it("marks scores with no recorded binding as stale when reading", async () => {
+		// getById derives aiScore; a score without matchScoreInput must come back stale, not valid.
+		setSelectResults([]);
+		const row = {
+			...existing,
+			matchScore: 77,
+			aiMetadata: { matchScore: { score: 77, gaps: ["SQL"], strengths: [] } },
+			jobDescription: "Some posting",
+			resumeId: "resume-1",
+			userId: "user-1",
+		};
+		setSelectResults([row], [{ updatedAt: new Date("2026-01-01T00:00:00.000Z") }]);
+
+		const result = await applicationService.getById({ id: "app-1", userId: "user-1" });
+		expect(result.aiScore).toMatchObject({ score: 77, stale: true });
 	});
 });

@@ -5,6 +5,7 @@ import { Trans } from "@lingui/react/macro";
 import {
 	BrainIcon,
 	BriefcaseIcon,
+	CaretDownIcon,
 	ChatCircleDotsIcon,
 	EnvelopeSimpleIcon,
 	GearSixIcon,
@@ -16,8 +17,9 @@ import {
 	UserCircleIcon,
 	UserGearIcon,
 } from "@phosphor-icons/react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { AnimatePresence, m } from "motion/react";
+import { useEffect, useState } from "react";
 import { Avatar, AvatarFallback, AvatarImage } from "@reactive-resume/ui/components/avatar";
 import { BrandIcon } from "@reactive-resume/ui/components/brand-icon";
 import { Kbd } from "@reactive-resume/ui/components/kbd";
@@ -38,6 +40,7 @@ import {
 } from "@reactive-resume/ui/components/sidebar";
 import { APP_NAME } from "@reactive-resume/utils/brand";
 import { getInitials } from "@reactive-resume/utils/string";
+import { cn } from "@reactive-resume/utils/style";
 import { Copyright } from "@/components/ui/copyright";
 import { useCommandPaletteStore } from "@/features/command-palette/store";
 import { UserDropdownMenu } from "@/features/user/dropdown-menu";
@@ -64,7 +67,10 @@ const appSidebarItems = [
 	},
 ] as const satisfies SidebarItem[];
 
-const toolSidebarItems = [
+// Tools + settings collapsed into one secondary group (U2): everything is still reachable at
+// its original URL, the primary nav stays 岗位/简历, and the model configuration is named
+// plainly as "AI Models" so it isn't confused with the product's own API keys.
+const moreSidebarItems = [
 	{
 		icon: <EnvelopeSimpleIcon />,
 		label: msg`Cover Letters`,
@@ -75,9 +81,6 @@ const toolSidebarItems = [
 		label: msg`ATS Checker`,
 		href: "/ats-checker",
 	},
-] as const satisfies SidebarItem[];
-
-const settingsSidebarItems = [
 	{
 		icon: <UserCircleIcon />,
 		label: msg`Profile`,
@@ -113,7 +116,7 @@ const advancedSidebarItems = [
 	},
 	{
 		icon: <BrainIcon />,
-		label: msg`Integrations`,
+		label: msg`AI Models`,
 		href: "/dashboard/settings/integrations",
 	},
 ] as const satisfies SidebarItem[];
@@ -167,6 +170,39 @@ function SidebarSearchButton() {
 	);
 }
 
+// A nav group that starts collapsed (unless the user is on one of its routes) and can be
+// toggled. Entering one of its routes auto-expands it; leaving never auto-collapses, so the
+// user's choice sticks until they collapse it themselves.
+function CollapsibleSidebarGroup({ label, items }: { label: MessageDescriptor; items: readonly SidebarItem[] }) {
+	const { i18n } = useLingui();
+	const pathname = useLocation().pathname;
+	const hasActiveRoute = items.some((item) => pathname === item.href || pathname.startsWith(`${item.href}/`));
+	const [open, setOpen] = useState(hasActiveRoute);
+
+	useEffect(() => {
+		if (hasActiveRoute) setOpen(true);
+	}, [hasActiveRoute]);
+
+	return (
+		<SidebarGroup>
+			<button
+				type="button"
+				aria-expanded={open}
+				onClick={() => setOpen((value) => !value)}
+				className="flex h-9 w-full shrink-0 items-center gap-1 rounded-md px-2 font-medium text-sidebar-foreground/70 text-xs outline-hidden transition-[margin,opacity] duration-200 ease-out-strong hover:text-sidebar-foreground focus-visible:ring-2 focus-visible:ring-sidebar-ring group-data-[collapsible=icon]:-mt-8 group-data-[collapsible=icon]:opacity-0 group-data-instant/sidebar-wrapper:transition-none [&>svg]:size-3 [&>svg]:shrink-0"
+			>
+				<span className="flex-1 text-start">{i18n.t(label)}</span>
+				<CaretDownIcon className={cn("transition-transform duration-200", !open && "-rotate-90")} />
+			</button>
+			{open && (
+				<SidebarGroupContent>
+					<SidebarItemList items={items} />
+				</SidebarGroupContent>
+			)}
+		</SidebarGroup>
+	);
+}
+
 export function DashboardSidebar() {
 	const { i18n } = useLingui();
 	const { state } = useSidebarState();
@@ -203,32 +239,9 @@ export function DashboardSidebar() {
 					</SidebarGroupContent>
 				</SidebarGroup>
 
-				<SidebarGroup>
-					<SidebarGroupLabel>
-						<Trans>Tools</Trans>
-					</SidebarGroupLabel>
-					<SidebarGroupContent>
-						<SidebarItemList items={toolSidebarItems} />
-					</SidebarGroupContent>
-				</SidebarGroup>
+				<CollapsibleSidebarGroup label={msg`Tools & settings`} items={moreSidebarItems} />
 
-				<SidebarGroup>
-					<SidebarGroupLabel>
-						<Trans>Settings</Trans>
-					</SidebarGroupLabel>
-					<SidebarGroupContent>
-						<SidebarItemList items={settingsSidebarItems} />
-					</SidebarGroupContent>
-				</SidebarGroup>
-
-				<SidebarGroup>
-					<SidebarGroupLabel>
-						<Trans>Advanced</Trans>
-					</SidebarGroupLabel>
-					<SidebarGroupContent>
-						<SidebarItemList items={advancedSidebarItems} />
-					</SidebarGroupContent>
-				</SidebarGroup>
+				<CollapsibleSidebarGroup label={msg`Advanced`} items={advancedSidebarItems} />
 			</SidebarContent>
 
 			<SidebarSeparator />

@@ -3,7 +3,7 @@
 > 执行者：先阅读根目录 `AGENTS.md`，按 executing-plans 分阶段执行。用户本次只要求保存计划，不代表授权开始开发、提交、推送或部署。复选框用于记录后续实施状态。
 
 - 日期：2026-10-04
-- 状态：Chunk 1（T0—T5 品牌清理与主入口整理）已于 2026-10-04 实施并本地验证（验收记录：`docs/acceptance/2026-10-04-product-branding.md`）；Chunk 2（F1—F6）未实施。未提交、未推送、未部署。
+- 状态：Chunk 1（T0—T5 品牌清理与主入口整理）已于 2026-10-04 实施并本地验证（验收记录：`docs/acceptance/2026-10-04-product-branding.md`）；Chunk 2（F1—F6）未实施。Chunk 1 已提交（commit `5a32dee`），并于 2026-10-05 部署公网验证（镜像 `interview-manage:20261005`，验收：`docs/acceptance/2026-10-05-branding-deployment.md`）；本仓无自有远端，未推送。
 - 工作区：`D:\program\interview-manage`
 - 本文件：`D:\program\interview-manage\docs\plans\2026-10-04-product-branding-and-optimization.md`
 - 关联计划：`docs/plans/2026-10-02-ai-job-resume-management.md`
@@ -257,10 +257,10 @@ git diff --check
 3. `docs/acceptance/` 下的脱敏验收记录，包括检查命令、结果、截图位置和剩余缺口。
 4. 原始许可证与必要声明；可恢复的部署说明。
 
-当前状态：
+当前状态（2026-10-05 收尾核对更新）：
 
-- 已完成：源码层面的品牌残留和功能差距初查；本 Markdown 计划编写。
-- 尚未实施：T0—T5、F1—F6。
-- 尚未验证：本轮浏览器表现、测试、构建、真实邮件、真实模型、线上改版。
-- 下一位执行者从 T0 开始；保留工作区已有修改，遵循原计划的数据真实性和隐私边界。
-- 本次仅新增计划文件，不修改业务代码，不提交、不推送、不部署。
+- 已完成：源码初查与本计划编写；Chunk 1（T0—T5）已实施、本地验证并提交（commit `5a32dee`）；后续功能与交互复查见 `docs/acceptance/2026-10-05-product-ux-review.md`。
+- 已部署：Chunk 1 品牌版本于 2026-10-05 部署公网并冒烟通过（镜像 `interview-manage:20261005`，验收记录 `docs/acceptance/2026-10-05-branding-deployment.md`）。
+- 尚未实施：Chunk 2（F1—F6，即原计划 P1—P5 的功能衔接）。复查报告 R1—R7、U1—U5 的修复已于 2026-10-05 实施并本地验证，未提交、未部署（`docs/plans/2026-10-05-functional-and-ux-optimization.md`）。
+- 尚未验证：真实邮件投递、真实模型调用；R1—R7、U1—U5 批次的登录态人工走查与线上验证。
+- 下一位执行者从 R 批次登录态走查、Chunk 2 或原计划 P1 开始；遵循原计划的数据真实性和隐私边界。

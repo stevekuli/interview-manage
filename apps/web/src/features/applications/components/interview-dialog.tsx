@@ -1,11 +1,11 @@
 import type { InterviewKind, InterviewTimelineEntry } from "@reactive-resume/schema/applications/data";
 import type { Application } from "../types";
 import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { TrashIcon } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useEffect, useId, useState } from "react";
-import { INTERVIEW_KINDS } from "@reactive-resume/schema/applications/data";
+import { useEffect, useId, useMemo, useState } from "react";
 import { Button } from "@reactive-resume/ui/components/button";
 import {
 	Dialog,
@@ -24,6 +24,7 @@ import { Combobox } from "@/components/ui/combobox";
 import { useConfirm } from "@/hooks/use-confirm";
 import { orpc } from "@/libs/orpc/client";
 import { formatDuration, fromDateTimeLocal, toDateTimeLocal } from "../interviews";
+import { localizedInterviewKinds } from "../labels";
 import { applicationsListQueryKey } from "../queries";
 
 const DURATION_OPTIONS = [15, 30, 45, 60, 90, 120, 180, 240];
@@ -86,9 +87,12 @@ export function InterviewDialog({
 	interview,
 	day,
 }: InterviewDialogProps) {
+	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
 	const confirm = useConfirm();
 	const id = useId();
+	// biome-ignore lint/correctness/useExhaustiveDependencies: i18n.locale is the cache key — labels must re-resolve when the locale changes
+	const kinds = useMemo(() => localizedInterviewKinds(), [i18n.locale]);
 	const [draft, setDraft] = useState<Draft>(() => emptyDraft(application?.id ?? ""));
 	const isEditing = !!interview;
 
@@ -191,7 +195,7 @@ export function InterviewDialog({
 
 					<Field label={t`Interview type`}>
 						<div className="flex flex-wrap gap-1.5">
-							{INTERVIEW_KINDS.map((kind) => {
+							{kinds.map((kind) => {
 								const selected = draft.kind === kind.value;
 								return (
 									<button

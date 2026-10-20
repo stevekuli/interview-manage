@@ -18,6 +18,11 @@ vi.mock("@/libs/orpc/client", () => ({
 		},
 	},
 }));
+vi.mock("@/libs/auth/client", () => ({
+	authClient: { useSession: () => ({ data: { user: { id: "user-1" } } }) },
+}));
+vi.mock("usehooks-ts", () => ({ useMediaQuery: vi.fn(() => false) }));
+vi.mock("@/features/applications/components/today-actions", () => ({ TodayActions: () => null }));
 vi.mock("@/features/applications/components/application-detail-sheet", () => ({ ApplicationDetailSheet: () => null }));
 vi.mock("@/features/applications/components/application-form-sheet", () => ({ ApplicationFormSheet: () => null }));
 vi.mock("@/features/applications/components/export-applications-sheet", () => ({
@@ -41,7 +46,26 @@ vi.mock("@/features/applications/components/table-view", () => ({
 	),
 }));
 
+import { useMediaQuery } from "usehooks-ts";
 import { Route } from "./index";
+
+// Renders without awaiting the toolbar, so failure/loading states can be asserted.
+async function renderApplicationsRaw(url: string) {
+	const rootRoute = createRootRoute();
+	const routeOptions = { ...Route.options, path: "/dashboard/applications/", getParentRoute: () => rootRoute };
+	const routeTree = rootRoute.addChildren([Route.update(routeOptions)]);
+	const router = createRouter({ routeTree, history: createMemoryHistory({ initialEntries: [url] }) });
+	const queryClient = new QueryClient({ defaultOptions: { queries: { retry: false } } });
+	await router.load();
+	render(
+		<QueryClientProvider client={queryClient}>
+			<I18nProvider i18n={i18n}>
+				<RouterProvider router={router} />
+			</I18nProvider>
+		</QueryClientProvider>,
+	);
+	return { queryClient, router };
+}
 
 beforeEach(() => {
 	vi.restoreAllMocks();
@@ -110,4 +134,60 @@ it("filters typed company and role searches without navigating or refetching", a
 	expect(navigate).not.toHaveBeenCalled();
 	expect(router.history.location.href).toBe(url);
 	expect(mocks.list).toHaveBeenCalledTimes(1);
+});
+
+it("shows a retryable error state when the first load fails, then recovers", async () => {
+	mocks.list.mockRejectedValueOnce(new Error("network down"));
+	await renderApplicationsRaw("/dashboard/applications/?view=table");
+
+	expect(await screen.findByText(/Couldn't load your applications right now/)).toBeVisible();
+	// A failed load must not read as "no applications yet".
+	expect(screen.queryByText(/Track your first application/)).not.toBeInTheDocument();
+
+	await userEvent.click(screen.getByRole("button", { name: "Retry" }));
+	expect(await screen.findByText("Acme")).toBeVisible();
+	expect(screen.queryByText(/Couldn't load your applications/)).not.toBeInTheDocument();
+});
+
+it("keeps loaded data and announces the failure when a background refresh fails", async () => {
+	const { queryClient } = await renderApplicationsRaw("/dashboard/applications/?view=table");
+	await screen.findByText("Acme");
+
+	mocks.list.mockRejectedValueOnce(new Error("refresh failed"));
+	queryClient.invalidateQueries({ queryKey: ["applications"] });
+
+	expect(await screen.findByText(/Couldn't refresh — showing your saved data/)).toBeVisible();
+	expect(screen.getByText("Acme")).toBeVisible();
+	expect(screen.getByText("Example")).toBeVisible();
+	expect(screen.queryByText(/Track your first application/)).not.toBeInTheDocument();
+});
+
+it("shows an explicit loading placeholder instead of blank content", async () => {
+	mocks.list.mockReturnValue(new Promise(() => {}));
+	await renderApplicationsRaw("/dashboard/applications/");
+
+	expect(await screen.findByText(/Loading your applications/)).toBeVisible();
+	expect(screen.queryByText(/Track your first application/)).not.toBeInTheDocument();
+});
+
+it("shows the first-use empty state only for a genuinely empty list", async () => {
+	mocks.list.mockResolvedValue([]);
+	await renderApplicationsRaw("/dashboard/applications/");
+
+	expect(await screen.findByText(/Track your first application/)).toBeVisible();
+});
+
+it("defaults to the list view on small screens unless the URL picks a view", async () => {
+	vi.mocked(useMediaQuery).mockReturnValue(true);
+	await renderApplicationsRaw("/dashboard/applications/");
+
+	// The table view renders its (mocked) application list on mobile.
+	expect(await screen.findByLabelText("Applications")).toBeVisible();
+
+	// An explicit board choice is respected even on mobile.
+	cleanup();
+	vi.mocked(useMediaQuery).mockReturnValue(true);
+	await renderApplicationsRaw("/dashboard/applications/?view=board");
+	await screen.findByPlaceholderText("Search applications…");
+	expect(screen.queryByLabelText("Applications")).not.toBeInTheDocument();
 });

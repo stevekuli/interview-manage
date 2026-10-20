@@ -8,6 +8,7 @@ import { Button } from "@reactive-resume/ui/components/button";
 import { Input } from "@reactive-resume/ui/components/input";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { downloadWithAnchor, generateFilename } from "@reactive-resume/utils/file";
+import { useApplicationSessionStore } from "@/features/applications/session-draft";
 import { useConfirm } from "@/hooks/use-confirm";
 import { authClient } from "@/libs/auth/client";
 import { getReadableErrorMessage } from "@/libs/error-message";
@@ -64,6 +65,7 @@ export function AccountSettingsPage() {
 		deleteAccount(undefined, {
 			onSuccess: async () => {
 				toast.add({ type: "success", description: t`Your account has been deleted.`, id: toastId });
+				useApplicationSessionStore.getState().clearAll();
 				await authClient.signOut();
 				void navigate({ to: "/" });
 			},

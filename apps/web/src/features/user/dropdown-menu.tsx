@@ -18,6 +18,7 @@ import {
 	DropdownMenuTrigger,
 } from "@reactive-resume/ui/components/dropdown-menu";
 import { toast } from "@reactive-resume/ui/components/toast";
+import { useApplicationSessionStore } from "@/features/applications/session-draft";
 import { useTheme } from "@/features/theme/provider";
 import { authClient } from "@/libs/auth/client";
 import { getReadableErrorMessage } from "@/libs/error-message";
@@ -41,6 +42,9 @@ export function UserDropdownMenu({ children }: Props) {
 
 	const handleLogout = async () => {
 		const toastId = toast.add({ type: "loading", description: t`Signing out...` });
+
+		// Session-scoped application drafts never outlive the account that created them.
+		useApplicationSessionStore.getState().clearAll();
 
 		await authClient.signOut({
 			fetchOptions: {

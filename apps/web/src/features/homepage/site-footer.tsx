@@ -21,7 +21,7 @@ export function SiteFooter() {
 						<Trans>Open workspace</Trans>
 					</Link>
 					<Link to="/ats-checker" className="hover:text-foreground">
-						<Trans>ATS Checker</Trans>
+						<Trans>Resume readability check</Trans>
 					</Link>
 				</nav>
 

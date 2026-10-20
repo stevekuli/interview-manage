@@ -24,11 +24,13 @@ describe("computeInsights", () => {
 		expect(funnel.at(-1)?.reached).toBe(1);
 	});
 
-	it("derives tiles (applied past saved, interviews, offers)", () => {
-		const tiles = Object.fromEntries(computeInsights(byStage).tiles.map((tile) => [tile.label, tile.value]));
-		expect(tiles.Applied).toBe("7"); // everything past saved
-		expect(tiles.Interviews).toBe("2"); // interview + offer
-		expect(tiles.Offers).toBe("1");
+	it("derives tile numbers (applied past saved, interviews, offers)", () => {
+		const insights = computeInsights(byStage);
+		expect(insights.appliedOn).toBe(7); // everything past saved
+		expect(insights.interviews).toBe(2); // interview + offer
+		expect(insights.offers).toBe(1);
+		// reached screening (4 of 7 that got past saved) → 57%
+		expect(insights.responseRate).toBe(57);
 	});
 
 	it("handles an empty pipeline without dividing by zero", () => {

@@ -6,6 +6,7 @@ import type {
 } from "@reactive-resume/schema/applications/data";
 import type { Application } from "../types";
 import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
 	ArrowRightIcon,
@@ -20,8 +21,8 @@ import {
 } from "@phosphor-icons/react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
-import { contactSchema, STAGES } from "@reactive-resume/schema/applications/data";
+import { useMemo, useState } from "react";
+import { contactSchema } from "@reactive-resume/schema/applications/data";
 import { Button } from "@reactive-resume/ui/components/button";
 import {
 	Dialog,
@@ -38,14 +39,14 @@ import { toast } from "@reactive-resume/ui/components/toast";
 import { cn } from "@reactive-resume/utils/style";
 import { useConfirm } from "@/hooks/use-confirm";
 import { orpc } from "@/libs/orpc/client";
-import { formatDuration, interviewKindOf, isInterview } from "../interviews";
+import { formatDuration, isInterview } from "../interviews";
+import { interviewKindLabel, interviewKindMetaOf, localizedStages, stageLabel, stageMetaOf } from "../labels";
 import { applicationsListQueryKey } from "../queries";
 import { ApplicationAiCopilot } from "./application-ai-copilot";
 import { FileAttachmentField } from "./file-attachment-field";
 import { InterviewDialog } from "./interview-dialog";
 
-const stageIndex = (status: ApplicationStatus) => STAGES.findIndex((s) => s.value === status);
-const stageOf = (status: ApplicationStatus) => STAGES.find((s) => s.value === status);
+const stageIndex = (status: ApplicationStatus) => STAGE_VALUES.indexOf(status);
 
 const dateInputValue = (value: Date | string) => {
 	const date = new Date(value);
@@ -83,6 +84,9 @@ const latestStageDate = (activity: ApplicationTimelineEntry[], status: Applicati
 
 const INITIAL_CONTACT_DRAFT = { name: "", role: "", type: "", email: "", phone: "" };
 
+// Storage order of the fixed stage enum (values only; display labels come from `labels.ts`).
+const STAGE_VALUES = ["saved", "applied", "screening", "interview", "offer", "rejected"] as const;
+
 type Props = {
 	application: Application | null;
 	onOpenChange: (open: boolean) => void;
@@ -90,6 +94,9 @@ type Props = {
 };
 
 export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Props) {
+	const { i18n } = useLingui();
+	// biome-ignore lint/correctness/useExhaustiveDependencies: i18n.locale is the cache key — labels must re-resolve when the locale changes
+	const stages = useMemo(() => localizedStages(), [i18n.locale]);
 	const queryClient = useQueryClient();
 	const confirm = useConfirm();
 	const id = application?.id;
@@ -155,7 +162,7 @@ export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Pr
 	if (!current) return null;
 
 	const idx = stageIndex(current.status);
-	const nextStage = idx >= 0 && idx < STAGES.length - 2 ? STAGES[idx + 1] : null;
+	const nextStage = idx >= 0 && idx < stages.length - 2 ? stages[idx + 1] : null;
 
 	return (
 		<Sheet open={!!application} onOpenChange={onOpenChange}>
@@ -177,7 +184,7 @@ export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Pr
 
 					{/* stage stepper */}
 					<div className="flex gap-1.5">
-						{STAGES.map((stage, i) => (
+						{stages.map((stage, i) => (
 							<span
 								key={stage.value}
 								title={stage.label}
@@ -187,7 +194,7 @@ export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Pr
 						))}
 					</div>
 					<div className="flex items-center justify-between">
-						<span className="font-medium text-sm">{STAGES[idx]?.label ?? current.status}</span>
+						<span className="font-medium text-sm">{stageLabel(current.status)}</span>
 						{nextStage && (
 							<Button
 								size="sm"
@@ -289,7 +296,7 @@ export function ApplicationDetailSheet({ application, onOpenChange, onEdit }: Pr
 					</Section>
 
 					{/* AI copilot — placed high so it's discoverable without scrolling past the timeline */}
-					<ApplicationAiCopilot application={current} />
+					<ApplicationAiCopilot application={current} onEdit={onEdit} />
 
 					<Section title={t`Interviews`}>
 						<InterviewList activity={current.activity} onOpen={openInterview} />
@@ -453,8 +460,8 @@ function ApplicationTimeline({
 
 				<div className="relative flex flex-col gap-2 ps-4 before:absolute before:inset-y-2 before:start-1 before:w-px before:bg-border">
 					{sorted.map((entry) => {
-						const stage = entry.type === "stage" ? stageOf(entry.stage) : null;
-						const kind = entry.type === "interview" ? interviewKindOf(entry.kind) : null;
+						const stage = entry.type === "stage" ? stageMetaOf(entry.stage) : null;
+						const kind = entry.type === "interview" ? interviewKindMetaOf(entry.kind) : null;
 						const isAnchor = entry.id === anchorId;
 						return (
 							<div
@@ -482,9 +489,7 @@ function ApplicationTimeline({
 												className="block w-full rounded-sm text-left hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
 												onClick={() => onOpenInterview(entry)}
 											>
-												<span className="block font-medium">
-													{kind?.label ?? entry.kind} <Trans>interview</Trans>
-												</span>
+												<span className="block font-medium">{interviewKindLabel(entry.kind)}</span>
 												<span className="block text-muted-foreground text-xs">
 													{formatDateTime(entry.at)}
 													{entry.location ? ` · ${entry.location}` : ""}
@@ -627,7 +632,7 @@ function InterviewList({ activity, onOpen }: InterviewListProps) {
 	return (
 		<div className="flex flex-col gap-1.5">
 			{[...upcoming, ...past].map((entry) => {
-				const kind = interviewKindOf(entry.kind);
+				const kind = interviewKindMetaOf(entry.kind);
 				const isPast = !upcoming.includes(entry);
 				return (
 					<button
@@ -642,7 +647,7 @@ function InterviewList({ activity, onOpen }: InterviewListProps) {
 					>
 						<span className="h-8 w-1 shrink-0 rounded-full" style={{ background: kind?.color }} />
 						<span className="min-w-0 flex-1">
-							<span className="block font-medium">{kind?.label ?? entry.kind}</span>
+							<span className="block font-medium">{interviewKindLabel(entry.kind)}</span>
 							<span className="block text-muted-foreground text-xs">
 								{formatDateTime(entry.at)} · {formatDuration(entry.durationMinutes)}
 							</span>

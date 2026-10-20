@@ -110,7 +110,19 @@ export const applicationDto = {
 
 	getById: {
 		input: applicationSchema.pick({ id: true }),
-		output: applicationSchema.omit({ userId: true }),
+		// Unlike list, the detail response carries the server-derived validity of the stored
+		// match score, so the UI can retire scores whose inputs have changed since scoring.
+		output: applicationSchema.omit({ userId: true }).extend({
+			aiScore: z
+				.object({
+					score: z.number().int().min(0).max(100),
+					gaps: z.array(z.string()),
+					strengths: z.array(z.string()),
+					scoredAt: z.string(),
+					stale: z.boolean(),
+				})
+				.nullable(),
+		}),
 	},
 
 	create: {

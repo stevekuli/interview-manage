@@ -210,6 +210,10 @@ msgstr "数字格式的日期在不同国家的读法不同。"
 msgid "A page is rotated."
 msgstr "有一页被旋转了。"
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "A resume is linked to this application"
+msgstr "已关联简历"
+
 #: src/features/ats-checker/parse-preview.tsx
 msgid "A resume laid out for a human reader, with a photo, headings and columns"
 msgstr "为人类读者设计的简历排版，带照片、标题和分栏"
@@ -356,6 +360,10 @@ msgid "Add a section headed \"Experience\" or \"Work Experience\". It is the fie
 msgstr "添加一个标题为“工作经历”或“经历”的部分。这是大多数系统用来排名的字段。"
 
 #: src/features/applications/components/application-form-sheet.tsx
+msgid "Add a tag"
+msgstr "添加标签"
+
+#: src/features/applications/components/application-form-sheet.tsx
 msgid "Add a tag and press Enter…"
 msgstr "添加标签并按 Enter…"
 
@@ -384,6 +392,10 @@ msgstr "添加联系人"
 #: src/features/ats-checker/messages.ts
 msgid "Add figures where you have them: volumes, percentages, timeframes, team sizes."
 msgstr "在有数据支持的地方加上数字：数量、百分比、时间跨度、团队规模。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Add it"
+msgstr "去填写"
 
 #: src/components/input/chip-input.tsx
 msgid "Add keyword"
@@ -442,6 +454,14 @@ msgstr "在顶部加两三行说明你是做什么的。"
 msgid "Add your full name under Basics."
 msgstr "在“基本信息”下添加您的全名。"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Added to your pipeline."
+msgstr "已添加到看板。"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Additional details"
+msgstr "补充信息"
+
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Adjust the resume for a remote-first role that values async communication and ownership."
 msgstr "调整简历，使其更适合远程优先、重视异步沟通和自主性的职位。"
@@ -460,8 +480,8 @@ msgid "Afrikaans"
 msgstr "南非语"
 
 #: src/features/homepage/page.tsx
-msgid "After you configure your own model provider, AI can score how well a linked resume matches a posting, produce a tailored copy of that resume, and draft cover letters or follow-up messages. Without a provider, these actions stay manual — every core feature works either way."
-msgstr "配置自己的模型服务后，AI 可以对已关联的简历与岗位做匹配评分、生成该简历的岗位定制副本，并起草求职信或跟进消息。未配置时这些操作需要手动完成——无论哪种方式，核心功能都完整可用。"
+msgid "After you configure your own model provider, AI can score how well a linked resume matches a posting, produce a tailored copy of that resume, and draft cover letters or follow-up messages. The tailored copy currently only rewrites the resume's summary — everything else stays exactly as you wrote it. Without a provider, these actions stay manual — every core feature works either way."
+msgstr "配置自己的模型服务后，AI 可以给已关联简历与岗位的匹配度打分、生成该简历的定制副本、起草求职信或跟进消息。定制副本目前仅重写简历的个人简介——其余内容保持你原样撰写。未配置模型时这些操作保持手动——所有核心功能两种方式下都可用。"
 
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Against the job description"
@@ -496,6 +516,10 @@ msgstr "在配置 REDIS_URL 和 ENCRYPTION_SECRET 之前，AI 代理设置不可
 msgid "AI assistant"
 msgstr "人工智能助手"
 
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "AI Models"
+msgstr "AI 模型"
+
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "AI provider"
 msgstr "AI 提供商"
@@ -519,6 +543,10 @@ msgstr "在配置 ENCRYPTION_SECRET 之前，AI 提供商将不可用。"
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "AI providers require REDIS_URL and ENCRYPTION_SECRET to be configured."
 msgstr "AI 提供商需要配置 REDIS_URL 和 ENCRYPTION_SECRET。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "AI setup could not be checked"
+msgstr "无法确认 AI 配置状态"
 
 #: src/libs/locale.ts
 msgid "Albanian"
@@ -551,6 +579,10 @@ msgstr "已有账户？<0/>"
 #: src/libs/locale.ts
 msgid "Amharic"
 msgstr "阿姆哈拉语"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "An AI model is configured and tested"
+msgstr "已配置并通过测试的 AI 模型"
 
 #: src/features/ats-checker/messages.ts
 msgid "An embedded font could not be read."
@@ -613,6 +645,10 @@ msgid "Application actions"
 msgstr "申请操作"
 
 #: src/features/applications/components/application-form-sheet.tsx
+msgid "Application added"
+msgstr "岗位已添加"
+
+#: src/features/applications/components/application-form-sheet.tsx
 msgid "Application added to your pipeline."
 msgstr "申请已添加到你的流程。"
 
@@ -660,7 +696,9 @@ msgstr "每周发送的申请（最近 8 周）"
 msgid "Applications to export"
 msgstr "待导出的申请"
 
+#: src/features/applications/components/insights-view.tsx
 #: src/features/applications/components/table-view.tsx
+#: src/features/applications/labels.ts
 msgid "Applied"
 msgstr "已申请"
 
@@ -750,9 +788,7 @@ msgstr "宽高比"
 msgid "ATS Check"
 msgstr "ATS检查”"
 
-#: src/features/homepage/site-footer.tsx
 #: src/routes/_home/-sections/footer.tsx
-#: src/routes/_home/ats-checker.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "ATS Checker"
 msgstr "ATS 检查工具"
@@ -842,6 +878,14 @@ msgstr "基本 URL"
 #: src/libs/resume/section.tsx
 msgid "Basics"
 msgstr "基本信息"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Before scoring your fit:"
+msgstr "评分前需要："
+
+#: src/features/applications/labels.ts
+msgid "Behavioral interview"
+msgstr "行为面试"
 
 #: src/libs/locale.ts
 msgid "Bengali"
@@ -1009,6 +1053,10 @@ msgstr "检查导出的文件是否包含你期望的所有内容，并且全部
 msgid "Check what an applicant tracking system would miss, and only add keywords you're sure about."
 msgstr "看看申请人跟踪系统（ATS）会漏掉什么，并且只添加你有把握的关键词。"
 
+#: src/routes/dashboard/applications/index.tsx
+msgid "Check your connection and try again — nothing has been lost."
+msgstr "请检查网络后重试，数据没有丢失。"
+
 #: src/features/auth/pages/forgot-password.tsx
 msgid "Check your email for a link to reset your password."
 msgstr "请检查你的电子邮件，点击邮件中的链接重置密码。"
@@ -1024,6 +1072,10 @@ msgstr "在你的浏览器中完成检查，文件绝不会被上传。"
 #: src/features/resume/stylesheet/status.tsx
 msgid "Checking"
 msgstr "检查"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Checking AI setup…"
+msgstr "正在检查 AI 配置…"
 
 #: src/features/resume/stylesheet/status.tsx
 msgid "Checking draft"
@@ -1077,9 +1129,17 @@ msgstr "选择申请"
 msgid "Choose an application…"
 msgstr "选择一条投递记录…"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Choose an existing resume…"
+msgstr "选择已有简历…"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Choose PDF, DOCX, Markdown, or JSON. Export your resume and cover letter separately when available."
 msgstr "选择 PDF、DOCX、Markdown 或 JSON 格式。如有简历和求职信，请分别导出。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Choose resume"
+msgstr "选择简历"
 
 #: src/components/level/combobox.tsx
 msgid "Circle"
@@ -1162,6 +1222,11 @@ msgstr "把这份简历和这个招聘信息 URL 做对比，更新关键词，�
 msgid "Compress or remove large images to keep uploads quick."
 msgstr "压缩或移除较大的图片，以保持上传速度。"
 
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Configure AI"
+msgstr "配置 AI"
+
 #. Account deletion confirmation dialog confirm action in account settings
 #. Create API key dialog acknowledgment action after copying
 #: src/dialogs/api-key/create.tsx
@@ -1225,6 +1290,10 @@ msgstr "内容"
 #: src/features/ats-checker/messages.ts
 msgid "Content is laid out in a grid."
 msgstr "内容以网格形式排列。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Content updated — the old score no longer applies."
+msgstr "内容已更新，原评分不再适用。"
 
 #. Button label to continue to dashboard after successful registration
 #. Final action button after saving backup codes
@@ -1304,8 +1373,8 @@ msgid "Copy stylesheet"
 msgstr "复制样式表"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Copy the entire job description from the posting and paste it below. We'll fill in the fields for you and keep the text with this application for match scoring and tailoring."
-msgstr "从招聘信息中复制完整的职位描述并粘贴到下方。我们会为你填写各个字段，并将该文本随此申请一并保存，用于匹配度评分和简历定制。"
+msgid "Copy the entire job description from the posting and paste it below. It stays with this application for match scoring and tailoring."
+msgstr "把招聘页的完整岗位描述复制并粘贴到下面。原文会随本条岗位一起保存，用于匹配评分和简历定制。"
 
 #: src/features/ats-checker/messages.ts
 msgid "Copy the text out of the exported file and read it through; fix anything that arrives in the wrong place."
@@ -1400,6 +1469,10 @@ msgstr "连接验证失败。请检查 API 密钥、模型和基本 URL。"
 msgid "Couldn't add the application. Please try again."
 msgstr "无法添加申请。请重试。"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Couldn't check your AI setup."
+msgstr "无法检查 AI 配置。"
+
 #: src/features/applications/components/application-actions-menu.tsx
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Couldn't delete the application."
@@ -1413,9 +1486,17 @@ msgstr "删除面试失败。"
 msgid "Couldn't delete the timeline entry."
 msgstr "无法删除时间线条目。"
 
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't load your applications right now."
+msgstr "暂时无法加载岗位列表。"
+
 #: src/features/applications/components/board.tsx
 msgid "Couldn't move the application. Please try again."
 msgstr "无法移动申请。请重试。"
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't refresh — showing your saved data."
+msgstr "刷新失败——当前显示的是已保存的数据。"
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Couldn't save"
@@ -1581,6 +1662,10 @@ msgstr "创建新摘要项"
 msgid "Create a new volunteer experience"
 msgstr "创建新的志愿者经历"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Create a resume"
+msgstr "新建简历"
+
 #: src/dialogs/resume/index.tsx
 msgid "Create a Sample Resume"
 msgstr "创建简历样例"
@@ -1615,10 +1700,10 @@ msgstr "创建带有选项的简历"
 msgid "Created"
 msgstr "创建时间"
 
-#. placeholder {0}: result.name
+#. placeholder {0}: tailored.name
 #: src/features/applications/components/application-ai-copilot.tsx
-msgid "Created \"{0}\" and linked it to this application."
-msgstr "已创建“{0}”并关联到此申请。"
+msgid "Created “{0}” and linked it to this application. Only the summary was rewritten — the original resume is untouched."
+msgstr "已创建“{0}”并关联到本岗位。只重写了个人简介，原简历保持不变。"
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -1874,6 +1959,7 @@ msgstr "禁用双重身份认证"
 msgid "Disabling two-factor authentication..."
 msgstr "正在禁用双重身份验证…"
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Discard"
 msgstr "放弃"
@@ -1891,6 +1977,10 @@ msgstr "断开连接"
 msgid "Dismiss"
 msgstr "忽略"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Dismiss suggestion"
+msgstr "忽略建议"
+
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Documents sent"
 msgstr "已发送的文档"
@@ -1899,6 +1989,7 @@ msgstr "已发送的文档"
 msgid "Don't have an account? <0/>"
 msgstr "没有账户？<0/>"
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Done"
 msgstr "完成"
@@ -2166,9 +2257,17 @@ msgstr "请输入有效的电子邮箱地址。"
 msgid "Enter one of your saved backup codes to access your account"
 msgstr "输入你保存的其中一个备份码以访问你的账号"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the company name."
+msgstr "请填写公司名称。"
+
 #: src/features/auth/pages/resume-password.tsx
 msgid "Enter the password the resume owner shared with you."
 msgstr "输入简历所有者告诉你的密码。"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the role or job title."
+msgstr "请填写岗位名称。"
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Enter the URL to link to"
@@ -2272,6 +2371,10 @@ msgstr "导出投递，然后更新状态，直到收到结果。"
 #: src/features/applications/components/insights-view.tsx
 msgid "Exported pipeline-flow.png"
 msgstr "已导出 pipeline-flow.png"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Extraction runs only when you click the button."
+msgstr "只有点击按钮才会调用 AI 提取。"
 
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Failed"
@@ -2452,8 +2555,8 @@ msgid "File"
 msgstr "文件"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Fill fields"
-msgstr "填充字段"
+msgid "Fill fields with AI"
+msgstr "AI 智能提取"
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Filled in what we could from the posting."
@@ -2506,6 +2609,10 @@ msgstr "跟进草稿"
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Follow-up note"
 msgstr "跟进备注"
+
+#: src/features/applications/components/today-actions.tsx
+msgid "Follow-ups due"
+msgstr "待跟进"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Family"
@@ -2623,13 +2730,8 @@ msgstr "回家"
 
 #: src/components/layout/error-screen.tsx
 #: src/components/layout/not-found-screen.tsx
-#: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "转到仪表板"
-
-#: src/routes/_home/-sections/header.tsx
-msgid "Go to homepage"
-msgstr "返回首页"
 
 #. Accessible label for button navigating from builder to resumes dashboard
 #: src/routes/builder/$resumeId/-components/header.tsx
@@ -2819,6 +2921,10 @@ msgstr "导入"
 msgid "Import {0}"
 msgstr "导入 {0}"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Import a resume"
+msgstr "导入简历"
+
 #: src/dialogs/resume/import.tsx
 #: src/routes/dashboard/resumes/-components/cards/import-card.tsx
 #: src/routes/dashboard/resumes/-components/list-view.tsx
@@ -2872,6 +2978,10 @@ msgstr "正在导入…"
 msgid "In {0}"
 msgstr "在 {0} 中"
 
+#: src/features/applications/components/insights-view.tsx
+msgid "in this view"
+msgstr "当前视图内"
+
 #: src/features/resume/export/download-dialog.tsx
 msgid "Include resume header"
 msgstr "包含简历页眉"
@@ -2919,7 +3029,6 @@ msgid "Inspecting page {0} of {1}…"
 msgstr "正在检查第 {0} 页，共 {1} 页…"
 
 #: src/features/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/integrations/route.tsx
 msgid "Integrations"
 msgstr "集成"
@@ -2930,9 +3039,13 @@ msgstr "集成"
 msgid "Interests"
 msgstr "兴趣爱好"
 
-#: src/features/applications/components/application-detail-sheet.tsx
-msgid "interview"
-msgstr "面试"
+#: src/features/applications/labels.ts
+msgid "Interview"
+msgstr "面试中"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "interview or beyond"
+msgstr "进入面试及以上"
 
 #: src/features/applications/components/interview-dialog.tsx
 msgid "Interview scheduled."
@@ -2943,8 +3056,13 @@ msgid "Interview type"
 msgstr "面试类型"
 
 #: src/features/applications/components/application-detail-sheet.tsx
+#: src/features/applications/components/insights-view.tsx
 msgid "Interviews"
 msgstr "面试"
+
+#: src/features/applications/components/today-actions.tsx
+msgid "Interviews today"
+msgstr "今天面试"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Invalid AI provider configuration."
@@ -2986,6 +3104,10 @@ msgstr "职位描述"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Job description (optional)"
 msgstr "职位描述（可选）"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Job description text"
+msgstr "岗位描述内容"
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Job posting"
@@ -3078,6 +3200,10 @@ msgstr "字体最多保留两三种。每多一种字体，就多一次映射出
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Keep together"
 msgstr "保持团结"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Kept your edits to these fields — AI suggestions:"
+msgstr "以下字段保留了你手动填写的内容——AI 建议："
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Key"
@@ -3233,16 +3359,24 @@ msgid "Line Height"
 msgstr "行高"
 
 #: src/features/applications/components/application-form-sheet.tsx
+msgid "Link a resume"
+msgstr "关联简历"
+
+#: src/features/applications/components/application-form-sheet.tsx
 msgid "Link a resume (recommended)"
 msgstr "关联简历（推荐）"
-
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Link a resume and paste the job description (Edit) to score your fit and tailor a copy."
-msgstr "关联一份简历并粘贴职位描述（编辑），即可评估匹配度并定制一份副本。"
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Link a resume to use AI match scoring and tailoring."
 msgstr "关联简历后可使用 AI 匹配评分与生成定制副本。"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link resume"
+msgstr "关联此简历"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link the resume you sent (or plan to send) to unlock AI match scoring and tailoring."
+msgstr "关联你已投递（或准备投递）的简历，即可使用 AI 匹配评分与定制。"
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Linked resume"
@@ -3306,6 +3440,10 @@ msgstr "正在加载简历…"
 #: src/routes/agent/-components/thread-sidebar.tsx
 msgid "Loading threads…"
 msgstr "正在加载会话…"
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Loading your applications…"
+msgstr "正在加载岗位…"
 
 #: src/routes/builder/$resumeId/-components/version-history.tsx
 msgid "Loading…"
@@ -3507,6 +3645,14 @@ msgstr "名称能帮你区分不同的密钥，所以按用途来命名。"
 msgid "Names help you tell passkeys apart if you register more than one."
 msgstr "如果你注册了多个通行密钥，名称能帮你把它们区分开。"
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a configured, tested AI model."
+msgstr "需要先配置并通过测试的 AI 模型。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a linked resume, the job description, and a working AI model."
+msgstr "需要关联简历、岗位描述，以及可用的 AI 模型。"
+
 #: src/libs/locale.ts
 msgid "Nepali"
 msgstr "尼泊尔语"
@@ -3572,6 +3718,10 @@ msgstr "下个月"
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr "暂无进行中的投递。"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "No AI model configured — fields stay fully editable by hand."
+msgstr "未配置 AI 模型——所有字段仍可手动编辑。"
 
 #: src/routes/builder/$resumeId/-components/ai-assistant.tsx
 msgid "No AI provider connected"
@@ -3763,6 +3913,14 @@ msgstr "没有可提供的建议。"
 msgid "Odia"
 msgstr "奥里亚语"
 
+#: src/features/applications/labels.ts
+msgid "Offer"
+msgstr "录用"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "Offers"
+msgstr "录用数"
+
 #: src/features/settings/pages/api-keys.tsx
 msgid "Once deleted, the key can no longer access your data. This cannot be undone."
 msgstr "删除后，该密钥将无法再访问你的数据。此操作无法撤销。"
@@ -3792,6 +3950,10 @@ msgstr "一次只导入前 {MAX_IMPORT} 行，剩下的 {overflow} 行不会导�
 #: src/features/ats-checker/messages.ts
 msgid "Only the first pages were checked."
 msgstr "只检查了前几页。"
+
+#: src/features/applications/labels.ts
+msgid "Onsite interview"
+msgstr "现场面试"
 
 #. Resume card context menu action to open the resume editor
 #. Resume card dropdown action to open the resume editor
@@ -3829,9 +3991,18 @@ msgstr "打开集成设置"
 msgid "Open the exported file and confirm you can select and copy every part of it."
 msgstr "打开导出的文件，确认你可以选取并复制其中的每一部分。"
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open the tailored resume"
+msgstr "打开定制简历"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open this application's edit form to add the missing details."
+msgstr "请打开本岗位的编辑表单补全缺少的信息。"
+
 #: src/features/homepage/page.tsx
 #: src/features/homepage/site-footer.tsx
 #: src/routes/_home/-sections/footer.tsx
+#: src/routes/_home/-sections/header.tsx
 msgid "Open workspace"
 msgstr "进入工作区"
 
@@ -3879,6 +4050,10 @@ msgstr "组织"
 #: src/components/input/rich-input.tsx
 msgid "Original table formatting is preserved. This content is read-only because it cannot be edited safely."
 msgstr "原始表格格式已保留。由于无法安全编辑，此内容为只读。"
+
+#: src/features/applications/labels.ts
+msgid "Other interview"
+msgstr "其他面试"
 
 #: src/features/ats-checker/report/score-header.tsx
 msgid "out of 100"
@@ -3956,6 +4131,10 @@ msgstr "密码保护已启用。"
 msgid "Passwords do not match."
 msgstr "密码不匹配。"
 
+#: src/features/applications/components/insights-view.tsx
+msgid "past saved"
+msgstr "已投递及之后"
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Paste a posting to see which of its terms already appear in your resume."
 msgstr "粘贴一则招聘启事，查看其中哪些词已经出现在你的简历中。"
@@ -3971,10 +4150,6 @@ msgstr "在此粘贴完整的职位描述…"
 #: src/features/ats-checker/tool.tsx
 msgid "Paste the posting to see which of its terms already appear in your resume."
 msgstr "粘贴招聘启事，查看其中哪些词已经出现在你的简历中。"
-
-#: src/features/applications/components/application-form-sheet.tsx
-msgid "Pasting fills the fields automatically."
-msgstr "粘贴后会自动填充各字段。"
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Patch applied"
@@ -4260,6 +4435,14 @@ msgstr "重新导出并嵌入字体，然后打开文件检查文字复制出来
 msgid "Re-score"
 msgstr "重新评分"
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Re-score with current content"
+msgstr "按当前内容重新评分"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "reached screening"
+msgstr "进入筛选"
+
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Read an attachment"
 msgstr "已读取附件"
@@ -4336,6 +4519,10 @@ msgstr "推荐人…、需要强调的内容等"
 #: src/features/settings/authentication/components/passkeys.tsx
 msgid "Register New Device"
 msgstr "注册新设备"
+
+#: src/features/applications/labels.ts
+msgid "Rejected"
+msgstr "已拒绝"
 
 #: src/components/ui/copyright.tsx
 msgid "Released under the <0>MIT License</0>."
@@ -4461,6 +4648,10 @@ msgstr "重置密码"
 msgid "Resetting your password..."
 msgstr "正在重置你的密码…"
 
+#: src/features/applications/components/insights-view.tsx
+msgid "Response rate"
+msgstr "回复率"
+
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Restore"
 msgstr "恢复"
@@ -4472,6 +4663,10 @@ msgstr "将简历恢复到此补丁之前的状态？"
 #: src/routes/builder/$resumeId/-components/version-history.tsx
 msgid "Restore this version?"
 msgstr "恢复此版本？"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Restored your unsaved changes (kept for this browser session only)."
+msgstr "已恢复未保存的修改（仅保留在当前浏览器会话中）。"
 
 #: src/features/applications/components/application-form-sheet.tsx
 #: src/features/resume/export/download-dialog.tsx
@@ -4518,6 +4713,11 @@ msgstr "简历选项"
 msgid "Resume patch"
 msgstr "简历补丁"
 
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/ats-checker.tsx
+msgid "Resume readability check"
+msgstr "简历可读性检查"
+
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Resume templates for different professions and tastes. Pick the one that suits you."
 msgstr "面向不同职业和口味的简历模板。挑一款适合你的。"
@@ -4532,8 +4732,14 @@ msgstr "简历"
 #: src/features/cover-letters/editor-dialog.tsx
 #: src/features/cover-letters/library.tsx
 #: src/routes/agent/-components/agent-chat.tsx
+#: src/routes/dashboard/applications/index.tsx
 msgid "Retry"
 msgstr "重试"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Review AI settings"
+msgstr "查看 AI 设置"
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Review edits"
@@ -4681,6 +4887,7 @@ msgstr "复制简历内容或样式前，请先保存简历的更改。"
 msgid "Save the file with every page upright."
 msgstr "保存文件时确保每一页都是正向的。"
 
+#: src/features/applications/labels.ts
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Saved"
 msgstr "已保存"
@@ -4725,6 +4932,14 @@ msgstr "评估我的匹配度"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Scoring your fit…"
 msgstr "正在评估你的匹配度…"
+
+#: src/features/applications/labels.ts
+msgid "Screening"
+msgstr "筛选中"
+
+#: src/features/applications/labels.ts
+msgid "Screening call"
+msgstr "初筛面试"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Search"
@@ -4906,7 +5121,6 @@ msgstr "设置人工智能服务提供商，使其能够就这份简历进行交
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "设置"
 
@@ -5111,6 +5325,10 @@ msgstr "斯洛文尼亚语"
 #: src/dialogs/resume/index.tsx
 msgid "Slug"
 msgstr "短链接"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "so far"
+msgstr "截至目前"
 
 #: src/libs/resume/ats.ts
 msgid "Some application systems require one before you can submit."
@@ -5394,6 +5612,10 @@ msgstr "定制失败。"
 msgid "Tamil"
 msgstr "泰米尔语"
 
+#: src/features/applications/labels.ts
+msgid "Technical interview"
+msgstr "技术面试"
+
 #: src/libs/locale.ts
 msgid "Telugu"
 msgstr "泰卢固语"
@@ -5494,6 +5716,10 @@ msgstr "深度检查未能完成。请重试。"
 #: src/dialogs/resume/import.tsx
 msgid "The imported file could not be parsed into a valid resume."
 msgstr "导入的文件无法解析为有效简历。"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "The job description has been pasted in"
+msgstr "已粘贴岗位描述"
 
 #: src/features/ats-checker/messages.ts
 msgid "The order the text is stored in disagrees badly with the order it reads in."
@@ -5936,8 +6162,12 @@ msgid "Tomorrow"
 msgstr "明天"
 
 #: src/routes/dashboard/-components/sidebar.tsx
-msgid "Tools"
-msgstr "工具"
+msgid "Tools & settings"
+msgstr "工具与设置"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "Total applications"
+msgstr "岗位总数"
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Track a job you're applying to and link the resume you sent."
@@ -6196,8 +6426,8 @@ msgid "Upload .csv"
 msgstr "上传 .csv"
 
 #: src/routes/_home/ats-checker.tsx
-msgid "Upload a resume and see what an applicant tracking system reads from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
-msgstr "上传一份简历，看看申请人跟踪系统从中读到了什么。所有处理都在这个浏览器中完成。你的文件不会被上传，也不会被保存。"
+msgid "Upload a resume and see what applicant tracking systems (ATS) read from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
+msgstr "上传简历，查看求职管理系统（ATS）能从中读到什么。全部在当前浏览器内完成，文件不会被上传，也不保存任何内容。"
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Upload attachments"
@@ -6221,6 +6451,7 @@ msgstr "正在上传…"
 msgid "URL"
 msgstr "URL"
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Use"
 msgstr "使用"
@@ -6587,6 +6818,10 @@ msgstr "你有未保存的更改，这些更改将会丢失。"
 #: src/dialogs/resume/import.tsx
 msgid "You'll be taken to the Integrations page. The file you selected won't be imported."
 msgstr "您将被带到“集成”页面。您选择的文件将不会被导入。"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "You'll come back here with your input kept. Drafts live only in this browser session."
+msgstr "返回后表单内容会保留。草稿仅保存在当前浏览器会话中。"
 
 #: src/features/auth/pages/forgot-password.tsx
 #: src/features/auth/pages/register.tsx

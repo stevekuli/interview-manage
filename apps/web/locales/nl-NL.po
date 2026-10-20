@@ -27,11 +27,6 @@ msgstr ""
 msgid "\"{0} · {1}\" and its full timeline will be permanently deleted. This can't be undone."
 msgstr "\"{0} · {1}\" en de volledige tijdlijn worden permanent verwijderd. Dit kan niet ongedaan worden gemaakt."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "(opens in new tab)"
-msgstr "(opent in nieuw tabblad)"
-
 #. placeholder {0}: selected.length
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "{0, plural, one {# application to export} other {# applications to export}}"
@@ -91,11 +86,6 @@ msgstr "{0} klaar om te importeren"
 msgid "{0} rejected"
 msgstr "{0} afgewezen"
 
-#. placeholder {0}: data.basics.name
-#: src/features/homepage/export-playground.tsx
-msgid "{0} Sample Resume"
-msgstr "{0} voorbeeld-cv"
-
 #. placeholder {0}: report.skippedChecks
 #: src/features/ats-checker/report/score-header.tsx
 msgid "{0} skipped"
@@ -110,6 +100,10 @@ msgstr "{0} overgeslagen (ongeldige of ontbrekende gegevens)"
 #: src/features/ats-checker/report/report-view.tsx
 msgid "{0} to fix"
 msgstr "{0} op te lossen"
+
+#: src/features/homepage/page.tsx
+msgid "{APP_NAME} keeps your job search organized: record each position, maintain your resumes, export PDF and Word files, and always know where every application stands."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -148,25 +142,9 @@ msgstr "{sectionTitle} · Item {itemNumber}"
 msgid "+{extra} more"
 msgstr ""
 
-#: src/features/homepage/page.tsx
-msgid "<0>Free forever and open source.</0><1/>No ads, paywalls, or tracking."
-msgstr "<0>Altijd gratis en open source.</0><1/>Geen advertenties, betaalmuren of tracking."
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "<0>Thank you for using Reactive Resume. I build this app mostly in my spare time, with help from open-source contributors around the world.</0><1>If it has been useful to you and you'd like to keep it free and open for everyone, please consider donating. Any amount helps.</1>"
-msgstr "<0>Bedankt dat je Reactive Resume gebruikt. Ik bouw deze app grotendeels in mijn vrije tijd, met hulp van open-source bijdragers over de hele wereld.</0><1>Als je er iets aan hebt gehad en je wilt dat het voor iedereen gratis en open blijft, overweeg dan een donatie. Elk bedrag helpt.</1>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<p>I design software for teams, from early research to the details people use every day.</p>"
-msgstr "<p>Ik ontwerp software voor teams, van vroeg onderzoek tot de details die mensen elke dag gebruiken.</p>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<ul><li>Designed responsive websites and mobile experiences for small businesses.</li><li>Worked with developers from first sketches through release.</li></ul>"
-msgstr "<ul><li>Ontwierp responsieve websites en mobiele ervaringen voor kleine bedrijven.</li><li>Werkte met ontwikkelaars samen, van de eerste schetsen tot aan de lancering.</li></ul>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<ul><li>Led research and interface design for a collaborative planning tool.</li><li>Built a shared component library with engineers and documented accessibility patterns.</li><li>Tested prototypes with customers and used their feedback to simplify onboarding.</li></ul>"
-msgstr "<ul><li>Leidde het onderzoek en het interface-ontwerp voor een samenwerkingsplannings-tool.</li><li>Bouwde met engineers een gedeelde componentenbibliotheek en documenteerde toegankelijkheidspatronen.</li><li>Testte prototypen met klanten en gebruikte hun feedback om de onboarding te vereenvoudigen.</li></ul>"
+msgid "<0>Switch between resume sections in the left sidebar; manage template, layout, and styles here.</0><1>When you are done, use Download at the top to export a PDF or a Word (DOCX) file.</1>"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "1 Column / Inline"
@@ -183,22 +161,6 @@ msgstr "1 maand"
 #: src/dialogs/api-key/create.tsx
 msgid "1 year"
 msgstr "1 jaar"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2015 to 2019"
-msgstr "2015 tot 2019"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2019 to 2022"
-msgstr "2019 tot 2022"
-
-#: src/features/homepage/export-playground.tsx
-msgid "2022 - Present"
-msgstr "2022 - heden"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2022 to now"
-msgstr "2022 tot nu"
 
 #: src/dialogs/api-key/create.tsx
 msgid "3 months"
@@ -224,22 +186,6 @@ msgstr "Een periode is geschreven in een vorm die de meeste software niet kan le
 msgid "A font is referenced but not embedded."
 msgstr "Er wordt verwezen naar een lettertype dat niet is ingesloten."
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "A free and open-source resume builder that makes it easy to create, update, and share your resume."
-msgstr "Een gratis en open-source cv-bouwer waarmee je eenvoudig je cv maakt, bijwerkt en deelt."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "A free collection of accessible patterns for the web."
-msgstr "Een gratis verzameling toegankelijke patronen voor het web."
-
-#: src/features/homepage/page.tsx
-msgid "A free, open-source resume builder. Put your experience on the page, without fighting the formatting."
-msgstr "Een gratis, open-source cv-builder. Zet je ervaring op de pagina, zonder te vechten tegen de opmaak."
-
-#: src/features/homepage/site-footer.tsx
-msgid "A free, open-source resume builder. Yours to keep, yours to export, yours to host."
-msgstr "Een gratis, open-source cv-builder. Hij is van jou: bewaren, exporteren en zelf hosten."
-
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "A friendly nudge for the recruiter"
 msgstr "Een vriendelijk duwtje voor de recruiter"
@@ -252,21 +198,9 @@ msgstr "Een gat over de volledige hoogte splitst deze pagina in twee kolommen."
 msgid "A gap is not a problem. Add a one-line explanation if you want to; many strong resumes simply do not."
 msgstr "Een gat is geen probleem. Voeg desgewenst een korte uitleg toe; veel sterke cv's doen dit gewoon niet."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "A hand with the writing"
-msgstr "Een helpende hand bij het schrijven"
-
 #: src/features/ats-checker/messages.ts
 msgid "A link points somewhere other than the address it shows."
 msgstr "Een link verwijst ergens anders naartoe dan het adres dat wordt getoond."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "A link worth sharing"
-msgstr "Een link die het delen waard is"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "A little more<0/>at home."
-msgstr "Nog een beetje meer<0/>thuis."
 
 #: src/features/ats-checker/messages.ts
 msgid "A numeric date reads differently in different countries."
@@ -276,29 +210,9 @@ msgstr "Een numerieke datum wordt in verschillende landen anders gelezen."
 msgid "A page is rotated."
 msgstr "Een pagina is gedraaid."
 
-#: src/features/homepage/site-footer.tsx
-msgid "A passion project by <0>Amruth Pillai</0>"
-msgstr "Een passieproject van <0>Amruth Pillai</0>"
-
-#: src/components/ui/copyright.tsx
-msgid "A passion project by <0>Amruth Pillai</0>."
-msgstr "Een passieproject van <0>Amruth Pillai</0>."
-
-#: src/features/homepage/page.tsx
-msgid "A PDF for the application. A Word file for a few more edits. Download a sample using your choices."
-msgstr "Een PDF voor de sollicitatie. Een Word-bestand voor nog wat extra bewerkingen. Download een voorbeeld met jouw keuzes."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "A private resume does not appear at its public link."
-msgstr "Een privé-cv verschijnt niet op de openbare link."
-
-#: src/features/homepage/page.tsx
-msgid "A project you can<0/>be part of."
-msgstr "Een project waar jij<0/>deel van kunt uitmaken."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "A real sample PDF"
-msgstr "Een echt voorbeeld-PDF"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "A resume is linked to this application"
+msgstr ""
 
 #: src/features/ats-checker/parse-preview.tsx
 msgid "A resume laid out for a human reader, with a photo, headings and columns"
@@ -320,17 +234,9 @@ msgstr "Een webadres is geschreven zonder https://."
 msgid "A4"
 msgstr "A4"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "About me"
-msgstr "Over mij"
-
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Toegang tot je account via de API, inclusief het lezen en wijzigen van je cv's en sollicitaties."
-
-#: src/features/homepage/export-playground.tsx
-msgid "Accessibility"
-msgstr "Toegankelijkheid"
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -441,6 +347,10 @@ msgstr "Een notitie toevoegen…"
 msgid "Add a period such as \"Jan 2020 - Present\" so it lands on your timeline."
 msgstr "Voeg een periode toe, bijvoorbeeld „jan. 2020 - heden”, zodat deze op je tijdlijn verschijnt."
 
+#: src/features/homepage/page.tsx
+msgid "Add a position you are targeting."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Add a section headed \"Education\". Many systems have a required education field."
 msgstr "Voeg een sectie toe met de kop „Opleiding”. Veel systemen hebben een verplicht opleidingsveld."
@@ -448,6 +358,10 @@ msgstr "Voeg een sectie toe met de kop „Opleiding”. Veel systemen hebben een
 #: src/features/ats-checker/messages.ts
 msgid "Add a section headed \"Experience\" or \"Work Experience\". It is the field most systems rank on."
 msgstr "Voeg een sectie toe met de kop „Ervaring” of „Werkervaring”. Dit is het veld waarop de meeste systemen ranken."
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Add a tag"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Add a tag and press Enter…"
@@ -478,6 +392,10 @@ msgstr "Contactpersoon toevoegen"
 #: src/features/ats-checker/messages.ts
 msgid "Add figures where you have them: volumes, percentages, timeframes, team sizes."
 msgstr "Voeg cijfers toe waar je ze hebt: aantallen, percentages, tijdsbestekken, teamgroottes."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Add it"
+msgstr ""
 
 #: src/components/input/chip-input.tsx
 msgid "Add keyword"
@@ -536,11 +454,20 @@ msgstr "Voeg twee of drie regels bovenaan toe die beschrijven wat je doet."
 msgid "Add your full name under Basics."
 msgstr "Voeg je volledige naam toe onder Basisgegevens."
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Added to your pipeline."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Additional details"
+msgstr ""
+
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Adjust the resume for a remote-first role that values async communication and ownership."
 msgstr "Pas je cv aan voor een functie waarbij je voornamelijk op afstand werkt en waar asynchrone communicatie en verantwoordelijkheid belangrijk zijn."
 
 #: src/features/settings/integrations/components/ai-section.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Advanced"
 msgstr "Geavanceerd"
 
@@ -551,6 +478,10 @@ msgstr "Advies voor degene die het leest. Niets hiervan telt mee voor de score."
 #: src/libs/locale.ts
 msgid "Afrikaans"
 msgstr "Afrikaans"
+
+#: src/features/homepage/page.tsx
+msgid "After you configure your own model provider, AI can score how well a linked resume matches a posting, produce a tailored copy of that resume, and draft cover letters or follow-up messages. The tailored copy currently only rewrites the resume's summary — everything else stays exactly as you wrote it. Without a provider, these actions stay manual — every core feature works either way."
+msgstr ""
 
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Against the job description"
@@ -585,6 +516,10 @@ msgstr "De configuratie van de AI-agent is pas mogelijk nadat REDIS_URL en ENCRY
 msgid "AI assistant"
 msgstr "AI-assistent"
 
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "AI Models"
+msgstr ""
+
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "AI provider"
 msgstr "AI-provider"
@@ -609,18 +544,13 @@ msgstr "AI-providers zijn niet beschikbaar totdat ENCRYPTION_SECRET is geconfigu
 msgid "AI providers require REDIS_URL and ENCRYPTION_SECRET to be configured."
 msgstr "AI-providers vereisen dat REDIS_URL en ENCRYPTION_SECRET geconfigureerd zijn."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "AI, when you want it"
-msgstr "AI, wanneer jij wilt"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "AI setup could not be checked"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Albanian"
 msgstr "Albanees"
-
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "All app languages"
-msgstr "Alle app-talen"
 
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "All applications (including archived)"
@@ -649,6 +579,10 @@ msgstr "Heb je al een account? <0/>"
 #: src/libs/locale.ts
 msgid "Amharic"
 msgstr "Amhaars"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "An AI model is configured and tested"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "An embedded font could not be read."
@@ -683,10 +617,6 @@ msgstr "Iedereen met de link kan het cv bekijken."
 msgid "Anyone with the public URL will be able to view your resume without a password."
 msgstr "Iedereen met de openbare URL kan je cv zonder wachtwoord bekijken."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "API and MCP access"
-msgstr "API- en MCP-toegang"
-
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "API Key"
 msgstr "API-sleutel"
@@ -705,14 +635,6 @@ msgstr "API-sleutels worden op de server versleuteld en na opslag nooit meer wee
 msgid "API Reference"
 msgstr "API-referentie"
 
-#: src/routes/dashboard/-components/sidebar.tsx
-msgid "App"
-msgstr "App"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "App language"
-msgstr "App-taal"
-
 #: src/features/applications/components/interview-dialog.tsx
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Application"
@@ -721,6 +643,10 @@ msgstr "Sollicitatie"
 #: src/features/applications/components/application-actions-menu.tsx
 msgid "Application actions"
 msgstr "Sollicitatieacties"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Application added"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Application added to your pipeline."
@@ -754,6 +680,10 @@ msgstr "Sollicitatie bijgewerkt."
 msgid "Applications"
 msgstr "Sollicitaties"
 
+#: src/features/homepage/page.tsx
+msgid "Applications & tracking"
+msgstr ""
+
 #: src/features/applications/components/insights-view.tsx
 msgid "Applications over time"
 msgstr "Sollicitaties in de tijd"
@@ -766,8 +696,9 @@ msgstr "Sollicitaties per week verstuurd (laatste 8 weken)"
 msgid "Applications to export"
 msgstr "Te exporteren sollicitaties"
 
+#: src/features/applications/components/insights-view.tsx
 #: src/features/applications/components/table-view.tsx
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Applied"
 msgstr "Gesolliciteerd"
 
@@ -845,10 +776,6 @@ msgstr "Studierichting"
 msgid "Artificial Intelligence"
 msgstr "Kunstmatige intelligentie"
 
-#: src/features/homepage/community-stats.tsx
-msgid "As of <0>{formattedDate}</0>."
-msgstr "Per <0>{formattedDate}</0>."
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Ask anything about this resume"
 msgstr "Stel gerust al je vragen over dit cv."
@@ -861,8 +788,7 @@ msgstr "Beeldverhouding"
 msgid "ATS Check"
 msgstr "ATS-controle"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/ats-checker.tsx
+#: src/routes/_home/-sections/footer.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "ATS Checker"
 msgstr "ATS-checker"
@@ -921,10 +847,6 @@ msgstr "Prijzen"
 msgid "Azerbaijani"
 msgstr "Azerbeidzjaans"
 
-#: src/features/homepage/export-playground.tsx
-msgid "BA"
-msgstr "BA"
-
 #. Action returning a signed-in user to the page where they manage linked providers
 #: src/features/auth/pages/error.tsx
 msgid "Back to authentication settings"
@@ -956,6 +878,14 @@ msgstr "Basis-URL"
 #: src/libs/resume/section.tsx
 msgid "Basics"
 msgstr "Basisgegevens"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Before scoring your fit:"
+msgstr ""
+
+#: src/features/applications/labels.ts
+msgid "Behavioral interview"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Bengali"
@@ -1007,10 +937,6 @@ msgstr "Maak je eigen cv"
 msgid "Builder Command Palette"
 msgstr "Builder-opdrachtpalet"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Built a design system used by six product teams."
-msgstr "Bouwde een designsysteem dat door zes productteams wordt gebruikt."
-
 #: src/libs/locale.ts
 msgid "Bulgarian"
 msgstr "Bulgaars"
@@ -1031,12 +957,6 @@ msgstr "Opsommingstekens"
 msgid "Bulleted list"
 msgstr "Lijst met opsommingstekens"
 
-#. Tagline shown in app footer/about area
-#: src/components/ui/copyright.tsx
-#: src/features/homepage/site-footer.tsx
-msgid "By the community, for the community."
-msgstr "Door de gemeenschap, voor de gemeenschap."
-
 #: src/routes/dashboard/applications/index.tsx
 msgid "Calendar"
 msgstr ""
@@ -1056,7 +976,6 @@ msgstr ""
 #: src/features/applications/components/export-applications-sheet.tsx
 #: src/features/applications/components/import-applications-sheet.tsx
 #: src/features/applications/components/interview-dialog.tsx
-#: src/features/homepage/ats-playground.tsx
 #: src/features/resume/builder/password-dialog.tsx
 #: src/features/settings/integrations/components/ai-section.tsx
 #: src/features/settings/pages/account.tsx
@@ -1105,10 +1024,9 @@ msgstr "Wijzig het thema naar…"
 msgid "Changed your mind? Rename your resume to something more descriptive."
 msgstr "Van gedachten veranderd? Hernoem uw cv naar iets beschrijvenders."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Changelog"
-msgstr "Changelog"
+#: src/features/resume/stylesheet/editor.tsx
+msgid "Changes apply to the preview and to PDF/DOCX exports. Standard CSS targeting the resume root works here."
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Changes are shared between your library and the resume builder."
@@ -1123,6 +1041,10 @@ msgstr "Chat"
 msgid "Check again"
 msgstr "Opnieuw controleren"
 
+#: src/features/homepage/page.tsx
+msgid "Check resume readability (ATS)"
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Check the exported file contains everything you expect, and that all of it is selectable text."
 msgstr "Controleer of het geëxporteerde bestand alles bevat wat je verwacht, en dat alles selecteerbare tekst is."
@@ -1130,6 +1052,10 @@ msgstr "Controleer of het geëxporteerde bestand alles bevat wat je verwacht, en
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Check what an applicant tracking system would miss, and only add keywords you're sure about."
 msgstr "Kijk wat een applicant tracking system zou missen, en voeg alleen sleutelwoorden toe waar je zeker van bent."
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Check your connection and try again — nothing has been lost."
+msgstr ""
 
 #: src/features/auth/pages/forgot-password.tsx
 msgid "Check your email for a link to reset your password."
@@ -1147,6 +1073,10 @@ msgstr "Gecontroleerd in je browser. Het bestand wordt nooit geüpload."
 msgid "Checking"
 msgstr "Controleren"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Checking AI setup…"
+msgstr ""
+
 #: src/features/resume/stylesheet/status.tsx
 msgid "Checking draft"
 msgstr "Concept controleren"
@@ -1163,11 +1093,6 @@ msgstr "Chinees (vereenvoudigd)"
 msgid "Chinese (Traditional)"
 msgstr "Chinees (traditioneel)"
 
-#. placeholder {0}: displayName(item)
-#: src/features/homepage/template-shelf.tsx
-msgid "Choose {0}"
-msgstr "Kies {0}"
-
 #: src/features/cover-letters/library.tsx
 msgid "Choose a cover letter"
 msgstr "Kies een sollicitatiebrief"
@@ -1179,10 +1104,6 @@ msgstr "Kies een model en stel een concept-cv op."
 #: src/features/ats-checker/uploader.tsx
 msgid "Choose a PDF"
 msgstr "Kies een PDF"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Choose a PDF file to read its text."
-msgstr "Kies een PDF-bestand om de tekst ervan te lezen."
 
 #. Preset or custom shade refer to the color picker
 #. Preset or custom shade refer to the color picker
@@ -1196,17 +1117,9 @@ msgstr "Kies een vooraf ingestelde of aangepaste tint."
 msgid "Choose a resume"
 msgstr "Kies een cv"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Choose a resume template"
-msgstr "Kies een cv-sjabloon"
-
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Choose a saved cover letter"
 msgstr "Kies een opgeslagen sollicitatiebrief"
-
-#: src/features/homepage/template-shelf.tsx
-msgid "Choose a template"
-msgstr "Kies een sjabloon"
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Choose an application"
@@ -1216,26 +1129,21 @@ msgstr "Kies een sollicitatie"
 msgid "Choose an application…"
 msgstr ""
 
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "Choose app language"
-msgstr "Kies app-taal"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Choose an existing resume…"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Choose PDF, DOCX, Markdown, or JSON. Export your resume and cover letter separately when available."
 msgstr "Kies PDF, DOCX, Markdown of JSON. Exporteer je cv en sollicitatiebrief indien mogelijk apart."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Choose who can see it"
-msgstr "Kies wie het kan zien"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Choose resume"
+msgstr ""
 
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "Cirkel"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Clay"
-msgstr "Klei"
 
 #. Clear the highlight color
 #. Clear the text color
@@ -1269,10 +1177,6 @@ msgstr "Sluiten"
 msgid "Close AI assistant"
 msgstr "AI-assistent sluiten"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Color"
-msgstr "Kleur"
-
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Columns"
@@ -1292,11 +1196,6 @@ msgstr "Opdrachtpalet"
 #: src/features/command-palette/index.tsx
 msgid "Command Palette - {currentPage}"
 msgstr "Opdrachtpalet - {currentPage}"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Community"
-msgstr "Community"
 
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Compact"
@@ -1323,6 +1222,11 @@ msgstr "Vergelijk dit cv met deze URL van een vacature en werk de sleutelwoorden
 msgid "Compress or remove large images to keep uploads quick."
 msgstr "Comprimeer of verwijder grote afbeeldingen om uploads snel te houden."
 
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Configure AI"
+msgstr ""
+
 #. Account deletion confirmation dialog confirm action in account settings
 #. Create API key dialog acknowledgment action after copying
 #: src/dialogs/api-key/create.tsx
@@ -1344,10 +1248,6 @@ msgstr "Verbinden"
 #: src/features/auth/pages/consent.tsx
 msgid "Connect an application"
 msgstr "Een applicatie koppelen"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Connect through MCP to create and update resumes in a conversation. Or use the API to build your own workflow."
-msgstr "Maak verbinding via MCP om cv's te maken en bij te werken in een gesprek. Of gebruik de API om je eigen workflow te bouwen."
 
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "Connect your own AI provider to get a review of the writing. The checks above need no provider and no account."
@@ -1391,6 +1291,10 @@ msgstr "Inhoud"
 msgid "Content is laid out in a grid."
 msgstr "Inhoud is opgemaakt in een raster."
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Content updated — the old score no longer applies."
+msgstr ""
+
 #. Button label to continue to dashboard after successful registration
 #. Final action button after saving backup codes
 #. Primary action button to proceed to next step in two-factor setup
@@ -1405,12 +1309,8 @@ msgid "Continue where you left off"
 msgstr "Ga verder waar u was gebleven"
 
 #: src/dialogs/resume/import.tsx
-msgid "Continue where you left off by importing a resume you built in Reactive Resume or another resume builder. Supported formats are PDF, Microsoft Word, and JSON files from Reactive Resume or JSON Resume."
-msgstr "Ga verder waar je gebleven was door een cv te importeren dat je in Reactive Resume of een andere cv-bouwer hebt gemaakt. Ondersteunde formaten zijn PDF, Microsoft Word en JSON-bestanden uit Reactive Resume of JSON Resume."
-
-#: src/features/homepage/page.tsx
-msgid "Contribute code"
-msgstr "Draag code bij"
+msgid "Continue where you left off by importing a resume backup or a file from another resume builder. Supported formats are PDF, Microsoft Word, a LinkedIn data export, and JSON resume backups (including JSON Resume)."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Conversation copied."
@@ -1427,6 +1327,10 @@ msgstr "Omgezette stylesheet-concept"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Copied to clipboard."
 msgstr "Gekopieerd naar klembord."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Copies the resume and rewrites its summary for this job"
+msgstr ""
 
 #. Action button to copy two-factor backup codes to clipboard
 #: src/dialogs/auth/enable-two-factor.tsx
@@ -1469,8 +1373,8 @@ msgid "Copy stylesheet"
 msgstr "Stijlpagina kopiëren"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Copy the entire job description from the posting and paste it below. We'll fill in the fields for you and keep the text with this application for match scoring and tailoring."
-msgstr "Kopieer de volledige functieomschrijving uit de vacature en plak die hieronder. Wij vullen de velden voor je in en bewaren de tekst bij deze sollicitatie voor matchscores en het op maat maken."
+msgid "Copy the entire job description from the posting and paste it below. It stays with this application for match scoring and tailoring."
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Copy the text out of the exported file and read it through; fix anything that arrives in the wrong place."
@@ -1527,10 +1431,6 @@ msgstr "Kon het geselecteerde cv niet laden."
 msgid "Could not load this cover letter."
 msgstr "Kon deze sollicitatiebrief niet laden."
 
-#: src/features/homepage/export-playground.tsx
-msgid "Could not prepare the sample. Please try again."
-msgstr "Het voorbeeld kon niet worden voorbereid. Probeer het opnieuw."
-
 #: src/features/resume/export/use-resume-export.ts
 msgid "Could not prepare your resume for printing. Please try again."
 msgstr "Je cv kon niet worden voorbereid om af te drukken. Probeer het opnieuw."
@@ -1569,6 +1469,10 @@ msgstr "De verbinding kon niet worden geverifieerd. Controleer de API-sleutel, h
 msgid "Couldn't add the application. Please try again."
 msgstr "Kan de sollicitatie niet toevoegen. Probeer het opnieuw."
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Couldn't check your AI setup."
+msgstr ""
+
 #: src/features/applications/components/application-actions-menu.tsx
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Couldn't delete the application."
@@ -1582,9 +1486,17 @@ msgstr ""
 msgid "Couldn't delete the timeline entry."
 msgstr "De tijdlijnvermelding kon niet worden verwijderd."
 
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't load your applications right now."
+msgstr ""
+
 #: src/features/applications/components/board.tsx
 msgid "Couldn't move the application. Please try again."
 msgstr "Kan de sollicitatie niet verplaatsen. Probeer het opnieuw."
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't refresh — showing your saved data."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Couldn't save"
@@ -1674,10 +1586,6 @@ msgstr "Sollicitatiebrieven"
 msgid "Create"
 msgstr "Aanmaken"
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Create a copy tuned to this job"
-msgstr "Maak een kopie afgestemd op deze taak"
-
 #: src/features/auth/pages/register.tsx
 msgid "Create a new account"
 msgstr "Maak een nieuw account aan"
@@ -1754,13 +1662,21 @@ msgstr "Maak een nieuw samenvattingsitem"
 msgid "Create a new volunteer experience"
 msgstr "Maak een nieuwe vrijwilligerservaring aan"
 
-#: src/features/homepage/page.tsx
+#: src/features/applications/components/application-form-sheet.tsx
 msgid "Create a resume"
 msgstr "Maak een cv"
 
 #: src/dialogs/resume/index.tsx
 msgid "Create a Sample Resume"
 msgstr "Maak een voorbeeld-cv aan"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Create a tailored copy"
+msgstr ""
+
+#: src/features/homepage/page.tsx
+msgid "Create an account and sign in."
+msgstr ""
 
 #: src/features/cover-letters/library.tsx
 msgid "Create cover letter"
@@ -1784,10 +1700,10 @@ msgstr "Cv met opties maken"
 msgid "Created"
 msgstr "Aangemaakt"
 
-#. placeholder {0}: result.name
+#. placeholder {0}: tailored.name
 #: src/features/applications/components/application-ai-copilot.tsx
-msgid "Created \"{0}\" and linked it to this application."
-msgstr "\"{0}\" gemaakt en aan deze sollicitatie gekoppeld."
+msgid "Created “{0}” and linked it to this application. Only the summary was rewritten — the original resume is untouched."
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -2019,25 +1935,10 @@ msgstr "Alle controles zijn geslaagd. Niets hier zou een parser moeten verhinder
 msgid "Description"
 msgstr "Beschrijving"
 
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section.tsx
 #: src/routes/builder/$resumeId/-components/mobile-builder-shell.tsx
 msgid "Design"
 msgstr "Ontwerp"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Design systems"
-msgstr "Designsystemen"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Designed a shared component library that six product teams use to build consistent interfaces."
-msgstr "Ontwierp een gedeelde componentenbibliotheek die zes productteams gebruiken om consistente interfaces te bouwen."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Designed websites and tools for a growing creative community."
-msgstr "Ontwierp websites en tools voor een groeiende creatieve community."
 
 #. Label above the raw error text forwarded by the identity provider
 #: src/features/auth/pages/error.tsx
@@ -2058,6 +1959,7 @@ msgstr "Tweestapsverificatie deactiveren"
 msgid "Disabling two-factor authentication..."
 msgstr "Tweestapsverificatie wordt gedeactiveerd..."
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Discard"
 msgstr "Verwerpen"
@@ -2071,24 +1973,13 @@ msgstr "Niet-opgeslagen wijzigingen verwerpen?"
 msgid "Disconnect"
 msgstr "Verbinding verbreken"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Discord"
-msgstr "Discord"
-
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Dismiss"
 msgstr "Afwijzen"
 
-#: src/features/homepage/page.tsx
-msgid "Docs"
-msgstr "Documentatie"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Documentation"
-msgstr "Documentatie"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Dismiss suggestion"
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Documents sent"
@@ -2098,14 +1989,7 @@ msgstr "Documenten verzonden"
 msgid "Don't have an account? <0/>"
 msgstr "Heb je nog geen account? <0/>"
 
-#: src/components/ui/donation-toast.tsx
-msgid "Donate"
-msgstr "Doneer"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Donate to Reactive Resume"
-msgstr "Doneer aan Reactive Resume"
-
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Done"
 msgstr "Klaar"
@@ -2113,7 +1997,6 @@ msgstr "Klaar"
 #. Action button to download two-factor backup codes as a text file
 #. Primary action in the builder header to open resume download options
 #: src/dialogs/auth/enable-two-factor.tsx
-#: src/features/homepage/languages-showcase.tsx
 #: src/features/resume/export/download-dialog.tsx
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
@@ -2143,22 +2026,6 @@ msgstr "Downloadopties"
 msgid "Download PDF"
 msgstr "PDF downloaden"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample DOCX"
-msgstr "Voorbeeld-DOCX downloaden"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample JSON"
-msgstr "Voorbeeld-JSON downloaden"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample Markdown"
-msgstr "Voorbeeld-Markdown downloaden"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample PDF"
-msgstr "Voorbeeld-PDF downloaden"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Downloads"
 msgstr "Downloads"
@@ -2182,10 +2049,6 @@ msgstr "Sleep secties hierheen om ze tussen kolommen te verplaatsen"
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Drag to reposition and use the slider to zoom before uploading."
 msgstr "Sleep de afbeelding om deze te verplaatsen en gebruik de schuifregelaar om in te zoomen voordat je de afbeelding uploadt."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Drag to turn the pages"
-msgstr "Sleep om de pagina's om te slaan"
 
 #: src/features/ats-checker/messages.ts
 msgid "Drop the pronouns and start from the verb. That is the convention in most markets."
@@ -2310,10 +2173,11 @@ msgstr "Bewerken is uitgeschakeld totdat je het ontgrendelt."
 msgid "Editing keyword..."
 msgstr "Trefwoord bewerken..."
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Editing tips"
+msgstr ""
+
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Education"
@@ -2365,7 +2229,6 @@ msgstr "Ingeschakeld"
 msgid "Enabling two-factor authentication…"
 msgstr "Tweefactorauthenticatie inschakelen…"
 
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/locale.ts
 msgid "English"
 msgstr "Engels"
@@ -2394,9 +2257,17 @@ msgstr "Voer een geldig e-mailadres in."
 msgid "Enter one of your saved backup codes to access your account"
 msgstr "Voer een van uw opgeslagen back-upcodes in om toegang te krijgen tot uw account"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the company name."
+msgstr ""
+
 #: src/features/auth/pages/resume-password.tsx
 msgid "Enter the password the resume owner shared with you."
 msgstr "Voer het wachtwoord in dat de eigenaar van het cv met je heeft gedeeld."
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the role or job title."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Enter the URL to link to"
@@ -2430,14 +2301,6 @@ msgstr "Fout"
 msgid "Every check passed. Nothing here should stop a parser from reading your resume."
 msgstr "Vergroot ze, zodat de inhoud binnen het betrouwbaar gelezen gebied blijft."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Example application"
-msgstr "Voorbeeldsollicitatie"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Example edit"
-msgstr "Voorbeeldbewerking"
-
 #: src/features/resume/stylesheet/toolbar.tsx
 msgid "Exit focus mode"
 msgstr "Focusmodus verlaten"
@@ -2447,10 +2310,6 @@ msgid "Exit Fullscreen"
 msgstr "Volledig scherm afsluiten"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Experience"
@@ -2465,17 +2324,13 @@ msgstr "Verloopt over"
 msgid "Expires on {0}"
 msgstr "Verloopt op {0}"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Explore features"
-msgstr "Ontdek functies"
-
-#: src/features/homepage/page.tsx
-msgid "Explore templates"
-msgstr "Ontdek sjablonen"
-
 #: src/libs/resume/section.tsx
 msgid "Export"
 msgstr "Exporteren"
+
+#: src/features/homepage/page.tsx
+msgid "Export a polished PDF for submission, or a Word file when you need a few more edits."
+msgstr ""
 
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "Export applications"
@@ -2509,13 +2364,17 @@ msgstr "PNG exporteren"
 msgid "Export the resume as a text PDF rather than as an image or a scan."
 msgstr "Exporteer het cv als tekst-PDF in plaats van als afbeelding of scan."
 
+#: src/features/homepage/page.tsx
+msgid "Export, apply, and update the status until you hear back."
+msgstr ""
+
 #: src/features/applications/components/insights-view.tsx
 msgid "Exported pipeline-flow.png"
 msgstr "Geëxporteerde pipeline-flow.png"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Extracted text"
-msgstr "Geëxtraheerde tekst"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Extraction runs only when you click the button."
+msgstr ""
 
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Failed"
@@ -2691,21 +2550,13 @@ msgstr "Het is niet gelukt om uw code te verifiëren. Probeer het opnieuw."
 msgid "Fatal error"
 msgstr "Fatale fout"
 
-#: src/features/homepage/site-footer.tsx
-msgid "Features"
-msgstr "Functies"
-
-#: src/features/homepage/page.tsx
-msgid "Fifteen templates, all free. Pick one you like. You can change the type, color, and layout in the editor."
-msgstr "Vijftien sjablonen, allemaal gratis. Kies er een die je bevalt. Type, kleur en lay-out kun je in de editor wijzigen."
-
 #: src/dialogs/resume/import.tsx
 msgid "File"
 msgstr "Bestand"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Fill fields"
-msgstr "Velden invullen"
+msgid "Fill fields with AI"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Filled in what we could from the posting."
@@ -2723,10 +2574,6 @@ msgstr "Filteren op tags"
 msgid "Find the weak bullet points and rewrite them with stronger outcomes, numbers, scope, and sharper verbs."
 msgstr "Zoek de zwakke opsommingstekens en herschrijf ze met sterkere resultaten, cijfers, omvang en scherpere werkwoorden."
 
-#: src/features/homepage/page.tsx
-msgid "Find us on GitHub"
-msgstr "Vind ons op GitHub"
-
 #: src/libs/locale.ts
 msgid "Finnish"
 msgstr "Fins"
@@ -2738,10 +2585,6 @@ msgstr "Passing"
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Fit to view"
 msgstr "Geschikt om te bekijken"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Fits into your workflow"
-msgstr "Past in je workflow"
 
 #: src/features/ats-checker/messages.ts
 msgid "Flatten the form so the text is part of the page."
@@ -2767,6 +2610,10 @@ msgstr "Vervolgontwerp"
 msgid "Follow-up note"
 msgstr "Vervolgnotitie"
 
+#: src/features/applications/components/today-actions.tsx
+msgid "Follow-ups due"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Family"
 msgstr "Lettertypefamilie"
@@ -2783,25 +2630,14 @@ msgstr "Lettergewicht"
 msgid "Font Weights"
 msgstr "Lettertype-gewichten"
 
-#: src/features/homepage/export-playground.tsx
-msgid "For a few more edits"
-msgstr "Voor nog wat extra bewerkingen"
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/-sections/footer.tsx
+msgid "Footer"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "For example, note which companies you sent this resume to, or links to the job descriptions."
 msgstr "Noteer bijvoorbeeld naar welke bedrijven je dit cv hebt gestuurd, of links naar de vacatureteksten."
-
-#: src/features/homepage/export-playground.tsx
-msgid "For keeping a copy"
-msgstr "Om een kopie te bewaren"
-
-#: src/features/homepage/export-playground.tsx
-msgid "For your next application"
-msgstr "Voor je volgende sollicitatie"
-
-#: src/features/homepage/export-playground.tsx
-msgid "For your words, anywhere"
-msgstr "Voor jouw woorden, overal"
 
 #. Link label to password reset page from login form
 #: src/features/auth/pages/login.tsx
@@ -2825,7 +2661,6 @@ msgstr "Stijlpagina opmaken"
 msgid "Free-form"
 msgstr "Vrije vorm"
 
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/locale.ts
 msgid "French"
 msgstr "Frans"
@@ -2869,21 +2704,10 @@ msgstr "Je PDF wordt gegenereerd..."
 msgid "German"
 msgstr "Duits"
 
-#: src/features/homepage/page.tsx
-msgid "Get a second opinion on your writing, share your resume, and keep track of where you’ve applied. It’s all in one place."
-msgstr "Krijg een second opinion over je schrijfwerk, deel je cv en houd bij waar je hebt gesolliciteerd. Het zit allemaal op één plek."
-
-#: src/features/homepage/page.tsx
-#: src/features/homepage/site-footer.tsx
-msgid "Get Started"
-msgstr "Aan de slag"
-
 #. Authentication provider display name in account settings
 #. Brand name label for GitHub social sign-in button
 #: src/features/auth/components/social-auth.tsx
-#: src/features/homepage/site-footer.tsx
 #: src/features/settings/authentication/components/hooks.tsx
-#: src/routes/_home/-sections/footer.tsx
 msgid "GitHub"
 msgstr "GitHub"
 
@@ -2906,7 +2730,6 @@ msgstr "Ga naar huis"
 
 #: src/components/layout/error-screen.tsx
 #: src/components/layout/not-found-screen.tsx
-#: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Ga naar het dashboard"
 
@@ -2929,11 +2752,6 @@ msgstr "Google"
 #: src/dialogs/resume/sections/education.tsx
 msgid "Grade"
 msgstr "Cijfer"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Graphic Design"
-msgstr "Grafisch ontwerp"
 
 #: src/libs/locale.ts
 msgid "Greek"
@@ -2980,14 +2798,6 @@ msgstr "Titel"
 #: src/libs/locale.ts
 msgid "Hebrew"
 msgstr "Hebreeuws"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "Help translate the app"
-msgstr "Help de app te vertalen"
-
-#: src/features/settings/pages/preferences.tsx
-msgid "Help translate the app to your language"
-msgstr "Help mee de app naar uw taal te vertalen"
 
 #: src/dialogs/api-key/create.tsx
 msgid "Here's your new API key"
@@ -3076,6 +2886,10 @@ msgstr "Home"
 msgid "How do I use the API?"
 msgstr "Hoe gebruik ik de API?"
 
+#: src/features/homepage/page.tsx
+msgid "How it works"
+msgstr ""
+
 #: src/libs/locale.ts
 msgid "Hungarian"
 msgstr "Hongaars"
@@ -3083,10 +2897,6 @@ msgstr "Hongaars"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Hyphenation"
 msgstr "Woordafbreking"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "I design software for teams, from early research to the details people use every day."
-msgstr "Ik ontwerp software voor teams, van vroeg onderzoek tot de details die mensen elke dag gebruiken."
 
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
@@ -3110,6 +2920,10 @@ msgstr "Importeren"
 #: src/features/applications/components/import-applications-sheet.tsx
 msgid "Import {0}"
 msgstr "Importeer {0}"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Import a resume"
+msgstr ""
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/dashboard/resumes/-components/cards/import-card.tsx
@@ -3164,6 +2978,10 @@ msgstr "Importeren…"
 msgid "In {0}"
 msgstr "In {0}"
 
+#: src/features/applications/components/insights-view.tsx
+msgid "in this view"
+msgstr ""
+
 #: src/features/resume/export/download-dialog.tsx
 msgid "Include resume header"
 msgstr "Cv-koptekst opnemen"
@@ -3211,15 +3029,9 @@ msgid "Inspecting page {0} of {1}…"
 msgstr "Pagina {0} van {1} wordt geïnspecteerd…"
 
 #: src/features/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/integrations/route.tsx
 msgid "Integrations"
 msgstr "Integraties"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Interaction design"
-msgstr "Interactieontwerp"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -3227,13 +3039,13 @@ msgstr "Interactieontwerp"
 msgid "Interests"
 msgstr "Interesses"
 
-#: src/features/applications/components/application-detail-sheet.tsx
-msgid "interview"
-msgstr ""
-
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Interview"
 msgstr "Sollicitatiegesprek"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "interview or beyond"
+msgstr ""
 
 #: src/features/applications/components/interview-dialog.tsx
 msgid "Interview scheduled."
@@ -3244,7 +3056,12 @@ msgid "Interview type"
 msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
+#: src/features/applications/components/insights-view.tsx
 msgid "Interviews"
+msgstr ""
+
+#: src/features/applications/components/today-actions.tsx
+msgid "Interviews today"
 msgstr ""
 
 #: src/features/settings/integrations/components/ai-section.tsx
@@ -3288,6 +3105,10 @@ msgstr "Functieomschrijving"
 msgid "Job description (optional)"
 msgstr "Functieomschrijving (optioneel)"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Job description text"
+msgstr ""
+
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Job posting"
 msgstr "Vacature plaatsen"
@@ -3295,6 +3116,10 @@ msgstr "Vacature plaatsen"
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Job posting link"
 msgstr "Link naar vacature"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job search"
+msgstr ""
 
 #: src/features/applications/components/insights-view.tsx
 msgid "Job search pipeline"
@@ -3331,10 +3156,6 @@ msgstr "Uitlijnen als blok"
 msgid "Kannada"
 msgstr "Kannada"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep a backup of your content and settings. Import it into Reactive Resume later."
-msgstr "Bewaar een back-up van je inhoud en instellingen. Importeer die later in Reactive Resume."
-
 #: src/features/ats-checker/messages.ts
 msgid "Keep a single address, so software does not have to guess which one to use."
 msgstr "Houd het bij één adres, zodat software niet hoeft te raden welk adres bedoeld is."
@@ -3347,9 +3168,9 @@ msgstr "Toegang behouden wanneer je de applicatie niet gebruikt."
 msgid "Keep editing"
 msgstr "Doorgaan met bewerken"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep editing in Word, Google Docs, or Pages. Layout may differ from the PDF."
-msgstr "Bewerk verder in Word, Google Docs of Pages. De lay-out kan afwijken van de PDF."
+#: src/features/homepage/page.tsx
+msgid "Keep every position in one board. Move each application across stages as you hear back."
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Keep it under 2.5 MB, usually by removing or shrinking images."
@@ -3367,10 +3188,6 @@ msgstr "Houd cv-inhoud als echte tekst in plaats van als afbeeldingen van tekst.
 msgid "Keep running heads short, or drop them. They repeat in the extracted text too."
 msgstr "Houd kopregels kort, of laat ze weg. Ze herhalen zich ook in de geëxtraheerde tekst."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Keep the company, role, resume, and follow-up date together. Switch between a board, table, and insights in the app."
-msgstr "Houd bedrijf, functie, cv en follow-updatum bij elkaar. Schakel in de app tussen een bord, een tabel en inzichten."
-
 #: src/features/ats-checker/messages.ts
 msgid "Keep them to roughly two lines, so a skim-reader finishes them."
 msgstr "Houd ze op ongeveer twee regels, zodat een snelle lezer ze afmaakt."
@@ -3384,9 +3201,9 @@ msgstr "Beperk je tot twee of drie families. Elk extra lettertype is weer een ka
 msgid "Keep together"
 msgstr "Blijf bij elkaar"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep your layout intact. Ready to send, upload, or print."
-msgstr "Houd je lay-out intact. Klaar om te versturen, uploaden of af te drukken."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Kept your edits to these fields — AI suggestions:"
+msgstr ""
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Key"
@@ -3404,10 +3221,6 @@ msgstr "Sleutelwoorden"
 #: src/libs/locale.ts
 msgid "Khmer"
 msgstr "Khmer"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Know where things stand"
-msgstr "Weet waar alles staat"
 
 #: src/libs/locale.ts
 msgid "Korean"
@@ -3435,7 +3248,6 @@ msgid "Language"
 msgstr "Taal"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Languages"
@@ -3477,10 +3289,6 @@ msgstr "Zet de tekst horizontaal. Gedraaide tekstdelen worden vaak weggelaten of
 msgid "Layout"
 msgstr "Opmaak"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Lead with the work. Add a concrete detail so someone can picture it."
-msgstr "Begin met het werk. Voeg een concreet detail toe zodat iemand zich er iets bij kan voorstellen."
-
 #: src/dialogs/resume/import.tsx
 #: src/hooks/use-form-blocker.tsx
 msgid "Leave"
@@ -3502,9 +3310,10 @@ msgstr "De meeste systemen registreren kandidaten op e-mailadres. Voeg er een to
 msgid "Left Align"
 msgstr "Links uitlijnen"
 
-#: src/features/homepage/site-footer.tsx
-msgid "Legal"
-msgstr "Juridisch"
+#. Import source option for legacy v4 JSON resume backups
+#: src/dialogs/resume/import.tsx
+msgid "Legacy resume backup (JSON)"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Length is not a defect, and there is no universal one-page rule. Keep the pages that earn their place."
@@ -3524,10 +3333,6 @@ msgstr "Niveau"
 #: src/components/level/display.tsx
 msgid "Level {level} of 5"
 msgstr "Niveau {level} van 5"
-
-#: src/components/ui/copyright.tsx
-msgid "Licensed under <0>MIT</0>."
-msgstr "Gelicentieerd onder <0>MIT</0>."
 
 #: src/features/ats-checker/messages.ts
 msgid "Ligatures can drop letters out of words such as \"workflow\"."
@@ -3554,29 +3359,40 @@ msgid "Line Height"
 msgstr "Regelafstand"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Link a Reactive Resume (recommended)"
-msgstr "Koppel een Reactive Resume (aanbevolen)"
+msgid "Link a resume"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Link a Reactive Resume to use AI match scoring and tailoring."
-msgstr "Koppel een cv uit Reactive Resume om AI-matchscores en -afstemming te gebruiken."
+msgid "Link a resume (recommended)"
+msgstr ""
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Link a resume and paste the job description (Edit) to score your fit and tailor a copy."
-msgstr "Koppel een cv en plak de functieomschrijving (Bewerken) om je match te scoren en een kopie op maat te maken."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link a resume to use AI match scoring and tailoring."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link resume"
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link the resume you sent (or plan to send) to unlock AI match scoring and tailoring."
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
-msgid "Linked Reactive Resume"
-msgstr "Gekoppeld Reactive Resume"
+msgid "Linked resume"
+msgstr ""
 
 #. Authentication provider display name in account settings
 #. Brand name label for LinkedIn social sign-in button
 #: src/features/auth/components/social-auth.tsx
-#: src/features/homepage/site-footer.tsx
 #: src/features/settings/authentication/components/hooks.tsx
-#: src/routes/_home/-sections/footer.tsx
 msgid "LinkedIn"
 msgstr "LinkedIn"
+
+#. Import source option for a LinkedIn data export ZIP
+#: src/dialogs/resume/import.tsx
+msgid "LinkedIn (Data Export)"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "LinkedIn, Referral…"
@@ -3620,18 +3436,14 @@ msgstr "Aanbieders laden…"
 msgid "Loading resumes…"
 msgstr "Het laden van cv's…"
 
-#: src/features/homepage/page.tsx
-msgid "Loading the playground…"
-msgstr "Speelplaats wordt geladen…"
-
 #: src/features/command-palette/pages/resumes.tsx
 #: src/routes/agent/-components/thread-sidebar.tsx
 msgid "Loading threads…"
 msgstr "Threads laden…"
 
-#: src/features/homepage/community-stats.tsx
-msgid "Loading total"
-msgstr "Totaal wordt geladen"
+#: src/routes/dashboard/applications/index.tsx
+msgid "Loading your applications…"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/version-history.tsx
 msgid "Loading…"
@@ -3668,23 +3480,18 @@ msgstr "Geen toegang meer tot uw authenticator?"
 msgid "Low impact"
 msgstr "Lage impact"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Made with Reactive Resume"
-msgstr "Gemaakt met Reactive Resume"
-
 #. Layout editor column label for the primary content area
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Main"
 msgstr "Algemeen"
 
-#: src/features/homepage/page.tsx
 #: src/routes/_home/-sections/header.tsx
 msgid "Main navigation"
 msgstr "Hoofdnavigatie"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Make it your own"
-msgstr "Maak het van jezelf"
+#: src/features/homepage/page.tsx
+msgid "Maintain multiple structured resumes, pick a template layout, and edit every section."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Make the experience section about results and cut the vague responsibilities."
@@ -3697,10 +3504,6 @@ msgstr "Zorg dat de zichtbare tekst en de bestemming overeenkomen."
 #: src/features/ats-checker/messages.ts
 msgid "Make them visibly larger, bolder or capitalised."
 msgstr "Maak ze zichtbaar groter, vetter of in hoofdletters."
-
-#: src/features/homepage/page.tsx
-msgid "Make yourself <0/>look good<1/><2>on paper.</2>"
-msgstr "Maak <0/>indruk<1/><2>op papier.</2>"
 
 #: src/libs/locale.ts
 msgid "Malay"
@@ -3744,13 +3547,13 @@ msgstr "Gemiddelde impact"
 msgid "Microsoft Word"
 msgstr "Microsoft Word"
 
+#: src/features/settings/pages/preferences.tsx
+msgid "Missing or imperfect translations? The interface falls back to English for untranslated text."
+msgstr ""
+
 #: src/routes/agent/-components/resume-pane.tsx
 msgid "Missing working resume"
 msgstr "Ontbrekend werk-cv"
-
-#: src/features/homepage/site-footer.tsx
-msgid "MIT License"
-msgstr "MIT-licentie"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Model"
@@ -3759,10 +3562,6 @@ msgstr "Model"
 #: src/features/ats-checker/messages.ts
 msgid "More than one email address appears."
 msgstr "Er komt meer dan één e-mailadres voor."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Moss"
-msgstr "Mos"
 
 #: src/features/ats-checker/messages.ts
 msgid "Most bullets open with filler rather than something you did."
@@ -3802,14 +3601,6 @@ msgstr "Fase verplaatsen"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Move to"
 msgstr "Verplaatsen naar"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Move to interview"
-msgstr "Naar sollicitatiegesprek"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Move to offer"
-msgstr "Naar aanbod"
 
 #: src/features/ats-checker/messages.ts
 msgid "Move your email and phone number to the top of page one."
@@ -3853,6 +3644,14 @@ msgstr "Namen helpen je sleutels uit elkaar te houden, dus noem hem naar waar je
 #: src/features/settings/authentication/components/passkeys.tsx
 msgid "Names help you tell passkeys apart if you register more than one."
 msgstr "Namen helpen je passkeys uit elkaar te houden als je er meer dan één registreert."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a configured, tested AI model."
+msgstr ""
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a linked resume, the job description, and a working AI model."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Nepali"
@@ -3916,12 +3715,12 @@ msgstr "Volgende"
 msgid "Next month"
 msgstr ""
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Next template"
-msgstr "Volgend sjabloon"
-
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "No AI model configured — fields stay fully editable by hand."
 msgstr ""
 
 #: src/routes/builder/$resumeId/-components/ai-assistant.tsx
@@ -4006,10 +3805,6 @@ msgstr "Geen voorspelling of je wordt afgewezen. Geen enkel hulpmiddel kan dat."
 msgid "No prior data"
 msgstr "Geen eerdere gegevens"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "No readable text found. This PDF may contain scanned images. Export a PDF with selectable text and try again."
-msgstr "Geen leesbare tekst gevonden. Deze PDF kan gescande afbeeldingen bevatten. Exporteer een PDF met selecteerbare tekst en probeer het opnieuw."
-
 #: src/routes/_home/ats-checker.tsx
 msgid "No repeating the claim that most resumes are thrown out automatically."
 msgstr "Geen herhaling van de bewering dat de meeste cv's automatisch worden afgewezen."
@@ -4055,10 +3850,6 @@ msgstr "Geen geteste provider"
 msgid "No text could be read from this file."
 msgstr "Er kon geen tekst uit dit bestand worden gelezen."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "No text found"
-msgstr "Geen tekst gevonden"
-
 #: src/routes/agent/-components/thread-sidebar.tsx
 msgid "No threads yet."
 msgstr "Nog geen discussies."
@@ -4086,10 +3877,6 @@ msgstr "Niet in je cv"
 #: src/features/ats-checker/report/report-view.tsx
 msgid "Not scored"
 msgstr "Niet gescoord"
-
-#: src/features/resume/stylesheet/editor.tsx
-msgid "Not sure what to write?"
-msgstr "Weet je niet wat je moet schrijven?"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Note"
@@ -4126,9 +3913,13 @@ msgstr "Geen suggesties."
 msgid "Odia"
 msgstr "Odia"
 
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Offer"
 msgstr "Aanbod"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "Offers"
+msgstr ""
 
 #: src/features/settings/pages/api-keys.tsx
 msgid "Once deleted, the key can no longer access your data. This cannot be undone."
@@ -4160,6 +3951,10 @@ msgstr "Alleen de eerste {MAX_IMPORT} rijen worden in één keer geïmporteerd, 
 msgid "Only the first pages were checked."
 msgstr "Alleen de eerste pagina's zijn gecontroleerd."
 
+#: src/features/applications/labels.ts
+msgid "Onsite interview"
+msgstr ""
+
 #. Resume card context menu action to open the resume editor
 #. Resume card dropdown action to open the resume editor
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -4174,10 +3969,6 @@ msgstr "AI-agent openen"
 #: src/routes/builder/$resumeId/-components/ai-assistant.tsx
 msgid "Open AI assistant"
 msgstr "AI-assistent openen"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Open design library"
-msgstr "Designbibliotheek openen"
 
 #. Button label to open the user's default email app
 #: src/features/auth/pages/forgot-password.tsx
@@ -4196,31 +3987,32 @@ msgstr "Openen in builder"
 msgid "Open Integrations Settings"
 msgstr "Instellingen integraties openen"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Open template PDF"
-msgstr "Sjabloon-PDF openen"
-
 #: src/features/ats-checker/messages.ts
 msgid "Open the exported file and confirm you can select and copy every part of it."
 msgstr "Open het geëxporteerde bestand en controleer of je elk onderdeel ervan kunt selecteren en kopiëren."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Open the full ATS checker"
-msgstr "Volledige ATS-checker openen"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open the tailored resume"
+msgstr ""
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open this application's edit form to add the missing details."
+msgstr ""
+
+#: src/features/homepage/page.tsx
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/-sections/footer.tsx
+#: src/routes/_home/-sections/header.tsx
+msgid "Open workspace"
+msgstr ""
 
 #: src/features/ats-checker/tool.tsx
 msgid "Opening the file…"
 msgstr "Bestand wordt geopend…"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Opens in a new tab"
-msgstr "Opent in een nieuw tabblad"
-
-#: src/features/homepage/site-footer.tsx
-#: src/features/resume/stylesheet/editor.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "opens in new tab"
-msgstr "opent in nieuw tabblad"
+#: src/features/homepage/page.tsx
+msgid "Optional AI assistance"
+msgstr ""
 
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Optional note for the agent"
@@ -4258,6 +4050,10 @@ msgstr "Organisatie"
 #: src/components/input/rich-input.tsx
 msgid "Original table formatting is preserved. This content is read-only because it cannot be edited safely."
 msgstr "De oorspronkelijke tabelopmaak blijft behouden. Deze inhoud is alleen-lezen omdat die niet veilig bewerkt kan worden."
+
+#: src/features/applications/labels.ts
+msgid "Other interview"
+msgstr ""
 
 #: src/features/ats-checker/report/score-header.tsx
 msgid "out of 100"
@@ -4313,7 +4109,6 @@ msgstr "Passleutels"
 #: src/features/auth/pages/login.tsx
 #: src/features/auth/pages/register.tsx
 #: src/features/auth/pages/resume-password.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/features/resume/builder/password-dialog.tsx
 #: src/features/settings/authentication/components/hooks.tsx
 #: src/features/settings/authentication/components/password.tsx
@@ -4332,13 +4127,13 @@ msgstr "Wachtwoordbeveiliging is uitgeschakeld."
 msgid "Password protection has been enabled."
 msgstr "Wachtwoordbeveiliging is ingeschakeld."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Password required"
-msgstr "Wachtwoord vereist"
-
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Passwords do not match."
 msgstr "De wachtwoorden komen niet overeen."
+
+#: src/features/applications/components/insights-view.tsx
+msgid "past saved"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Paste a posting to see which of its terms already appear in your resume."
@@ -4355,10 +4150,6 @@ msgstr "Plak hier de volledige functieomschrijving…"
 #: src/features/ats-checker/tool.tsx
 msgid "Paste the posting to see which of its terms already appear in your resume."
 msgstr "Plak de vacature om te zien welke termen ervan al in je cv voorkomen."
-
-#: src/features/applications/components/application-form-sheet.tsx
-msgid "Pasting fills the fields automatically."
-msgstr "Plakken vult de velden automatisch in."
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Patch applied"
@@ -4384,17 +4175,13 @@ msgstr "Patch teruggedraaid"
 msgid "Patch rolled back."
 msgstr "Patch is teruggedraaid."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Pause data flow animation"
-msgstr "Animatie van gegevensstroom pauzeren"
+#: src/features/homepage/page.tsx
+msgid "PDF / DOCX export"
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "PDF snapshot attached to the application."
 msgstr "PDF-momentopname bij de sollicitatie gevoegd."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "PDF text layer"
-msgstr "PDF-tekstlaag"
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "PDFs already attached to applications will remain available."
@@ -4429,10 +4216,6 @@ msgstr "Kies een gesprek in de zijbalk, of start een nieuwe thread om aan een co
 msgid "Pick a format for your resume or cover letter."
 msgstr "Kies een formaat voor je cv of sollicitatiebrief."
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Pick a language. See it on the page."
-msgstr "Kies een taal. Zie deze op de pagina."
-
 #: src/components/input/icon-picker.tsx
 msgid "Pick an icon"
 msgstr "Kies een pictogram"
@@ -4461,21 +4244,9 @@ msgstr "Gebruik bij voorkeur een gangbare kop, zoals „Werkervaring” of „Op
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Platte tekst, voor AI-tools en snelle bewerkingen."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Play data flow animation"
-msgstr "Animatie van gegevensstroom afspelen"
-
-#: src/components/ui/donation-toast.tsx
-msgid "Please support the project"
-msgstr "Steun dit project alstublieft."
-
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
 msgstr "Upload een PDF-bestand."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Plum"
-msgstr "Pruim"
 
 #: src/libs/locale.ts
 msgid "Polish"
@@ -4518,9 +4289,9 @@ msgstr "Voorkeuren"
 msgid "Prepare a conservative patch that improves clarity without changing the story of my career."
 msgstr "Maak een behoudende aanpassing die de duidelijkheid verbetert zonder het verhaal van mijn loopbaan te veranderen."
 
-#: src/features/homepage/export-playground.tsx
-msgid "Preparing sample…"
-msgstr "Voorbeeld wordt voorbereid…"
+#: src/features/homepage/page.tsx
+msgid "Prepare a resume and link it to the position."
+msgstr ""
 
 #: src/features/resume/export/use-resume-export.ts
 msgid "Preparing your resume for printing..."
@@ -4563,10 +4334,6 @@ msgstr "Vorige"
 msgid "Previous month"
 msgstr ""
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Previous template"
-msgstr "Vorig sjabloon"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Primaire kleur"
@@ -4574,28 +4341,6 @@ msgstr "Primaire kleur"
 #: src/features/ats-checker/messages.ts
 msgid "Print or export the form to a flat PDF before sending it."
 msgstr "Druk het formulier af of exporteer het naar een platte PDF voordat je het verzendt."
-
-#: src/features/homepage/site-footer.tsx
-msgid "Privacy Policy"
-msgstr "Privacybeleid"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Private"
-msgstr "Privé"
-
-#: src/features/homepage/site-footer.tsx
-msgid "Product"
-msgstr "Product"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Product designer"
-msgstr "Productontwerper"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Product strategy"
-msgstr "Productstrategie"
 
 #: src/dialogs/resume/sections/skill.tsx
 msgid "Proficiency"
@@ -4618,7 +4363,6 @@ msgid "Progress Bar"
 msgstr "Voortgangsbalk"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Projects"
@@ -4627,11 +4371,6 @@ msgstr "Projecten"
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Protect your resume with a password"
 msgstr "Bescherm je cv met een wachtwoord"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Prototyping"
-msgstr "Prototyping"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Provider"
@@ -4644,10 +4383,6 @@ msgstr "Verbinding met provider geverifieerd."
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Provider model"
 msgstr "Aanbiedermodel"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Public"
-msgstr "Openbaar"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -4662,6 +4397,11 @@ msgstr "Uitgever"
 #: src/features/ats-checker/messages.ts
 msgid "Put a plain email address near the top of the first page. It is what most systems file you under."
 msgstr "Zet een eenvoudig e-mailadres bovenaan de eerste pagina. De meeste systemen identificeren je hiermee."
+
+#: src/features/homepage/page.tsx
+#: src/routes/_home/-sections/footer.tsx
+msgid "Put jobs, resumes, and application progress in one place."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Raw JSON"
@@ -4695,56 +4435,21 @@ msgstr "Exporteer opnieuw met ingesloten lettertypen, open het bestand en contro
 msgid "Re-score"
 msgstr "Opnieuw scoren"
 
-#: src/routes/_home/-sections/header.tsx
-msgid "Reactive Resume - Go to homepage"
-msgstr "Reactive Resume - Ga naar de startpagina"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Re-score with current content"
+msgstr ""
 
-#. Import source option for current Reactive Resume JSON format
-#: src/dialogs/resume/import.tsx
-msgid "Reactive Resume (JSON)"
-msgstr "Reactief cv (JSON)"
-
-#: src/features/homepage/page.tsx
-msgid "Reactive Resume is free and open source. Amruth and a community of contributors keep it running. If you’d like to support the work, donations help cover hosting and development."
-msgstr "Reactive Resume is gratis en open source. Amruth en een community van bijdragers houden het draaiende. Wil je het werk steunen? Donaties helpen bij het bekostigen van hosting en ontwikkeling."
-
-#: src/components/ui/donation-toast.tsx
-msgid "Reactive Resume is free and open source. If it has helped you, please consider donating."
-msgstr "Reactive Resume is gratis en open source. Als het je geholpen heeft, overweeg dan een donatie."
-
-#. App version label in footer; includes semantic version variable
-#: src/components/ui/copyright.tsx
-msgid "Reactive Resume v<0>{__APP_VERSION__}</0>"
-msgstr "Reactief hervatten v<0>{__APP_VERSION__}</0>"
-
-#. Import source option for legacy Reactive Resume v4 JSON format
-#: src/dialogs/resume/import.tsx
-msgid "Reactive Resume v4 (JSON)"
-msgstr "Reactieve cv v4 (JSON)"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read again"
-msgstr "Opnieuw lezen"
+#: src/features/applications/components/insights-view.tsx
+msgid "reached screening"
+msgstr ""
 
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Read an attachment"
 msgstr "Bijlage gelezen"
 
-#: src/features/resume/stylesheet/editor.tsx
-msgid "Read the Applying Custom Styles guide."
-msgstr "Lees de handleiding 'Aangepaste stijlen toepassen'."
-
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Read the resume"
 msgstr "Cv gelezen"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read the sample to see its text without the layout. Or try a PDF of your own."
-msgstr "Lees het voorbeeld om de tekst zonder de lay-out te zien. Of probeer een eigen PDF."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read this resume"
-msgstr "Lees dit cv"
 
 #: src/features/auth/pages/consent.tsx
 msgid "Read your email address."
@@ -4758,27 +4463,15 @@ msgstr "Je profielgegevens lezen."
 msgid "Readability"
 msgstr "Leesbaarheid"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading locally"
-msgstr "Lokaal lezen"
-
 #. placeholder {0}: progress.page
 #. placeholder {1}: progress.pageCount
 #: src/features/ats-checker/tool.tsx
 msgid "Reading page {0} of {1}…"
 msgstr "Pagina {0} van {1} wordt gelezen…"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading PDF"
-msgstr "PDF lezen"
-
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Reading the posting…"
 msgstr "Vacature lezen…"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading this PDF in your browser. Your file is not uploaded."
-msgstr "Deze PDF wordt in je browser gelezen. Je bestand wordt niet geüpload."
 
 #: src/features/resume/stylesheet/status.tsx
 msgid "Ready to activate"
@@ -4791,10 +4484,6 @@ msgstr "Klaar om te activeren, met fouten"
 #: src/features/resume/stylesheet/status.tsx
 msgid "Ready to activate with warnings"
 msgstr "Klaar voor activering met waarschuwingen"
-
-#: src/features/homepage/page.tsx
-msgid "Ready to put your name on it?"
-msgstr "Klaar om er je naam op te zetten?"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/features/cover-letters/editor.tsx
@@ -4831,9 +4520,17 @@ msgstr "Verwezen door…, dingen om te benadrukken, enz."
 msgid "Register New Device"
 msgstr "Nieuw apparaat registreren"
 
-#: src/features/homepage/site-footer.tsx
+#: src/features/applications/labels.ts
+msgid "Rejected"
+msgstr ""
+
+#: src/components/ui/copyright.tsx
 msgid "Released under the <0>MIT License</0>."
 msgstr "Uitgebracht onder de <0>MIT-licentie</0>."
+
+#: src/features/homepage/site-footer.tsx
+msgid "Released under the <0>MIT License</0>. v<1>{__APP_VERSION__}</1>"
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Reload latest version"
@@ -4921,19 +4618,6 @@ msgstr "Vervang tabellen door gewone alinea's en lijsten. Cellen worden geëxtra
 msgid "Replace the attached cover letter?"
 msgstr "De bijgevoegde sollicitatiebrief vervangen?"
 
-#: src/features/homepage/page.tsx
-msgid "Report a bug"
-msgstr "Een bug melden"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Report a Bug"
-msgstr "Meld een bug"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Report an issue"
-msgstr "Een probleem melden"
-
 #: src/features/settings/pages/profile.tsx
 msgid "Resend verification email"
 msgstr "Verificatie-e-mail opnieuw verzenden"
@@ -4947,8 +4631,6 @@ msgid "Reserve capitals for short headings. They slow reading and can defeat cas
 msgstr "Gebruik hoofdletters alleen voor korte kopjes. Ze vertragen het lezen en kunnen hoofdlettergevoelig zoeken verstoren."
 
 #. Destructive confirmation button label when resetting a resume section
-#: src/features/homepage/ats-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Reset"
 msgstr "Resetten"
@@ -4966,14 +4648,9 @@ msgstr "Reset uw wachtwoord"
 msgid "Resetting your password..."
 msgstr "Uw wachtwoord wordt gereset..."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Resources"
-msgstr "Bronnen"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Responsible for working on the design system and helping other teams with their designs."
-msgstr "Verantwoordelijk voor het werken aan het designsysteem en voor het helpen van andere teams met hun ontwerpen."
+#: src/features/applications/components/insights-view.tsx
+msgid "Response rate"
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Restore"
@@ -4988,15 +4665,20 @@ msgid "Restore this version?"
 msgstr "Deze versie herstellen?"
 
 #: src/features/applications/components/application-form-sheet.tsx
+msgid "Restored your unsaved changes (kept for this browser session only)."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/resume/export/download-dialog.tsx
 #: src/routes/agent/-components/resume-pane.tsx
 #: src/routes/agent/$threadId.tsx
 msgid "Resume"
 msgstr "Cv"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Resume attached"
-msgstr "Cv toegevoegd"
+#. Import source option for this app's JSON resume backup format
+#: src/dialogs/resume/import.tsx
+msgid "Resume backup (JSON)"
+msgstr ""
 
 #: src/features/resume/preview/resume-accessible-text.tsx
 msgid "Resume content"
@@ -5005,6 +4687,10 @@ msgstr "Inhoud van het cv"
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Resume edit"
 msgstr "Cv-bewerking"
+
+#: src/features/homepage/page.tsx
+msgid "Resume editing"
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Resume file"
@@ -5019,10 +4705,6 @@ msgstr "Link naar cv gekopieerd naar klembord."
 msgid "Resume linked"
 msgstr "CV gekoppeld"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Resume not found"
-msgstr "Cv niet gevonden"
-
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Resume options"
 msgstr "Cv-opties"
@@ -5031,9 +4713,10 @@ msgstr "Cv-opties"
 msgid "Resume patch"
 msgstr "Cv-patch"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Resume templates"
-msgstr "Cv-sjablonen"
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/ats-checker.tsx
+msgid "Resume readability check"
+msgstr ""
 
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Resume templates for different professions and tastes. Pick the one that suits you."
@@ -5041,8 +4724,6 @@ msgstr "Cv-sjablonen voor verschillende beroepen en smaken. Kies het sjabloon da
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/features/command-palette/pages/resumes.tsx
-#: src/features/homepage/community-stats.tsx
-#: src/features/homepage/languages-showcase.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
@@ -5051,8 +4732,14 @@ msgstr "Cv's"
 #: src/features/cover-letters/editor-dialog.tsx
 #: src/features/cover-letters/library.tsx
 #: src/routes/agent/-components/agent-chat.tsx
+#: src/routes/dashboard/applications/index.tsx
 msgid "Retry"
 msgstr "Opnieuw proberen"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Review AI settings"
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Review edits"
@@ -5081,10 +4768,6 @@ msgstr "Herschrijf het overzicht voor een functie als senior engineering manager
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Rewrite this resume for a startup founder moving into a product lead role, and show the business impact."
 msgstr "Herschrijf dit cv voor een startup-oprichter die doorgroeit naar een rol als product lead, en laat de zakelijke impact zien."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Rhyhorn sample resume"
-msgstr "Rhyhorn voorbeeld-cv"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -5142,26 +4825,6 @@ msgstr "Salaris"
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Salary range"
 msgstr "Salarisbereik"
-
-#: src/features/homepage/page.tsx
-msgid "Same story.<0/>A different look."
-msgstr "Hetzelfde verhaal.<0/>Een andere uitstraling."
-
-#: src/features/homepage/export-playground.tsx
-msgid "Sample download format"
-msgstr "Downloadformaat van het voorbeeld"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Sample resume"
-msgstr "Voorbeeld-cv"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Sample resume for {name}"
-msgstr "Voorbeeld-cv voor {name}"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Sans"
-msgstr "Sans"
 
 #. Passkey rename prompt confirm action in authentication settings
 #: src/features/applications/components/application-detail-sheet.tsx
@@ -5224,6 +4887,7 @@ msgstr "Sla de wijzigingen in het cv op voordat je de inhoud of opmaak ervan kop
 msgid "Save the file with every page upright."
 msgstr "Sla het bestand op met elke pagina rechtop."
 
+#: src/features/applications/labels.ts
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Saved"
 msgstr "Opgeslagen"
@@ -5235,10 +4899,6 @@ msgstr "Het opslaan duurt langer dan verwacht. Je wijzigingen staan er nog."
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Saving…"
 msgstr "Opslaan…"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Say what you actually did."
-msgstr "Vertel wat je echt hebt gedaan."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Scan the QR code below with your preferred authenticator app. You can also copy the secret below and paste it into your app."
@@ -5272,6 +4932,14 @@ msgstr "Scoor mijn pasvorm"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Scoring your fit…"
 msgstr "Jouw pasvorm scoren…"
+
+#: src/features/applications/labels.ts
+msgid "Screening"
+msgstr ""
+
+#: src/features/applications/labels.ts
+msgid "Screening call"
+msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Search"
@@ -5338,18 +5006,6 @@ msgstr "Secties"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "See how this resume matches the posting"
 msgstr "Bekijk hoe dit CV overeenkomt met het bericht"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "See how to connect"
-msgstr "Zie hoe je verbinding maakt"
-
-#: src/features/homepage/page.tsx
-msgid "See what<0/>software reads."
-msgstr "Zie wat<0/>software leest."
-
-#: src/features/homepage/page.tsx
-msgid "See whether your PDF has readable text. Read a sample or try your own PDF. Everything runs in your browser, so your file stays with you."
-msgstr "Controleer of je PDF leesbare tekst bevat. Lees een voorbeeld of probeer je eigen PDF. Alles draait in je browser, dus je bestand blijft bij jou."
 
 #. placeholder {0}: app.company
 #: src/features/applications/components/table-view.tsx
@@ -5421,11 +5077,6 @@ msgstr "Stuurt de tekst die al uit je PDF is geëxtraheerd naar de AI-provider d
 msgid "Sends the text already extracted from your PDF, plus the job description you pasted, to the AI provider you choose below. The PDF file itself is never uploaded."
 msgstr "Stuurt de tekst die al uit je PDF is geëxtraheerd, plus de functieomschrijving die je hebt geplakt, naar de AI-provider die je hieronder kiest. Het PDF-bestand zelf wordt nooit geüpload."
 
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Senior product designer"
-msgstr "Senior productontwerper"
-
 #: src/components/input/rich-input.tsx
 msgid "Separator"
 msgstr "Scheidingsteken"
@@ -5433,10 +5084,6 @@ msgstr "Scheidingsteken"
 #: src/libs/locale.ts
 msgid "Serbian"
 msgstr "Servisch"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Serif"
-msgstr "Serif"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Set a password if you want only people who know it to open the public URL."
@@ -5474,7 +5121,6 @@ msgstr "Schakel een AI-provider in om dit cv te bespreken en automatisch bewerki
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Instellingen"
 
@@ -5489,10 +5135,6 @@ msgstr "Schaduwbreedte"
 #: src/libs/resume/section.tsx
 msgid "Sharing"
 msgstr "Delen"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Sharing preview"
-msgstr "Voorbeeld van delen"
 
 #: src/features/resume/builder/section-recovery.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
@@ -5509,11 +5151,6 @@ msgstr "Laat {0} meer zien"
 #: src/features/resume/builder/section-recovery.tsx
 msgid "Show {title} section"
 msgstr "Sectie {title} weergeven"
-
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "Show all languages"
-msgstr "Alle talen tonen"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Show Download Buttons"
@@ -5660,9 +5297,6 @@ msgid "Size"
 msgstr "Grootte"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Skills"
@@ -5691,6 +5325,10 @@ msgstr "Sloveens"
 #: src/dialogs/resume/index.tsx
 msgid "Slug"
 msgstr "Korte naam"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "so far"
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "Some application systems require one before you can submit."
@@ -5732,10 +5370,6 @@ msgstr "Sommige tekst valt buiten de pagina."
 msgid "Some text is rotated."
 msgstr "Sommige tekst is gedraaid."
 
-#: src/features/homepage/community-stats.tsx
-msgid "Some totals are unavailable right now."
-msgstr "Sommige totalen zijn op dit moment niet beschikbaar."
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Something else…"
 msgstr "Iets anders…"
@@ -5747,10 +5381,6 @@ msgstr "Er is iets misgegaan."
 #: src/features/ats-checker/tool.tsx
 msgid "Something went wrong while reading that file. Please try again."
 msgstr "Er is iets misgegaan bij het lezen van dat bestand. Probeer het opnieuw."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Something went wrong while reading this file. Please try again."
-msgstr "Er is iets misgegaan bij het lezen van dit bestand. Probeer het opnieuw."
 
 #: src/features/auth/pages/error.tsx
 msgid "Something went wrong while signing you in. Please try again."
@@ -5782,12 +5412,6 @@ msgstr "Sorteren op…"
 msgid "Source"
 msgstr "Bron"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Source Code"
-msgstr "Broncode"
-
 #. placeholder {0}: operation.from
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Source: {0}"
@@ -5813,28 +5437,11 @@ msgstr "Spaans"
 msgid "Spell the month, as in \"Mar 2022\"."
 msgstr "Schrijf de maand als naam, zoals „mrt. 2022”."
 
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Sponsors"
-msgstr "Sponsors"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Sponsorships"
-msgstr "Sponsoring"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Spread pages"
-msgstr "Pagina's uitspreiden"
-
 #. Preset button for setting picture aspect ratio to square
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Square"
 msgstr "Vierkant"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Stack pages"
-msgstr "Pagina's stapelen"
 
 #: src/features/applications/components/application-form-sheet.tsx
 #: src/features/applications/components/table-view.tsx
@@ -5845,15 +5452,6 @@ msgstr "Stadium"
 msgid "Stage date"
 msgstr "Fasedatum"
 
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub (opens in new tab)"
-msgstr "Geef ons een ster op GitHub (opent in nieuw tabblad)"
-
-#. placeholder {0}: starCount.toLocaleString()
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub, currently {0} stars (opens in new tab)"
-msgstr "Geef ons een ster op GitHub, momenteel {0} sterren (opent in nieuw tabblad)"
-
 #: src/routes/agent/$threadId.tsx
 msgid "Start a new thread"
 msgstr "Start een nieuw onderwerp"
@@ -5861,10 +5459,6 @@ msgstr "Start een nieuw onderwerp"
 #: src/routes/agent/-components/new-thread-setup.tsx
 msgid "Start a thread"
 msgstr "Start een discussie"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Start again"
-msgstr "Opnieuw beginnen"
 
 #: src/dialogs/resume/index.tsx
 msgid "Start building your resume by giving it a name."
@@ -5882,6 +5476,10 @@ msgstr "De begindatum moet op of vóór de einddatum liggen."
 #: src/features/ats-checker/messages.ts
 msgid "Start each one with a concrete verb: built, led, reduced, migrated."
 msgstr "Begin elke regel met een concreet werkwoord: gebouwd, geleid, verminderd, gemigreerd."
+
+#: src/features/homepage/page.tsx
+msgid "Start managing your job search"
+msgstr ""
 
 #: src/routes/agent/index.tsx
 msgid "Start new thread"
@@ -5908,10 +5506,6 @@ msgstr "Statistieken"
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
 msgstr "Blijven"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Stays in your browser"
-msgstr "Blijft in je browser"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Still waiting for {provider}… {elapsedSeconds}s"
@@ -5949,11 +5543,6 @@ msgstr "Opmaak en afzendergegevens worden gekopieerd. Latere wijzigingen in het 
 msgid "Styling and sender details refreshed from the selected resume."
 msgstr "Opmaak en afzendergegevens zijn vernieuwd vanuit het geselecteerde cv."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Subreddit"
-msgstr "Subreddit"
-
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Suggestions"
 msgstr "Suggesties"
@@ -5961,20 +5550,11 @@ msgstr "Suggesties"
 #. Fallback title for a custom summary item in resume builder when content is empty
 #. Fallback title for a custom summary item in resume builder when content is unavailable
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 msgid "Summary"
 msgstr "Overzicht"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Support the app by doing what you can!"
-msgstr "Steun de app door te doen wat u kunt!"
-
-#: src/features/homepage/page.tsx
-msgid "Support the project"
-msgstr "Steun het project"
 
 #: src/features/ats-checker/messages.ts
 #: src/libs/resume/ats.ts
@@ -6020,10 +5600,6 @@ msgstr "Tags kunnen worden gebruikt om uw cv te categoriseren op trefwoorden."
 msgid "Tags give software an explicit reading order. Enable them when exporting, if your tool offers it."
 msgstr "Tags geven software een expliciete leesvolgorde. Schakel ze in bij het exporteren, als je tool dit biedt."
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Tailor my resume"
-msgstr "Tailor mijn CV"
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Tailor this resume to a product manager job description, and emphasize roadmap ownership, stakeholder communication, and measurable launch outcomes."
 msgstr "Stem dit cv af op een vacaturetekst voor een product manager, en benadruk verantwoordelijkheid voor de roadmap, communicatie met stakeholders en meetbare launchresultaten."
@@ -6032,13 +5608,13 @@ msgstr "Stem dit cv af op een vacaturetekst voor een product manager, en benadru
 msgid "Tailoring failed."
 msgstr "Aanpassen mislukt."
 
-#: src/features/homepage/page.tsx
-msgid "Take it<0/>with you."
-msgstr "Neem het<0/>mee."
-
 #: src/libs/locale.ts
 msgid "Tamil"
 msgstr "Tamil"
+
+#: src/features/applications/labels.ts
+msgid "Technical interview"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Telugu"
@@ -6053,10 +5629,6 @@ msgstr "Sjabloon"
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Template Gallery"
 msgstr "Sjabloongalerij"
-
-#: src/features/homepage/site-footer.tsx
-msgid "Templates"
-msgstr "Sjablonen"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Test"
@@ -6079,10 +5651,6 @@ msgstr "Tekstuitlijning"
 msgid "Text Color"
 msgstr "Tekstkleur"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Text extracted"
-msgstr "Tekst geëxtraheerd"
-
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Tekst is teken voor teken geschreven."
@@ -6094,10 +5662,6 @@ msgstr "Tekst staat in het kop- of voettekstgebied."
 #: src/libs/locale.ts
 msgid "Thai"
 msgstr "Thais"
-
-#: src/features/homepage/page.tsx
-msgid "Thank you for helping keep it free."
-msgstr "Dank je wel dat je helpt het gratis te houden."
 
 #: src/features/ats-checker/tool.tsx
 msgid "That file could not be read as a PDF."
@@ -6129,12 +5693,12 @@ msgid "The agent needs your input."
 msgstr "De agent heeft uw input nodig."
 
 #: src/features/settings/pages/api-keys.tsx
-msgid "The API documentation shows how to connect Reactive Resume to your own applications. It covers the endpoints, the request format, and authentication."
-msgstr "De API-documentatie laat zien hoe je Reactive Resume koppelt aan je eigen applicaties. Ze behandelt de endpoints, het formaat van verzoeken en authenticatie."
-
-#: src/features/settings/pages/api-keys.tsx
 msgid "The API key has been deleted."
 msgstr "De API-sleutel is verwijderd."
+
+#: src/features/settings/pages/api-keys.tsx
+msgid "The API specification describes how to connect this workspace to your own applications. It covers the endpoints, the request format, and authentication."
+msgstr ""
 
 #: src/features/auth/pages/error.tsx
 msgid "The application that sent you here made an invalid authorization request."
@@ -6152,6 +5716,10 @@ msgstr "De diepgaande controle kon niet worden voltooid. Probeer het opnieuw."
 #: src/dialogs/resume/import.tsx
 msgid "The imported file could not be parsed into a valid resume."
 msgstr "Het geïmporteerde bestand kon niet worden geparseerd in een geldige cv."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "The job description has been pasted in"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "The order the text is stored in disagrees badly with the order it reads in."
@@ -6193,10 +5761,6 @@ msgstr "De provider gaf een beoordeling terug die niet kon worden gelezen. Probe
 msgid "The provider's response could not be verified. Please start again."
 msgstr "Het antwoord van de provider kon niet worden geverifieerd. Begin opnieuw."
 
-#: src/features/homepage/page.tsx
-msgid "The rest of your<0/>job search, too."
-msgstr "Ook de rest van je<0/>baanzending."
-
 #: src/features/resume/preview/preview.browser.tsx
 msgid "The resume preview could not be updated. The last valid preview is still shown."
 msgstr "De cv-preview kon niet worden bijgewerkt. De laatst geldige preview wordt nog steeds weergegeven."
@@ -6236,10 +5800,6 @@ msgstr "Thema"
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Then, enter the 6 digit code that the app provides to continue."
 msgstr "Voer vervolgens de 6-cijferige code in die de app geeft om door te gaan."
-
-#: src/features/homepage/page.tsx
-msgid "There are other ways to pitch in."
-msgstr "Er zijn nog andere manieren om bij te dragen."
 
 #: src/features/ats-checker/messages.ts
 msgid "There is a gap between two dated roles."
@@ -6295,8 +5855,8 @@ msgid "This cover letter changed elsewhere. Your edits are still here. Reload th
 msgstr "Deze sollicitatiebrief is elders gewijzigd. Je bewerkingen staan er nog. Laad de nieuwste versie opnieuw voordat je weer opslaat."
 
 #: src/dialogs/api-key/create.tsx
-msgid "This creates a new API key, which lets other programs read and change your resume data through the Reactive Resume API."
-msgstr "Hiermee maak je een nieuwe API-sleutel aan, waarmee andere programma's je cv-gegevens via de Reactive Resume API kunnen lezen en wijzigen."
+msgid "This creates a new API key, which lets other programs read and change your resume data through this workspace's API."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This date will not be read correctly."
@@ -6338,10 +5898,6 @@ msgstr "Dit bestand bevat onzichtbaar getekende tekst."
 msgid "This file contains white-on-white text."
 msgstr "Dit bestand bevat wit-op-wit tekst."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "This file could not be read as a PDF. Export a new copy and try again."
-msgstr "Dit bestand kon niet als PDF worden gelezen. Exporteer een nieuwe kopie en probeer het opnieuw."
-
 #: src/features/ats-checker/messages.ts
 msgid "This file declares no language."
 msgstr "Dit bestand geeft geen taal op."
@@ -6377,10 +5933,6 @@ msgstr "Deze link mist het protocol."
 #: src/features/ats-checker/messages.ts
 msgid "This is a PDF Portfolio: the visible page is only a cover."
 msgstr "Dit is een PDF-portfolio: de zichtbare pagina is slechts een omslag."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "This is a sample edit. In the app, connect your own AI provider. Turn on Review edits to approve changes before they’re applied."
-msgstr "Dit is een voorbeeldbewerking. Verbind in de app je eigen AI-provider. Schakel Review-bewerkingen in om wijzigingen goed te keuren voordat ze worden toegepast."
 
 #: src/dialogs/resume/index.tsx
 msgid "This is a URL-friendly name for your resume."
@@ -6432,13 +5984,8 @@ msgid "This PDF has no readable text. It is likely a scan, so there is nothing t
 msgstr "Deze PDF bevat geen leesbare tekst. Het is waarschijnlijk een scan, dus er valt niets te importeren."
 
 #: src/features/ats-checker/tool.tsx
-#: src/features/homepage/ats-playground.tsx
 msgid "This PDF is password protected. Save an unprotected copy and try again."
 msgstr "Deze PDF is met een wachtwoord beveiligd. Sla een onbeveiligde kopie op en probeer het opnieuw."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "This PDF is too large. Choose a file smaller than 25 MB."
-msgstr "Deze PDF is te groot. Kies een bestand kleiner dan 25 MB."
 
 #: src/libs/resume/ats.ts
 msgid "This period ends before it starts."
@@ -6614,17 +6161,13 @@ msgstr "Tokens: {total} ({cached} in cache)"
 msgid "Tomorrow"
 msgstr ""
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Tools"
-msgstr "Hulpmiddelen"
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Tools & settings"
+msgstr ""
 
-#: src/features/homepage/community-stats.tsx
-msgid "Total unavailable"
-msgstr "Totaal niet beschikbaar"
-
-#: src/features/homepage/community-stats.tsx
-msgid "Totals are refreshed periodically."
-msgstr "Totalen worden regelmatig ververst."
+#: src/features/applications/components/insights-view.tsx
+msgid "Total applications"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Track a job you're applying to and link the resume you sent."
@@ -6638,28 +6181,9 @@ msgstr "Volg uw eerste sollicitatie"
 msgid "Track your resume's views and downloads"
 msgstr "Houd de weergaven en downloads van uw cv bij"
 
-#: src/features/homepage/page.tsx
-msgid "Translate the app"
-msgstr "Vertaal de app"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Translations"
-msgstr "Vertalingen"
-
 #: src/components/layout/error-screen.tsx
-#: src/features/homepage/ats-playground.tsx
 msgid "Try again"
 msgstr "Probeer het opnieuw"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Try the settings to see what visitors can access. When you create your resume, you decide how to share it."
-msgstr "Probeer de instellingen om te zien waar bezoekers toegang toe hebben. Wanneer je je cv maakt, bepaal jij hoe je het deelt."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Try your PDF"
-msgstr "Probeer je eigen PDF"
 
 #: src/libs/locale.ts
 msgid "Turkish"
@@ -6742,10 +6266,6 @@ msgstr "Typ \"{CONFIRMATION_TEXT}\" om te bevestigen"
 msgid "Type a command or search…"
 msgstr "Typ een commando of zoek…"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Typeface"
-msgstr "Lettertype"
-
 #: src/libs/resume/section.tsx
 msgid "Typography"
 msgstr "Typografie"
@@ -6764,7 +6284,6 @@ msgid "Underline"
 msgstr "Onderstrepen"
 
 #: src/dialogs/resume/template/gallery.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Undo"
 msgstr "Ongedaan maken"
@@ -6907,8 +6426,8 @@ msgid "Upload .csv"
 msgstr ".csv uploaden"
 
 #: src/routes/_home/ats-checker.tsx
-msgid "Upload a resume and see what an applicant tracking system reads from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
-msgstr "Upload een cv en zie wat een applicant tracking system eruit leest. Alles draait in deze browser. Je bestand wordt nooit geüpload en er wordt niets opgeslagen."
+msgid "Upload a resume and see what applicant tracking systems (ATS) read from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Upload attachments"
@@ -6932,6 +6451,7 @@ msgstr "Uploaden…"
 msgid "URL"
 msgstr "URL"
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Use"
 msgstr "Gebruik"
@@ -6993,22 +6513,9 @@ msgstr "Gebruik eenvoudige kopjes zoals „Ervaring”, „Opleiding” en „Va
 msgid "Use sample"
 msgstr "Gebruik monster"
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Use the app in a language you’re comfortable with. Try a few of the translations made by the community."
-msgstr "Gebruik de app in een taal waarin jij je prettig voelt. Probeer een paar vertalingen van de community."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Use this wording"
-msgstr "Gebruik deze formulering"
-
 #: src/features/ats-checker/messages.ts
 msgid "Use your editor's normal bullet list, so stray glyphs do not land mid-sentence."
 msgstr "Gebruik de normale opsommingslijst van je editor, zodat er geen losse glyphs midden in een zin terechtkomen."
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "User research"
-msgstr "Gebruikersonderzoek"
 
 #. Label for username input on registration form
 #: src/dialogs/resume/sections/profile.tsx
@@ -7016,14 +6523,6 @@ msgstr "Gebruikersonderzoek"
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Gebruikersnaam"
-
-#: src/features/homepage/community-stats.tsx
-msgid "Users"
-msgstr "Gebruikers"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Uses the name, template, color, and type you chose above."
-msgstr "Gebruikt de naam, het sjabloon, de kleur en het type dat je hierboven koos."
 
 #: src/libs/locale.ts
 msgid "Uzbek"
@@ -7110,10 +6609,6 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Weergaven"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Visitors need your password to open the resume."
-msgstr "Bezoekers hebben je wachtwoord nodig om het cv te openen."
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -7207,6 +6702,10 @@ msgstr "Wat dit controleert"
 msgid "What this does not do"
 msgstr "Wat dit niet doet"
 
+#: src/features/homepage/page.tsx
+msgid "What you can do today"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/use-resume-menu-actions.ts
 msgid "When locked, the resume cannot be updated or deleted."
@@ -7268,17 +6767,9 @@ msgstr ""
 msgid "Words run together when the text is extracted."
 msgstr "Woorden lopen in elkaar over wanneer de tekst wordt geëxtraheerd."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Work on your resume from your AI app."
-msgstr "Werk aan je cv vanuit je AI-app."
-
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Work OpenAI"
 msgstr "Werkzaamheden bij OpenAI"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Worked with engineers from idea to launch."
-msgstr "Werkte met engineers samen, van idee tot lancering."
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Working…"
@@ -7312,18 +6803,9 @@ msgstr "Je wordt naar de integratiepagina gebracht. Het geselecteerde bestand wo
 msgid "Writing"
 msgstr "Tekst"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "X (Twitter)"
-msgstr "X (Twitter)"
-
 #: src/features/auth/pages/login.tsx
 msgid "You can also sign in with your username."
 msgstr "Je kunt ook inloggen met je gebruikersnaam."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "You can always go back to the original."
-msgstr "Je kunt altijd terug naar het origineel."
 
 #: src/features/auth/pages/error.tsx
 msgid "You cancelled the sign-in before it finished."
@@ -7337,9 +6819,9 @@ msgstr "U hebt niet-opgeslagen wijzigingen die verloren zullen gaan."
 msgid "You'll be taken to the Integrations page. The file you selected won't be imported."
 msgstr "Je hoofdtekst is erg klein."
 
-#: src/features/homepage/community-stats.tsx
-msgid "You’re in good company."
-msgstr "Je zit in goed gezelschap."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "You'll come back here with your input kept. Drafts live only in this browser session."
+msgstr ""
 
 #: src/features/auth/pages/forgot-password.tsx
 #: src/features/auth/pages/register.tsx
@@ -7350,10 +6832,6 @@ msgstr "Je hebt een mail ontvangen!"
 msgid "Your account has been deleted."
 msgstr "Je account is verwijderd."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your AI app"
-msgstr "Je eigen AI-app"
-
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "Your AI provider could not be reached. Check its settings and try again."
 msgstr "Je AI-provider kon niet worden bereikt. Controleer de instellingen en probeer het opnieuw."
@@ -7361,10 +6839,6 @@ msgstr "Je AI-provider kon niet worden bereikt. Controleer de instellingen en pr
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."
 msgstr "Uw API-sleutel is naar het klembord gekopieerd."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your applications, together"
-msgstr "Al je sollicitaties bij elkaar"
 
 #: src/features/ats-checker/messages.ts
 #: src/libs/resume/ats.ts
@@ -7379,10 +6853,6 @@ msgstr "Je opsommingstekens zijn getekend met ongebruikelijke tekens."
 msgid "Your changes are saved automatically."
 msgstr "Uw wijzigingen worden automatisch opgeslagen."
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Your choice applies across the app."
-msgstr "Je keuze geldt voor de hele app."
-
 #: src/features/ats-checker/messages.ts
 msgid "Your contact details are not on the first page."
 msgstr "Je contactgegevens staan niet op de eerste pagina."
@@ -7394,10 +6864,6 @@ msgstr "Je gegevens zijn geëxporteerd."
 #: src/features/ats-checker/messages.ts
 msgid "Your dates are written several different ways."
 msgstr "Je data zijn op meerdere verschillende manieren geschreven."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your edit is in."
-msgstr "Je bewerking is doorgevoerd."
 
 #: src/features/ats-checker/messages.ts
 msgid "Your email address is broken across pieces of text."
@@ -7431,10 +6897,6 @@ msgstr "Je paginamarges zijn erg smal."
 #: src/features/ats-checker/messages.ts
 msgid "Your margins are very narrow."
 msgstr "Je marges zijn erg smal."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Your name"
-msgstr "Jouw naam"
 
 #: src/libs/resume/ats.ts
 msgid "Your page margins are very narrow."
@@ -7501,10 +6963,6 @@ msgstr "Je cv bevat een foto."
 msgid "Your resume includes a photo."
 msgstr "Je cv bevat geen werkervaring."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your resume link"
-msgstr "Jouw cv-link"
-
 #: src/libs/resume/ats.ts
 msgid "Your resume shows no work experience."
 msgstr "Je cv bevat geen werkervaring."
@@ -7520,18 +6978,6 @@ msgstr "De openbare URL van je cv is beveiligd met een wachtwoord. Deel het wach
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Your saved cover letter will remain unchanged."
 msgstr "Je opgeslagen sollicitatiebrief blijft ongewijzigd."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Your selected file"
-msgstr "Je gekozen bestand"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your tools, connected"
-msgstr "Jouw tools, verbonden"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Your words as a plain-text document, with headings, lists, and links."
-msgstr "Jouw woorden als een document in platte tekst, met koppen, lijsten en links."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Zoom"
@@ -7553,4 +6999,3 @@ msgstr "Uitzoomen"
 #: src/libs/locale.ts
 msgid "Zulu"
 msgstr "Zulu"
-

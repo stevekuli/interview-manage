@@ -39,17 +39,19 @@ const renderHeader = () =>
 	);
 
 describe("Header", () => {
-	it("renders a homepage link with the brand icon", () => {
+	it("renders a homepage link with the brand and product name", () => {
 		const { container } = renderHeader();
 		const home = Array.from(container.querySelectorAll("a")).find((a) => a.getAttribute("href") === "/");
 		expect(home).toBeDefined();
-		expect(home?.getAttribute("aria-label")).toBe("Go to homepage");
+		expect(home?.getAttribute("aria-label")).toBe("求职管理");
+		expect(home?.textContent).toContain("求职管理");
 	});
 
-	it("renders a dashboard link", () => {
+	it("renders a labeled workspace entry, not an icon-only arrow", () => {
 		const { container } = renderHeader();
 		const dashboard = Array.from(container.querySelectorAll("a")).find((a) => a.getAttribute("href") === "/dashboard");
 		expect(dashboard).toBeDefined();
+		expect(dashboard?.textContent).toContain("Open workspace");
 	});
 
 	it("keeps upstream promotion out of the navigation", () => {

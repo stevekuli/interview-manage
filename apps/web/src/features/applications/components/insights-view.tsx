@@ -1,6 +1,7 @@
 import type { ApplicationTimelineEntry } from "@reactive-resume/schema/applications/data";
 import type { Application } from "../types";
-import { t } from "@lingui/core/macro";
+import { msg, t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { DownloadSimpleIcon } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
@@ -10,6 +11,7 @@ import { toast } from "@reactive-resume/ui/components/toast";
 import { APP_NAME } from "@reactive-resume/utils/brand";
 import { orpc } from "@/libs/orpc/client";
 import { computeInsights, computeTimeline } from "../insights";
+import { stageLabel } from "../labels";
 
 const byNewest = (a: ApplicationTimelineEntry, b: ApplicationTimelineEntry) =>
 	new Date(b.at).getTime() - new Date(a.at).getTime();
@@ -19,6 +21,7 @@ const appliedDate = (app: Application) =>
 	app.appliedAt;
 
 export function ApplicationInsights({ applications }: { applications: Application[] }) {
+	const { i18n } = useLingui();
 	const { data } = useQuery(orpc.applications.stats.queryOptions({}));
 
 	// Weekly application velocity — derived from the already-loaded list, matching the stats
@@ -33,6 +36,18 @@ export function ApplicationInsights({ applications }: { applications: Applicatio
 
 	const insights = computeInsights(data.byStage);
 	const maxSource = Math.max(1, ...data.bySource.map((s) => s.count));
+
+	const tiles = [
+		{ label: i18n.t(msg`Total applications`), value: String(insights.total), sub: i18n.t(msg`in this view`) },
+		{ label: i18n.t(msg`Applied`), value: String(insights.appliedOn), sub: i18n.t(msg`past saved`) },
+		{ label: i18n.t(msg`Response rate`), value: `${insights.responseRate}%`, sub: i18n.t(msg`reached screening`) },
+		{ label: i18n.t(msg`Interviews`), value: String(insights.interviews), sub: i18n.t(msg`interview or beyond`) },
+		{
+			label: i18n.t(msg`Offers`),
+			value: String(insights.offers),
+			sub: insights.rejected > 0 ? i18n.t(msg`${insights.rejected} rejected`) : i18n.t(msg`so far`),
+		},
+	];
 
 	if (insights.total === 0) {
 		return (
@@ -50,7 +65,7 @@ export function ApplicationInsights({ applications }: { applications: Applicatio
 
 			{/* stat tiles */}
 			<div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
-				{insights.tiles.map((tile) => (
+				{tiles.map((tile) => (
 					<div key={tile.label} className="rounded-xl border border-border p-4">
 						<div className="text-muted-foreground text-xs">{tile.label}</div>
 						<div className="mt-2 font-bold text-2xl tracking-tight">{tile.value}</div>
@@ -59,7 +74,9 @@ export function ApplicationInsights({ applications }: { applications: Applicatio
 				))}
 			</div>
 
-			<PipelineFlow insights={insights} />
+			<PipelineFlow
+				insights={{ ...insights, funnel: insights.funnel.map((f) => ({ ...f, label: stageLabel(f.status) })) }}
+			/>
 
 			<div className="grid gap-4 lg:grid-cols-2">
 				{/* application velocity over time */}

@@ -10,7 +10,7 @@ import { getModel } from "../ai/service";
 import { aiProvidersService } from "../ai-providers/service";
 import { coverLetterService } from "../cover-letters/service";
 import { resumeService } from "../resume/service";
-import { applicationService } from "./service";
+import { applicationService, sha256Hex } from "./service";
 
 const reserved = { tags: ["Applications", "AI"] } as const;
 const MAX_PASTED_JOB_DESCRIPTION_CHARS = 20_000;
@@ -112,6 +112,60 @@ const aiErrors = {
 	BAD_REQUEST: { message: "Invalid application or AI request.", status: 400 },
 };
 
+// Score the application's linked resume against its job description and persist the result,
+// bound to the exact inputs used (see the fingerprint write-back below). A slow result whose
+// inputs changed meanwhile is rejected by setAiResult instead of overwriting newer state.
+export async function scoreApplicationMatch(args: { userId: string; id: string }) {
+	const application = await applicationService.getById({ id: args.id, userId: args.userId });
+	if (!application.resumeId)
+		throw new ORPCError("BAD_REQUEST", { message: "Link a resume to this application first." });
+	if (!application.jobDescription) {
+		throw new ORPCError("BAD_REQUEST", { message: "Paste the job description into this application first." });
+	}
+
+	// Bind the score to exactly these inputs; the write below only lands if they are still
+	// the current ones, so a slow result can never attach to newer content.
+	const jobDescription = application.jobDescription;
+	const resumeId = application.resumeId;
+
+	const [model, resume] = await Promise.all([
+		resolveModel(args.userId),
+		resumeService.getById({ id: resumeId, userId: args.userId }),
+	]);
+
+	const result = await generateJson(
+		model,
+		{
+			prompt: `Compare this resume against the job description. Return ONLY JSON with keys score (integer 0-100 fit), gaps (array of short missing-qualification strings), strengths (array of short matching-strength strings).
+
+RESUME:
+${JSON.stringify(resume.data)}
+
+JOB DESCRIPTION:
+${jobDescription}`,
+		},
+		matchScoreOutput,
+	);
+
+	await applicationService.setAiResult({
+		id: args.id,
+		userId: args.userId,
+		matchScore: result.score,
+		aiMetadata: {
+			matchScore: result,
+			matchScoreInput: {
+				jobDescriptionHash: sha256Hex(jobDescription),
+				resumeId,
+				resumeHash: sha256Hex(JSON.stringify(resume.data)),
+				scoredAt: new Date().toISOString(),
+			},
+		},
+		expect: { jobDescription, resumeId, resumeUpdatedAt: resume.updatedAt },
+	});
+
+	return result;
+}
+
 export const aiRouter = {
 	// Extract structured fields from a pasted job description. The posting text itself is stored
 	// verbatim on the application, so nothing here fetches or scrapes a URL.
@@ -145,36 +199,7 @@ export const aiRouter = {
 		.use(aiRequestRateLimit)
 		.output(matchScoreOutput)
 		.errors(aiErrors)
-		.handler(async ({ context, input }) => {
-			const application = await applicationService.getById({ id: input.id, userId: context.user.id });
-			if (!application.resumeId)
-				throw new ORPCError("BAD_REQUEST", { message: "Link a resume to this application first." });
-			if (!application.jobDescription) {
-				throw new ORPCError("BAD_REQUEST", { message: "Paste the job description into this application first." });
-			}
-
-			const [model, resume] = await Promise.all([
-				resolveModel(context.user.id),
-				resumeService.getById({ id: application.resumeId, userId: context.user.id }),
-			]);
-
-			const result = await generateJson(
-				model,
-				{
-					prompt: `Compare this resume against the job description. Return ONLY JSON with keys score (integer 0-100 fit), gaps (array of short missing-qualification strings), strengths (array of short matching-strength strings).\n\nRESUME:\n${JSON.stringify(resume.data)}\n\nJOB DESCRIPTION:\n${application.jobDescription}`,
-				},
-				matchScoreOutput,
-			);
-
-			await applicationService.setAiResult({
-				id: input.id,
-				userId: context.user.id,
-				matchScore: result.score,
-				aiMetadata: { matchScore: result },
-			});
-
-			return result;
-		}),
+		.handler(({ context, input }) => scoreApplicationMatch({ userId: context.user.id, id: input.id })),
 
 	// Generate a cover letter or recruiter follow-up from the application + resume context.
 	draftMessage: protectedProcedure

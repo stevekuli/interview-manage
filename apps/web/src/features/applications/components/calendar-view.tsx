@@ -13,19 +13,11 @@ import {
 	PlusIcon,
 } from "@phosphor-icons/react";
 import { useMemo, useState } from "react";
-import { INTERVIEW_KINDS } from "@reactive-resume/schema/applications/data";
 import { Button } from "@reactive-resume/ui/components/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@reactive-resume/ui/components/popover";
 import { cn } from "@reactive-resume/utils/style";
-import {
-	collectInterviews,
-	dayKey,
-	formatDuration,
-	groupByDay,
-	interviewKindOf,
-	monthGrid,
-	upcomingInterviews,
-} from "../interviews";
+import { collectInterviews, dayKey, formatDuration, groupByDay, monthGrid, upcomingInterviews } from "../interviews";
+import { interviewKindLabel, interviewKindMetaOf, localizedInterviewKinds } from "../labels";
 import { InterviewDialog } from "./interview-dialog";
 
 const MAX_CHIPS_PER_DAY = 3;
@@ -209,7 +201,7 @@ export function ApplicationCalendar({ applications, allApplications, onOpen }: A
 				</div>
 
 				<div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-muted-foreground text-xs">
-					{INTERVIEW_KINDS.map((kind) => (
+					{localizedInterviewKinds().map((kind) => (
 						<span key={kind.value} className="flex items-center gap-1.5">
 							<span className="size-2 rounded-full" style={{ background: kind.color }} />
 							{kind.label}
@@ -285,7 +277,7 @@ type UpcomingCardProps = {
 };
 
 function UpcomingCard({ item, timeRange, locale, onEdit, onOpenApplication }: UpcomingCardProps) {
-	const kind = interviewKindOf(item.interview.kind);
+	const kind = interviewKindMetaOf(item.interview.kind);
 	return (
 		<div
 			data-upcoming-interview={item.interview.id}
@@ -299,7 +291,7 @@ function UpcomingCard({ item, timeRange, locale, onEdit, onOpenApplication }: Up
 				</span>
 				<span className="mt-1 block truncate font-semibold">{item.application.company}</span>
 				<span className="block truncate text-muted-foreground text-xs">
-					{kind?.label ?? item.interview.kind} · {item.application.role}
+					{interviewKindLabel(item.interview.kind)} · {item.application.role}
 				</span>
 				{item.interview.location && (
 					<span className="mt-1.5 flex items-center gap-1 text-muted-foreground text-xs">
@@ -322,11 +314,11 @@ type InterviewChipProps = {
 };
 
 function InterviewChip({ item, time, onOpen }: InterviewChipProps) {
-	const kind = interviewKindOf(item.interview.kind);
+	const kind = interviewKindMetaOf(item.interview.kind);
 	return (
 		<button
 			type="button"
-			title={`${time} · ${kind?.label ?? item.interview.kind} · ${item.application.company} — ${item.application.role}`}
+			title={`${time} · ${interviewKindLabel(item.interview.kind)} · ${item.application.company} — ${item.application.role}`}
 			className="flex min-w-0 items-center gap-1.5 rounded-md border-s-2 bg-muted/60 px-1.5 py-0.5 text-start text-[11px] leading-tight hover:bg-muted max-sm:justify-center max-sm:border-s-0 max-sm:bg-transparent"
 			style={{ borderInlineStartColor: kind?.color }}
 			onClick={onOpen}

@@ -12,7 +12,7 @@ import { ParsePreview } from "@/features/ats-checker/parse-preview";
 import { EASE_OUT_STRONG } from "@/libs/motion";
 import { Footer } from "./-sections/footer";
 
-const PAGE_TITLE = `ATS Checker - ${APP_NAME}`;
+const PAGE_TITLE = `Resume readability check (ATS) - ${APP_NAME}`;
 const PAGE_DESCRIPTION =
 	"Check whether software can read your resume PDF. Runs entirely in your browser, so your file is never uploaded.";
 
@@ -99,13 +99,13 @@ function Header() {
 					transition={{ duration: 0.5, ease: EASE_OUT_STRONG }}
 				>
 					<h1 className="font-semibold text-4xl tracking-tight md:text-5xl">
-						<Trans>ATS Checker</Trans>
+						<Trans>Resume readability check</Trans>
 					</h1>
 
 					<p className="max-w-lg text-base text-muted-foreground leading-relaxed md:text-lg">
 						<Trans>
-							Upload a resume and see what an applicant tracking system reads from it. Everything runs in this browser.
-							Your file is never uploaded, and nothing is stored.
+							Upload a resume and see what applicant tracking systems (ATS) read from it. Everything runs in this
+							browser. Your file is never uploaded, and nothing is stored.
 						</Trans>
 					</p>
 				</m.div>

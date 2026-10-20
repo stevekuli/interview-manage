@@ -119,8 +119,9 @@ function AiNote() {
 				<p className="mt-3 max-w-3xl text-muted-foreground leading-relaxed">
 					<Trans>
 						After you configure your own model provider, AI can score how well a linked resume matches a posting,
-						produce a tailored copy of that resume, and draft cover letters or follow-up messages. Without a provider,
-						these actions stay manual — every core feature works either way.
+						produce a tailored copy of that resume, and draft cover letters or follow-up messages. The tailored copy
+						currently only rewrites the resume's summary — everything else stays exactly as you wrote it. Without a
+						provider, these actions stay manual — every core feature works either way.
 					</Trans>
 				</p>
 			</div>

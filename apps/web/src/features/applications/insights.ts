@@ -8,8 +8,21 @@ const FORWARD: ApplicationStatus[] = ["saved", "applied", "screening", "intervie
 
 export type Insights = {
 	total: number;
-	tiles: { label: string; value: string; sub: string }[];
-	funnel: { label: string; color: string; count: number; reached: number; pct: number; conv: string }[];
+	appliedOn: number;
+	responseRate: number;
+	interviews: number;
+	offers: number;
+	// Funnel labels come from the schema's English stage names; display surfaces translate them
+	// via `stageLabel(funnel[i].status)` so the computation stays locale-independent.
+	funnel: {
+		status: ApplicationStatus;
+		label: string;
+		color: string;
+		count: number;
+		reached: number;
+		pct: number;
+		conv: string;
+	}[];
 	rejected: number;
 };
 
@@ -31,6 +44,7 @@ export function computeInsights(byStage: StageCount[]): Insights {
 		const reachedCount = reached[i] ?? 0;
 		const prev = i === 0 ? reachedCount : (reached[i - 1] ?? reachedCount);
 		return {
+			status,
 			label: stage?.label ?? status,
 			color: stage?.color ?? "var(--muted)",
 			count: at(status),
@@ -44,15 +58,7 @@ export function computeInsights(byStage: StageCount[]): Insights {
 	const offers = at("offer");
 	const responseRate = appliedOn > 0 ? Math.round(((reached[2] ?? 0) / appliedOn) * 100) : 0;
 
-	const tiles = [
-		{ label: "Total applications", value: String(total), sub: "in this view" },
-		{ label: "Applied", value: String(appliedOn), sub: "past saved" },
-		{ label: "Response rate", value: `${responseRate}%`, sub: "reached screening" },
-		{ label: "Interviews", value: String(interviews), sub: "interview or beyond" },
-		{ label: "Offers", value: String(offers), sub: rejected > 0 ? `${rejected} rejected` : "so far" },
-	];
-
-	return { total, tiles, funnel, rejected };
+	return { total, appliedOn, responseRate, interviews, offers, funnel, rejected };
 }
 
 export type TimelineBucket = { label: string; count: number };

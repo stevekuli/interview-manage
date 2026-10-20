@@ -1,11 +1,11 @@
 import type { ApplicationStatus, ApplicationTimelineEntry } from "@reactive-resume/schema/applications/data";
 import type { Application } from "../types";
 import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { ArchiveIcon, ArrowRightIcon, TagIcon, TrashIcon } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useMemo, useState } from "react";
-import { STAGES } from "@reactive-resume/schema/applications/data";
 import { Badge } from "@reactive-resume/ui/components/badge";
 import { Button } from "@reactive-resume/ui/components/button";
 import { Checkbox } from "@reactive-resume/ui/components/checkbox";
@@ -21,12 +21,13 @@ import { toast } from "@reactive-resume/ui/components/toast";
 import { getInitials } from "@reactive-resume/utils/string";
 import { cn } from "@reactive-resume/utils/style";
 import { orpc } from "@/libs/orpc/client";
+import { localizedStages, stageMetaOf } from "../labels";
 import { applicationsListQueryKey } from "../queries";
 import { tileColor } from "../tile-color";
 import { ApplicationActionsMenu } from "./application-actions-menu";
 
 const PAGE_SIZE = 25;
-const stageOf = (status: string) => STAGES.find((s) => s.value === status);
+const stageOf = (status: string) => stageMetaOf(status);
 const byNewest = (a: ApplicationTimelineEntry, b: ApplicationTimelineEntry) =>
 	new Date(b.at).getTime() - new Date(a.at).getTime();
 const latestStageDate = (activity: ApplicationTimelineEntry[], status: ApplicationStatus) =>
@@ -41,7 +42,10 @@ type Props = {
 };
 
 export function ApplicationTable({ applications, onOpen, onEdit }: Props) {
+	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
+	// biome-ignore lint/correctness/useExhaustiveDependencies: i18n.locale is the cache key — labels must re-resolve when the locale changes
+	const stages = useMemo(() => localizedStages(), [i18n.locale]);
 	const [selected, setSelected] = useState<Set<string>>(new Set());
 	const [page, setPage] = useState(0);
 
@@ -134,7 +138,7 @@ export function ApplicationTable({ applications, onOpen, onEdit }: Props) {
 							}
 						/>
 						<DropdownMenuContent align="start">
-							{STAGES.map((stage) => (
+							{stages.map((stage) => (
 								<DropdownMenuItem key={stage.value} onClick={() => bulkUpdate.mutate({ ids, status: stage.value })}>
 									<span className="size-2 rounded-sm" style={{ background: stage.color }} />
 									{stage.label}

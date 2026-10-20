@@ -27,11 +27,6 @@ msgstr ""
 msgid "\"{0} · {1}\" and its full timeline will be permanently deleted. This can't be undone."
 msgstr "\"{0} · {1}\" и цела временска линија биће трајно избрисани. Ово не може да се опозове."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "(opens in new tab)"
-msgstr "(отвара се у новом језичку)"
-
 #. placeholder {0}: selected.length
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "{0, plural, one {# application to export} other {# applications to export}}"
@@ -91,11 +86,6 @@ msgstr "{0} спреман за увоз"
 msgid "{0} rejected"
 msgstr "{0} одбијених"
 
-#. placeholder {0}: data.basics.name
-#: src/features/homepage/export-playground.tsx
-msgid "{0} Sample Resume"
-msgstr "{0} пример резимеа"
-
 #. placeholder {0}: report.skippedChecks
 #: src/features/ats-checker/report/score-header.tsx
 msgid "{0} skipped"
@@ -110,6 +100,10 @@ msgstr "0 прескочено (неважећи подаци или подац�
 #: src/features/ats-checker/report/report-view.tsx
 msgid "{0} to fix"
 msgstr "{0} за исправку"
+
+#: src/features/homepage/page.tsx
+msgid "{APP_NAME} keeps your job search organized: record each position, maintain your resumes, export PDF and Word files, and always know where every application stands."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
@@ -148,25 +142,9 @@ msgstr "# · Ставка #  {sectionTitle} {itemNumber}"
 msgid "+{extra} more"
 msgstr ""
 
-#: src/features/homepage/page.tsx
-msgid "<0>Free forever and open source.</0><1/>No ads, paywalls, or tracking."
-msgstr "<0>Заувек бесплатно и отвореног кода.</0><1/>Без реклама, платних зидова ни праћења."
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "<0>Thank you for using Reactive Resume. I build this app mostly in my spare time, with help from open-source contributors around the world.</0><1>If it has been useful to you and you'd like to keep it free and open for everyone, please consider donating. Any amount helps.</1>"
-msgstr "<0>Хвала вам што користите Reactive Resume. Ову апликацију правим углавном у слободно време, уз помоћ сарадника отвореног кода из целог света.</0><1>Ако вам је била корисна и желите да остане бесплатна и отворена за све, размислите о донацији. Сваки износ помаже.</1>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<p>I design software for teams, from early research to the details people use every day.</p>"
-msgstr "<p>Дизајнирам софтвер за тимове — од иницијалног истраживања до детаља којима се људи свакодневно служе.</p>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<ul><li>Designed responsive websites and mobile experiences for small businesses.</li><li>Worked with developers from first sketches through release.</li></ul>"
-msgstr "<ul><li>Дизајнирао сам респонзивне веб-сајтове и мобилна искуства за мала предузећа.</li><li>Са програмерима сам радио од првих скица до објављивања.</li></ul>"
-
-#: src/features/homepage/export-playground.tsx
-msgid "<ul><li>Led research and interface design for a collaborative planning tool.</li><li>Built a shared component library with engineers and documented accessibility patterns.</li><li>Tested prototypes with customers and used their feedback to simplify onboarding.</li></ul>"
-msgstr "<ul><li>Водио сам истраживање и дизајн интерфејса за колаборативни алат за планирање.</li><li>Са инжењерима сам изградио заједничку библиотеку компоненти и документовао обрасце приступачности.</li><li>Тестирао сам прототипове са корисницима и њиховим повратним информацијама поједноставио укључивање у апликацију.</li></ul>"
+msgid "<0>Switch between resume sections in the left sidebar; manage template, layout, and styles here.</0><1>When you are done, use Download at the top to export a PDF or a Word (DOCX) file.</1>"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "1 Column / Inline"
@@ -183,22 +161,6 @@ msgstr "1 месец"
 #: src/dialogs/api-key/create.tsx
 msgid "1 year"
 msgstr "1 година"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2015 to 2019"
-msgstr "2015–2019"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2019 to 2022"
-msgstr "2019–2022"
-
-#: src/features/homepage/export-playground.tsx
-msgid "2022 - Present"
-msgstr "2022 – сада"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "2022 to now"
-msgstr "2022 – данас"
 
 #: src/dialogs/api-key/create.tsx
 msgid "3 months"
@@ -224,22 +186,6 @@ msgstr "Опсег датума је написан у формату који �
 msgid "A font is referenced but not embedded."
 msgstr "Фонт је наведен, али није уграђен."
 
-#: src/routes/_home/-sections/footer.tsx
-msgid "A free and open-source resume builder that makes it easy to create, update, and share your resume."
-msgstr "Бесплатан алат отвореног кода за резимее, који олакшава креирање, ажурирање и дељење вашег резимеа."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "A free collection of accessible patterns for the web."
-msgstr "Бесплатна збирка приступачних образаца за веб."
-
-#: src/features/homepage/page.tsx
-msgid "A free, open-source resume builder. Put your experience on the page, without fighting the formatting."
-msgstr "Бесплатан, отворени израђивач резимеа. Ставите своје искуство на страницу — без борбе са форматирањем."
-
-#: src/features/homepage/site-footer.tsx
-msgid "A free, open-source resume builder. Yours to keep, yours to export, yours to host."
-msgstr "Бесплатан, отворени израђивач резимеа. Ваш је: задржите га, извезите га и хостујте га сами."
-
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "A friendly nudge for the recruiter"
 msgstr "Пријатељски нагон за регрутатора"
@@ -252,21 +198,9 @@ msgstr "Празнина преко целе висине дели ову стр
 msgid "A gap is not a problem. Add a one-line explanation if you want to; many strong resumes simply do not."
 msgstr "Празнина није проблем. Додајте објашњење у једном реду ако желите; многе јаке биографије то једноставно не раде."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "A hand with the writing"
-msgstr "Рука над текстом"
-
 #: src/features/ats-checker/messages.ts
 msgid "A link points somewhere other than the address it shows."
 msgstr "Веза води на неко друго место, а не на адресу коју приказује."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "A link worth sharing"
-msgstr "Веза вредна дељења"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "A little more<0/>at home."
-msgstr "Мало личније,<0/>као код куће."
 
 #: src/features/ats-checker/messages.ts
 msgid "A numeric date reads differently in different countries."
@@ -276,29 +210,9 @@ msgstr "Нумерички датум се различито чита у раз
 msgid "A page is rotated."
 msgstr "Страница је ротирана."
 
-#: src/features/homepage/site-footer.tsx
-msgid "A passion project by <0>Amruth Pillai</0>"
-msgstr "Страстни пројекат аутора <0>Амрута Пилаија</0>"
-
-#: src/components/ui/copyright.tsx
-msgid "A passion project by <0>Amruth Pillai</0>."
-msgstr "Страстни пројекат аутора <0>Амрута Пилаија</0>."
-
-#: src/features/homepage/page.tsx
-msgid "A PDF for the application. A Word file for a few more edits. Download a sample using your choices."
-msgstr "PDF за пријаву. Word датотека за још понеку измену. Преузмите пример по свом избору."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "A private resume does not appear at its public link."
-msgstr "Приватни резиме се не приказује на својој јавној вези."
-
-#: src/features/homepage/page.tsx
-msgid "A project you can<0/>be part of."
-msgstr "Пројекат у којем можете<0/>учествовати."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "A real sample PDF"
-msgstr "Прави PDF пример"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "A resume is linked to this application"
+msgstr ""
 
 #: src/features/ats-checker/parse-preview.tsx
 msgid "A resume laid out for a human reader, with a photo, headings and columns"
@@ -320,17 +234,9 @@ msgstr "Веб адреса је написана без https://."
 msgid "A4"
 msgstr "A4"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "About me"
-msgstr "О мени"
-
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Приступите свом налогу преко АПИ-ја, укључујући читање и промену ваших животописа и пријава за посао."
-
-#: src/features/homepage/export-playground.tsx
-msgid "Accessibility"
-msgstr "Приступачност"
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -441,6 +347,10 @@ msgstr "Додајте белешку…"
 msgid "Add a period such as \"Jan 2020 - Present\" so it lands on your timeline."
 msgstr "Додајте период као што је „Јануар 2020 – данас“ тако да буде на вашој временској линији."
 
+#: src/features/homepage/page.tsx
+msgid "Add a position you are targeting."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Add a section headed \"Education\". Many systems have a required education field."
 msgstr "Додајте одељак под насловом „Образовање“. Многи системи имају обавезно поље за образовање."
@@ -448,6 +358,10 @@ msgstr "Додајте одељак под насловом „Образова�
 #: src/features/ats-checker/messages.ts
 msgid "Add a section headed \"Experience\" or \"Work Experience\". It is the field most systems rank on."
 msgstr "Додајте одељак под насловом „Искуство“ или „Радно искуство“. То је поље по којем већина система рангира."
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Add a tag"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Add a tag and press Enter…"
@@ -478,6 +392,10 @@ msgstr "Додајте контакт"
 #: src/features/ats-checker/messages.ts
 msgid "Add figures where you have them: volumes, percentages, timeframes, team sizes."
 msgstr "Додајте бројке тамо где их имате: обим, проценте, временске оквире, величине тимова."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Add it"
+msgstr ""
 
 #: src/components/input/chip-input.tsx
 msgid "Add keyword"
@@ -536,11 +454,20 @@ msgstr "Додајте два или три реда на врху који оп
 msgid "Add your full name under Basics."
 msgstr "Додајте своје пуно име под Основе."
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Added to your pipeline."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Additional details"
+msgstr ""
+
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Adjust the resume for a remote-first role that values async communication and ownership."
 msgstr "Прилагодите резиме за улогу која првенствено ради на даљину и цени асинхрону комуникацију и власништво."
 
 #: src/features/settings/integrations/components/ai-section.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Advanced"
 msgstr "Напредно"
 
@@ -551,6 +478,10 @@ msgstr "Савет за особу која то чита. Ништа од ов�
 #: src/libs/locale.ts
 msgid "Afrikaans"
 msgstr "Африканс"
+
+#: src/features/homepage/page.tsx
+msgid "After you configure your own model provider, AI can score how well a linked resume matches a posting, produce a tailored copy of that resume, and draft cover letters or follow-up messages. The tailored copy currently only rewrites the resume's summary — everything else stays exactly as you wrote it. Without a provider, these actions stay manual — every core feature works either way."
+msgstr ""
 
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Against the job description"
@@ -585,6 +516,10 @@ msgstr "Подешавање AI агента није доступно док с
 msgid "AI assistant"
 msgstr "Асистент за вештачку интелигенцију"
 
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "AI Models"
+msgstr ""
+
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "AI provider"
 msgstr "АИ добављач"
@@ -609,18 +544,13 @@ msgstr "АИ добављачи нису доступни док се не ко�
 msgid "AI providers require REDIS_URL and ENCRYPTION_SECRET to be configured."
 msgstr "Добављачи вештачке интелигенције захтевају да буду конфигурисани REDIS_URL и ENCRYPTION_SECRET."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "AI, when you want it"
-msgstr "AI — када вам затреба"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "AI setup could not be checked"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Albanian"
 msgstr "Албански"
-
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "All app languages"
-msgstr "Сви језици апликације"
 
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "All applications (including archived)"
@@ -649,6 +579,10 @@ msgstr "Већ имате налог? <0/>"
 #: src/libs/locale.ts
 msgid "Amharic"
 msgstr "Амхарски"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "An AI model is configured and tested"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "An embedded font could not be read."
@@ -683,10 +617,6 @@ msgstr "Свако ко има везу може да погледа живот�
 msgid "Anyone with the public URL will be able to view your resume without a password."
 msgstr "Свако ко има јавну УРЛ адресу ће моћи да види ваш животопис без лозинке."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "API and MCP access"
-msgstr "Приступ преко API-ја и MCP-а"
-
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "API Key"
 msgstr "API кључ"
@@ -705,14 +635,6 @@ msgstr "API кључеви су шифровани на серверу и ник
 msgid "API Reference"
 msgstr "API референтна документација"
 
-#: src/routes/dashboard/-components/sidebar.tsx
-msgid "App"
-msgstr "Апликација"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "App language"
-msgstr "Језик апликације"
-
 #: src/features/applications/components/interview-dialog.tsx
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Application"
@@ -721,6 +643,10 @@ msgstr "Апликација"
 #: src/features/applications/components/application-actions-menu.tsx
 msgid "Application actions"
 msgstr "Радње над пријавом"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Application added"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Application added to your pipeline."
@@ -754,6 +680,10 @@ msgstr "Пријава је ажурирана."
 msgid "Applications"
 msgstr "Пријаве"
 
+#: src/features/homepage/page.tsx
+msgid "Applications & tracking"
+msgstr ""
+
 #: src/features/applications/components/insights-view.tsx
 msgid "Applications over time"
 msgstr "Пријаве током времена"
@@ -766,8 +696,9 @@ msgstr "Пријаве послате недељно (последњих 8 не�
 msgid "Applications to export"
 msgstr "Апликације за извоз"
 
+#: src/features/applications/components/insights-view.tsx
 #: src/features/applications/components/table-view.tsx
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Applied"
 msgstr "Пријављено"
 
@@ -845,10 +776,6 @@ msgstr "Област студија"
 msgid "Artificial Intelligence"
 msgstr "Вештачка интелигенција"
 
-#: src/features/homepage/community-stats.tsx
-msgid "As of <0>{formattedDate}</0>."
-msgstr "Од датума <0>{formattedDate}</0>."
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Ask anything about this resume"
 msgstr "Питајте било шта о овом животопису"
@@ -861,8 +788,7 @@ msgstr "Однос стране"
 msgid "ATS Check"
 msgstr "ATS провера"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/ats-checker.tsx
+#: src/routes/_home/-sections/footer.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "ATS Checker"
 msgstr "ATS провера"
@@ -921,10 +847,6 @@ msgstr "Награде"
 msgid "Azerbaijani"
 msgstr "Азербејџански"
 
-#: src/features/homepage/export-playground.tsx
-msgid "BA"
-msgstr "Ба"
-
 #. Action returning a signed-in user to the page where they manage linked providers
 #: src/features/auth/pages/error.tsx
 msgid "Back to authentication settings"
@@ -956,6 +878,14 @@ msgstr "Основни URL"
 #: src/libs/resume/section.tsx
 msgid "Basics"
 msgstr "Основне информације"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Before scoring your fit:"
+msgstr ""
+
+#: src/features/applications/labels.ts
+msgid "Behavioral interview"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Bengali"
@@ -1007,10 +937,6 @@ msgstr "Направите свој животопис"
 msgid "Builder Command Palette"
 msgstr "Командна палета уређивача"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Built a design system used by six product teams."
-msgstr "Изградио сам систем дизајна који користе шест произвођачких тимова."
-
 #: src/libs/locale.ts
 msgid "Bulgarian"
 msgstr "Бугарски"
@@ -1031,12 +957,6 @@ msgstr "Списак са ставкама"
 msgid "Bulleted list"
 msgstr "Листа за набрајање"
 
-#. Tagline shown in app footer/about area
-#: src/components/ui/copyright.tsx
-#: src/features/homepage/site-footer.tsx
-msgid "By the community, for the community."
-msgstr "Од заједнице, за заједницу."
-
 #: src/routes/dashboard/applications/index.tsx
 msgid "Calendar"
 msgstr ""
@@ -1056,7 +976,6 @@ msgstr ""
 #: src/features/applications/components/export-applications-sheet.tsx
 #: src/features/applications/components/import-applications-sheet.tsx
 #: src/features/applications/components/interview-dialog.tsx
-#: src/features/homepage/ats-playground.tsx
 #: src/features/resume/builder/password-dialog.tsx
 #: src/features/settings/integrations/components/ai-section.tsx
 #: src/features/settings/pages/account.tsx
@@ -1105,10 +1024,9 @@ msgstr "Промени тему у…"
 msgid "Changed your mind? Rename your resume to something more descriptive."
 msgstr "Променили сте мишљење? Преименујте свој резиме у нешто описније."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Changelog"
-msgstr "Дневник измена"
+#: src/features/resume/stylesheet/editor.tsx
+msgid "Changes apply to the preview and to PDF/DOCX exports. Standard CSS targeting the resume root works here."
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Changes are shared between your library and the resume builder."
@@ -1123,6 +1041,10 @@ msgstr "Ћаскање"
 msgid "Check again"
 msgstr "Провери поново"
 
+#: src/features/homepage/page.tsx
+msgid "Check resume readability (ATS)"
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Check the exported file contains everything you expect, and that all of it is selectable text."
 msgstr "Проверите да извезена датотека садржи све што очекујете и да је сав текст могуће означити."
@@ -1130,6 +1052,10 @@ msgstr "Проверите да извезена датотека садржи �
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Check what an applicant tracking system would miss, and only add keywords you're sure about."
 msgstr "Проверите шта би систем за праћење кандидата (ATS) пропустио и додајте само кључне речи у које сте сигурни."
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Check your connection and try again — nothing has been lost."
+msgstr ""
 
 #: src/features/auth/pages/forgot-password.tsx
 msgid "Check your email for a link to reset your password."
@@ -1147,6 +1073,10 @@ msgstr "Проверено у вашем прегледачу. Датотека 
 msgid "Checking"
 msgstr "Провера"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Checking AI setup…"
+msgstr ""
+
 #: src/features/resume/stylesheet/status.tsx
 msgid "Checking draft"
 msgstr "Текућа верзија"
@@ -1163,11 +1093,6 @@ msgstr "Кинески (поједностављени)"
 msgid "Chinese (Traditional)"
 msgstr "Кинески (традиционални)"
 
-#. placeholder {0}: displayName(item)
-#: src/features/homepage/template-shelf.tsx
-msgid "Choose {0}"
-msgstr "Изабери {0}"
-
 #: src/features/cover-letters/library.tsx
 msgid "Choose a cover letter"
 msgstr "Изаберите пропратно писмо"
@@ -1179,10 +1104,6 @@ msgstr "Изаберите модел и нацрт животописа."
 #: src/features/ats-checker/uploader.tsx
 msgid "Choose a PDF"
 msgstr "Изаберите PDF"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Choose a PDF file to read its text."
-msgstr "Изаберите PDF датотеку да бисте прочитали њен текст."
 
 #. Preset or custom shade refer to the color picker
 #. Preset or custom shade refer to the color picker
@@ -1196,17 +1117,9 @@ msgstr "Изаберите претходно подешен тон или пр�
 msgid "Choose a resume"
 msgstr "Изаберите животопис"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Choose a resume template"
-msgstr "Изаберите шаблон за резиме"
-
 #: src/dialogs/resume/sections/cover-letter.tsx
 msgid "Choose a saved cover letter"
 msgstr "Изаберите сачувано пропратно писмо"
-
-#: src/features/homepage/template-shelf.tsx
-msgid "Choose a template"
-msgstr "Изаберите шаблон"
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Choose an application"
@@ -1216,26 +1129,21 @@ msgstr "Изаберите апликацију"
 msgid "Choose an application…"
 msgstr ""
 
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "Choose app language"
-msgstr "Изаберите језик апликације"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Choose an existing resume…"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
 msgid "Choose PDF, DOCX, Markdown, or JSON. Export your resume and cover letter separately when available."
 msgstr "Изаберите PDF, DOCX, Markdown или JSON. Експортујте свој животопис и пропратно писмо одвојено када су доступни."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Choose who can see it"
-msgstr "Изаберите ко може да је види"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Choose resume"
+msgstr ""
 
 #: src/components/level/combobox.tsx
 msgid "Circle"
 msgstr "Круг"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Clay"
-msgstr "Глина"
 
 #. Clear the highlight color
 #. Clear the text color
@@ -1269,10 +1177,6 @@ msgstr "Затвори"
 msgid "Close AI assistant"
 msgstr "Затвори AI асистент"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Color"
-msgstr "Боја"
-
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Columns"
@@ -1292,11 +1196,6 @@ msgstr "Палета команди"
 #: src/features/command-palette/index.tsx
 msgid "Command Palette - {currentPage}"
 msgstr "Палета команди - {currentPage}"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Community"
-msgstr "Заједница"
 
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Compact"
@@ -1323,6 +1222,11 @@ msgstr "Упоредите овај резиме са огласом за пос
 msgid "Compress or remove large images to keep uploads quick."
 msgstr "Компресујте или уклоните велике слике како би отпремање било брзо."
 
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Configure AI"
+msgstr ""
+
 #. Account deletion confirmation dialog confirm action in account settings
 #. Create API key dialog acknowledgment action after copying
 #: src/dialogs/api-key/create.tsx
@@ -1344,10 +1248,6 @@ msgstr "Повежи"
 #: src/features/auth/pages/consent.tsx
 msgid "Connect an application"
 msgstr "Повежите апликацију"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Connect through MCP to create and update resumes in a conversation. Or use the API to build your own workflow."
-msgstr "Повежите се преко MCP-а да бисте у разговору креирали и ажурирали резимее. Или користите API да бисте изградили сопствени ток рада."
 
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "Connect your own AI provider to get a review of the writing. The checks above need no provider and no account."
@@ -1391,6 +1291,10 @@ msgstr "Садржај"
 msgid "Content is laid out in a grid."
 msgstr "Садржај је распоређен у мрежи."
 
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Content updated — the old score no longer applies."
+msgstr ""
+
 #. Button label to continue to dashboard after successful registration
 #. Final action button after saving backup codes
 #. Primary action button to proceed to next step in two-factor setup
@@ -1405,12 +1309,8 @@ msgid "Continue where you left off"
 msgstr "Наставите тамо где сте стали"
 
 #: src/dialogs/resume/import.tsx
-msgid "Continue where you left off by importing a resume you built in Reactive Resume or another resume builder. Supported formats are PDF, Microsoft Word, and JSON files from Reactive Resume or JSON Resume."
-msgstr "Наставите тамо где сте стали тако што ћете увести резиме који сте направили у Reactive Resume или у другом алату. Подржани формати су PDF, Microsoft Word и JSON фајлови из Reactive Resume или JSON Resume."
-
-#: src/features/homepage/page.tsx
-msgid "Contribute code"
-msgstr "Допринесите коду"
+msgid "Continue where you left off by importing a resume backup or a file from another resume builder. Supported formats are PDF, Microsoft Word, a LinkedIn data export, and JSON resume backups (including JSON Resume)."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Conversation copied."
@@ -1427,6 +1327,10 @@ msgstr "Конвертована нацртна верзија стилског 
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Copied to clipboard."
 msgstr "Копирано у међуспремник."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Copies the resume and rewrites its summary for this job"
+msgstr ""
 
 #. Action button to copy two-factor backup codes to clipboard
 #: src/dialogs/auth/enable-two-factor.tsx
@@ -1469,8 +1373,8 @@ msgid "Copy stylesheet"
 msgstr "Копирај стилски лист"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Copy the entire job description from the posting and paste it below. We'll fill in the fields for you and keep the text with this application for match scoring and tailoring."
-msgstr "Копирајте цео опис посла из огласа и налепите га испод. Попунићемо поља уместо вас и сачувати текст уз ову пријаву ради оцене подударности и прилагођавања."
+msgid "Copy the entire job description from the posting and paste it below. It stays with this application for match scoring and tailoring."
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Copy the text out of the exported file and read it through; fix anything that arrives in the wrong place."
@@ -1527,10 +1431,6 @@ msgstr "Није могуће учитати изабрани животопис
 msgid "Could not load this cover letter."
 msgstr "Није могуће учитати ово пропратно писмо."
 
-#: src/features/homepage/export-playground.tsx
-msgid "Could not prepare the sample. Please try again."
-msgstr "Пример није могло да се припреми. Покушајте поново."
-
 #: src/features/resume/export/use-resume-export.ts
 msgid "Could not prepare your resume for printing. Please try again."
 msgstr "Није било могуће припремити ваш резиме за штампу. Молимо покушајте поново."
@@ -1569,6 +1469,10 @@ msgstr "Није могуће проверити везу. Проверите AP
 msgid "Couldn't add the application. Please try again."
 msgstr "Није могуће додати пријаву. Покушајте поново."
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Couldn't check your AI setup."
+msgstr ""
+
 #: src/features/applications/components/application-actions-menu.tsx
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Couldn't delete the application."
@@ -1582,9 +1486,17 @@ msgstr ""
 msgid "Couldn't delete the timeline entry."
 msgstr "Није могуће избрисати унос временске линије."
 
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't load your applications right now."
+msgstr ""
+
 #: src/features/applications/components/board.tsx
 msgid "Couldn't move the application. Please try again."
 msgstr "Премештање пријаве није успело. Покушајте поново."
+
+#: src/routes/dashboard/applications/index.tsx
+msgid "Couldn't refresh — showing your saved data."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Couldn't save"
@@ -1674,10 +1586,6 @@ msgstr "Пропратна писма"
 msgid "Create"
 msgstr "Креирај"
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Create a copy tuned to this job"
-msgstr "Направите копију прилагођену овом задатку"
-
 #: src/features/auth/pages/register.tsx
 msgid "Create a new account"
 msgstr "Креирајте нови налог"
@@ -1754,13 +1662,21 @@ msgstr "Направи нову ставку резимеа"
 msgid "Create a new volunteer experience"
 msgstr "Креирајте ново волонтерско искуство"
 
-#: src/features/homepage/page.tsx
+#: src/features/applications/components/application-form-sheet.tsx
 msgid "Create a resume"
 msgstr "Направите резиме"
 
 #: src/dialogs/resume/index.tsx
 msgid "Create a Sample Resume"
 msgstr "Креирајте пример резимеа"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Create a tailored copy"
+msgstr ""
+
+#: src/features/homepage/page.tsx
+msgid "Create an account and sign in."
+msgstr ""
 
 #: src/features/cover-letters/library.tsx
 msgid "Create cover letter"
@@ -1784,10 +1700,10 @@ msgstr "Креирајте резиме са опцијама"
 msgid "Created"
 msgstr "Креирано"
 
-#. placeholder {0}: result.name
+#. placeholder {0}: tailored.name
 #: src/features/applications/components/application-ai-copilot.tsx
-msgid "Created \"{0}\" and linked it to this application."
-msgstr "Направљено је „{0}“ и повезано са овом пријавом."
+msgid "Created “{0}” and linked it to this application. Only the summary was rewritten — the original resume is untouched."
+msgstr ""
 
 #: src/dialogs/api-key/create.tsx
 msgid "Creating your API key..."
@@ -2019,25 +1935,10 @@ msgstr "Опишите шта сте урадили како би унос до�
 msgid "Description"
 msgstr "Опис"
 
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section.tsx
 #: src/routes/builder/$resumeId/-components/mobile-builder-shell.tsx
 msgid "Design"
 msgstr "Дизајн"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Design systems"
-msgstr "Системи дизајна"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Designed a shared component library that six product teams use to build consistent interfaces."
-msgstr "Дизајнирао сам заједничку библиотеку компоненти коју шест произвођачких тимова користи за доследне интерфејсе."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Designed websites and tools for a growing creative community."
-msgstr "Дизајнирао сам сајтове и алате за растућу креативну заједницу."
 
 #. Label above the raw error text forwarded by the identity provider
 #: src/features/auth/pages/error.tsx
@@ -2058,6 +1959,7 @@ msgstr "Онемогући двофакторску аутентификациј
 msgid "Disabling two-factor authentication..."
 msgstr "Онемогућавање двофакторске аутентификације..."
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Discard"
 msgstr "Одбаци"
@@ -2071,24 +1973,13 @@ msgstr "Желите ли да одбаците несачуване проме�
 msgid "Disconnect"
 msgstr "Прекини повезивање"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Discord"
-msgstr "Дискорд"
-
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Dismiss"
 msgstr "Одбаци"
 
-#: src/features/homepage/page.tsx
-msgid "Docs"
-msgstr "Документација"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Documentation"
-msgstr "Документација"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Dismiss suggestion"
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Documents sent"
@@ -2098,14 +1989,7 @@ msgstr "Документи послати"
 msgid "Don't have an account? <0/>"
 msgstr "Немате налог? <0/>"
 
-#: src/components/ui/donation-toast.tsx
-msgid "Donate"
-msgstr "Донирајте"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Donate to Reactive Resume"
-msgstr "Донирајте Реактивном Резимеу"
-
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Done"
 msgstr "Готово"
@@ -2113,7 +1997,6 @@ msgstr "Готово"
 #. Action button to download two-factor backup codes as a text file
 #. Primary action in the builder header to open resume download options
 #: src/dialogs/auth/enable-two-factor.tsx
-#: src/features/homepage/languages-showcase.tsx
 #: src/features/resume/export/download-dialog.tsx
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/export.tsx
@@ -2143,22 +2026,6 @@ msgstr "Опције преузимања"
 msgid "Download PDF"
 msgstr "Преузми PDF"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample DOCX"
-msgstr "Преузми пример DOCX"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample JSON"
-msgstr "Преузми пример JSON"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample Markdown"
-msgstr "Преузми пример Markdown"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Download sample PDF"
-msgstr "Преузми пример PDF"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Downloads"
 msgstr "Преузимања"
@@ -2182,10 +2049,6 @@ msgstr "Превуците и пустите одељке овде да бист
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Drag to reposition and use the slider to zoom before uploading."
 msgstr "Превуците да бисте променили положај и користите клизач за зумирање пре отпремања."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Drag to turn the pages"
-msgstr "Превуците да бисте листали странице"
 
 #: src/features/ats-checker/messages.ts
 msgid "Drop the pronouns and start from the verb. That is the convention in most markets."
@@ -2310,10 +2173,11 @@ msgstr "Уређивање је онемогућено док га не откљ
 msgid "Editing keyword..."
 msgstr "Уређивање кључне речи..."
 
+#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
+msgid "Editing tips"
+msgstr ""
+
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Education"
@@ -2365,7 +2229,6 @@ msgstr "Омогућено"
 msgid "Enabling two-factor authentication…"
 msgstr "Омогућавање двофакторске аутентификације…"
 
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/locale.ts
 msgid "English"
 msgstr "Енглески"
@@ -2394,9 +2257,17 @@ msgstr "Унесите важећу адресу е-поште."
 msgid "Enter one of your saved backup codes to access your account"
 msgstr "Унесите један од сачуваних резервних кодова да приступите налогу"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the company name."
+msgstr ""
+
 #: src/features/auth/pages/resume-password.tsx
 msgid "Enter the password the resume owner shared with you."
 msgstr "Унесите лозинку коју је власник резимеа поделио са вама."
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Enter the role or job title."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom-fields.tsx
 msgid "Enter the URL to link to"
@@ -2430,14 +2301,6 @@ msgstr "Грешка"
 msgid "Every check passed. Nothing here should stop a parser from reading your resume."
 msgstr "Свака провера је прошла. Ништа овде не би требало да спречи парсер да прочита вашу биографију."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Example application"
-msgstr "Пример пријаве"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Example edit"
-msgstr "Пример измене"
-
 #: src/features/resume/stylesheet/toolbar.tsx
 msgid "Exit focus mode"
 msgstr "Изађи из режима фокусирања"
@@ -2447,10 +2310,6 @@ msgid "Exit Fullscreen"
 msgstr "Изађи из целог екрана"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Experience"
@@ -2465,17 +2324,13 @@ msgstr "Истиче за"
 msgid "Expires on {0}"
 msgstr "Истиче {0}"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Explore features"
-msgstr "Истражите функције"
-
-#: src/features/homepage/page.tsx
-msgid "Explore templates"
-msgstr "Истражите шаблоне"
-
 #: src/libs/resume/section.tsx
 msgid "Export"
 msgstr "Извоз"
+
+#: src/features/homepage/page.tsx
+msgid "Export a polished PDF for submission, or a Word file when you need a few more edits."
+msgstr ""
 
 #: src/features/applications/components/export-applications-sheet.tsx
 msgid "Export applications"
@@ -2509,13 +2364,17 @@ msgstr "Извези ПНГ"
 msgid "Export the resume as a text PDF rather than as an image or a scan."
 msgstr "Извезите биографију као текстуални PDF, а не као слику или скен."
 
+#: src/features/homepage/page.tsx
+msgid "Export, apply, and update the status until you hear back."
+msgstr ""
+
 #: src/features/applications/components/insights-view.tsx
 msgid "Exported pipeline-flow.png"
 msgstr "Извезен pipeline-flow.png"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Extracted text"
-msgstr "Издвојен текст"
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Extraction runs only when you click the button."
+msgstr ""
 
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Failed"
@@ -2691,21 +2550,13 @@ msgstr "Није успело да се потврди ваш код. Молим
 msgid "Fatal error"
 msgstr "Фатална грешка"
 
-#: src/features/homepage/site-footer.tsx
-msgid "Features"
-msgstr "Функције"
-
-#: src/features/homepage/page.tsx
-msgid "Fifteen templates, all free. Pick one you like. You can change the type, color, and layout in the editor."
-msgstr "Петнаест шаблона, сви бесплатни. Изаберите онај који вам се свиђа. Тип, боју и распоред можете променити у уређивачу."
-
 #: src/dialogs/resume/import.tsx
 msgid "File"
 msgstr "Датотека"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Fill fields"
-msgstr "Попуни поља"
+msgid "Fill fields with AI"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Filled in what we could from the posting."
@@ -2723,10 +2574,6 @@ msgstr "Филтрирај по ознакама"
 msgid "Find the weak bullet points and rewrite them with stronger outcomes, numbers, scope, and sharper verbs."
 msgstr "Пронађите слабе ставке и препишите их са јачим резултатима, бројевима, обимом и прецизнијим глаголима."
 
-#: src/features/homepage/page.tsx
-msgid "Find us on GitHub"
-msgstr "Пронађите нас на GitHub-у"
-
 #: src/libs/locale.ts
 msgid "Finnish"
 msgstr "Фински"
@@ -2738,10 +2585,6 @@ msgstr "Фит"
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Fit to view"
 msgstr "Прилагоди приказу"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Fits into your workflow"
-msgstr "Уклапа се у ваш ток рада"
 
 #: src/features/ats-checker/messages.ts
 msgid "Flatten the form so the text is part of the page."
@@ -2767,6 +2610,10 @@ msgstr "Пратећи нацрт"
 msgid "Follow-up note"
 msgstr "Напомена за наставак"
 
+#: src/features/applications/components/today-actions.tsx
+msgid "Follow-ups due"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Font Family"
 msgstr "Породица фонтова"
@@ -2783,25 +2630,14 @@ msgstr "Дебљина фонта"
 msgid "Font Weights"
 msgstr "Дебљине фонта"
 
-#: src/features/homepage/export-playground.tsx
-msgid "For a few more edits"
-msgstr "За још понеку измену"
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/-sections/footer.tsx
+msgid "Footer"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/notes.tsx
 msgid "For example, note which companies you sent this resume to, or links to the job descriptions."
 msgstr "На пример, забележите којим компанијама сте послали овај резиме или линкове ка огласима за посао."
-
-#: src/features/homepage/export-playground.tsx
-msgid "For keeping a copy"
-msgstr "За чување примера"
-
-#: src/features/homepage/export-playground.tsx
-msgid "For your next application"
-msgstr "За вашу следећу пријаву"
-
-#: src/features/homepage/export-playground.tsx
-msgid "For your words, anywhere"
-msgstr "За ваше речи, било где"
 
 #. Link label to password reset page from login form
 #: src/features/auth/pages/login.tsx
@@ -2825,7 +2661,6 @@ msgstr "Форматирање стилског листа"
 msgid "Free-form"
 msgstr "Слободан облик"
 
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/locale.ts
 msgid "French"
 msgstr "Француски"
@@ -2869,21 +2704,10 @@ msgstr "Генерисање вашег PDF-а..."
 msgid "German"
 msgstr "Немачки"
 
-#: src/features/homepage/page.tsx
-msgid "Get a second opinion on your writing, share your resume, and keep track of where you’ve applied. It’s all in one place."
-msgstr "Потражите друго мишљење о свом тексту, поделите резиме и пратите где сте се пријавили. Све на једном месту."
-
-#: src/features/homepage/page.tsx
-#: src/features/homepage/site-footer.tsx
-msgid "Get Started"
-msgstr "Почни"
-
 #. Authentication provider display name in account settings
 #. Brand name label for GitHub social sign-in button
 #: src/features/auth/components/social-auth.tsx
-#: src/features/homepage/site-footer.tsx
 #: src/features/settings/authentication/components/hooks.tsx
-#: src/routes/_home/-sections/footer.tsx
 msgid "GitHub"
 msgstr "ГитХаб"
 
@@ -2906,7 +2730,6 @@ msgstr "Иди кући"
 
 #: src/components/layout/error-screen.tsx
 #: src/components/layout/not-found-screen.tsx
-#: src/routes/_home/-sections/header.tsx
 msgid "Go to dashboard"
 msgstr "Иди на контролну таблу"
 
@@ -2929,11 +2752,6 @@ msgstr "Гугл"
 #: src/dialogs/resume/sections/education.tsx
 msgid "Grade"
 msgstr "Оцена"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Graphic Design"
-msgstr "Графички дизајн"
 
 #: src/libs/locale.ts
 msgid "Greek"
@@ -2980,14 +2798,6 @@ msgstr "Наслов"
 #: src/libs/locale.ts
 msgid "Hebrew"
 msgstr "Хебрејски"
-
-#: src/features/homepage/languages-showcase.tsx
-msgid "Help translate the app"
-msgstr "Помозите у превођењу апликације"
-
-#: src/features/settings/pages/preferences.tsx
-msgid "Help translate the app to your language"
-msgstr "Помозите у преводу апликације на ваш језик"
 
 #: src/dialogs/api-key/create.tsx
 msgid "Here's your new API key"
@@ -3076,6 +2886,10 @@ msgstr "Почетна"
 msgid "How do I use the API?"
 msgstr "Како да користим API?"
 
+#: src/features/homepage/page.tsx
+msgid "How it works"
+msgstr ""
+
 #: src/libs/locale.ts
 msgid "Hungarian"
 msgstr "Мађарски"
@@ -3083,10 +2897,6 @@ msgstr "Мађарски"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/typography.tsx
 msgid "Hyphenation"
 msgstr "Раздвајање речи"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "I design software for teams, from early research to the details people use every day."
-msgstr "Дизајнирам софтвер за тимове — од иницијалног истраживања до детаља којима се људи свакодневно служе."
 
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
@@ -3110,6 +2920,10 @@ msgstr "Увези"
 #: src/features/applications/components/import-applications-sheet.tsx
 msgid "Import {0}"
 msgstr "Увези {0}"
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Import a resume"
+msgstr ""
 
 #: src/dialogs/resume/import.tsx
 #: src/routes/dashboard/resumes/-components/cards/import-card.tsx
@@ -3164,6 +2978,10 @@ msgstr "Увоз…"
 msgid "In {0}"
 msgstr "У {0}"
 
+#: src/features/applications/components/insights-view.tsx
+msgid "in this view"
+msgstr ""
+
 #: src/features/resume/export/download-dialog.tsx
 msgid "Include resume header"
 msgstr "Укључи заглавље резимеа"
@@ -3211,15 +3029,9 @@ msgid "Inspecting page {0} of {1}…"
 msgstr "Прегледање странице {0} од {1}…"
 
 #: src/features/command-palette/pages/navigation.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/settings/integrations/route.tsx
 msgid "Integrations"
 msgstr "Интеграције"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Interaction design"
-msgstr "Интеракцијски дизајн"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -3227,13 +3039,13 @@ msgstr "Интеракцијски дизајн"
 msgid "Interests"
 msgstr "Интересовања"
 
-#: src/features/applications/components/application-detail-sheet.tsx
-msgid "interview"
-msgstr ""
-
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Interview"
 msgstr "Интервју"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "interview or beyond"
+msgstr ""
 
 #: src/features/applications/components/interview-dialog.tsx
 msgid "Interview scheduled."
@@ -3244,7 +3056,12 @@ msgid "Interview type"
 msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
+#: src/features/applications/components/insights-view.tsx
 msgid "Interviews"
+msgstr ""
+
+#: src/features/applications/components/today-actions.tsx
+msgid "Interviews today"
 msgstr ""
 
 #: src/features/settings/integrations/components/ai-section.tsx
@@ -3288,6 +3105,10 @@ msgstr "Опис посла"
 msgid "Job description (optional)"
 msgstr "Опис посла (опционо)"
 
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Job description text"
+msgstr ""
+
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Job posting"
 msgstr "Оглас за посао"
@@ -3295,6 +3116,10 @@ msgstr "Оглас за посао"
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Job posting link"
 msgstr "Веза ка огласу за посао"
+
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Job search"
+msgstr ""
 
 #: src/features/applications/components/insights-view.tsx
 msgid "Job search pipeline"
@@ -3331,10 +3156,6 @@ msgstr "Поравнај обострано"
 msgid "Kannada"
 msgstr "Канада"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep a backup of your content and settings. Import it into Reactive Resume later."
-msgstr "Чувајте резервну копију свог садржаја и подешавања. Касније га увезите у Reactive Resume."
-
 #: src/features/ats-checker/messages.ts
 msgid "Keep a single address, so software does not have to guess which one to use."
 msgstr "Држите једну једину адресу, како софтвер не би морао да погађа коју да користи."
@@ -3347,9 +3168,9 @@ msgstr "Задржите приступ када не користите апл�
 msgid "Keep editing"
 msgstr "Наставите са уређивањем"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep editing in Word, Google Docs, or Pages. Layout may differ from the PDF."
-msgstr "Наставите уређивање у Word-у, Google Docs-у или Pages-у. Распоред се може разликовати од PDF-а."
+#: src/features/homepage/page.tsx
+msgid "Keep every position in one board. Move each application across stages as you hear back."
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Keep it under 2.5 MB, usually by removing or shrinking images."
@@ -3367,10 +3188,6 @@ msgstr "Држите садржај биографије као стварни �
 msgid "Keep running heads short, or drop them. They repeat in the extracted text too."
 msgstr "Држите заглавља кратким, или их изоставите. Она се понављају и у извученом тексту."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Keep the company, role, resume, and follow-up date together. Switch between a board, table, and insights in the app."
-msgstr "Држите компанију, улогу, резиме и датум праћења на једном месту. У апликацији прелазите између табле, табеле и увида."
-
 #: src/features/ats-checker/messages.ts
 msgid "Keep them to roughly two lines, so a skim-reader finishes them."
 msgstr "Држите их на отприлике два реда, како би их читалац који брзо прегледа завршио."
@@ -3384,9 +3201,9 @@ msgstr "Држите се две или три породице фонтова. 
 msgid "Keep together"
 msgstr "Држите се заједно"
 
-#: src/features/homepage/export-playground.tsx
-msgid "Keep your layout intact. Ready to send, upload, or print."
-msgstr "Задржите распоред нетакнутим. Спремно за слање, отпремање или штампање."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Kept your edits to these fields — AI suggestions:"
+msgstr ""
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Key"
@@ -3404,10 +3221,6 @@ msgstr "Кључне речи"
 #: src/libs/locale.ts
 msgid "Khmer"
 msgstr "Кмерски"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Know where things stand"
-msgstr "Увек знајте где стојите"
 
 #: src/libs/locale.ts
 msgid "Korean"
@@ -3435,7 +3248,6 @@ msgid "Language"
 msgstr "Језик"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Languages"
@@ -3477,10 +3289,6 @@ msgstr "Поставите текст хоризонтално. Ротирани
 msgid "Layout"
 msgstr "Распоред"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Lead with the work. Add a concrete detail so someone can picture it."
-msgstr "Почните од посла. Додајте конкретан детаљ да би га неко могао и замислити."
-
 #: src/dialogs/resume/import.tsx
 #: src/hooks/use-form-blocker.tsx
 msgid "Leave"
@@ -3502,9 +3310,10 @@ msgstr "Оставите да подесите добављача АИ?"
 msgid "Left Align"
 msgstr "Поравнај лево"
 
-#: src/features/homepage/site-footer.tsx
-msgid "Legal"
-msgstr "Правне информације"
+#. Import source option for legacy v4 JSON resume backups
+#: src/dialogs/resume/import.tsx
+msgid "Legacy resume backup (JSON)"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Length is not a defect, and there is no universal one-page rule. Keep the pages that earn their place."
@@ -3524,10 +3333,6 @@ msgstr "Ниво"
 #: src/components/level/display.tsx
 msgid "Level {level} of 5"
 msgstr "Ниво {level} од 5"
-
-#: src/components/ui/copyright.tsx
-msgid "Licensed under <0>MIT</0>."
-msgstr "Лиценцирано под <0>MIT</0>."
 
 #: src/features/ats-checker/messages.ts
 msgid "Ligatures can drop letters out of words such as \"workflow\"."
@@ -3554,29 +3359,40 @@ msgid "Line Height"
 msgstr "Висина реда"
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Link a Reactive Resume (recommended)"
-msgstr "Повежите Reactive Resume (препоручено)"
+msgid "Link a resume"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
-msgid "Link a Reactive Resume to use AI match scoring and tailoring."
-msgstr "Повежите Reactive Resume резиме да бисте користили АИ оцењивање подударности и прилагођавање."
+msgid "Link a resume (recommended)"
+msgstr ""
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Link a resume and paste the job description (Edit) to score your fit and tailor a copy."
-msgstr "Повежите резиме и налепите опис посла (Измени) да бисте оценили подударност и прилагодили копију."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link a resume to use AI match scoring and tailoring."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link resume"
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Link the resume you sent (or plan to send) to unlock AI match scoring and tailoring."
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
-msgid "Linked Reactive Resume"
-msgstr "Повезани реактивни животопис"
+msgid "Linked resume"
+msgstr ""
 
 #. Authentication provider display name in account settings
 #. Brand name label for LinkedIn social sign-in button
 #: src/features/auth/components/social-auth.tsx
-#: src/features/homepage/site-footer.tsx
 #: src/features/settings/authentication/components/hooks.tsx
-#: src/routes/_home/-sections/footer.tsx
 msgid "LinkedIn"
 msgstr "Линкедин"
+
+#. Import source option for a LinkedIn data export ZIP
+#: src/dialogs/resume/import.tsx
+msgid "LinkedIn (Data Export)"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "LinkedIn, Referral…"
@@ -3620,18 +3436,14 @@ msgstr "Учитавање добављача…"
 msgid "Loading resumes…"
 msgstr "Учитавање биографија…"
 
-#: src/features/homepage/page.tsx
-msgid "Loading the playground…"
-msgstr "Учитавање игралишта…"
-
 #: src/features/command-palette/pages/resumes.tsx
 #: src/routes/agent/-components/thread-sidebar.tsx
 msgid "Loading threads…"
 msgstr "Учитавање тема…"
 
-#: src/features/homepage/community-stats.tsx
-msgid "Loading total"
-msgstr "Учитавање збира"
+#: src/routes/dashboard/applications/index.tsx
+msgid "Loading your applications…"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-components/version-history.tsx
 msgid "Loading…"
@@ -3668,23 +3480,18 @@ msgstr "Изгубили сте приступ својој апликацији
 msgid "Low impact"
 msgstr "Низак утицај"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Made with Reactive Resume"
-msgstr "Израђено помоћу Reactive Resume"
-
 #. Layout editor column label for the primary content area
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Main"
 msgstr "Главно"
 
-#: src/features/homepage/page.tsx
 #: src/routes/_home/-sections/header.tsx
 msgid "Main navigation"
 msgstr "Главна навигација"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Make it your own"
-msgstr "Учините га својим"
+#: src/features/homepage/page.tsx
+msgid "Maintain multiple structured resumes, pick a template layout, and edit every section."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Make the experience section about results and cut the vague responsibilities."
@@ -3697,10 +3504,6 @@ msgstr "Учините да се видљиви текст и одредиште
 #: src/features/ats-checker/messages.ts
 msgid "Make them visibly larger, bolder or capitalised."
 msgstr "Учините их видљиво већим, подебљаним или писаним великим словима."
-
-#: src/features/homepage/page.tsx
-msgid "Make yourself <0/>look good<1/><2>on paper.</2>"
-msgstr "Оставите <0/>добар утисак<1/><2>на папиру.</2>"
 
 #: src/libs/locale.ts
 msgid "Malay"
@@ -3744,13 +3547,13 @@ msgstr "Средњи утицај"
 msgid "Microsoft Word"
 msgstr "Микрософт Ворд"
 
+#: src/features/settings/pages/preferences.tsx
+msgid "Missing or imperfect translations? The interface falls back to English for untranslated text."
+msgstr ""
+
 #: src/routes/agent/-components/resume-pane.tsx
 msgid "Missing working resume"
 msgstr "Недостаје радни животопис"
-
-#: src/features/homepage/site-footer.tsx
-msgid "MIT License"
-msgstr "MIT лиценца"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Model"
@@ -3759,10 +3562,6 @@ msgstr "Модел"
 #: src/features/ats-checker/messages.ts
 msgid "More than one email address appears."
 msgstr "Појављује се више од једне имејл адресе."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Moss"
-msgstr "Маховина"
 
 #: src/features/ats-checker/messages.ts
 msgid "Most bullets open with filler rather than something you did."
@@ -3802,14 +3601,6 @@ msgstr "Промени фазу"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/layout/pages.tsx
 msgid "Move to"
 msgstr "Премести у"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Move to interview"
-msgstr "Премести у интервју"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Move to offer"
-msgstr "Премести у понуду"
 
 #: src/features/ats-checker/messages.ts
 msgid "Move your email and phone number to the top of page one."
@@ -3853,6 +3644,14 @@ msgstr "Имена помажу да разликујете кључеве, за
 #: src/features/settings/authentication/components/passkeys.tsx
 msgid "Names help you tell passkeys apart if you register more than one."
 msgstr "Имена помажу да разликујете кључеве за приступ ако региструјете више од једног."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a configured, tested AI model."
+msgstr ""
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Needs a linked resume, the job description, and a working AI model."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Nepali"
@@ -3916,12 +3715,12 @@ msgstr "Следеће"
 msgid "Next month"
 msgstr ""
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Next template"
-msgstr "Следећи шаблон"
-
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "No AI model configured — fields stay fully editable by hand."
 msgstr ""
 
 #: src/routes/builder/$resumeId/-components/ai-assistant.tsx
@@ -4006,10 +3805,6 @@ msgstr "Никаквог предвиђања да ли ћете бити одб
 msgid "No prior data"
 msgstr "Нема претходних података"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "No readable text found. This PDF may contain scanned images. Export a PDF with selectable text and try again."
-msgstr "Није пронађен читљив текст. Овај PDF можда садржи скениране слике. Извезите PDF са текстом могућим за селектовање и покушајте поново."
-
 #: src/routes/_home/ats-checker.tsx
 msgid "No repeating the claim that most resumes are thrown out automatically."
 msgstr "Никаквог понављања тврдње да се већина биографија аутоматски одбацује."
@@ -4055,10 +3850,6 @@ msgstr "Нема тестираног добављача"
 msgid "No text could be read from this file."
 msgstr "Из ове датотеке није могао да се прочита никакав текст."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "No text found"
-msgstr "Текст није пронађен"
-
 #: src/routes/agent/-components/thread-sidebar.tsx
 msgid "No threads yet."
 msgstr "Још нема тема."
@@ -4086,10 +3877,6 @@ msgstr "Није у вашој биографији"
 #: src/features/ats-checker/report/report-view.tsx
 msgid "Not scored"
 msgstr "Није оцењено"
-
-#: src/features/resume/stylesheet/editor.tsx
-msgid "Not sure what to write?"
-msgstr "Нисте сигурни шта да напишете?"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Note"
@@ -4126,9 +3913,13 @@ msgstr "Нема предлога."
 msgid "Odia"
 msgstr "Одија"
 
-#: src/features/homepage/feature-explorer.tsx
+#: src/features/applications/labels.ts
 msgid "Offer"
 msgstr "Понуда"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "Offers"
+msgstr ""
 
 #: src/features/settings/pages/api-keys.tsx
 msgid "Once deleted, the key can no longer access your data. This cannot be undone."
@@ -4160,6 +3951,10 @@ msgstr "Одједном се увози само првих {MAX_IMPORT} ред
 msgid "Only the first pages were checked."
 msgstr "Проверене су само прве странице."
 
+#: src/features/applications/labels.ts
+msgid "Onsite interview"
+msgstr ""
+
 #. Resume card context menu action to open the resume editor
 #. Resume card dropdown action to open the resume editor
 #: src/routes/dashboard/resumes/-components/menus/context-menu.tsx
@@ -4174,10 +3969,6 @@ msgstr "Отворите AI агента"
 #: src/routes/builder/$resumeId/-components/ai-assistant.tsx
 msgid "Open AI assistant"
 msgstr "Отворите AI асистент"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Open design library"
-msgstr "Отворите библиотеку дизајна"
 
 #. Button label to open the user's default email app
 #: src/features/auth/pages/forgot-password.tsx
@@ -4196,31 +3987,32 @@ msgstr "Отвори у креатору"
 msgid "Open Integrations Settings"
 msgstr "Отвори подешавања интеграција"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Open template PDF"
-msgstr "Отворите PDF шаблона"
-
 #: src/features/ats-checker/messages.ts
 msgid "Open the exported file and confirm you can select and copy every part of it."
 msgstr "Отворите извезену датотеку и потврдите да можете да означите и копирате сваки њен део."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Open the full ATS checker"
-msgstr "Отворите комплетну ATS проверу"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open the tailored resume"
+msgstr ""
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Open this application's edit form to add the missing details."
+msgstr ""
+
+#: src/features/homepage/page.tsx
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/-sections/footer.tsx
+#: src/routes/_home/-sections/header.tsx
+msgid "Open workspace"
+msgstr ""
 
 #: src/features/ats-checker/tool.tsx
 msgid "Opening the file…"
 msgstr "Отварање датотеке…"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Opens in a new tab"
-msgstr "Отвара се у новој картици"
-
-#: src/features/homepage/site-footer.tsx
-#: src/features/resume/stylesheet/editor.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "opens in new tab"
-msgstr "отвара се у новом језичку"
+#: src/features/homepage/page.tsx
+msgid "Optional AI assistance"
+msgstr ""
 
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Optional note for the agent"
@@ -4258,6 +4050,10 @@ msgstr "Организација"
 #: src/components/input/rich-input.tsx
 msgid "Original table formatting is preserved. This content is read-only because it cannot be edited safely."
 msgstr "Оригинално обликовање табеле је сачувано. Овај садржај је само за читање јер се не може безбедно уређивати."
+
+#: src/features/applications/labels.ts
+msgid "Other interview"
+msgstr ""
 
 #: src/features/ats-checker/report/score-header.tsx
 msgid "out of 100"
@@ -4313,7 +4109,6 @@ msgstr "Кључеви за приступ"
 #: src/features/auth/pages/login.tsx
 #: src/features/auth/pages/register.tsx
 #: src/features/auth/pages/resume-password.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/features/resume/builder/password-dialog.tsx
 #: src/features/settings/authentication/components/hooks.tsx
 #: src/features/settings/authentication/components/password.tsx
@@ -4332,13 +4127,13 @@ msgstr "Заштита лозинком је онемогућена."
 msgid "Password protection has been enabled."
 msgstr "Заштита лозинком је омогућена."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Password required"
-msgstr "Лозинка је потребна"
-
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Passwords do not match."
 msgstr "Лозинке не одговарају."
+
+#: src/features/applications/components/insights-view.tsx
+msgid "past saved"
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/ats-check.tsx
 msgid "Paste a posting to see which of its terms already appear in your resume."
@@ -4355,10 +4150,6 @@ msgstr "Овде налепите цео опис посла…"
 #: src/features/ats-checker/tool.tsx
 msgid "Paste the posting to see which of its terms already appear in your resume."
 msgstr "Налепите оглас да бисте видели који се термини из њега већ појављују у вашој биографији."
-
-#: src/features/applications/components/application-form-sheet.tsx
-msgid "Pasting fills the fields automatically."
-msgstr "Лепљење аутоматски попуњава поља."
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Patch applied"
@@ -4384,17 +4175,13 @@ msgstr "Закрпа враћена"
 msgid "Patch rolled back."
 msgstr "Закрпа је враћена уназад."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Pause data flow animation"
-msgstr "Паузирај анимацију тока података"
+#: src/features/homepage/page.tsx
+msgid "PDF / DOCX export"
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "PDF snapshot attached to the application."
 msgstr "ПДФ снимак приложен уз апликацију."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "PDF text layer"
-msgstr "PDF слој текста"
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "PDFs already attached to applications will remain available."
@@ -4429,10 +4216,6 @@ msgstr "Изаберите разговор из бочне траке или п
 msgid "Pick a format for your resume or cover letter."
 msgstr "Изаберите формат за свој резиме или пропратно писмо."
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Pick a language. See it on the page."
-msgstr "Изаберите језик. Погледајте га на страници."
-
 #: src/components/input/icon-picker.tsx
 msgid "Pick an icon"
 msgstr "Изаберите икону"
@@ -4461,21 +4244,9 @@ msgstr "Поставите га на страницу са панела Лаио
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Обичан текст, за АИ алате и брзе измене."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Play data flow animation"
-msgstr "Покрени анимацију тока података"
-
-#: src/components/ui/donation-toast.tsx
-msgid "Please support the project"
-msgstr "Молимо вас да подржите пројекат"
-
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
 msgstr "Отпремите PDF датотеку."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Plum"
-msgstr "Шљива"
 
 #: src/libs/locale.ts
 msgid "Polish"
@@ -4518,9 +4289,9 @@ msgstr "Поставке"
 msgid "Prepare a conservative patch that improves clarity without changing the story of my career."
 msgstr "Припремите конзервативну исправку која побољшава јасноћу, а не мења причу о мојој каријери."
 
-#: src/features/homepage/export-playground.tsx
-msgid "Preparing sample…"
-msgstr "Припрема примера…"
+#: src/features/homepage/page.tsx
+msgid "Prepare a resume and link it to the position."
+msgstr ""
 
 #: src/features/resume/export/use-resume-export.ts
 msgid "Preparing your resume for printing..."
@@ -4563,10 +4334,6 @@ msgstr "Претходно"
 msgid "Previous month"
 msgstr ""
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Previous template"
-msgstr "Претходни шаблон"
-
 #: src/routes/builder/$resumeId/-sidebar/right/sections/design.tsx
 msgid "Primary Color"
 msgstr "Примарна боја"
@@ -4574,28 +4341,6 @@ msgstr "Примарна боја"
 #: src/features/ats-checker/messages.ts
 msgid "Print or export the form to a flat PDF before sending it."
 msgstr "Одштампајте или извезите формулар у равни PDF пре него што га пошаљете."
-
-#: src/features/homepage/site-footer.tsx
-msgid "Privacy Policy"
-msgstr "Политика приватности"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Private"
-msgstr "Приватно"
-
-#: src/features/homepage/site-footer.tsx
-msgid "Product"
-msgstr "Производ"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Product designer"
-msgstr "Дизајнер производа"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Product strategy"
-msgstr "Стратегија производа"
 
 #: src/dialogs/resume/sections/skill.tsx
 msgid "Proficiency"
@@ -4618,7 +4363,6 @@ msgid "Progress Bar"
 msgstr "Трака напретка"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Projects"
@@ -4627,11 +4371,6 @@ msgstr "Пројекти"
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Protect your resume with a password"
 msgstr "Заштитите свој резиме лозинком"
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Prototyping"
-msgstr "Израда прототипа"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Provider"
@@ -4644,10 +4383,6 @@ msgstr "Веза са провајдером је верификована."
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Provider model"
 msgstr "Модел добављача"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Public"
-msgstr "Јавно"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -4662,6 +4397,11 @@ msgstr "Издавач"
 #: src/features/ats-checker/messages.ts
 msgid "Put a plain email address near the top of the first page. It is what most systems file you under."
 msgstr "Ставите обичну имејл адресу близу врха прве странице. То је оно под чим вас већина система евидентира."
+
+#: src/features/homepage/page.tsx
+#: src/routes/_home/-sections/footer.tsx
+msgid "Put jobs, resumes, and application progress in one place."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Raw JSON"
@@ -4695,56 +4435,21 @@ msgstr "Поново извезите са уграђеним фонтовима
 msgid "Re-score"
 msgstr "Поново оцени"
 
-#: src/routes/_home/-sections/header.tsx
-msgid "Reactive Resume - Go to homepage"
-msgstr "Реактивни Резиме - Иди на почетну страницу"
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "Re-score with current content"
+msgstr ""
 
-#. Import source option for current Reactive Resume JSON format
-#: src/dialogs/resume/import.tsx
-msgid "Reactive Resume (JSON)"
-msgstr "Реактивни резиме (JSON)"
-
-#: src/features/homepage/page.tsx
-msgid "Reactive Resume is free and open source. Amruth and a community of contributors keep it running. If you’d like to support the work, donations help cover hosting and development."
-msgstr "Reactive Resume је бесплатан и отвореног кода. Amruth и заједница сарадника га одржавају. Ако желите да подржите рад, донације помажу да се покрију хостинг и развој."
-
-#: src/components/ui/donation-toast.tsx
-msgid "Reactive Resume is free and open source. If it has helped you, please consider donating."
-msgstr "Реактивни резиме је бесплатан и отвореног кода. Ако вам је помогао, размислите о донацији."
-
-#. App version label in footer; includes semantic version variable
-#: src/components/ui/copyright.tsx
-msgid "Reactive Resume v<0>{__APP_VERSION__}</0>"
-msgstr "Реактивни резиме v<0>{__APP_VERSION__}</0>"
-
-#. Import source option for legacy Reactive Resume v4 JSON format
-#: src/dialogs/resume/import.tsx
-msgid "Reactive Resume v4 (JSON)"
-msgstr "Реактивни резиме v4 (JSON)"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read again"
-msgstr "Прочитај поново"
+#: src/features/applications/components/insights-view.tsx
+msgid "reached screening"
+msgstr ""
 
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Read an attachment"
 msgstr "Прочитан прилог"
 
-#: src/features/resume/stylesheet/editor.tsx
-msgid "Read the Applying Custom Styles guide."
-msgstr "Прочитајте водич за примену прилагођених стилова."
-
 #: src/routes/agent/-components/tool-part-card.tsx
 msgid "Read the resume"
 msgstr "Прочитан животопис"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read the sample to see its text without the layout. Or try a PDF of your own."
-msgstr "Прочитајте пример да бисте видели његов текст без распореда. Или испробајте сопствени PDF."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Read this resume"
-msgstr "Прочитајте овај резиме"
 
 #: src/features/auth/pages/consent.tsx
 msgid "Read your email address."
@@ -4758,27 +4463,15 @@ msgstr "Прочитајте информације о свом профилу."
 msgid "Readability"
 msgstr "Читљивост"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading locally"
-msgstr "Читање локално"
-
 #. placeholder {0}: progress.page
 #. placeholder {1}: progress.pageCount
 #: src/features/ats-checker/tool.tsx
 msgid "Reading page {0} of {1}…"
 msgstr "Читање странице {0} од {1}…"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading PDF"
-msgstr "Читање PDF-а"
-
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Reading the posting…"
 msgstr "Читање огласа…"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Reading this PDF in your browser. Your file is not uploaded."
-msgstr "Читање овог PDF-а у вашем прегледачу. Ваша датотека се не отпрема."
 
 #: src/features/resume/stylesheet/status.tsx
 msgid "Ready to activate"
@@ -4791,10 +4484,6 @@ msgstr "Спремно за активирање са грешкама"
 #: src/features/resume/stylesheet/status.tsx
 msgid "Ready to activate with warnings"
 msgstr "Спремно за активирање са упозорењима"
-
-#: src/features/homepage/page.tsx
-msgid "Ready to put your name on it?"
-msgstr "Спремни за потпис?"
 
 #: src/dialogs/resume/sections/cover-letter.tsx
 #: src/features/cover-letters/editor.tsx
@@ -4831,9 +4520,17 @@ msgstr "Препоручено од..., ствари које треба наг�
 msgid "Register New Device"
 msgstr "Региструјте нови уређај"
 
-#: src/features/homepage/site-footer.tsx
+#: src/features/applications/labels.ts
+msgid "Rejected"
+msgstr ""
+
+#: src/components/ui/copyright.tsx
 msgid "Released under the <0>MIT License</0>."
 msgstr "Објављено под <0>MIT лиценцом</0>."
+
+#: src/features/homepage/site-footer.tsx
+msgid "Released under the <0>MIT License</0>. v<1>{__APP_VERSION__}</1>"
+msgstr ""
 
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Reload latest version"
@@ -4921,19 +4618,6 @@ msgstr "Замените табеле обичним пасусима и лис�
 msgid "Replace the attached cover letter?"
 msgstr "Заменити приложено пропратно писмо?"
 
-#: src/features/homepage/page.tsx
-msgid "Report a bug"
-msgstr "Пријавите грешку"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Report a Bug"
-msgstr "Пријави грешку"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Report an issue"
-msgstr "Пријави проблем"
-
 #: src/features/settings/pages/profile.tsx
 msgid "Resend verification email"
 msgstr "Поново пошаљи верификациону е-пошту"
@@ -4947,8 +4631,6 @@ msgid "Reserve capitals for short headings. They slow reading and can defeat cas
 msgstr "Резервишите велика слова за кратке наслове. Она успоравају читање и могу да омету претрагу осетљиву на велика и мала слова."
 
 #. Destructive confirmation button label when resetting a resume section
-#: src/features/homepage/ats-playground.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "Reset"
 msgstr "Ресетуј"
@@ -4966,14 +4648,9 @@ msgstr "Ресетујте своју лозинку"
 msgid "Resetting your password..."
 msgstr "Ресетовање ваше лозинке..."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Resources"
-msgstr "Ресурси"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Responsible for working on the design system and helping other teams with their designs."
-msgstr "Задужен за рад на систему дизајна и за помагање другим тимовима у њиховим дизајнима."
+#: src/features/applications/components/insights-view.tsx
+msgid "Response rate"
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Restore"
@@ -4988,15 +4665,20 @@ msgid "Restore this version?"
 msgstr "Врати ову верзију?"
 
 #: src/features/applications/components/application-form-sheet.tsx
+msgid "Restored your unsaved changes (kept for this browser session only)."
+msgstr ""
+
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/resume/export/download-dialog.tsx
 #: src/routes/agent/-components/resume-pane.tsx
 #: src/routes/agent/$threadId.tsx
 msgid "Resume"
 msgstr "Резиме"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Resume attached"
-msgstr "Резиме приложен"
+#. Import source option for this app's JSON resume backup format
+#: src/dialogs/resume/import.tsx
+msgid "Resume backup (JSON)"
+msgstr ""
 
 #: src/features/resume/preview/resume-accessible-text.tsx
 msgid "Resume content"
@@ -5005,6 +4687,10 @@ msgstr "Садржај резимеа"
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Resume edit"
 msgstr "Измена животописа"
+
+#: src/features/homepage/page.tsx
+msgid "Resume editing"
+msgstr ""
 
 #: src/features/applications/components/application-detail-sheet.tsx
 msgid "Resume file"
@@ -5019,10 +4705,6 @@ msgstr "Веза ка резимеу је копирана у међуспрем
 msgid "Resume linked"
 msgstr "Биографија је повезана"
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Resume not found"
-msgstr "Резиме није пронађен"
-
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Resume options"
 msgstr "Опције за резиме"
@@ -5031,9 +4713,10 @@ msgstr "Опције за резиме"
 msgid "Resume patch"
 msgstr "Закрпа животописа"
 
-#: src/features/homepage/template-shelf.tsx
-msgid "Resume templates"
-msgstr "Шаблони за резиме"
+#: src/features/homepage/site-footer.tsx
+#: src/routes/_home/ats-checker.tsx
+msgid "Resume readability check"
+msgstr ""
 
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Resume templates for different professions and tastes. Pick the one that suits you."
@@ -5041,8 +4724,6 @@ msgstr "Шаблони резимеа за различите професије
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/features/command-palette/pages/resumes.tsx
-#: src/features/homepage/community-stats.tsx
-#: src/features/homepage/languages-showcase.tsx
 #: src/routes/dashboard/-components/sidebar.tsx
 #: src/routes/dashboard/resumes/index.tsx
 msgid "Resumes"
@@ -5051,8 +4732,14 @@ msgstr "Резимеи"
 #: src/features/cover-letters/editor-dialog.tsx
 #: src/features/cover-letters/library.tsx
 #: src/routes/agent/-components/agent-chat.tsx
+#: src/routes/dashboard/applications/index.tsx
 msgid "Retry"
 msgstr "Покушај поново"
+
+#: src/features/applications/components/application-ai-copilot.tsx
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "Review AI settings"
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Review edits"
@@ -5081,10 +4768,6 @@ msgstr "Препишите сажетак за позицију старијег
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Rewrite this resume for a startup founder moving into a product lead role, and show the business impact."
 msgstr "Препишите овај резиме за оснивача стартапа који прелази на улогу вође производа и прикажите пословни утицај."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Rhyhorn sample resume"
-msgstr "Пример резимеа Rhyhorn"
 
 #: src/components/input/rich-input.tsx
 msgid "Right Align"
@@ -5142,26 +4825,6 @@ msgstr "Плата"
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Salary range"
 msgstr "Распон плата"
-
-#: src/features/homepage/page.tsx
-msgid "Same story.<0/>A different look."
-msgstr "Иста прича.<0/>Другачији изглед."
-
-#: src/features/homepage/export-playground.tsx
-msgid "Sample download format"
-msgstr "Формат преузимања примера"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Sample resume"
-msgstr "Пример резимеа"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Sample resume for {name}"
-msgstr "Пример резимеа за {name}"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Sans"
-msgstr "Безсерифни"
 
 #. Passkey rename prompt confirm action in authentication settings
 #: src/features/applications/components/application-detail-sheet.tsx
@@ -5224,6 +4887,7 @@ msgstr "Сачувајте промене животописа пре него �
 msgid "Save the file with every page upright."
 msgstr "Сачувајте датотеку тако да свака страница буде усправна."
 
+#: src/features/applications/labels.ts
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Saved"
 msgstr "Сачувано"
@@ -5235,10 +4899,6 @@ msgstr "Чување траје дуже него што се очекивало
 #: src/routes/builder/$resumeId/-components/header.tsx
 msgid "Saving…"
 msgstr "Чување…"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Say what you actually did."
-msgstr "Реците шта сте заиста урадили."
 
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Scan the QR code below with your preferred authenticator app. You can also copy the secret below and paste it into your app."
@@ -5272,6 +4932,14 @@ msgstr "Оцени моје подударање"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Scoring your fit…"
 msgstr "Оцењивање вашег подударања…"
+
+#: src/features/applications/labels.ts
+msgid "Screening"
+msgstr ""
+
+#: src/features/applications/labels.ts
+msgid "Screening call"
+msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Search"
@@ -5338,18 +5006,6 @@ msgstr "Одељци"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "See how this resume matches the posting"
 msgstr "Погледајте како овај животопис одговара објављивању"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "See how to connect"
-msgstr "Погледајте како да се повежете"
-
-#: src/features/homepage/page.tsx
-msgid "See what<0/>software reads."
-msgstr "Погледајте шта<0/>софтвер чита."
-
-#: src/features/homepage/page.tsx
-msgid "See whether your PDF has readable text. Read a sample or try your own PDF. Everything runs in your browser, so your file stays with you."
-msgstr "Проверите да ли ваш PDF има читљив текст. Прочитајте пример или испробајте свој PDF. Све се одвија у вашем прегледачу, тако да ваша датотека остаје код вас."
 
 #. placeholder {0}: app.company
 #: src/features/applications/components/table-view.tsx
@@ -5421,11 +5077,6 @@ msgstr "Шаље текст који је већ извучен из вашег 
 msgid "Sends the text already extracted from your PDF, plus the job description you pasted, to the AI provider you choose below. The PDF file itself is never uploaded."
 msgstr "Шаље текст који је већ извучен из вашег PDF-а, плус опис посла који сте налепили, АИ добављачу који изаберете испод. Сама PDF датотека се никада не отпрема."
 
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Senior product designer"
-msgstr "Виши дизајнер производа"
-
 #: src/components/input/rich-input.tsx
 msgid "Separator"
 msgstr "Раздвајач"
@@ -5433,10 +5084,6 @@ msgstr "Раздвајач"
 #: src/libs/locale.ts
 msgid "Serbian"
 msgstr "Српски"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Serif"
-msgstr "Серифни"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Set a password if you want only people who know it to open the public URL."
@@ -5474,7 +5121,6 @@ msgstr "Подесите добављача вештачке интелиген�
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
-#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Подешавања"
 
@@ -5489,10 +5135,6 @@ msgstr "Ширина сенке"
 #: src/libs/resume/section.tsx
 msgid "Sharing"
 msgstr "Дељење"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Sharing preview"
-msgstr "Преглед дељења"
 
 #: src/features/resume/builder/section-recovery.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
@@ -5509,11 +5151,6 @@ msgstr "Прикажи још {0}"
 #: src/features/resume/builder/section-recovery.tsx
 msgid "Show {title} section"
 msgstr "Прикажи одељак титле {title}"
-
-#: src/features/homepage/languages-showcase.test.tsx
-#: src/features/homepage/languages-showcase.tsx
-msgid "Show all languages"
-msgstr "Прикажи све језике"
 
 #: src/routes/builder/$resumeId/-sidebar/right/sections/sharing.tsx
 msgid "Show Download Buttons"
@@ -5660,9 +5297,6 @@ msgid "Size"
 msgstr "Величина"
 
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/languages-showcase.tsx
-#: src/features/homepage/resume-sculpture.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 msgid "Skills"
@@ -5691,6 +5325,10 @@ msgstr "Словеначки"
 #: src/dialogs/resume/index.tsx
 msgid "Slug"
 msgstr "Идентификатор (slug)"
+
+#: src/features/applications/components/insights-view.tsx
+msgid "so far"
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "Some application systems require one before you can submit."
@@ -5732,10 +5370,6 @@ msgstr "Део текста излази ван странице."
 msgid "Some text is rotated."
 msgstr "Део текста је ротиран."
 
-#: src/features/homepage/community-stats.tsx
-msgid "Some totals are unavailable right now."
-msgstr "Неки збирови тренутно нису доступни."
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Something else…"
 msgstr "Нешто друго…"
@@ -5747,10 +5381,6 @@ msgstr "Нешто је пошло наопако"
 #: src/features/ats-checker/tool.tsx
 msgid "Something went wrong while reading that file. Please try again."
 msgstr "Дошло је до грешке приликом читања те датотеке. Молимо покушајте поново."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Something went wrong while reading this file. Please try again."
-msgstr "Нешто је пошло наопако при читању ове датотеке. Покушајте поново."
 
 #: src/features/auth/pages/error.tsx
 msgid "Something went wrong while signing you in. Please try again."
@@ -5782,12 +5412,6 @@ msgstr "Сортирај по…"
 msgid "Source"
 msgstr "Извор"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Source Code"
-msgstr "Изворни код"
-
 #. placeholder {0}: operation.from
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "Source: {0}"
@@ -5813,28 +5437,11 @@ msgstr "Шпански"
 msgid "Spell the month, as in \"Mar 2022\"."
 msgstr "Испишите месец словима, као у „Mar 2022“."
 
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Sponsors"
-msgstr "Спонзори"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Sponsorships"
-msgstr "Спонзорства"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Spread pages"
-msgstr "Размакни странице"
-
 #. Preset button for setting picture aspect ratio to square
 #: src/components/level/combobox.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Square"
 msgstr "Квадрат"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Stack pages"
-msgstr "Сложи странице"
 
 #: src/features/applications/components/application-form-sheet.tsx
 #: src/features/applications/components/table-view.tsx
@@ -5845,15 +5452,6 @@ msgstr "Фаза"
 msgid "Stage date"
 msgstr "Датум фазе"
 
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub (opens in new tab)"
-msgstr "Дај нам звездицу на GitHub-у (отвара се у новом језичку)"
-
-#. placeholder {0}: starCount.toLocaleString()
-#: src/components/input/github-stars-button.tsx
-msgid "Star us on GitHub, currently {0} stars (opens in new tab)"
-msgstr "Дај нам звездицу на GitHub-у, тренутно {0} звездица (отвара се у новом језичку)"
-
 #: src/routes/agent/$threadId.tsx
 msgid "Start a new thread"
 msgstr "Започни нову тему"
@@ -5861,10 +5459,6 @@ msgstr "Започни нову тему"
 #: src/routes/agent/-components/new-thread-setup.tsx
 msgid "Start a thread"
 msgstr "Започни тему"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Start again"
-msgstr "Почни поново"
 
 #: src/dialogs/resume/index.tsx
 msgid "Start building your resume by giving it a name."
@@ -5882,6 +5476,10 @@ msgstr "Датум почетка мора да буде на или пре да
 #: src/features/ats-checker/messages.ts
 msgid "Start each one with a concrete verb: built, led, reduced, migrated."
 msgstr "Почните сваку конкретним глаголом: изградио, водио, смањио, преселио."
+
+#: src/features/homepage/page.tsx
+msgid "Start managing your job search"
+msgstr ""
 
 #: src/routes/agent/index.tsx
 msgid "Start new thread"
@@ -5908,10 +5506,6 @@ msgstr "Статистика"
 #: src/hooks/use-form-blocker.tsx
 msgid "Stay"
 msgstr "Остани"
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Stays in your browser"
-msgstr "Остаје у вашем прегледачу"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Still waiting for {provider}… {elapsedSeconds}s"
@@ -5949,11 +5543,6 @@ msgstr "Детаљи стила и пошиљаоца су копирани. Б�
 msgid "Styling and sender details refreshed from the selected resume."
 msgstr "Детаљи о стилу и пошиљаоцу су освежени из изабраног животописа."
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "Subreddit"
-msgstr "Субредит"
-
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Suggestions"
 msgstr "Предлози"
@@ -5961,20 +5550,11 @@ msgstr "Предлози"
 #. Fallback title for a custom summary item in resume builder when content is empty
 #. Fallback title for a custom summary item in resume builder when content is unavailable
 #: src/dialogs/resume/sections/custom.tsx
-#: src/features/homepage/export-playground.tsx
 #: src/libs/resume/section-title.ts
 #: src/libs/resume/section.tsx
 #: src/routes/builder/$resumeId/-sidebar/left/sections/custom.tsx
 msgid "Summary"
 msgstr "Сажетак"
-
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Support the app by doing what you can!"
-msgstr "Подржите апликацију колико можете!"
-
-#: src/features/homepage/page.tsx
-msgid "Support the project"
-msgstr "Подржите пројекат"
 
 #: src/features/ats-checker/messages.ts
 #: src/libs/resume/ats.ts
@@ -6020,10 +5600,6 @@ msgstr "Ознаке се могу користити за категориза�
 msgid "Tags give software an explicit reading order. Enable them when exporting, if your tool offers it."
 msgstr "Ознаке дају софтверу јасан редослед читања. Омогућите их приликом извоза, ако ваш алат то нуди."
 
-#: src/features/applications/components/application-ai-copilot.tsx
-msgid "Tailor my resume"
-msgstr "Прилагодите мој животопис"
-
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Tailor this resume to a product manager job description, and emphasize roadmap ownership, stakeholder communication, and measurable launch outcomes."
 msgstr "Прилагодите овај резиме опису посла за менаџера производа и нагласите власништво над мапом пута, комуникацију са заинтересованим странама и мерљиве резултате лансирања."
@@ -6032,13 +5608,13 @@ msgstr "Прилагодите овај резиме опису посла за 
 msgid "Tailoring failed."
 msgstr "Прилагођавање није успело."
 
-#: src/features/homepage/page.tsx
-msgid "Take it<0/>with you."
-msgstr "Понесите га<0/>са собом."
-
 #: src/libs/locale.ts
 msgid "Tamil"
 msgstr "Тамилски"
+
+#: src/features/applications/labels.ts
+msgid "Technical interview"
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Telugu"
@@ -6053,10 +5629,6 @@ msgstr "Шаблон"
 #: src/dialogs/resume/template/gallery.tsx
 msgid "Template Gallery"
 msgstr "Галерија шаблона"
-
-#: src/features/homepage/site-footer.tsx
-msgid "Templates"
-msgstr "Шаблони"
 
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Test"
@@ -6079,10 +5651,6 @@ msgstr "Поравнање текста"
 msgid "Text Color"
 msgstr "Боја текста"
 
-#: src/features/homepage/ats-playground.tsx
-msgid "Text extracted"
-msgstr "Текст је издвојен"
-
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Текст је исписан знак по знак."
@@ -6094,10 +5662,6 @@ msgstr "Текст се налази у подручју заглавља или
 #: src/libs/locale.ts
 msgid "Thai"
 msgstr "Тајландски"
-
-#: src/features/homepage/page.tsx
-msgid "Thank you for helping keep it free."
-msgstr "Хвала што помажете да остане бесплатан."
 
 #: src/features/ats-checker/tool.tsx
 msgid "That file could not be read as a PDF."
@@ -6129,12 +5693,12 @@ msgid "The agent needs your input."
 msgstr "Агенту је потребан ваш допринос."
 
 #: src/features/settings/pages/api-keys.tsx
-msgid "The API documentation shows how to connect Reactive Resume to your own applications. It covers the endpoints, the request format, and authentication."
-msgstr "API документација показује како да повежете Reactive Resume са сопственим апликацијама. Обухвата крајње тачке, формат захтева и аутентификацију."
-
-#: src/features/settings/pages/api-keys.tsx
 msgid "The API key has been deleted."
 msgstr "API кључ је обрисан."
+
+#: src/features/settings/pages/api-keys.tsx
+msgid "The API specification describes how to connect this workspace to your own applications. It covers the endpoints, the request format, and authentication."
+msgstr ""
 
 #: src/features/auth/pages/error.tsx
 msgid "The application that sent you here made an invalid authorization request."
@@ -6152,6 +5716,10 @@ msgstr "Дубинска провера није могла да се заврш
 #: src/dialogs/resume/import.tsx
 msgid "The imported file could not be parsed into a valid resume."
 msgstr "Увезена датотека није могла да се преобрази у важећи резиме."
+
+#: src/features/applications/components/application-ai-copilot.tsx
+msgid "The job description has been pasted in"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "The order the text is stored in disagrees badly with the order it reads in."
@@ -6193,10 +5761,6 @@ msgstr "Добављач је вратио преглед који није мо
 msgid "The provider's response could not be verified. Please start again."
 msgstr "Одговор добављача није могао да се потврди. Почните поново."
 
-#: src/features/homepage/page.tsx
-msgid "The rest of your<0/>job search, too."
-msgstr "И остатак ваше<0/>потраге за послом."
-
 #: src/features/resume/preview/preview.browser.tsx
 msgid "The resume preview could not be updated. The last valid preview is still shown."
 msgstr "Преглед резимеа није могао бити ажуриран. Последњи важећи преглед је и даље приказан."
@@ -6236,10 +5800,6 @@ msgstr "Тема"
 #: src/dialogs/auth/enable-two-factor.tsx
 msgid "Then, enter the 6 digit code that the app provides to continue."
 msgstr "Затим унесите шестоцифрени кôд који апликација приказује да бисте наставили."
-
-#: src/features/homepage/page.tsx
-msgid "There are other ways to pitch in."
-msgstr "Постоје и други начини да допринесете."
 
 #: src/features/ats-checker/messages.ts
 msgid "There is a gap between two dated roles."
@@ -6295,8 +5855,8 @@ msgid "This cover letter changed elsewhere. Your edits are still here. Reload th
 msgstr "Ово пропратно писмо је промењено на другом месту. Ваше измене су још увек овде. Поново учитајте најновију верзију пре него што поново сачувате."
 
 #: src/dialogs/api-key/create.tsx
-msgid "This creates a new API key, which lets other programs read and change your resume data through the Reactive Resume API."
-msgstr "Ово прави нови API кључ, који другим програмима омогућава да читају и мењају податке вашег резимеа преко Reactive Resume API-ја."
+msgid "This creates a new API key, which lets other programs read and change your resume data through this workspace's API."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This date will not be read correctly."
@@ -6338,10 +5898,6 @@ msgstr "Ова датотека садржи текст исцртан неви�
 msgid "This file contains white-on-white text."
 msgstr "Ова датотека садржи бели текст на белој позадини."
 
-#: src/features/homepage/ats-playground.tsx
-msgid "This file could not be read as a PDF. Export a new copy and try again."
-msgstr "Ова датотека није могла да се прочита као PDF. Извезите нову копију и покушајте поново."
-
 #: src/features/ats-checker/messages.ts
 msgid "This file declares no language."
 msgstr "Ова датотека не декларише ниједан језик."
@@ -6377,10 +5933,6 @@ msgstr "Овај наслов није онај који парсери траж
 #: src/features/ats-checker/messages.ts
 msgid "This is a PDF Portfolio: the visible page is only a cover."
 msgstr "Ово је PDF портфолио: видљива страница је само насловна."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "This is a sample edit. In the app, connect your own AI provider. Turn on Review edits to approve changes before they’re applied."
-msgstr "Ово је пример измене. У апликацији повежите свој AI добављача. Укључите преглед измена да бисте одобравали измене пре него што се примене."
 
 #: src/dialogs/resume/index.tsx
 msgid "This is a URL-friendly name for your resume."
@@ -6432,13 +5984,8 @@ msgid "This PDF has no readable text. It is likely a scan, so there is nothing t
 msgstr "Овај ПДФ нема читљив текст. Вероватно је скенирање, тако да нема шта да се увезе."
 
 #: src/features/ats-checker/tool.tsx
-#: src/features/homepage/ats-playground.tsx
 msgid "This PDF is password protected. Save an unprotected copy and try again."
 msgstr "Овај PDF је заштићен лозинком. Сачувајте незаштићену копију и покушајте поново."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "This PDF is too large. Choose a file smaller than 25 MB."
-msgstr "Овај PDF је превелик. Изаберите датотеку мању од 25 MB."
 
 #: src/libs/resume/ats.ts
 msgid "This period ends before it starts."
@@ -6614,17 +6161,13 @@ msgstr "Токени: {total} ({cached} кеширано)"
 msgid "Tomorrow"
 msgstr ""
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Tools"
-msgstr "Алати"
+#: src/routes/dashboard/-components/sidebar.tsx
+msgid "Tools & settings"
+msgstr ""
 
-#: src/features/homepage/community-stats.tsx
-msgid "Total unavailable"
-msgstr "Збир није доступан"
-
-#: src/features/homepage/community-stats.tsx
-msgid "Totals are refreshed periodically."
-msgstr "Збирови се повремено освежавају."
+#: src/features/applications/components/insights-view.tsx
+msgid "Total applications"
+msgstr ""
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Track a job you're applying to and link the resume you sent."
@@ -6638,28 +6181,9 @@ msgstr "Пратите своју прву пријаву"
 msgid "Track your resume's views and downloads"
 msgstr "Пратите прегледе и преузимања свог резимеа"
 
-#: src/features/homepage/page.tsx
-msgid "Translate the app"
-msgstr "Преведите апликацију"
-
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-#: src/routes/builder/$resumeId/-sidebar/right/sections/information.tsx
-msgid "Translations"
-msgstr "Преводи"
-
 #: src/components/layout/error-screen.tsx
-#: src/features/homepage/ats-playground.tsx
 msgid "Try again"
 msgstr "Покушај поново"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Try the settings to see what visitors can access. When you create your resume, you decide how to share it."
-msgstr "Испробајте подешавања да видите чему посетиоци могу да приступе. Када направите резиме, ви одлучујете како ћете га делити."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Try your PDF"
-msgstr "Испробајте свој PDF"
 
 #: src/libs/locale.ts
 msgid "Turkish"
@@ -6742,10 +6266,6 @@ msgstr "Укуцајте \"{CONFIRMATION_TEXT}\" да потврдите"
 msgid "Type a command or search…"
 msgstr "Унесите команду или претражите…"
 
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Typeface"
-msgstr "Тип слова"
-
 #: src/libs/resume/section.tsx
 msgid "Typography"
 msgstr "Типографија"
@@ -6764,7 +6284,6 @@ msgid "Underline"
 msgstr "Подвучено"
 
 #: src/dialogs/resume/template/gallery.tsx
-#: src/features/homepage/feature-explorer.tsx
 #: src/routes/builder/$resumeId/-components/dock.tsx
 msgid "Undo"
 msgstr "Поништи"
@@ -6907,8 +6426,8 @@ msgid "Upload .csv"
 msgstr "Отпремите .csv"
 
 #: src/routes/_home/ats-checker.tsx
-msgid "Upload a resume and see what an applicant tracking system reads from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
-msgstr "Отпремите резиме и видите шта из њега чита систем за праћење кандидата. Све се извршава у овом прегледачу. Ваш фајл се никада не отпрема и ништа се не чува."
+msgid "Upload a resume and see what applicant tracking systems (ATS) read from it. Everything runs in this browser. Your file is never uploaded, and nothing is stored."
+msgstr ""
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Upload attachments"
@@ -6932,6 +6451,7 @@ msgstr "Отпремање…"
 msgid "URL"
 msgstr "URL"
 
+#: src/features/applications/components/application-form-sheet.tsx
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Use"
 msgstr "Користите"
@@ -6993,22 +6513,9 @@ msgstr "Користите обичне наслове као „Experience“, 
 msgid "Use sample"
 msgstr "Користите узорак"
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Use the app in a language you’re comfortable with. Try a few of the translations made by the community."
-msgstr "Користите апликацију на језику у којем се осећате пријатно. Испробајте понеки превод који је направила заједница."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Use this wording"
-msgstr "Користи овај текст"
-
 #: src/features/ats-checker/messages.ts
 msgid "Use your editor's normal bullet list, so stray glyphs do not land mid-sentence."
 msgstr "Користите обичну листу са ставкама у вашем уређивачу, како залутали знакови не би завршили усред реченице."
-
-#: src/features/homepage/export-playground.tsx
-#: src/features/homepage/resume-sculpture.tsx
-msgid "User research"
-msgstr "Корисничко истраживање"
 
 #. Label for username input on registration form
 #: src/dialogs/resume/sections/profile.tsx
@@ -7016,14 +6523,6 @@ msgstr "Корисничко истраживање"
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Корисничко име"
-
-#: src/features/homepage/community-stats.tsx
-msgid "Users"
-msgstr "Корисници"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Uses the name, template, color, and type you chose above."
-msgstr "Користи име, шаблон, боју и тип слова које сте изабрали изнад."
 
 #: src/libs/locale.ts
 msgid "Uzbek"
@@ -7110,10 +6609,6 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Прегледи"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Visitors need your password to open the resume."
-msgstr "Посетиоцима је потребна ваша лозинка да би отворили резиме."
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
@@ -7207,6 +6702,10 @@ msgstr "Шта ово проверава"
 msgid "What this does not do"
 msgstr "Шта ово не ради"
 
+#: src/features/homepage/page.tsx
+msgid "What you can do today"
+msgstr ""
+
 #: src/routes/builder/$resumeId/-components/header.tsx
 #: src/routes/dashboard/resumes/-components/menus/use-resume-menu-actions.ts
 msgid "When locked, the resume cannot be updated or deleted."
@@ -7268,17 +6767,9 @@ msgstr ""
 msgid "Words run together when the text is extracted."
 msgstr "Речи се спајају када се текст извуче."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Work on your resume from your AI app."
-msgstr "Радите на свом резимеу из своје AI апликације."
-
 #: src/features/settings/integrations/components/ai-section.tsx
 msgid "Work OpenAI"
 msgstr "Радите на OpenAI-у"
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Worked with engineers from idea to launch."
-msgstr "Са инжењерима сам радио од идеје до објављивања."
 
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "Working…"
@@ -7312,18 +6803,9 @@ msgstr "Напишите пуну адресу, укључујући #."
 msgid "Writing"
 msgstr "Текст"
 
-#: src/features/homepage/site-footer.tsx
-#: src/routes/_home/-sections/footer.tsx
-msgid "X (Twitter)"
-msgstr "X (Твитер)"
-
 #: src/features/auth/pages/login.tsx
 msgid "You can also sign in with your username."
 msgstr "Такође се можете пријавити својим корисничким именом."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "You can always go back to the original."
-msgstr "Увек можете да се вратите на оригинал."
 
 #: src/features/auth/pages/error.tsx
 msgid "You cancelled the sign-in before it finished."
@@ -7337,9 +6819,9 @@ msgstr "Имате несачуване промене које ће бити и
 msgid "You'll be taken to the Integrations page. The file you selected won't be imported."
 msgstr "Бићете преусмерени на страницу Интеграције. Датотека коју сте изабрали неће бити увезена."
 
-#: src/features/homepage/community-stats.tsx
-msgid "You’re in good company."
-msgstr "У добром сте друштву."
+#: src/features/applications/components/application-form-sheet.tsx
+msgid "You'll come back here with your input kept. Drafts live only in this browser session."
+msgstr ""
 
 #: src/features/auth/pages/forgot-password.tsx
 #: src/features/auth/pages/register.tsx
@@ -7350,10 +6832,6 @@ msgstr "Стигла вам је пошта!"
 msgid "Your account has been deleted."
 msgstr "Ваш налог је обрисан."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your AI app"
-msgstr "Ваша AI апликација"
-
 #: src/features/ats-checker/ai-review/ai-review-card.tsx
 msgid "Your AI provider could not be reached. Check its settings and try again."
 msgstr "Ваш АИ добављач није могао да се контактира. Проверите његова подешавања и покушајте поново."
@@ -7361,10 +6839,6 @@ msgstr "Ваш АИ добављач није могао да се контак�
 #: src/dialogs/api-key/create.tsx
 msgid "Your API key has been copied to the clipboard."
 msgstr "Ваш API кључ је копиран у привремену меморију."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your applications, together"
-msgstr "Ваше пријаве, на једном месту"
 
 #: src/features/ats-checker/messages.ts
 #: src/libs/resume/ats.ts
@@ -7379,10 +6853,6 @@ msgstr "Ваше ставке су исцртане необичним знак�
 msgid "Your changes are saved automatically."
 msgstr "Ваше измене се аутоматски чувају."
 
-#: src/features/homepage/languages-showcase.tsx
-msgid "Your choice applies across the app."
-msgstr "Ваш избор важи у целој апликацији."
-
 #: src/features/ats-checker/messages.ts
 msgid "Your contact details are not on the first page."
 msgstr "Ваши контакт подаци нису на првој страници."
@@ -7394,10 +6864,6 @@ msgstr "Ваши подаци су извезени."
 #: src/features/ats-checker/messages.ts
 msgid "Your dates are written several different ways."
 msgstr "Ваши датуми су написани на неколико различитих начина."
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your edit is in."
-msgstr "Ваша измена је примењена."
 
 #: src/features/ats-checker/messages.ts
 msgid "Your email address is broken across pieces of text."
@@ -7431,10 +6897,6 @@ msgstr "Ваше линије су веома збијене."
 #: src/features/ats-checker/messages.ts
 msgid "Your margins are very narrow."
 msgstr "Ваше маргине су веома уске."
-
-#: src/features/homepage/resume-sculpture.tsx
-msgid "Your name"
-msgstr "Ваше име"
 
 #: src/libs/resume/ats.ts
 msgid "Your page margins are very narrow."
@@ -7501,10 +6963,6 @@ msgstr "Ваш животопис нема број телефона."
 msgid "Your resume includes a photo."
 msgstr "Ваш животопис укључује фотографију."
 
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your resume link"
-msgstr "Ваша веза ка резимеу"
-
 #: src/libs/resume/ats.ts
 msgid "Your resume shows no work experience."
 msgstr "Ваш животопис не показује радно искуство."
@@ -7520,18 +6978,6 @@ msgstr "Јавни URL вашег резимеа заштићен је лози�
 #: src/features/cover-letters/editor-dialog.tsx
 msgid "Your saved cover letter will remain unchanged."
 msgstr "Ваше сачувано пропратно писмо ће остати непромењено."
-
-#: src/features/homepage/ats-playground.tsx
-msgid "Your selected file"
-msgstr "Ваша изабрана датотека"
-
-#: src/features/homepage/feature-explorer.tsx
-msgid "Your tools, connected"
-msgstr "Ваши алати, повезани"
-
-#: src/features/homepage/export-playground.tsx
-msgid "Your words as a plain-text document, with headings, lists, and links."
-msgstr "Ваше речи као документ у обичном тексту, са насловима, листама и везама."
 
 #: src/routes/builder/$resumeId/-sidebar/left/sections/picture.tsx
 msgid "Zoom"
@@ -7553,4 +6999,3 @@ msgstr "Умањи"
 #: src/libs/locale.ts
 msgid "Zulu"
 msgstr "Зулу"
-

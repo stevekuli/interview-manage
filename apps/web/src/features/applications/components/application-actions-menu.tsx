@@ -1,5 +1,6 @@
 import type { Application } from "../types";
 import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
 	ArchiveIcon,
@@ -10,7 +11,7 @@ import {
 	TrayArrowUpIcon,
 } from "@phosphor-icons/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { STAGES } from "@reactive-resume/schema/applications/data";
+import { useMemo } from "react";
 import { Button } from "@reactive-resume/ui/components/button";
 import {
 	DropdownMenu,
@@ -26,6 +27,7 @@ import { toast } from "@reactive-resume/ui/components/toast";
 import { cn } from "@reactive-resume/utils/style";
 import { useConfirm } from "@/hooks/use-confirm";
 import { orpc } from "@/libs/orpc/client";
+import { localizedStages } from "../labels";
 import { applicationsListQueryKey } from "../queries";
 
 type Props = {
@@ -43,8 +45,11 @@ const stop = (event: React.SyntheticEvent) => event.stopPropagation();
 
 // Shared kebab menu for board cards and table rows: edit, move stage, archive, delete.
 export function ApplicationActionsMenu({ application, onEdit, showOnHover, className }: Props) {
+	const { i18n } = useLingui();
 	const queryClient = useQueryClient();
 	const confirm = useConfirm();
+	// biome-ignore lint/correctness/useExhaustiveDependencies: i18n.locale is the cache key — labels must re-resolve when the locale changes
+	const stages = useMemo(() => localizedStages(), [i18n.locale]);
 
 	const invalidate = () => {
 		void queryClient.invalidateQueries({ queryKey: applicationsListQueryKey() });
@@ -110,7 +115,7 @@ export function ApplicationActionsMenu({ application, onEdit, showOnHover, class
 							<Trans>Move to</Trans>
 						</DropdownMenuSubTrigger>
 						<DropdownMenuSubContent>
-							{STAGES.map((stage) => (
+							{stages.map((stage) => (
 								<DropdownMenuItem
 									key={stage.value}
 									disabled={stage.value === application.status}

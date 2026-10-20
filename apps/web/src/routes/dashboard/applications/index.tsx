@@ -4,6 +4,7 @@ import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
 	ArchiveIcon,
+	ArrowsClockwiseIcon,
 	BriefcaseIcon,
 	CalendarDotsIcon,
 	ChartBarIcon,
@@ -13,10 +14,12 @@ import {
 	MagnifyingGlassIcon,
 	PlusIcon,
 	RowsIcon,
+	WarningCircleIcon,
 } from "@phosphor-icons/react";
 import { useQuery } from "@tanstack/react-query";
 import { createFileRoute, Link, stripSearchParams, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
+import { useMediaQuery } from "usehooks-ts";
 import z from "zod";
 import { Button } from "@reactive-resume/ui/components/button";
 import { InputGroup, InputGroupAddon, InputGroupInput } from "@reactive-resume/ui/components/input-group";
@@ -33,7 +36,10 @@ import { ExportApplicationsSheet } from "@/features/applications/components/expo
 import { ImportApplicationsSheet } from "@/features/applications/components/import-applications-sheet";
 import { ApplicationInsights } from "@/features/applications/components/insights-view";
 import { ApplicationTable } from "@/features/applications/components/table-view";
+import { TodayActions } from "@/features/applications/components/today-actions";
 import { applicationsListQueryOptions } from "@/features/applications/queries";
+import { useApplicationSessionStore } from "@/features/applications/session-draft";
+import { authClient } from "@/libs/auth/client";
 import { orpc } from "@/libs/orpc/client";
 import { DashboardHeader } from "../-components/header";
 
@@ -48,7 +54,9 @@ type SortKey = (typeof SORT_OPTIONS)[number]["value"];
 
 const searchSchema = z.object({
 	search: z.string().default(""),
-	view: z.enum(["board", "table", "calendar", "insights"]).default("board"),
+	// Optional on purpose: absent means "no explicit choice", which lets small screens fall
+	// back to the list while desktops fall back to the board. A value in the URL always wins.
+	view: z.enum(["board", "table", "calendar", "insights"]).optional(),
 	tags: z.array(z.string()).default([]),
 	sort: z.enum(["updated", "applied", "company", "role"]).default("updated"),
 	archived: z.boolean().default(false),
@@ -56,7 +64,7 @@ const searchSchema = z.object({
 	applicationId: z.string().optional(),
 });
 type Search = z.output<typeof searchSchema>;
-const defaultSearch: Search = { search: "", view: "board", tags: [], sort: "updated", archived: false, create: false };
+const defaultSearch: Partial<Search> = { search: "", tags: [], sort: "updated", archived: false, create: false };
 
 export const Route = createFileRoute("/dashboard/applications/")({
 	component: RouteComponent,
@@ -89,8 +97,30 @@ function RouteComponent() {
 		void navigate({ replace: true, search: (prev: Search) => ({ ...prev, create: false }) });
 	}, [create, navigate]);
 
-	const { data: applications, isPending } = useQuery(applicationsListQueryOptions());
+	const { data: session } = authClient.useSession();
+	const userId = session?.user.id;
+	const consumeResumeReturn = useApplicationSessionStore((state) => state.consumeResumeReturn);
+	const { data: applications, isPending, error, refetch, isFetching } = useQuery(applicationsListQueryOptions());
 	const { data: allTags } = useQuery(orpc.applications.tags.queryOptions());
+
+	// Coming back from creating/importing a resume: reopen the sheet the user left, with the
+	// session draft restored by the form itself. `null` means the (unsaved) new-application sheet.
+	useEffect(() => {
+		if (!userId || !applications) return;
+		const targetId = consumeResumeReturn(userId);
+		if (targetId === undefined) return;
+		if (targetId === null) {
+			setAddOpen(true);
+			return;
+		}
+		const app = applications.find((application) => application.id === targetId);
+		if (app) setEditing(app);
+	}, [userId, applications, consumeResumeReturn]);
+
+	// Mobile defaults to the single-column list; the board stays the desktop default. An
+	// explicit view=… in the URL always wins, so a user's choice never flip-flops on resize.
+	const isSmallScreen = useMediaQuery("(max-width: 639px)", { initializeWithValue: false });
+	const effectiveView = view ?? (isSmallScreen ? "table" : "board");
 
 	useEffect(() => {
 		if (!applicationId || !applications) return;
@@ -151,10 +181,32 @@ function RouteComponent() {
 
 			<Separator />
 
-			{isPending ? null : isEmpty ? (
+			{isPending ? (
+				<ListLoadingPlaceholder />
+			) : error && !applications ? (
+				<LoadErrorState onRetry={() => void refetch()} isRetrying={isFetching} />
+			) : isEmpty ? (
 				<EmptyState onAdd={() => setAddOpen(true)} onImport={() => setImportOpen(true)} />
 			) : (
 				<>
+					{/* A background refresh failed: keep the loaded data visible and say so. */}
+					{error && applications && (
+						<div className="flex items-center justify-between gap-2 rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm">
+							<p className="flex items-center gap-2 text-muted-foreground">
+								<WarningCircleIcon className="shrink-0 text-amber-600" />
+								<Trans>Couldn't refresh — showing your saved data.</Trans>
+							</p>
+							<Button size="sm" variant="outline" disabled={isFetching} onClick={() => void refetch()}>
+								<ArrowsClockwiseIcon />
+								<Trans>Retry</Trans>
+							</Button>
+						</div>
+					)}
+
+					{isSmallScreen && applications && (
+						<TodayActions applications={applications.filter((app) => archived || !app.archived)} onOpen={setSelected} />
+					)}
+
 					{/* One row: search grows, filters stay fixed, icon-only view switcher on the right. */}
 					<div className="flex items-center gap-2">
 						<InputGroup className="min-w-24 max-w-72 flex-1">
@@ -180,7 +232,7 @@ function RouteComponent() {
 							/>
 						)}
 
-						{view !== "insights" && view !== "calendar" && (
+						{effectiveView !== "insights" && effectiveView !== "calendar" && (
 							<Combobox
 								className="w-40 min-w-0 shrink max-sm:hidden"
 								value={sort}
@@ -190,7 +242,7 @@ function RouteComponent() {
 							/>
 						)}
 
-						{archivedCount > 0 && view !== "insights" && (
+						{archivedCount > 0 && effectiveView !== "insights" && (
 							<Button
 								size="sm"
 								variant={archived ? "secondary" : "outline"}
@@ -203,7 +255,7 @@ function RouteComponent() {
 						)}
 
 						{/* Mobile-only: one button holds every filter so the row never overflows on a phone. */}
-						{view !== "insights" && (
+						{effectiveView !== "insights" && (
 							<Popover>
 								<PopoverTrigger
 									render={
@@ -257,7 +309,7 @@ function RouteComponent() {
 							</Popover>
 						)}
 
-						<Tabs className="ms-auto shrink-0" value={view}>
+						<Tabs className="ms-auto shrink-0" value={effectiveView}>
 							<TabsList>
 								<TabsTrigger
 									value="board"
@@ -300,7 +352,7 @@ function RouteComponent() {
 					</div>
 
 					<div className="flex min-h-0 flex-1 flex-col">
-						{view !== "insights" && filtered.length === 0 ? (
+						{effectiveView !== "insights" && filtered.length === 0 ? (
 							<div className="flex flex-1 flex-col items-center justify-center gap-2 text-center">
 								<p className="font-medium text-sm">
 									<Trans>No applications match your filters.</Trans>
@@ -318,20 +370,20 @@ function RouteComponent() {
 							</div>
 						) : (
 							<>
-								{view === "board" && (
+								{effectiveView === "board" && (
 									<ApplicationBoard applications={filtered} onOpen={setSelected} onEdit={setEditing} />
 								)}
-								{view === "table" && (
+								{effectiveView === "table" && (
 									<ApplicationTable applications={filtered} onOpen={setSelected} onEdit={setEditing} />
 								)}
-								{view === "calendar" && (
+								{effectiveView === "calendar" && (
 									<ApplicationCalendar
 										applications={filtered}
 										allApplications={applications ?? []}
 										onOpen={setSelected}
 									/>
 								)}
-								{view === "insights" && <ApplicationInsights applications={applications ?? []} />}
+								{effectiveView === "insights" && <ApplicationInsights applications={applications ?? []} />}
 							</>
 						)}
 					</div>
@@ -382,6 +434,43 @@ function EmptyState({ onAdd, onImport }: { onAdd: () => void; onImport: () => vo
 					<Trans>Import from CSV</Trans>
 				</Button>
 			</div>
+		</div>
+	);
+}
+
+// Distinct loading, first-load-failure, and stale-data states, so a failed request never
+// masquerades as "no applications yet".
+function ListLoadingPlaceholder() {
+	return (
+		<div className="flex flex-1 flex-col gap-3" aria-busy="true" aria-live="polite">
+			<span className="sr-only">
+				<Trans>Loading your applications…</Trans>
+			</span>
+			{[0, 1, 2].map((row) => (
+				<div key={row} className="h-16 animate-pulse rounded-xl bg-muted/60" />
+			))}
+		</div>
+	);
+}
+
+function LoadErrorState({ onRetry, isRetrying }: { onRetry: () => void; isRetrying: boolean }) {
+	return (
+		<div className="flex flex-1 flex-col items-center justify-center gap-3 text-center">
+			<div className="flex size-14 items-center justify-center rounded-2xl bg-muted">
+				<WarningCircleIcon className="size-7 text-amber-600" />
+			</div>
+			<div className="max-w-md space-y-1.5">
+				<h2 className="font-semibold text-lg">
+					<Trans>Couldn't load your applications right now.</Trans>
+				</h2>
+				<p className="text-muted-foreground text-sm">
+					<Trans>Check your connection and try again — nothing has been lost.</Trans>
+				</p>
+			</div>
+			<Button onClick={onRetry} disabled={isRetrying}>
+				<ArrowsClockwiseIcon />
+				<Trans>Retry</Trans>
+			</Button>
 		</div>
 	);
 }

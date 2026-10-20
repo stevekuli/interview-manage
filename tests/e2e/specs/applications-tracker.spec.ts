@@ -24,11 +24,28 @@ test("adds an application and logs stage changes and notes", async ({ authPage: 
 	const sheet = page.getByRole("dialog", { name: "Add application" });
 	await field(sheet, "Company").fill(company);
 	await field(sheet, "Role / title").fill(role);
+
+	// U1: secondary fields live in a collapsed section so the first-run form stays short.
+	await sheet.getByRole("button", { name: "Additional details" }).click();
 	await field(sheet, "Location").fill("Remote");
 	await field(sheet, "Salary range").fill("$180k");
 	await field(sheet, "Source").fill("Referral");
 	await field(sheet, "Notes").fill("Submitted through a referral.");
 	await sheet.getByRole("button", { name: "Add to pipeline" }).click();
+
+	// U1: after saving, the sheet stays open on a "link a resume" next-step panel.
+	const addedDialog = page.getByRole("dialog", { name: "Application added" });
+	await expect(addedDialog).toBeVisible();
+	// Close any toast first: it (and its exit animation) intercepts clicks over the sheet
+	// footer, and its hover-pausable timer makes waiting unreliable.
+	const closeButtons = page.locator('button[data-slot="toast-close"]');
+	for (let i = 0; i < 5 && (await closeButtons.count()) > 0; i += 1) {
+		await closeButtons
+			.first()
+			.click({ force: true })
+			.catch(() => {});
+	}
+	await addedDialog.getByRole("button", { name: "Done" }).click();
 
 	const card = page.getByRole("button", { name: new RegExp(`${role}.*${company}`) }).first();
 	await expect(card).toBeVisible();

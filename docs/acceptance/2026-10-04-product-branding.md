@@ -29,11 +29,11 @@
 | 类型检查 | `pnpm typecheck` | 19/19 通过 |
 | 包边界 | `pnpm exec turbo boundaries` | 1114 文件，无问题 |
 | 构建 | `pnpm build` | 3/3 通过（exit 0） |
-| E2E | `DATABASE_URL=… FLAG_DISABLE_API_RATE_LIMIT=true pnpm exec playwright test --workers=2 --reporter=line` | 27 通过 / 2 失败 / 7 跳过；2 个失败（cover-letter-library、lock-resume）隔离复跑全过，为本机并行资源抖动（与 P0 基线记录一致） |
+| E2E | `DATABASE_URL=… FLAG_DISABLE_API_RATE_LIMIT=true pnpm exec playwright test --workers=2 --reporter=line` | 27 通过 / 2 失败 / 7 跳过；2 个失败（cover-letter-library、lock-resume）隔离复跑全过，与本机并行资源抖动特征一致（同 P0 基线记录；未逐例复现定位） |
 | E2E 修复说明 | — | 因默认落地页改为岗位页，修正 `auth.spec.ts` 落地断言（行为变更适配，非删除测试）；语言默认值变化通过浏览器语言检测兼容（e2e 的 Playwright 默认 en-US 不受影响） |
 | 服务端注入检查 | `curl` `/`、`/llms.txt`、`/robots.txt`、`/sitemap.xml` | 标题/描述/链接均为本产品身份，无原站引用 |
 | 邮件模板真实渲染 | tsx 渲染 `VerifyEmail` | 含"求职管理"，不含 Reactive Resume/Amruth/rxresu.me |
-| Markdown 检查 | `pnpm exec markdownlint-cli2 <计划文件>` | 未执行（无 markdownlint 依赖配置，属计划内工具缺口，见缺口清单） |
+| Markdown 检查 | `pnpm exec markdownlint-cli2 <计划文件>` | 当轮未执行（当时误记为"无 markdownlint 依赖配置"；实际 `markdownlint-cli2@0.23.3` 与 `.markdownlint-cli2.yaml` 均已在仓）。2026-10-05 补跑：118 个 md/mdx 仅 1 处问题（CLAUDE.md 缺尾换行），当日已修复复跑通过 |
 | 行尾检查 | `git diff --check` | 通过（AGENTS.md 已规范化为 LF） |
 
 > E2E 环境注意（已同步 AGENTS.md）：服务端 PDF 渲染外联 fonts.gstatic.com，本机直连下 Node fetch 需 `NODE_OPTIONS=--dns-result-order=ipv4first`，否则 IPv6 优先导致超时。
@@ -65,10 +65,10 @@
 
 1. **真实 SMTP 投递未验证**：邮件仅做模板渲染验证（"模板已验证，实际投递未验证"）；`SMTP_FROM` 优先逻辑未改动。
 2. **真实模型调用未验证**：本轮无 AI 功能改动；AI 文案仅按现有实现（匹配评分/定制副本/求职信/跟进草拟）如实收敛。
-3. **线上状态未重新验证**：本次未重新探测 `http://8.148.199.165:3012`；品牌改版未部署（按计划等待用户明确要求上线）。部署后回滚方式：本阶段不改表结构，可直接回退镜像。
+3. **线上状态未重新验证**：本次未重新探测 `http://8.148.199.165:3012`；品牌改版未部署（按计划等待用户明确要求上线）。2026-10-05 更新：品牌版本已于当日部署公网并冒烟通过，生产现运行 `interview-manage:20261005`（见 `docs/acceptance/2026-10-05-branding-deployment.md`）。部署后回滚方式：本阶段不改表结构，可直接回退镜像。
 4. **PDF 中文版式人工目检**：导出链路已自动验证（格式签名+DOCX 内容断言），PDF 视觉排版请人工打开 `artifacts/after/export-sample.pdf` 复核。
 5. **完整键盘走查未执行**：关键入口的可访问名称已在组件测试与 aria 快照中断言，但未做逐页键盘遍历。
-6. **markdownlint 未配置**：计划中的 Markdown 检查命令在本仓无对应依赖，未执行。
+6. **markdownlint 检查当轮未执行**：依赖与仓库配置（`markdownlint-cli2@0.23.3`、`.markdownlint-cli2.yaml`）实际存在，当轮误记为缺失；2026-10-05 已补跑并修复唯一问题（见第二节矩阵）。
 7. **测试账号清理**：本地开发库新增 `brandtest@example.com` 合成账号及一份合成简历，未删除（本机数据，不影响交付）。
 
 ## 五、遗留环境抖动备忘（非本次引入）

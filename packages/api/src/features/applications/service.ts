@@ -6,6 +6,7 @@ import type {
 	InterviewDetails,
 } from "@reactive-resume/schema/applications/data";
 import type { ApplicationDocumentKind } from "../../dto/application";
+import { createHash } from "node:crypto";
 import { ORPCError } from "@orpc/client";
 import { and, arrayContains, desc, eq, inArray, sql } from "drizzle-orm";
 import { db } from "@reactive-resume/db/client";
@@ -13,6 +14,48 @@ import * as schema from "@reactive-resume/db/schema";
 import { generateId } from "@reactive-resume/utils/string";
 import { resumeService } from "../resume/service";
 import { getStorageService, uploadFile } from "../storage/service";
+
+// A stable fingerprint of a scoring input (job description text or resume content). Scores
+// are bound to these so a stored score can always be checked against the current inputs.
+export const sha256Hex = (value: string) => createHash("sha256").update(value).digest("hex");
+
+// Shape stored under `aiMetadata.matchScoreInput` when a match score is computed. Lives in the
+// freeform aiMetadata jsonb on purpose — no schema change is needed to bind scores to inputs.
+export type MatchScoreInput = {
+	jobDescriptionHash: string;
+	resumeId: string | null;
+	resumeHash: string;
+	scoredAt: string;
+};
+
+// Server-derived view of the stored match score for one application: `stale` marks scores that
+// no longer correspond to the current job description / linked resume content.
+export type AiScoreView = {
+	score: number;
+	gaps: string[];
+	strengths: string[];
+	scoredAt: string;
+	stale: boolean;
+};
+
+const readScoreInput = (row: { aiMetadata: unknown }): MatchScoreInput | null => {
+	const meta = (row.aiMetadata ?? null) as { matchScoreInput?: MatchScoreInput } | null;
+	if (!meta?.matchScoreInput || typeof meta.matchScoreInput.jobDescriptionHash !== "string") return null;
+	return meta.matchScoreInput;
+};
+
+// Nullability of the score-carrying columns, mirrored for `is distinct from`-style comparisons.
+const scoreInputChanged = (
+	existing: { jobDescription: string | null; resumeId: string | null },
+	fields: {
+		jobDescription?: string | null | undefined;
+		resumeId?: string | null | undefined;
+	},
+) => {
+	const nextJd = fields.jobDescription !== undefined ? fields.jobDescription : existing.jobDescription;
+	const nextResumeId = fields.resumeId !== undefined ? fields.resumeId : existing.resumeId;
+	return nextJd !== existing.jobDescription || nextResumeId !== existing.resumeId;
+};
 
 function timelineDate(value: Date | string): Date {
 	return value instanceof Date ? value : new Date(value);
@@ -205,6 +248,58 @@ const stripUserId = <T extends { userId: string; activity?: ApplicationTimelineE
 	return rest.activity ? { ...rest, activity: sortTimeline(rest.activity) } : rest;
 };
 
+// A stored score is only shown as valid when the inputs it was computed against are still
+// the current ones: the job description text (hash), the linked resume (id), and the resume
+// content (not edited after scoring). Anything older — including scores written before this
+// binding existed — is reported stale so the UI asks for a re-score instead of trusting it.
+const deriveAiScore = async (row: {
+	matchScore: number | null;
+	aiMetadata: unknown;
+	jobDescription: string | null;
+	resumeId: string | null;
+}): Promise<AiScoreView | null> => {
+	if (row.matchScore == null) return null;
+
+	const meta = (row.aiMetadata ?? null) as {
+		matchScore?: { gaps?: unknown; strengths?: unknown };
+		matchScoreInput?: MatchScoreInput;
+	} | null;
+	const input = readScoreInput(row);
+	const strings = (value: unknown) =>
+		Array.isArray(value) ? value.filter((item): item is string => typeof item === "string") : [];
+
+	// No binding recorded (pre-existing score): there is nothing to validate against, so the
+	// score is treated as stale rather than trusted.
+	if (!input) {
+		return {
+			score: row.matchScore,
+			gaps: strings(meta?.matchScore?.gaps),
+			strengths: strings(meta?.matchScore?.strengths),
+			scoredAt: "",
+			stale: true,
+		};
+	}
+
+	let stale = input.jobDescriptionHash !== sha256Hex(row.jobDescription ?? "");
+	if (!stale && input.resumeId !== row.resumeId) stale = true;
+	if (!stale && row.resumeId) {
+		const [resume] = await db
+			.select({ updatedAt: schema.resume.updatedAt })
+			.from(schema.resume)
+			.where(eq(schema.resume.id, row.resumeId));
+		const scoredAtMs = Date.parse(input.scoredAt);
+		if (!resume || !Number.isFinite(scoredAtMs) || resume.updatedAt.getTime() > scoredAtMs) stale = true;
+	}
+
+	return {
+		score: row.matchScore,
+		gaps: strings(meta?.matchScore?.gaps),
+		strengths: strings(meta?.matchScore?.strengths),
+		scoredAt: input.scoredAt,
+		stale,
+	};
+};
+
 export const applicationService = {
 	list: async (input: { userId: string; status?: ApplicationStatus; tags?: string[]; includeArchived?: boolean }) => {
 		const rows = await db
@@ -223,7 +318,9 @@ export const applicationService = {
 	},
 
 	getById: async (input: { id: string; userId: string }) => {
-		return stripUserId(await requireOwned(input.id, input.userId));
+		const row = await requireOwned(input.id, input.userId);
+		const aiScore = await deriveAiScore(row);
+		return { ...stripUserId(row), aiScore };
 	},
 
 	create: async (
@@ -295,10 +392,13 @@ export const applicationService = {
 			archived?: boolean | undefined;
 		},
 	) => {
-		await requireOwned(input.id, input.userId);
-
 		const { id, userId, status, archived, ...fields } = input;
+		const existing = await requireOwned(id, userId);
 		await assertOwnedResume(userId, fields.resumeId);
+
+		// Changing the job description or the linked resume invalidates any stored match score:
+		// clear it in the same statement so a stale score can never survive next to new inputs.
+		const scoreInvalidated = scoreInputChanged(existing, fields);
 
 		const statusEntry = status !== undefined ? stageEntry(status) : undefined;
 		// Append in SQL so concurrent notes/stage events are not overwritten by a stale array.
@@ -319,6 +419,7 @@ export const applicationService = {
 			.update(schema.application)
 			.set({
 				...fields,
+				...(scoreInvalidated ? { matchScore: null, aiMetadata: null } : {}),
 				...(status !== undefined ? { status } : {}),
 				...(appliedAtExpr ? { appliedAt: appliedAtExpr } : {}),
 				...(archived !== undefined ? { archived } : {}),
@@ -397,23 +498,74 @@ export const applicationService = {
 
 	// Persist AI-owned enrichment (match score + freeform metadata). Separate from the editable
 	// update path so these fields are only ever written by the AI procedures.
+	//
+	// When `expect` is provided the write lands only if the application and its linked resume
+	// still match the inputs the score was computed from — verified inside one transaction with
+	// a row lock, so a score racing a concurrent edit can never overwrite newer state.
 	setAiResult: async (input: {
 		id: string;
 		userId: string;
 		matchScore?: number | null;
 		aiMetadata?: AiMetadata | null;
+		expect?: { jobDescription: string | null; resumeId: string | null; resumeUpdatedAt: Date };
 	}) => {
-		const [updated] = await db
-			.update(schema.application)
-			.set({
-				...(input.matchScore !== undefined ? { matchScore: input.matchScore } : {}),
-				...(input.aiMetadata !== undefined ? { aiMetadata: input.aiMetadata } : {}),
-			})
-			.where(and(eq(schema.application.id, input.id), eq(schema.application.userId, input.userId)))
-			.returning();
+		if (!input.expect) {
+			const [updated] = await db
+				.update(schema.application)
+				.set({
+					...(input.matchScore !== undefined ? { matchScore: input.matchScore } : {}),
+					...(input.aiMetadata !== undefined ? { aiMetadata: input.aiMetadata } : {}),
+				})
+				.where(and(eq(schema.application.id, input.id), eq(schema.application.userId, input.userId)))
+				.returning();
 
-		if (!updated) throw new ORPCError("NOT_FOUND");
-		return stripUserId(updated);
+			if (!updated) throw new ORPCError("NOT_FOUND");
+			return stripUserId(updated);
+		}
+
+		const { expect } = input;
+		return db.transaction(async (tx) => {
+			await tx.execute(sql`
+				select 1 from ${schema.application}
+				where ${schema.application.id} = ${input.id} and ${schema.application.userId} = ${input.userId}
+				for update
+			`);
+
+			const [existing] = await tx
+				.select()
+				.from(schema.application)
+				.where(and(eq(schema.application.id, input.id), eq(schema.application.userId, input.userId)));
+			if (!existing) throw new ORPCError("NOT_FOUND");
+
+			if (existing.jobDescription !== expect.jobDescription || (existing.resumeId ?? null) !== expect.resumeId) {
+				throw new ORPCError("CONFLICT", {
+					message: "The application changed while the match score was being computed. Re-run the score.",
+				});
+			}
+			if (expect.resumeId) {
+				const [resume] = await tx
+					.select({ updatedAt: schema.resume.updatedAt })
+					.from(schema.resume)
+					.where(eq(schema.resume.id, expect.resumeId));
+				if (!resume || resume.updatedAt.getTime() !== expect.resumeUpdatedAt.getTime()) {
+					throw new ORPCError("CONFLICT", {
+						message: "The linked resume changed while the match score was being computed. Re-run the score.",
+					});
+				}
+			}
+
+			const [updated] = await tx
+				.update(schema.application)
+				.set({
+					...(input.matchScore !== undefined ? { matchScore: input.matchScore } : {}),
+					...(input.aiMetadata !== undefined ? { aiMetadata: input.aiMetadata } : {}),
+				})
+				.where(and(eq(schema.application.id, input.id), eq(schema.application.userId, input.userId)))
+				.returning();
+
+			if (!updated) throw new ORPCError("NOT_FOUND");
+			return stripUserId(updated);
+		});
 	},
 
 	addNote: async (input: { id: string; userId: string; text: string; date?: string | undefined }) => {
