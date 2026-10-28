@@ -234,6 +234,11 @@ msgstr "Một địa chỉ web được viết mà không có https://."
 msgid "A4"
 msgstr "Khổ giấy A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Truy cập tài khoản của bạn thông qua API, bao gồm đọc và thay đổi sơ yếu lý lịch cũng như đơn xin việc của bạn."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "Cấu hình nhà cung cấp AI không hợp lệ."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "Bên phát hành"
@@ -5145,6 +5155,7 @@ msgstr "Thiết lập một hệ thống AI để trò chuyện về bản lý l
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Cài đặt"
 
@@ -5682,6 +5693,11 @@ msgstr "Màu chữ"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Văn bản được viết từng ký tự một."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Lượt xem"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

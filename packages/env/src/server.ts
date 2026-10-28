@@ -94,6 +94,10 @@ export const env = createEnv({
 		// Feature Flags
 		FLAG_DISABLE_SIGNUPS: z.stringbool().default(false),
 		FLAG_DISABLE_EMAIL_AUTH: z.stringbool().default(false),
+		// Invite-only beta: email sign-up requires a one-time invitation code
+		// (see packages/auth/src/invitations.ts and tooling/invitations); OAuth
+		// providers reject *new* users while enabled (existing users sign in fine).
+		FLAG_INVITATION_ONLY: z.stringbool().default(false),
 		FLAG_DISABLE_IMAGE_PROCESSING: z.stringbool().default(false),
 		FLAG_DISABLE_API_RATE_LIMIT: z.stringbool().default(false),
 		FLAG_ALLOW_UNSAFE_AI_BASE_URL: z.stringbool().default(false),

@@ -52,8 +52,10 @@ type SidebarItem = {
 	href: React.ComponentProps<typeof Link>["to"];
 };
 
-// Primary flow first: jobs, then resumes. Cover letters and the ATS checker are
-// secondary tools; agents, API keys, and integrations live under "Advanced".
+// Primary flow (P1 nav convergence): jobs, resumes, settings. "我的经历" (My
+// Experience) joins this group once P2 ships the profile data model behind it.
+// Cover letters and the ATS checker are secondary tools; agents, API keys, and
+// integrations live under "Advanced".
 const appSidebarItems = [
 	{
 		icon: <BriefcaseIcon />,
@@ -64,6 +66,11 @@ const appSidebarItems = [
 		icon: <ReadCvLogoIcon />,
 		label: msg`Resumes`,
 		href: "/dashboard/resumes",
+	},
+	{
+		icon: <GearSixIcon />,
+		label: msg`Settings`,
+		href: "/dashboard/settings/preferences",
 	},
 ] as const satisfies SidebarItem[];
 

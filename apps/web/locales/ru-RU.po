@@ -234,6 +234,11 @@ msgstr "Веб-адрес записан без https://."
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Получите доступ к своей учетной записи через API, включая чтение и изменение своих резюме и заявлений о приеме на работу."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "Неверная конфигурация поставщика ИИ."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "Выдавший"
@@ -5145,6 +5155,7 @@ msgstr "Настройте систему автоматического ред�
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Настройки"
 
@@ -5682,6 +5693,11 @@ msgstr "Цвет текста"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Текст записан посимвольно."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Просмотры"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

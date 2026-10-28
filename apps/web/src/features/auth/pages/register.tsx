@@ -31,20 +31,34 @@ const formSchema = z.object({
 	// Better Auth enforces a minimum length of 8 (packages/auth config minPasswordLength);
 	// validating at 6 client-side let short passwords through and failed server-side.
 	password: z.string().min(8, "Password must be at least 8 characters.").max(64),
+	// Always present in the form state; only validated (and only sent) in invite-only
+	// mode. Matches INVITATION_CODE_PATTERN in packages/auth/src/invitations.ts.
+	invitationCode: z.string().trim().toUpperCase(),
 });
+
+// Applied on top of formSchema when invite-only mode is on.
+const INVITATION_CODE_PATTERN = /^[A-Z2-9]{4}-[A-Z2-9]{4}$/;
 
 type Props = {
 	disableEmailAuth: boolean;
+	invitationOnly: boolean;
 };
 
-export function RegisterPage({ disableEmailAuth }: Props) {
+export function RegisterPage({ disableEmailAuth, invitationOnly }: Props) {
 	const { callbackURL, reauthenticate } = useSearch({ from: "/auth" });
 	const [submitted, setSubmitted] = useState(false);
 	const [showPassword, toggleShowPassword] = useToggle(false);
 
+	const resolvedSchema = invitationOnly
+		? formSchema.refine((value) => INVITATION_CODE_PATTERN.test(value.invitationCode), {
+				message: "Enter the invitation code in the form XXXX-XXXX.",
+				path: ["invitationCode"],
+			})
+		: formSchema;
+
 	const form = useAppForm({
-		defaultValues: { name: "", username: "", email: "", password: "" },
-		validators: { onSubmit: formSchema },
+		defaultValues: { name: "", username: "", email: "", password: "", invitationCode: "" },
+		validators: { onSubmit: resolvedSchema },
 		onSubmit: async ({ value }) => {
 			const toastId = toast.add({ type: "loading", description: t`Signing up...` });
 
@@ -57,6 +71,7 @@ export function RegisterPage({ disableEmailAuth }: Props) {
 				username: value.username,
 				displayUsername: value.username,
 				callbackURL: callbackURL ?? "/dashboard",
+				...(invitationOnly ? { invitationCode: value.invitationCode.trim().toUpperCase() } : {}),
 				...(!createPrompt ? oauthOptions : {}),
 			});
 
@@ -252,6 +267,38 @@ export function RegisterPage({ disableEmailAuth }: Props) {
 							</FormItem>
 						)}
 					</form.Field>
+
+					{invitationOnly && (
+						<form.Field name="invitationCode">
+							{(field) => (
+								<FormItem hasError={field.state.meta.isTouched && field.state.meta.errors.length > 0}>
+									<FormLabel>
+										<Trans comment="Label for invitation code input on registration form (invite-only beta)">
+											Invitation Code
+										</Trans>
+									</FormLabel>
+									<FormControl
+										render={
+											<Input
+												max={9}
+												autoComplete="section-register one-time-code"
+												placeholder={t({
+													comment: "Example invitation code placeholder on registration form",
+													message: "AB2C-XK4M",
+												})}
+												className="uppercase"
+												name={field.name}
+												value={field.state.value}
+												onBlur={field.handleBlur}
+												onChange={(event) => field.handleChange(event.target.value.toUpperCase())}
+											/>
+										}
+									/>
+									<FormMessage errors={field.state.meta.errors} />
+								</FormItem>
+							)}
+						</form.Field>
+					)}
 
 					<Button type="submit" className="w-full">
 						<Trans comment="Primary action button label on registration form">Sign up</Trans>

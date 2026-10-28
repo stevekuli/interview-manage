@@ -449,3 +449,25 @@ export const oauthClientAssertion = pg.pgTable("oauth_client_assertion", {
 		.$defaultFn(() => generateId()),
 	expiresAt: pg.timestamp("expires_at", { withTimezone: true }).notNull(),
 });
+
+// One-time registration invitations for the invite-only beta. Codes are minted by
+// the admin CLI (tooling/invitations) and consumed exactly once at email sign-up.
+export const invitation = pg.pgTable(
+	"invitation",
+	{
+		id: pg
+			.text("id")
+			.notNull()
+			.primaryKey()
+			.$defaultFn(() => generateId()),
+		code: pg.text("code").notNull().unique(),
+		note: pg.text("note"),
+		createdBy: pg.text("created_by").notNull(),
+		expiresAt: pg.timestamp("expires_at", { withTimezone: true }).notNull(),
+		usedAt: pg.timestamp("used_at", { withTimezone: true }),
+		usedBy: pg.text("used_by"),
+		revokedAt: pg.timestamp("revoked_at", { withTimezone: true }),
+		createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+	},
+	(t) => [pg.index().on(t.createdAt.desc()), pg.index().on(t.usedAt)],
+);

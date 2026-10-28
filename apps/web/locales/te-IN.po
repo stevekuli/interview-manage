@@ -234,6 +234,11 @@ msgstr "వెబ్ చిరునామా https:// లేకుండా ర
 msgid "A4"
 msgstr "ఎ4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "మీ రెజ్యూమ్‌లు మరియు జాబ్ అప్లికేషన్‌లను చదవడం మరియు మార్చడం సహా API ద్వారా మీ ఖాతాను యాక్సెస్ చేయండి."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "చెల్లని AI ప్రొవైడర్ కాన్ఫిగరేషన్."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "ఇష్యూర్"
@@ -5145,6 +5155,7 @@ msgstr "ఈ రెజ్యూమే గురించి చర్చించ
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "సెట్టింగులు"
 
@@ -5682,6 +5693,11 @@ msgstr "టెక్స్ట్ కలర్"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "టెక్స్ట్ ఒక్కో అక్షరం చొప్పున రాయబడింది."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "వ్యూస్"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

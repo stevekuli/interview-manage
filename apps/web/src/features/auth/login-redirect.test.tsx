@@ -185,7 +185,7 @@ describe("OAuth account creation", () => {
 		});
 		const { container } = render(
 			<I18nProvider i18n={i18n}>
-				<RegisterPage disableEmailAuth={false} />
+				<RegisterPage disableEmailAuth={false} invitationOnly={false} />
 			</I18nProvider>,
 		);
 		for (const [name, value] of Object.entries({

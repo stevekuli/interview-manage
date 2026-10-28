@@ -234,6 +234,11 @@ msgstr "Μια διεύθυνση ιστού είναι γραμμένη χωρ�
 msgid "A4"
 msgstr "Α4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Αποκτήστε πρόσβαση στον λογαριασμό σας μέσω του API, συμπεριλαμβανομένης της ανάγνωσης και της αλλαγής των βιογραφικών και των αιτήσεων εργασίας."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "Μη έγκυρη διαμόρφωση παρόχου τεχνητής νοημοσύνης."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "Φορέας πιστοποίησης"
@@ -5145,6 +5155,7 @@ msgstr "Ρυθμίστε έναν πάροχο τεχνητής νοημοσύν
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Ρυθμίσεις"
 
@@ -5682,6 +5693,11 @@ msgstr "Χρώμα κειμένου"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Το κείμενο είναι γραμμένο έναν χαρακτήρα τη φορά."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Προβολές"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

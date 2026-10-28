@@ -14,5 +14,5 @@ export const Route = createFileRoute("/auth/register")({
 function RouteComponent() {
 	const { flags } = Route.useRouteContext();
 
-	return <RegisterPage disableEmailAuth={flags.disableEmailAuth} />;
+	return <RegisterPage disableEmailAuth={flags.disableEmailAuth} invitationOnly={flags.invitationOnly} />;
 }

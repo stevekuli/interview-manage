@@ -234,6 +234,11 @@ msgstr "ഒരു വെബ് വിലാസം https:// ഇല്ലാതെ
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "നിങ്ങളുടെ റെസ്യൂമെകളും ജോലി അപേക്ഷകളും വായിക്കുന്നതും മാറ്റുന്നതും ഉൾപ്പെടെ, API വഴി നിങ്ങളുടെ അക്കൗണ്ട് ആക്‌സസ് ചെയ്യുക."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "അസാധുവായ AI ദാതാവിന്റെ കോൺഫിഗറേഷൻ."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "ഇഷ്യൂവർ"
@@ -5145,6 +5155,7 @@ msgstr "ഈ റെസ്യൂമെയെക്കുറിച്ച് സം�
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "സെറ്റിംഗ്സ്"
 
@@ -5682,6 +5693,11 @@ msgstr "ടെക്സ്റ്റ് നിറം"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "ടെക്സ്റ്റ് ഒരു സമയം ഒരു അക്ഷരം വീതം എഴുതിയിരിക്കുന്നു."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "വ്യൂകൾ"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

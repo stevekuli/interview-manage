@@ -1503,6 +1503,12 @@ importers:
 
   tooling:
     dependencies:
+      '@reactive-resume/auth':
+        specifier: workspace:*
+        version: link:../packages/auth
+      '@reactive-resume/db':
+        specifier: workspace:*
+        version: link:../packages/db
       '@reactive-resume/schema':
         specifier: workspace:*
         version: link:../packages/schema

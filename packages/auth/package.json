@@ -5,6 +5,7 @@
 	"private": true,
 	"exports": {
 		"./config": "./src/config.ts",
+		"./invitations": "./src/invitations.ts",
 		"./types": "./src/types.ts"
 	},
 	"scripts": {

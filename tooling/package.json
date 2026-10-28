@@ -6,12 +6,15 @@
 	"scripts": {
 		"db:reset": "tsx database/reset.ts",
 		"docs:gen": "tsx semantic-css/generate-reference.ts",
+		"invitations": "tsx invitations/cli.ts",
 		"test": "vitest run --passWithNoTests",
 		"test:ci": "vitest run --coverage --reporter=default --reporter=github-actions --reporter=json --reporter=junit --outputFile.json=reports/vitest-results.json --outputFile.junit=reports/vitest-junit.xml --passWithNoTests",
 		"typecheck": "tsgo --noEmit",
 		"pdf:translations": "tsx locales/generate.ts"
 	},
 	"dependencies": {
+		"@reactive-resume/auth": "workspace:*",
+		"@reactive-resume/db": "workspace:*",
 		"@reactive-resume/schema": "workspace:*"
 	},
 	"devDependencies": {

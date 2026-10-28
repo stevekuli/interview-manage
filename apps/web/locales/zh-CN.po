@@ -234,6 +234,11 @@ msgstr "有一个网址没有写 https://。"
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr "AB2C-XK4M"
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "通过 API 访问你的账户，包括读取和修改你的简历与求职申请。"
@@ -3076,6 +3081,11 @@ msgstr "今天面试"
 msgid "Invalid AI provider configuration."
 msgstr "AI提供商配置无效。"
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr "邀请码"
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "签发机构"
@@ -5145,6 +5155,7 @@ msgstr "设置人工智能服务提供商，使其能够就这份简历进行交
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "设置"
 
@@ -5682,6 +5693,11 @@ msgstr "文本颜色"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "文字是逐个字符单独写入的。"
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr "仅文字"
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr "查看投递"
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "查看"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr "视觉"
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

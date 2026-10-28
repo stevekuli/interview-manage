@@ -234,6 +234,11 @@ msgstr "የድር አድራሻ ያለ https:// ተጽፏል።"
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "የእርስዎን የስራ ልምድ እና የስራ ማመልከቻ ማንበብ እና መቀየርን ጨምሮ መለያዎን በኤፒአይ ይድረሱ።"
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "ልክ ያልሆነ የAI አቅራቢ ውቅር።"
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "አውጪ"
@@ -5145,6 +5155,7 @@ msgstr "ስለዚህ የስራ ልምድ (ሲቪ) ለመወያየት እና አ�
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "ቅንብሮች"
 
@@ -5682,6 +5693,11 @@ msgstr "የጽሁፍ ቀለም"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "ጽሁፉ በአንድ ጊዜ አንድ ፊደል ተጽፏል።"
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "ተመልካቶች"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

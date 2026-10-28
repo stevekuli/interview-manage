@@ -234,6 +234,11 @@ msgstr "Verkko-osoite on kirjoitettu ilman https://-etuliitettä."
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "Käyttää tiliäsi API:n kautta, mukaan lukien ansioluetteloidesi ja työhakemustesi lukeminen ja muuttaminen."
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "Virheellinen tekoälypalveluntarjoajan määritys."
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "Myöntäjä"
@@ -5145,6 +5155,7 @@ msgstr "Määritä tekoälypalveluntarjoaja keskustelemaan tästä ansioluettelo
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "Asetukset"
 
@@ -5682,6 +5693,11 @@ msgstr "Tekstiväri"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "Teksti on kirjoitettu yksi merkki kerrallaan."
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "Katselut"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts

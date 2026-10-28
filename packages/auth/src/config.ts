@@ -24,6 +24,7 @@ import { APP_NAME } from "@reactive-resume/utils/brand";
 import { rateLimitConfig, TRUSTED_IP_HEADERS } from "@reactive-resume/utils/rate-limit";
 import { generateId, toUsername } from "@reactive-resume/utils/string";
 import { isAllowedOAuthRedirectUri } from "@reactive-resume/utils/url-security.node";
+import { consumeInvitationCode, markInvitationUsedBy, releaseInvitationByCode } from "./invitations";
 import { createGithubProfileMapper, createProfileMapper } from "./oauth-profile";
 import { authRateLimitStorage } from "./rate-limit";
 import { getTrustedOrigins } from "./trusted-origins";
@@ -133,7 +134,7 @@ const getAuthConfig = () => {
 	if (isCustomOAuthProviderEnabled()) {
 		authConfigs.push({
 			providerId: "custom",
-			disableSignUp: env.FLAG_DISABLE_SIGNUPS,
+			disableSignUp: env.FLAG_DISABLE_SIGNUPS || env.FLAG_INVITATION_ONLY,
 			clientId: env.OAUTH_CLIENT_ID as string,
 			clientSecret: env.OAUTH_CLIENT_SECRET as string,
 			discoveryUrl: env.OAUTH_DISCOVERY_URL,
@@ -172,25 +173,59 @@ const getAuthConfig = () => {
 		hooks: {
 			// biome-ignore lint/suspicious/useAwait: Better Auth requires middleware callbacks to return a Promise.
 			before: createAuthMiddleware(async (ctx) => {
-				if (!ctx.path.includes("/oauth2/register")) return;
+				if (ctx.path.includes("/oauth2/register")) {
+					const body = ctx.body as { redirect_uris?: unknown } | undefined;
+					const redirectUris = Array.isArray(body?.redirect_uris) ? body.redirect_uris : [];
 
-				const body = ctx.body as { redirect_uris?: unknown } | undefined;
-				const redirectUris = Array.isArray(body?.redirect_uris) ? body.redirect_uris : [];
-
-				for (const uri of redirectUris) {
-					if (typeof uri !== "string") {
-						throw new APIError("BAD_REQUEST", { message: "redirect_uris entries must be strings" });
+					for (const uri of redirectUris) {
+						if (typeof uri !== "string") {
+							throw new APIError("BAD_REQUEST", { message: "redirect_uris entries must be strings" });
+						}
+						if (
+							!isAllowedOAuthRedirectUri(uri, TRUSTED_ORIGINS, {
+								allowUnsafe: env.FLAG_ALLOW_UNSAFE_OAUTH_REDIRECT_URI,
+							})
+						) {
+							throw new APIError("BAD_REQUEST", {
+								message: "redirect_uri is not allowed for dynamic client registration",
+							});
+						}
 					}
-					if (
-						!isAllowedOAuthRedirectUri(uri, TRUSTED_ORIGINS, {
-							allowUnsafe: env.FLAG_ALLOW_UNSAFE_OAUTH_REDIRECT_URI,
-						})
-					) {
-						throw new APIError("BAD_REQUEST", {
-							message: "redirect_uri is not allowed for dynamic client registration",
-						});
+					return;
+				}
+
+				// Invite-only beta: email sign-up must present a valid one-time invitation
+				// code (minted via tooling/invitations). The code is consumed here, before
+				// the user row is created; `after` below releases it if sign-up still fails
+				// (e.g. duplicate email) so a failed attempt does not burn the code.
+				if (env.FLAG_INVITATION_ONLY && ctx.path === "/sign-up/email") {
+					const body = ctx.body as { invitationCode?: unknown } | undefined;
+					const code = typeof body?.invitationCode === "string" ? body.invitationCode.trim() : "";
+					if (!code) {
+						throw new APIError("BAD_REQUEST", { message: "An invitation code is required to sign up." });
+					}
+					const consumed = await consumeInvitationCode(code);
+					if (!consumed.ok) {
+						throw new APIError("BAD_REQUEST", { message: "This invitation code is invalid or already used." });
 					}
 				}
+			}),
+			// biome-ignore lint/suspicious/useAwait: Better Auth requires middleware callbacks to return a Promise.
+			after: createAuthMiddleware(async (ctx) => {
+				if (!env.FLAG_INVITATION_ONLY || ctx.path !== "/sign-up/email") return;
+
+				const body = ctx.body as { invitationCode?: unknown; email?: unknown } | undefined;
+				const code = typeof body?.invitationCode === "string" ? body.invitationCode.trim() : "";
+				if (!code) return;
+
+				const response = (ctx as unknown as { response?: Response }).response;
+				if (response?.ok) {
+					const email = typeof body?.email === "string" ? body.email : "";
+					if (email) await markInvitationUsedBy(code, email);
+					return;
+				}
+				// Sign-up failed after the code was consumed — give it back.
+				await releaseInvitationByCode(code);
 			}),
 		},
 
@@ -272,7 +307,7 @@ const getAuthConfig = () => {
 		socialProviders: {
 			google: {
 				enabled: !!env.GOOGLE_CLIENT_ID && !!env.GOOGLE_CLIENT_SECRET,
-				disableSignUp: env.FLAG_DISABLE_SIGNUPS,
+				disableSignUp: env.FLAG_DISABLE_SIGNUPS || env.FLAG_INVITATION_ONLY,
 				clientId: env.GOOGLE_CLIENT_ID ?? "",
 				clientSecret: env.GOOGLE_CLIENT_SECRET ?? "",
 				mapProfileToUser: createProfileMapper({
@@ -284,7 +319,7 @@ const getAuthConfig = () => {
 
 			github: {
 				enabled: !!env.GITHUB_CLIENT_ID && !!env.GITHUB_CLIENT_SECRET,
-				disableSignUp: env.FLAG_DISABLE_SIGNUPS,
+				disableSignUp: env.FLAG_DISABLE_SIGNUPS || env.FLAG_INVITATION_ONLY,
 				clientId: env.GITHUB_CLIENT_ID ?? "",
 				clientSecret: env.GITHUB_CLIENT_SECRET ?? "",
 				mapProfileToUser: createGithubProfileMapper(),
@@ -292,7 +327,7 @@ const getAuthConfig = () => {
 
 			linkedin: {
 				enabled: !!env.LINKEDIN_CLIENT_ID && !!env.LINKEDIN_CLIENT_SECRET,
-				disableSignUp: env.FLAG_DISABLE_SIGNUPS,
+				disableSignUp: env.FLAG_DISABLE_SIGNUPS || env.FLAG_INVITATION_ONLY,
 				clientId: env.LINKEDIN_CLIENT_ID ?? "",
 				clientSecret: env.LINKEDIN_CLIENT_SECRET ?? "",
 				mapProfileToUser: createProfileMapper({

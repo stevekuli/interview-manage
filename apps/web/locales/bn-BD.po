@@ -234,6 +234,11 @@ msgstr "একটি ওয়েব ঠিকানা https:// ছাড়া
 msgid "A4"
 msgstr "A4"
 
+#. Example invitation code placeholder on registration form
+#: src/features/auth/pages/register.tsx
+msgid "AB2C-XK4M"
+msgstr ""
+
 #: src/features/auth/pages/consent.tsx
 msgid "Access your account through the API, including reading and changing your resumes and job applications."
 msgstr "আপনার জীবনবৃত্তান্ত এবং চাকরির আবেদনগুলি পড়া এবং পরিবর্তন করা সহ API এর মাধ্যমে আপনার অ্যাকাউন্ট অ্যাক্সেস করুন।"
@@ -3076,6 +3081,11 @@ msgstr ""
 msgid "Invalid AI provider configuration."
 msgstr "অবৈধ এআই প্রদানকারী কনফিগারেশন।"
 
+#. Label for invitation code input on registration form (invite-only beta)
+#: src/features/auth/pages/register.tsx
+msgid "Invitation Code"
+msgstr ""
+
 #: src/dialogs/resume/sections/certification.tsx
 msgid "Issuer"
 msgstr "ইস্যুকারী"
@@ -5145,6 +5155,7 @@ msgstr "এই জীবনবৃত্তান্তটি নিয়ে আ
 
 #: src/features/command-palette/pages/navigation.tsx
 #: src/routes/agent/-components/new-thread-setup.tsx
+#: src/routes/dashboard/-components/sidebar.tsx
 msgid "Settings"
 msgstr "সেটিংস"
 
@@ -5682,6 +5693,11 @@ msgstr "টেক্সটের রঙ"
 #: src/features/ats-checker/messages.ts
 msgid "Text is written one character at a time."
 msgstr "টেক্সট একবারে একটি করে অক্ষর লেখা আছে।"
+
+#. Badge meaning the model does not accept image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Text only"
+msgstr ""
 
 #: src/features/ats-checker/messages.ts
 msgid "Text sits in the header or footer area."
@@ -6665,6 +6681,11 @@ msgstr ""
 #: src/routes/builder/$resumeId/-sidebar/right/sections/statistics.tsx
 msgid "Views"
 msgstr "ভিউ"
+
+#. Badge meaning the model accepts image input
+#: src/features/settings/integrations/components/ai-section.tsx
+msgid "Vision"
+msgstr ""
 
 #: src/dialogs/resume/sections/custom.tsx
 #: src/libs/resume/section-title.ts
