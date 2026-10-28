@@ -1,5 +1,5 @@
 import { toJsonSchemaCompat } from "@modelcontextprotocol/sdk/server/zod-json-schema-compat.js";
-import { APP_NAME } from "@reactive-resume/utils/brand";
+import { APP_DESCRIPTION, APP_MCP_SERVER_NAME, APP_NAME } from "@reactive-resume/utils/brand";
 import { MCP_TOOL_NAME as T } from "./mcp-tool-names";
 import { PROMPT_META } from "./prompts";
 import { TOOL_META } from "./tool-meta";
@@ -9,10 +9,10 @@ const RESUME_ID_ARGUMENT = [{ name: "id", description: "Resume ID.", required: t
 /** Shared server identity for both the live MCP server and the static server card. */
 export function buildMcpServerInfo(version: string) {
 	return {
-		name: "reactive-resume",
+		name: APP_MCP_SERVER_NAME,
 		version,
 		title: APP_NAME,
-		description: `${APP_NAME} job-search workspace. Use this MCP server to interact with your resumes and cover letters using an LLM of your choice.`,
+		description: `${APP_NAME}（${APP_DESCRIPTION}）Use this MCP server to manage resumes, cover letters, job applications, and interview timelines.`,
 	};
 }
 

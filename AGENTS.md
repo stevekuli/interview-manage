@@ -21,13 +21,14 @@
 - 引入 Reactive Resume 后保留其 monorepo 结构，并合并上游 AGENTS.md 的工程规范（见下半部分），不覆盖本项目约束。
 - 前端进入上游 web 功能目录；API 业务进入对应功能包；数据库和迁移、PDF/DOCX 渲染分别归其现有包管理。
 - `tooling/`：开发、部署和维护脚本；不得混入业务包。
+- `tooling/integrations/`：外部 AI 平台（WorkBuddy、OpenAI / Codex 等）的连接器清单（`connector-meta.json`、`mcp.json`、`plugin.json`）、共享求职 `SKILL.md` 及校验测试；品牌与工具名必须与 `packages/utils/src/brand.ts`、`packages/mcp` 单一来源一致，禁止写入明文密钥；打包产生的临时压缩包不在版本库留存，验证后立即清理。
 - `data/`：本地持久数据（上游本地文件存储默认写入此处），禁止进入 Git；用户原件、历史导出按业务删除规则管理，不作为临时文件清理。
 - `artifacts/`：未来验证产物，禁止进入 Git；交付时仅保留脱敏验收证据，清除无用中间产物。
 - 临时处理文件成功后立即清理；异常遗留文件在 24 小时内清理。
 
 ## 产品展示与品牌规范（2026-10-04 起）
 
-- 产品展示名暂定"求职管理"，集中定义在 `packages/utils/src/brand.ts`（`./brand` 导出）；页面、邮件、认证、SEO 使用该单一来源，不得在各处散落硬编码。
+- 产品展示名暂定"求职管理"，集中定义在 `packages/utils/src/brand.ts`（`./brand` 导出，同时提供英文展示名 `APP_NAME_EN` 与对外 MCP 服务标识 `APP_MCP_SERVER_NAME`）；页面、邮件、认证、SEO、MCP Server Card 使用该单一来源，不得在各处散落硬编码。
 - 面向用户的展示文案不得出现原项目（Reactive Resume）的推广内容：作者介绍、GitHub 星标/仓库推广、社区统计、捐赠与赞助入口、原站（rxresu.me / docs.rxresu.me）链接和 Crowdin 翻译征集。
 - 根目录 `LICENSE` 的 MIT 许可与原作者版权声明原样保留；内部文档、Git 历史和上游基线信息不变。`@reactive-resume/*` 包名、导入格式兼容标识和必要第三方声明不是展示文案，允许保留。
 - 未实现的能力不得宣传：首页、导航和帮助文案只描述已上线的功能；AI 相关文案须写明当前实际支持的操作与配置要求。
@@ -55,12 +56,13 @@
 
 ### 服务器部署约定（2026-10-04 起生效，详见 `docs/acceptance/2026-10-04-server-deployment.md` 与 `docs/acceptance/2026-10-05-branding-deployment.md`）
 
-- 公网入口 `http://8.148.199.165:3012`（Nginx → `127.0.0.1:3001` → 容器 3000）；部署文件在 `tooling/deployment/server/`，服务器目录 `/opt/interview-manage/`。
+- 公网入口 `https://interview.unlimit.ltd`（2026-10-25 起，Nginx 443 → `127.0.0.1:3001` → 容器 3000；2026-10-27 起 `APP_URL` 已切换为该域名，旧 IP 入口 `http://8.148.199.165:3012` 变为 301 跳转，不再直连登录）；部署文件在 `tooling/deployment/server/`（nginx 站点文件与服务器 `/etc/nginx/sites-available/interview-manage` 同步），服务器目录 `/opt/interview-manage/`。
+- **站点域名变更/新增入口时**：`APP_URL` 保持唯一对外主入口；其余需要直连登录的 origin（如旧 IP 入口）写入 `TRUSTED_ORIGINS`（逗号分隔，`packages/auth` 的 `getTrustedOrigins` 消费），否则 Better Auth 对浏览器请求按 `INVALID_ORIGIN` 403 拒绝且前端只弹英文原文。注意 `useSecureCookies` 跟随 APP_URL 是否为 https，https 主入口 + http 旧入口并存时旧入口无法种 Secure 会话 Cookie，旧入口应做 301 跳转到主入口。
 - 镜像在本机构建后传输（`docker save | gzip`，约 300MB）；SSH 大流量会被链路间歇掐断，用分片并行断点续传（每片独立续传、拼接后整体 sha256 校验，坏片单独重传），必要时走阿里云云助手（`aliyun ecs RunCommand --profile deploy`，数组参数写 `--InstanceId.1 i-xxx`；agent 可能停运需先确认）。
 - **增量补丁路径**：若仅改构建产物（依赖树与 migrations 未变，需核对 lockfile 与 `migrations/` diff），只传 `apps/web/dist + apps/server/dist` 的 gzip 包，服务器上 `docker create → docker cp → docker commit` 出新 tag，体积小一个数量级。
 - 服务器无公网出口：镜像 tag 需用服务器已有镜像；app 字体等出站 fetch 依赖宿主机 mihomo（compose 内 `NODE_USE_ENV_PROXY` 已配）。
 - 服务器磁盘小且容器日志可暴涨（mihomo 曾涨到 29GB 撑爆磁盘导致 postgres recovery），已配 `/etc/logrotate.d/docker-containers`；部署前后查 `df -h`。
-- 测试自连一律用 `127.0.0.1:3012`，hairpin 公网 IP 不可靠；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致（临时翻转 `.env` 的 APP_URL，冒烟后翻回）；远程长任务用 `nohup … < /dev/null > log 2>&1 &` 落盘后短连接轮询，远程 `pkill -f` 用括号正则避免匹配到自己的命令行。
+- 测试自连优先 `https://interview.unlimit.ltd`（服务器上 hairpin 不可靠时用 `curl --resolve interview.unlimit.ltd:443:127.0.0.1 -k`；3012 已改为 301 跳转，不再作为自连入口）；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致；远程长任务用 `nohup … < /dev/null > log 2>&1 &` 落盘后短连接轮询，远程 `pkill -f` 用括号正则避免匹配到自己的命令行。
 
 ## 与上游合并的工程规范说明
 

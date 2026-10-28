@@ -10,12 +10,14 @@ describe("buildMcpServerCard", () => {
 		expect(card.serverInfo.version).toBe("1.2.3");
 	});
 
-	it("identifies the server as reactive-resume without upstream promo links", () => {
-		expect(card.serverInfo.name).toBe("reactive-resume");
+	it("identifies the server with brand constants and without upstream promo links", () => {
+		expect(card.serverInfo.name).toBe("interview-manage");
 		expect(card.serverInfo.title).toBe("求职管理");
+		expect(card.serverInfo.description).toContain("求职管理");
+		expect(card.serverInfo.description).toContain("job applications");
 		expect("websiteUrl" in card.serverInfo).toBe(false);
 		expect("icons" in card.serverInfo).toBe(false);
-		expect(JSON.stringify(card.serverInfo)).not.toMatch(/rxresu\.me|open-source/);
+		expect(JSON.stringify(card.serverInfo)).not.toMatch(/rxresu\.me|open-source|reactive-resume/i);
 	});
 
 	it("requires authentication with oauth2 + bearer schemes", () => {

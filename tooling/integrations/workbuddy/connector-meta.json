@@ -1,0 +1,29 @@
+{
+	"schema_version": "1.0",
+	"id": "interview-manage",
+	"name": "求职管理",
+	"name_en": "Career Workspace",
+	"version": "1.0.0",
+	"description": "管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。",
+	"description_en": "Manage job applications, tailor resumes from verified experience, export PDFs, and track interviews.",
+	"icon": "./icon.svg",
+	"homepage_url": "https://interview.unlimit.ltd",
+	"mcp": {
+		"transport": "streamable-http",
+		"url": "https://interview.unlimit.ltd/mcp",
+		"server_card_url": "https://interview.unlimit.ltd/.well-known/mcp/server-card.json"
+	},
+	"authentication": {
+		"required": true,
+		"schemes": ["oauth2", "api_key"],
+		"oauth2": {
+			"protected_resource_metadata_url": "https://interview.unlimit.ltd/.well-known/oauth-protected-resource",
+			"authorization_server_metadata_url": "https://interview.unlimit.ltd/.well-known/oauth-authorization-server"
+		},
+		"api_key": {
+			"header": "x-api-key",
+			"TokenCreationUrl": "https://interview.unlimit.ltd/dashboard/settings/api-keys"
+		}
+	},
+	"skills": ["./skills/career-assistant/SKILL.md"]
+}

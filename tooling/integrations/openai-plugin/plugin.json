@@ -1,0 +1,24 @@
+{
+	"schema_version": "v1",
+	"name_for_human": "求职管理",
+	"name_for_model": "interview_manage",
+	"description_for_human": "管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。",
+	"description_for_model": "Connect to the user's Career Workspace (求职管理) over MCP to read and patch resumes, generate short-lived PDF download links, manage cover letters, and track job applications and interviews without fabricating facts.",
+	"auth": {
+		"type": "oauth",
+		"client_url": "https://interview.unlimit.ltd/api/auth/oauth",
+		"authorization_content_type": "application/x-www-form-urlencoded",
+		"verification_tokens": {}
+	},
+	"api": {
+		"type": "openapi",
+		"url": "https://interview.unlimit.ltd/api/openapi/spec.json"
+	},
+	"mcp": {
+		"transport": "streamable-http",
+		"url": "https://interview.unlimit.ltd/mcp",
+		"server_card_url": "https://interview.unlimit.ltd/.well-known/mcp/server-card.json"
+	},
+	"logo_url": "https://interview.unlimit.ltd/favicon.svg",
+	"legal_info_url": "https://interview.unlimit.ltd"
+}
