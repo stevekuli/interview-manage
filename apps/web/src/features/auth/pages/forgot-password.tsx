@@ -9,6 +9,7 @@ import { FormControl, FormItem, FormLabel, FormMessage } from "@reactive-resume/
 import { Input } from "@reactive-resume/ui/components/input";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { authClient } from "@/libs/auth/client";
+import { getAuthErrorMessage } from "@/libs/error-message";
 import { useAppForm } from "@/libs/tanstack-form";
 
 const formSchema = z.object({
@@ -32,12 +33,13 @@ export function ForgotPasswordPage() {
 			if (error) {
 				toast.add({
 					type: "error",
-					description:
-						error.message ||
+					description: getAuthErrorMessage(
+						error,
 						t({
 							comment: "Fallback toast when requesting password reset email fails without backend message",
 							message: "Failed to send password reset email. Please try again.",
 						}),
+					),
 					id: toastId,
 				});
 				return;

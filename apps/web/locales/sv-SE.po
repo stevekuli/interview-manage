@@ -580,6 +580,10 @@ msgstr "Har du redan ett konto? <0/>"
 msgid "Amharic"
 msgstr "Amhariska"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Inkludera CV-sidhuvud"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Öka indraget"
@@ -3715,6 +3723,10 @@ msgstr "Nästa"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Passkeys"
 msgid "Password"
 msgstr "Lösenord"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Lösenordet måste bestå av mellan 6 och 64 tecken."
@@ -4243,6 +4263,10 @@ msgstr "Placera den på en sida från layoutpanelen eller göm den om du tänkte
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Ren text, för AI-verktyg och snabba ändringar."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Vissa tecken visas som frågetecken."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Vissa kontroller behöver information som den här filen inte bär på: sidinnehåll som inte kunde granskas, eller text på ett språk som dessa kontroller inte täcker. De räknas varken som godkända eller underkända."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Vissa glyfer saknar betydelse utanför denna fil."
@@ -5774,6 +5802,10 @@ msgstr "Samma rad upprepas på varje sida."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Poängen är begränsad på grund av ett blockerande problem: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Texten blir oläslig."
@@ -5865,6 +5897,10 @@ msgstr "Detta datum kommer inte att läsas korrekt."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Den här redigeringsförfrågan kan inte längre besvaras."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Det här avsnittet sitter i sidofältet."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Det här inloggningsförsöket har upphört att gälla eller har redan använts. Börja om."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Detta steg är valfritt men rekommenderas."
@@ -6062,6 +6102,10 @@ msgstr "Den här tråden är skrivskyddad"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Den här tråden är skrivskyddad eftersom det fungerande CV:t eller AI-leverantören inte är tillgänglig."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Tokens: {total} ({cached} cachade)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Använd din redigerares vanliga punktlista, så att lösa tecken inte ha
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Användarnamn"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

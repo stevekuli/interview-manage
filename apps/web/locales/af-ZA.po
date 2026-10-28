@@ -580,6 +580,10 @@ msgstr "Het jy reeds 'n rekening? <0/>"
 msgid "Amharic"
 msgstr "Amharies"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Sluit CV-kop in"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Verhoog inspringing"
@@ -3715,6 +3723,10 @@ msgstr "Volgende"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Pasleutels"
 msgid "Password"
 msgstr "Wagwoord"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Die wagwoord moet tussen 6 en 64 karakters wees."
@@ -4243,6 +4263,10 @@ msgstr "Plaas dit op 'n bladsy vanaf die Uitleg-paneel, of versteek dit as jy di
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Gewone teks, vir KI-gereedskap en vinnige wysigings."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Sommige karakters kom uit as vraagtekens."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Sommige toetse benodig inligting wat hierdie lêer nie dra nie: bladsyinhoud wat nie ondersoek kon word nie, of teks in 'n taal wat hierdie toetse nie dek nie. Hulle tel nie as geslaag of gedruip nie."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Sommige gliewe het geen betekenis buite hierdie lêer nie."
@@ -5774,6 +5802,10 @@ msgstr "Dieselfde reël herhaal op elke bladsy."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Die telling word beperk weens 'n blokkerende probleem: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Die teks kom onleesbaar uit."
@@ -5865,6 +5897,10 @@ msgstr "Hierdie datum sal nie korrek gelees word nie."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Hierdie wysigingsversoek kan nie meer beantwoord word nie."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Hierdie afdeling sit in die sybalk."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Hierdie aanmeldingspoging het verval of is reeds gebruik. Begin asseblief weer."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Hierdie stap is opsioneel, maar word aanbeveel."
@@ -6062,6 +6102,10 @@ msgstr "Hierdie draad is slegs leesbaar"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Hierdie draad is slegs-leesbaar omdat die werkende CV of KI-verskaffer nie beskikbaar is nie."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Tokens: {total} ({cached} gekas)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Gebruik jou redigeerder se gewone kolpuntlys, sodat verdwaalde gliewe ni
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Gebruikersnaam"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

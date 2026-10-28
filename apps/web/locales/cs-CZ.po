@@ -580,6 +580,10 @@ msgstr "Máte již účet? <0/>"
 msgid "Amharic"
 msgstr "Amharština"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Zahrnout záhlaví životopisu"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Zvětšit odsazení"
@@ -3715,6 +3723,10 @@ msgstr "Další"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Passkeys"
 msgid "Password"
 msgstr "Heslo"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Heslo musí mít 6 až 64 znaků."
@@ -4243,6 +4263,10 @@ msgstr "Umístěte ji na stránku z panelu Rozvržení nebo ji skryjte, pokud js
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Prostý text, pro AI nástroje a rychlé úpravy."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Některé znaky se zobrazí jako otazníky."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Některé kontroly potřebují informace, které tento soubor neobsahuje: obsah stránek, který nešlo prozkoumat, nebo text v jazyce, na který tyto kontroly nedosáhnou. Nepočítají se jako splněné ani jako nesplněné."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Některé glyfy nemají mimo tento soubor žádný význam."
@@ -5774,6 +5802,10 @@ msgstr "Stejný řádek se opakuje na každé stránce."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Skóre je omezeno kvůli blokujícímu problému: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Text vychází nečitelný."
@@ -5865,6 +5897,10 @@ msgstr "Toto datum nebude správně přečteno."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Na tuto žádost o úpravu již nelze odpovědět."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Tato sekce se nachází v postranním panelu."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Platnost tohoto pokusu o přihlášení vypršela nebo už byl použit. Začněte prosím znovu."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Tento krok je volitelný, ale doporučený."
@@ -6062,6 +6102,10 @@ msgstr "Toto vlákno je pouze pro čtení"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Toto vlákno je pouze pro čtení, protože funkční životopis nebo poskytovatel umělé inteligence není k dispozici."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Tokeny: {total} ({cached} v mezipaměti)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Použijte běžný odrážkový seznam svého editoru, aby se v polovin�
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Uživatelské jméno"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

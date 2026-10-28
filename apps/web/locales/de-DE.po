@@ -580,6 +580,10 @@ msgstr "Sie haben bereits ein Konto? <0/>"
 msgid "Amharic"
 msgstr "Amharisch"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Lebenslauf-Kopfzeile einfügen"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Einzug vergrößern"
@@ -3715,6 +3723,10 @@ msgstr "Weiter"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Passwörter"
 msgid "Password"
 msgstr "Passwort"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Das Passwort muss zwischen 6 und 64 Zeichen lang sein."
@@ -4243,6 +4263,10 @@ msgstr "Platzieren Sie es im Layout-Bedienfeld auf einer Seite oder blenden Sie 
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Reiner Text, für KI-Werkzeuge und schnelle Bearbeitungen."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Manche Zeichen erscheinen als Fragezeichen."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Einige Prüfungen benötigen Informationen, die diese Datei nicht enthält: Seiteninhalte, die nicht untersucht werden konnten, oder Text in einer Sprache, die diese Prüfungen nicht abdecken. Sie gelten weder als bestanden noch als nicht bestanden."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Manche Glyphen haben außerhalb dieser Datei keine Bedeutung."
@@ -5774,6 +5802,10 @@ msgstr "Dieselbe Zeile wiederholt sich auf jeder Seite."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Die Punktzahl ist wegen eines blockierenden Problems begrenzt: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Der Text kommt unlesbar heraus."
@@ -5865,6 +5897,10 @@ msgstr "Dieses Datum wird nicht korrekt gelesen."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Diese Bearbeitungsanfrage kann nicht mehr beantwortet werden."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Dieser Abschnitt befindet sich in der Seitenleiste."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Dieser Anmeldeversuch ist abgelaufen oder wurde bereits verwendet. Bitte beginnen Sie von vorn."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Dieser Schritt ist optional, aber empfohlen."
@@ -6062,6 +6102,10 @@ msgstr "Dieser Thread ist schreibgeschützt."
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Dieser Thread ist schreibgeschützt, da der funktionierende Lebenslauf oder der KI-Anbieter nicht verfügbar ist."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Tokens: {total} ({cached} im Cache)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Verwenden Sie die normale Aufzählungsliste Ihres Editors, damit keine s
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Benutzername"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

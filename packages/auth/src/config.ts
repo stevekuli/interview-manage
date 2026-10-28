@@ -87,7 +87,7 @@ function isCustomOAuthProviderEnabled() {
 	return Boolean(env.OAUTH_CLIENT_ID) && Boolean(env.OAUTH_CLIENT_SECRET) && (hasDiscovery || hasManual);
 }
 
-const TRUSTED_ORIGINS = getTrustedOrigins(env.APP_URL);
+const TRUSTED_ORIGINS = getTrustedOrigins(env.APP_URL, env.TRUSTED_ORIGINS);
 const oauthProviderRateLimit = isRateLimitEnabled
 	? rateLimitConfig.betterAuth.oauthProvider
 	: ({

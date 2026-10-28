@@ -9,6 +9,7 @@ import { FormControl, FormItem, FormLabel, FormMessage } from "@reactive-resume/
 import { Input } from "@reactive-resume/ui/components/input";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { authClient } from "@/libs/auth/client";
+import { getAuthErrorMessage } from "@/libs/error-message";
 import { useAppForm } from "@/libs/tanstack-form";
 
 const formSchema = z.object({
@@ -34,12 +35,13 @@ export function ResetPasswordPage({ token }: Props) {
 			if (error) {
 				toast.add({
 					type: "error",
-					description:
-						error.message ||
+					description: getAuthErrorMessage(
+						error,
 						t({
 							comment: "Fallback toast when resetting password fails and no backend message is available",
 							message: "Failed to reset your password. Please try again.",
 						}),
+					),
 					id: toastId,
 				});
 				return;

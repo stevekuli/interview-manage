@@ -580,6 +580,10 @@ msgstr "Đã có tài khoản? <0/>"
 msgid "Amharic"
 msgstr "Tiếng Amharic"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Bao gồm đầu trang hồ sơ"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Tăng khoảng cách thụt lề"
@@ -3715,6 +3723,10 @@ msgstr "Tiếp theo"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Khóa truy cập"
 msgid "Password"
 msgstr "Mật khẩu"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Mật khẩu phải có độ dài từ 6 đến 64 ký tự."
@@ -4243,6 +4263,10 @@ msgstr "Đặt nó trên một trang từ bảng Bố cục hoặc ẩn nó nế
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Văn bản thuần, dành cho các công cụ AI và chỉnh sửa nhanh."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Một số ký tự bị hiển thị thành dấu chấm hỏi."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Một số kiểm tra cần thông tin mà tệp này không mang theo: nội dung trang không thể xem xét được, hoặc văn bản bằng ngôn ngữ mà các kiểm tra này không hỗ trợ. Chúng không được tính là đạt cũng không tính là không đạt."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Một số ký hiệu không có ý nghĩa bên ngoài tệp này."
@@ -5774,6 +5802,10 @@ msgstr "Cùng một dòng lặp lại trên mọi trang."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Điểm số bị giới hạn do một vấn đề nghiêm trọng: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Văn bản khi trích xuất ra không thể đọc được."
@@ -5865,6 +5897,10 @@ msgstr "Ngày này sẽ không được đọc chính xác."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Không thể trả lời yêu cầu chỉnh sửa này được nữa."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Phần này nằm trong thanh bên."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Lần đăng nhập này đã hết hạn hoặc đã được sử dụng. Vui lòng bắt đầu lại."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Bước này là không bắt buộc, nhưng được khuyến nghị."
@@ -6062,6 +6102,10 @@ msgstr "Chủ đề này chỉ có thể đọc."
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Chủ đề này chỉ có thể đọc vì sơ yếu lý lịch đang làm việc hoặc nhà cung cấp AI hiện không khả dụng."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Token: {total} ({cached} từ bộ nhớ đệm)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Sử dụng chức năng danh sách gạch đầu dòng thông thường
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Tên người dùng"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

@@ -9,6 +9,7 @@ import { Input } from "@reactive-resume/ui/components/input";
 import { OTPField } from "@reactive-resume/ui/components/otp-field";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { authClient } from "@/libs/auth/client";
+import { getAuthErrorMessage } from "@/libs/error-message";
 import { useAppForm } from "@/libs/tanstack-form";
 import { getAuthRedirectOptions, getOAuthSignInOptions, isOAuthRedirect } from "../redirect";
 
@@ -45,9 +46,9 @@ function TwoFactorVerificationPage({ backupCode = false }: TwoFactorVerification
 			if (error) {
 				toast.add({
 					type: "error",
-					description:
-						error.message ||
-						(backupCode
+					description: getAuthErrorMessage(
+						error,
+						backupCode
 							? t({
 									comment: "Fallback toast when verifying a backup two-factor authentication code fails",
 									message: "Failed to verify your backup code. Please try again.",
@@ -55,7 +56,8 @@ function TwoFactorVerificationPage({ backupCode = false }: TwoFactorVerification
 							: t({
 									comment: "Fallback toast when verifying a two-factor authentication code fails",
 									message: "Failed to verify your code. Please try again.",
-								})),
+								}),
+					),
 					id: toastId,
 				});
 				return;

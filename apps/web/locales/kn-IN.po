@@ -580,6 +580,10 @@ msgstr "ಈಗಾಗಲೇ ಖಾತೆ ಇದೆಯೇ? <0/>"
 msgid "Amharic"
 msgstr "ಅಂಹಾರಿಕ್"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "ರೆಸ್ಯೂಮೆಯ ಹೆಡರ್ ಸೇರಿಸಿ"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "ಇಂಡೆಂಟ್ ಹೆಚ್ಚಿಸಿ"
@@ -3715,6 +3723,10 @@ msgstr "ಮುಂದೆ"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "ಪಾಸ್‌ಕೀಗಳು"
 msgid "Password"
 msgstr "ಗುಪ್ತಪದ"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "ಪಾಸ್ವರ್ಡ್ 6 ರಿಂದ 64 ಅಕ್ಷರಗಳ ನಡುವೆ ಇರಬೇಕು."
@@ -4243,6 +4263,10 @@ msgstr "ಲೇಔಟ್ ಪ್ಯಾನೆಲ್‌ನಿಂದ ಪುಟದಲ�
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "AI ಸಾಧನಗಳಿಗೆ ಮತ್ತು ತ್ವರಿತ ಸಂಪಾದನೆಗಳಿಗೆ ಸೂಕ್ತವಾದ ಸರಳ ಪಠ್ಯ."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "ಕೆಲವು ಅಕ್ಷರಗಳು ಪ್ರಶ್ನಾರ್ಥ�
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "ಕೆಲವು ಪರಿಶೀಲನೆಗಳಿಗೆ ಈ ಫೈಲ್‌ನಲ್ಲಿ ಇಲ್ಲದ ಮಾಹಿತಿ ಬೇಕಾಗುತ್ತದೆ: ಪರಿಶೀಲಿಸಲಾಗದ ಪುಟದ ವಿಷಯ, ಅಥವಾ ಈ ಪರಿಶೀಲನೆಗಳು ಒಳಗೊಳ್ಳದ ಭಾಷೆಯ ಪಠ್ಯ. ಅವನ್ನು ಉತ್ತೀರ್ಣ ಎಂದೂ ಎಣಿಸುವುದಿಲ್ಲ, ಅನುತ್ತೀರ್ಣ ಎಂದೂ ಎಣಿಸುವುದಿಲ್ಲ."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "ಕೆಲವು ಗ್ಲಿಫ್‌ಗಳಿಗೆ ಈ ಫೈಲ್‌ನ ಹೊರಗೆ ಯಾವುದೇ ಅರ್ಥವಿಲ್ಲ."
@@ -5774,6 +5802,10 @@ msgstr "ಅದೇ ಸಾಲು ಪ್ರತಿ ಪುಟದಲ್ಲಿಯೂ �
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "ತಡೆಗಟ್ಟುವ ಸಮಸ್ಯೆಯ ಕಾರಣ ಸ್ಕೋರ್ ಅನ್ನು ಮಿತಿಗೊಳಿಸಲಾಗಿದೆ: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "ಪಠ್ಯ ಓದಲಾಗದಂತೆ ಹೊರಬರುತ್ತದೆ."
@@ -5865,6 +5897,10 @@ msgstr "ಈ ದಿನಾಂಕವನ್ನು ಸರಿಯಾಗಿ ಓದಲಾ
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "ಈ ಸಂಪಾದನೆ ವಿನಂತಿಗೆ ಇನ್ನು ಮುಂದೆ ಉತ್ತರಿಸಲು ಸಾಧ್ಯವಿಲ್ಲ."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "ಈ ವಿಭಾಗವು ಸೈಡ್‌ಬಾರ್‌ನಲ್ಲಿ 
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "ಈ ಸೈನ್-ಇನ್ ಪ್ರಯತ್ನ ಅವಧಿ ಮುಗಿದಿದೆ ಅಥವಾ ಈಗಾಗಲೇ ಬಳಸಲಾಗಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಾರಂಭಿಸಿ."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "ಈ ಹಂತ ಐಚ್ಛಿಕ, ಆದರೆ ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ."
@@ -6062,6 +6102,10 @@ msgstr "ಈ ಥ್ರೆಡ್ ಓದಲು ಮಾತ್ರ."
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "ಕೆಲಸದ ರೆಸ್ಯೂಮ್ ಅಥವಾ AI ಪೂರೈಕೆದಾರರು ಲಭ್ಯವಿಲ್ಲದ ಕಾರಣ ಈ ಥ್ರೆಡ್ ಓದಲು ಮಾತ್ರ."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "ಟೋಕನ್‌ಗಳು: {total} ({cached} ಕ್ಯಾಶ್ ಮಾ
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "ನಿಮ್ಮ ಎಡಿಟರ್‌ನ ಸಾಮಾನ್ಯ ಬುಲ
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "ಬಳಕೆದಾರರ ಹೆಸರು"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

@@ -580,6 +580,10 @@ msgstr "Hisobingiz bormi? <0/>"
 msgid "Amharic"
 msgstr "Amxar tili"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "Rezyume sarlavhasini qo‘shish"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Xoch chiziqni kattalashtirish"
@@ -3715,6 +3723,10 @@ msgstr "Keyingi"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "Kirish kalitlari"
 msgid "Password"
 msgstr "Parol"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Parol 6 dan 64 gacha belgidan iborat bo'lishi kerak."
@@ -4243,6 +4263,10 @@ msgstr "Uni Layout panelidagi sahifaga joylashtiring yoki agar uni to'xtatmoqchi
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Oddiy matn, sun'iy intellekt vositalari va tez tahrirlar uchun."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "Ba'zi belgilar savol belgisi sifatida chiqadi."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Ba'zi tekshiruvlar bu fayl o'zida saqlamaydigan ma'lumotni talab qiladi: tekshirib bo'lmagan sahifa mazmuni yoki bu tekshiruvlar qamramaydigan tildagi matn. Ular na o'tgan, na o'tmagan deb hisoblanadi."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Ba'zi glif belgilari bu fayldan tashqarida ma'no anglatmaydi."
@@ -5774,6 +5802,10 @@ msgstr "Bir xil qator har bir sahifada takrorlanadi."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "Toʻsiq boʻluvchi muammo tufayli baho cheklab qoʻyildi: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "Matn oʻqib boʻlmaydigan holda chiqadi."
@@ -5865,6 +5897,10 @@ msgstr "Bu sana to'g'ri o'qilmaydi."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "Bu tahrirlash so'roviga endi javob berib bo'lmaydi."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "Ushbu bo'lim yon panelda joylashgan."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "Bu kirish urinishi muddati tugagan yoki allaqachon ishlatilgan. Iltimos, qaytadan boshlang."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "Bu bosqich ixtiyoriy, ammo tavsiya etiladi."
@@ -6062,6 +6102,10 @@ msgstr "Bu mavzu faqat o'qish uchun"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "Ushbu mavzu faqat o'qish uchun mo'ljallangan, chunki ishlaydigan rezyume yoki AI provayderi mavjud emas."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "Tokenlar: {total} ({cached} keshlangan)"
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "Tasodifiy belgilar gap oʻrtasiga tushib qolmasligi uchun muharriringizn
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Foydalanuvchi nomi"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

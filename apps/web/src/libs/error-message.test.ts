@@ -1,6 +1,19 @@
-import { describe, expect, it } from "vitest";
+// @vitest-environment happy-dom
+
+import { beforeAll, describe, expect, it } from "vitest";
+import { i18n } from "@lingui/core";
 import { ORPCError } from "@orpc/client";
-import { getOrpcErrorMessage, getReadableErrorMessage, getResumeErrorMessage } from "./error-message";
+import {
+	getAuthErrorMessage,
+	getOrpcErrorMessage,
+	getReadableErrorMessage,
+	getResumeErrorMessage,
+} from "./error-message";
+
+beforeAll(() => {
+	i18n.load("en", {});
+	i18n.activate("en");
+});
 
 describe("getReadableErrorMessage", () => {
 	it("shows the upload size validation message instead of the generic oRPC error", () => {
@@ -146,5 +159,53 @@ describe("getResumeErrorMessage", () => {
 
 	it("returns fallback for unknown shape", () => {
 		expect(getResumeErrorMessage(null)).toBe("Something went wrong. Please try again.");
+	});
+});
+
+describe("getAuthErrorMessage", () => {
+	it("maps rate limiting by HTTP status even without a code (Better Auth 429 body)", () => {
+		expect(getAuthErrorMessage({ message: "Too many requests. Please try again later.", status: 429 }, "fb")).toBe(
+			"Too many attempts. Please wait about a minute and try again.",
+		);
+	});
+
+	it("maps sign-up conflicts", () => {
+		expect(getAuthErrorMessage({ code: "USER_ALREADY_EXISTS", message: "User already exists." }, "fb")).toBe(
+			"An account with this email already exists. Sign in instead or use another email.",
+		);
+		expect(getAuthErrorMessage({ code: "USERNAME_IS_ALREADY_TAKEN", message: "Username is already taken" }, "fb")).toBe(
+			"This username is already taken. Please choose another one.",
+		);
+	});
+
+	it("maps sign-in credential failures", () => {
+		expect(getAuthErrorMessage({ code: "INVALID_EMAIL_OR_PASSWORD", message: "Invalid email or password" }, "fb")).toBe(
+			"Incorrect email or password. Please try again.",
+		);
+	});
+
+	it("maps password length rules", () => {
+		expect(getAuthErrorMessage({ code: "PASSWORD_TOO_SHORT", message: "Password too short" }, "fb")).toBe(
+			"Password is too short. Use at least 8 characters.",
+		);
+	});
+
+	it("maps untrusted-origin rejections to an actionable server-configuration message", () => {
+		expect(getAuthErrorMessage({ code: "INVALID_ORIGIN", message: "Invalid origin", status: 403 }, "fb")).toBe(
+			"This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work.",
+		);
+	});
+
+	it("surfaces the raw server message for unmapped codes so the reason is not lost", () => {
+		expect(getAuthErrorMessage({ code: "SOMETHING_ELSE", message: "Explains the real cause" }, "fb")).toBe(
+			"Explains the real cause",
+		);
+	});
+
+	it("returns the fallback when neither code nor message helps", () => {
+		expect(getAuthErrorMessage({ code: "SOMETHING_ELSE" }, "fb")).toBe("fb");
+		expect(getAuthErrorMessage({ message: "   " }, "fb")).toBe("fb");
+		expect(getAuthErrorMessage("not-an-object", "fb")).toBe("fb");
+		expect(getAuthErrorMessage(null, "fb")).toBe("fb");
 	});
 });

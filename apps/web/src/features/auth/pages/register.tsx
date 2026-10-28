@@ -11,6 +11,7 @@ import { FormControl, FormItem, FormLabel, FormMessage } from "@reactive-resume/
 import { Input } from "@reactive-resume/ui/components/input";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { authClient } from "@/libs/auth/client";
+import { getAuthErrorMessage } from "@/libs/error-message";
 import { useAppForm } from "@/libs/tanstack-form";
 import { SocialAuth } from "../components/social-auth";
 import { getOAuthSignInOptions, isOAuthRedirect } from "../redirect";
@@ -27,7 +28,9 @@ const formSchema = z.object({
 			message: "Username can only contain lowercase letters, numbers, dots, hyphens and underscores.",
 		}),
 	email: z.email().toLowerCase(),
-	password: z.string().min(6).max(64),
+	// Better Auth enforces a minimum length of 8 (packages/auth config minPasswordLength);
+	// validating at 6 client-side let short passwords through and failed server-side.
+	password: z.string().min(8, "Password must be at least 8 characters.").max(64),
 });
 
 type Props = {
@@ -60,12 +63,13 @@ export function RegisterPage({ disableEmailAuth }: Props) {
 			if (error) {
 				toast.add({
 					type: "error",
-					description:
-						error.message ||
+					description: getAuthErrorMessage(
+						error,
 						t({
 							comment: "Fallback toast when account registration fails without a server error message",
 							message: "Failed to create your account. Please try again.",
 						}),
+					),
 					id: toastId,
 				});
 				return;
@@ -213,7 +217,7 @@ export function RegisterPage({ disableEmailAuth }: Props) {
 									<FormControl
 										render={
 											<Input
-												min={6}
+												min={8}
 												max={64}
 												type={showPassword ? "text" : "password"}
 												autoComplete="section-register new-password"

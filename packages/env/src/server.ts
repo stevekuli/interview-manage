@@ -36,6 +36,9 @@ export const env = createEnv({
 		// Authentication
 		AUTH_SECRET: z.string().min(1),
 		BETTER_AUTH_API_KEY: z.string().min(1).optional(),
+		// Comma-separated extra origins (e.g. a legacy IP entrance) trusted by Better Auth
+		// alongside APP_URL, so a domain cutover does not break browser sign-in requests.
+		TRUSTED_ORIGINS: z.string().optional(),
 
 		// Social Auth (Google)
 		GOOGLE_CLIENT_ID: z.string().min(1).optional(),

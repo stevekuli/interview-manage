@@ -580,6 +580,10 @@ msgstr "ఇప్పటికే ఖాతా ఉందా? <0/>"
 msgid "Amharic"
 msgstr "అంహారిక్"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "రెజ్యూమే హెడర్‌ను చేర్చండి"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "ఇండెంట్‌ను పెంచండి"
@@ -3715,6 +3723,10 @@ msgstr "తదుపరి"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "పాస్‌కీలు"
 msgid "Password"
 msgstr "పాస్‌వర్డ్"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "పాస్‌వర్డ్ 6 నుండి 64 అక్షరాల మధ్య ఉండాలి."
@@ -4243,6 +4263,10 @@ msgstr "లేఅవుట్ ప్యానెల్ నుండి ఒక �
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "AI టూల్స్‌కు, వేగవంతమైన సవరణలకు అనువైన సాదా వచనం."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "కొన్ని అక్షరాలు ప్రశ్నార్�
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "కొన్ని తనిఖీలకు ఈ ఫైల్‌లో లేని సమాచారం అవసరం: పరిశీలించలేని పేజీ విషయాలు, లేదా ఈ తనిఖీలు కవర్ చేయని భాషలోని వచనం. అవి ఉత్తీర్ణతగానూ లెక్కకు రావు, వైఫల్యంగానూ లెక్కకు రావు."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "కొన్ని గ్లిఫ్‌లకు ఈ ఫైల్ వెలుపల అర్థం లేదు."
@@ -5774,6 +5802,10 @@ msgstr "అదే లైన్ ప్రతి పేజీలో పునర�
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "బ్లాకింగ్ సమస్య కారణంగా స్కోర్ పరిమితం చేయబడింది: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "టెక్స్ట్ చదవలేనిదిగా వస్తుంది."
@@ -5865,6 +5897,10 @@ msgstr "ఈ తేదీ సరిగ్గా చదవబడదు."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "ఈ సవరణ అభ్యర్థనకు ఇకపై సమాధానం ఇవ్వడం సాధ్యం కాదు."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "ఈ విభాగం సైడ్‌బార్‌లో ఉంటు
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "ఈ సైన్-ఇన్ ప్రయత్నం గడువు ముగిసింది లేదా ఇప్పటికే ఉపయోగించబడింది. దయచేసి మళ్లీ ప్రారంభించండి."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "ఈ దశ ఐచ్ఛికం, కాని సిఫారసు చేయబడింది."
@@ -6062,6 +6102,10 @@ msgstr "ఈ థ్రెడ్ కేవలం చదవడానికి మ�
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "వర్కింగ్ రెస్యూమ్ లేదా AI ప్రొవైడర్ అందుబాటులో లేనందున ఈ థ్రెడ్ కేవలం చదవడానికి మాత్రమే అందుబాటులో ఉంది."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "టోకెన్లు: {total} ({cached} కాష్ చేయబడ
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "మీ ఎడిటర్ యొక్క సాధారణ బుల�
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "యూజర్‌నేమ్"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

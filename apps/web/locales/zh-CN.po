@@ -580,6 +580,10 @@ msgstr "已有账户？<0/>"
 msgid "Amharic"
 msgstr "阿姆哈拉语"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr "该邮箱已注册过账号。请直接登录，或更换一个邮箱。"
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr "已配置并通过测试的 AI 模型"
@@ -2986,6 +2990,10 @@ msgstr "当前视图内"
 msgid "Include resume header"
 msgstr "包含简历页眉"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr "邮箱或密码不正确，请重试。"
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "增加缩进"
@@ -3715,6 +3723,10 @@ msgstr "下一页"
 msgid "Next month"
 msgstr "下个月"
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr "没有账号与该邮箱或用户名匹配，或密码不正确。"
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr "暂无进行中的投递。"
@@ -4115,6 +4127,14 @@ msgstr "通行密钥"
 msgid "Password"
 msgstr "密码"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr "密码过长，最多 64 个字符。"
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr "密码太短，至少需要 8 个字符。"
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "密码长度必须在 6 到 64 个字符之间。"
@@ -4243,6 +4263,10 @@ msgstr "将其放置在“布局”面板中的页面上，或者如果您想将
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "纯文本，适合 AI 工具和快速编辑。"
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr "请输入有效的邮箱地址。"
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "有些字符会变成问号。"
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "有些检查需要这个文件没有携带的信息：无法查看的页面内容，或者这些检查未覆盖的语言的文字。它们既不算通过，也不算失败。"
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr "部分内容填写有误，请检查后重试。"
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "有些字形脱离这份文件后就没有意义了。"
@@ -5774,6 +5802,10 @@ msgstr "同一行文字在每一页都重复出现。"
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "由于一个阻断性问题，分数被封顶：{0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr "登录请求因安全防护被拦截，请刷新页面后重试。"
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "提取出的文字无法阅读。"
@@ -5865,6 +5897,10 @@ msgstr "该日期将无法正确读取。"
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "此编辑请求已无法回应。"
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr "该邮箱尚未完成验证，请到收件箱查收验证邮件。"
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "此部分位于侧边栏中。"
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "此次登录尝试已过期或已被使用。请重新开始。"
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr "当前访问地址尚未被服务器信任，需管理员将其加入服务器配置后才能正常登录。"
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "此步骤可选，但推荐完成。"
@@ -6062,6 +6102,10 @@ msgstr "此会话为只读"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "由于正在处理的简历或人工智能提供商不可用，此会话为只读。"
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr "该用户名已被占用，请换一个。"
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6160,6 +6204,10 @@ msgstr "Token：{total}（{cached} 已缓存）"
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
 msgstr "明天"
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
+msgstr "尝试次数过多，请约一分钟后再试。"
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Tools & settings"
@@ -6523,6 +6571,14 @@ msgstr "使用编辑器自带的普通项目符号列表功能，避免出现落
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "用户名"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr "用户名长度需在 3 到 64 个字符之间。"
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr "用户名只能包含小写字母、数字、点、连字符和下划线。"
 
 #: src/libs/locale.ts
 msgid "Uzbek"

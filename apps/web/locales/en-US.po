@@ -575,6 +575,10 @@ msgstr "Already have an account? <0/>"
 msgid "Amharic"
 msgstr "Amharic"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr "An account with this email already exists. Sign in instead or use another email."
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr "An AI model is configured and tested"
@@ -2981,6 +2985,10 @@ msgstr "in this view"
 msgid "Include resume header"
 msgstr "Include resume header"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr "Incorrect email or password. Please try again."
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "Increase indent"
@@ -3710,6 +3718,10 @@ msgstr "Next"
 msgid "Next month"
 msgstr "Next month"
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr "No account matches this email or username, or the password is incorrect."
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr "No active applications."
@@ -4110,6 +4122,14 @@ msgstr "Passkeys"
 msgid "Password"
 msgstr "Password"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr "Password is too long. Use at most 64 characters."
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr "Password is too short. Use at least 8 characters."
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "Password must be between 6 and 64 characters."
@@ -4238,6 +4258,10 @@ msgstr "Place it on a page from the Layout panel, or hide it if you meant to par
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "Plain text, for AI tools and quick edits."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr "Please enter a valid email address."
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5341,6 +5365,10 @@ msgstr "Some characters come out as question marks."
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr "Some entries are invalid. Please review the form and try again."
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "Some glyphs have no meaning outside this file."
@@ -5769,6 +5797,10 @@ msgstr "The same line repeats on every page."
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "The score is capped because of a blocking problem: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr "The sign-in request was blocked as a security precaution. Reload the page and try again."
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "The text comes out unreadable."
@@ -5860,6 +5892,10 @@ msgstr "This date will not be read correctly."
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "This edit request can no longer be answered."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr "This email address has not been verified yet. Check your inbox for a verification link."
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6042,6 +6078,10 @@ msgstr "This section sits in the sidebar."
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "This sign-in attempt expired or was already used. Please start again."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "This step is optional, but recommended."
@@ -6057,6 +6097,10 @@ msgstr "This thread is read-only"
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "This thread is read-only because the working resume or AI provider is unavailable."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr "This username is already taken. Please choose another one."
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6155,6 +6199,10 @@ msgstr "Tokens: {total} ({cached} cached)"
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
 msgstr "Tomorrow"
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
+msgstr "Too many attempts. Please wait about a minute and try again."
 
 #: src/routes/dashboard/-components/sidebar.tsx
 msgid "Tools & settings"
@@ -6518,6 +6566,14 @@ msgstr "Use your editor's normal bullet list, so stray glyphs do not land mid-se
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "Username"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr "Username must be between 3 and 64 characters."
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
 
 #: src/libs/locale.ts
 msgid "Uzbek"

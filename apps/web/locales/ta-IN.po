@@ -580,6 +580,10 @@ msgstr "ஏற்கனவே கணக்கு உள்ளதா? <0/>"
 msgid "Amharic"
 msgstr "அம்ஹாரிக்"
 
+#: src/libs/error-message.ts
+msgid "An account with this email already exists. Sign in instead or use another email."
+msgstr ""
+
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "An AI model is configured and tested"
 msgstr ""
@@ -2986,6 +2990,10 @@ msgstr ""
 msgid "Include resume header"
 msgstr "ரெஸ்யூம் தலைப்பைச் சேர்க்கவும்"
 
+#: src/libs/error-message.ts
+msgid "Incorrect email or password. Please try again."
+msgstr ""
+
 #: src/components/input/rich-input.tsx
 msgid "Increase indent"
 msgstr "உள் தள்ளலை அதிகரிக்கவும்"
@@ -3715,6 +3723,10 @@ msgstr "அடுத்து"
 msgid "Next month"
 msgstr ""
 
+#: src/libs/error-message.ts
+msgid "No account matches this email or username, or the password is incorrect."
+msgstr ""
+
 #: src/features/applications/components/interview-dialog.tsx
 msgid "No active applications."
 msgstr ""
@@ -4115,6 +4127,14 @@ msgstr "பாஸ் கீகள்"
 msgid "Password"
 msgstr "கடவுச்சொல்"
 
+#: src/libs/error-message.ts
+msgid "Password is too long. Use at most 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Password is too short. Use at least 8 characters."
+msgstr ""
+
 #: src/features/resume/builder/password-dialog.tsx
 msgid "Password must be between 6 and 64 characters."
 msgstr "கடவுச்சொல் 6 முதல் 64 எழுத்துகளுக்கு இடையில் இருக்க வேண்டும்."
@@ -4243,6 +4263,10 @@ msgstr "லேஅவுட் பேனலில் இருந்து ஒர
 #: src/features/resume/export/download-dialog.tsx
 msgid "Plain text, for AI tools and quick edits."
 msgstr "AI கருவிகளுக்கும் விரைவான திருத்தங்களுக்கும் ஏற்ற எளிய உரை."
+
+#: src/libs/error-message.ts
+msgid "Please enter a valid email address."
+msgstr ""
 
 #: src/features/applications/components/file-attachment-field.tsx
 msgid "Please upload a PDF file."
@@ -5346,6 +5370,10 @@ msgstr "சில எழுத்துக்கள் கேள்விக்�
 msgid "Some checks need information this file does not carry: page contents that could not be inspected, or text in a language these checks do not cover. They count as neither a pass nor a fail."
 msgstr "சில சோதனைகளுக்கு இந்தக் கோப்பில் இல்லாத தகவல்கள் தேவைப்படுகின்றன: ஆய்வு செய்ய முடியாத பக்க உள்ளடக்கம், அல்லது இந்தச் சோதனைகள் உள்ளடக்காத மொழியில் உள்ள உரை. அவை தேர்ச்சியாகவும் கருதப்படுவதில்லை, தோல்வியாகவும் கருதப்படுவதில்லை."
 
+#: src/libs/error-message.ts
+msgid "Some entries are invalid. Please review the form and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Some glyphs have no meaning outside this file."
 msgstr "சில எழுத்துருக் குறியீடுகளுக்கு இந்தக் கோப்புக்கு வெளியே எந்தப் பொருளும் இல்லை."
@@ -5774,6 +5802,10 @@ msgstr "ஒரே வரி ஒவ்வொரு பக்கத்திலு
 msgid "The score is capped because of a blocking problem: {0}"
 msgstr "தடையான ஒரு பிரச்சனையால் மதிப்பெண் வரம்பிடப்பட்டுள்ளது: {0}"
 
+#: src/libs/error-message.ts
+msgid "The sign-in request was blocked as a security precaution. Reload the page and try again."
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "The text comes out unreadable."
 msgstr "உரை படிக்க முடியாத நிலையில் வெளிவருகிறது."
@@ -5865,6 +5897,10 @@ msgstr "இந்த தேதி சரியாக படிக்கப்ப
 #: src/routes/agent/-components/patch-approval-card.tsx
 msgid "This edit request can no longer be answered."
 msgstr "இந்தத் திருத்தக் கோரிக்கைக்கு இனி பதிலளிக்க முடியாது."
+
+#: src/libs/error-message.ts
+msgid "This email address has not been verified yet. Check your inbox for a verification link."
+msgstr ""
 
 #: src/libs/resume/ats.ts
 msgid "This email address will not be recognized."
@@ -6047,6 +6083,10 @@ msgstr "இந்த பகுதி பக்கப்பட்டியில�
 msgid "This sign-in attempt expired or was already used. Please start again."
 msgstr "இந்த உள்நுழைவு முயற்சி காலாவதியானது அல்லது ஏற்கனவே பயன்படுத்தப்பட்டது. மீண்டும் தொடங்கவும்."
 
+#: src/libs/error-message.ts
+msgid "This site address is not trusted by the server yet. The administrator must add it to the server configuration before signing in can work."
+msgstr ""
+
 #: src/features/auth/pages/register.tsx
 msgid "This step is optional, but recommended."
 msgstr "இந்த படி கட்டாயமில்லை, ஆனால் பரிந்துரைக்கப்படுகிறது."
@@ -6062,6 +6102,10 @@ msgstr "இந்தத் த்ரெட் படிக்க மட்டு
 #: src/routes/agent/-components/agent-chat.tsx
 msgid "This thread is read-only because the working resume or AI provider is unavailable."
 msgstr "வேலை செய்யும் ரெஸ்யூம் அல்லது AI வழங்குநர் கிடைக்காததால், இந்த உரையாடல் படிக்க மட்டுமேயானதாக உள்ளது."
+
+#: src/libs/error-message.ts
+msgid "This username is already taken. Please choose another one."
+msgstr ""
 
 #: src/routes/builder/$resumeId/-sidebar/left/shared/section-menu.tsx
 msgid "This will remove all items from this section."
@@ -6159,6 +6203,10 @@ msgstr "டோக்கன்கள்: {total} ({cached} கேச் செய
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "Tomorrow"
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Too many attempts. Please wait about a minute and try again."
 msgstr ""
 
 #: src/routes/dashboard/-components/sidebar.tsx
@@ -6523,6 +6571,14 @@ msgstr "பிசகான எழுத்துருக் குறியீ�
 #: src/features/settings/pages/profile.tsx
 msgid "Username"
 msgstr "பயனர் பெயர்"
+
+#: src/libs/error-message.ts
+msgid "Username must be between 3 and 64 characters."
+msgstr ""
+
+#: src/libs/error-message.ts
+msgid "Usernames can only contain lowercase letters, numbers, dots, hyphens and underscores."
+msgstr ""
 
 #: src/libs/locale.ts
 msgid "Uzbek"

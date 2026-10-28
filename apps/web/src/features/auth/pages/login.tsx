@@ -11,6 +11,7 @@ import { FormControl, FormDescription, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@reactive-resume/ui/components/input";
 import { toast } from "@reactive-resume/ui/components/toast";
 import { authClient } from "@/libs/auth/client";
+import { getAuthErrorMessage } from "@/libs/error-message";
 import { orpc } from "@/libs/orpc/client";
 import { useAppForm } from "@/libs/tanstack-form";
 import { SocialAuth } from "../components/social-auth";
@@ -60,12 +61,13 @@ export function LoginPage({ disableEmailAuth, disableSignups }: Props) {
 				if (result.error) {
 					toast.add({
 						type: "error",
-						description:
-							result.error.message ||
+						description: getAuthErrorMessage(
+							result.error,
 							t({
 								comment: "Fallback toast when sign-in fails and no server error message is available",
 								message: "Failed to sign in. Please try again.",
 							}),
+						),
 						id: toastId,
 					});
 					return;
