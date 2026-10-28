@@ -171,7 +171,6 @@ const getAuthConfig = () => {
 		},
 
 		hooks: {
-			// biome-ignore lint/suspicious/useAwait: Better Auth requires middleware callbacks to return a Promise.
 			before: createAuthMiddleware(async (ctx) => {
 				if (ctx.path.includes("/oauth2/register")) {
 					const body = ctx.body as { redirect_uris?: unknown } | undefined;
@@ -198,7 +197,7 @@ const getAuthConfig = () => {
 				// code (minted via tooling/invitations). The code is consumed here, before
 				// the user row is created; `after` below releases it if sign-up still fails
 				// (e.g. duplicate email) so a failed attempt does not burn the code.
-				if (env.FLAG_INVITATION_ONLY && ctx.path === "/sign-up/email") {
+				if (env.FLAG_INVITATION_ONLY && ctx.path.endsWith("/sign-up/email")) {
 					const body = ctx.body as { invitationCode?: unknown } | undefined;
 					const code = typeof body?.invitationCode === "string" ? body.invitationCode.trim() : "";
 					if (!code) {
@@ -210,22 +209,24 @@ const getAuthConfig = () => {
 					}
 				}
 			}),
-			// biome-ignore lint/suspicious/useAwait: Better Auth requires middleware callbacks to return a Promise.
 			after: createAuthMiddleware(async (ctx) => {
-				if (!env.FLAG_INVITATION_ONLY || ctx.path !== "/sign-up/email") return;
+				if (!env.FLAG_INVITATION_ONLY || !ctx.path.endsWith("/sign-up/email")) return;
 
 				const body = ctx.body as { invitationCode?: unknown; email?: unknown } | undefined;
 				const code = typeof body?.invitationCode === "string" ? body.invitationCode.trim() : "";
 				if (!code) return;
 
-				const response = (ctx as unknown as { response?: Response }).response;
-				if (response?.ok) {
-					const email = typeof body?.email === "string" ? body.email : "";
-					if (email) await markInvitationUsedBy(code, email);
+				// After-middleware context exposes the endpoint result as `context.returned`;
+				// an APIError there means sign-up failed after the code was consumed —
+				// give it back so a rejected attempt (e.g. duplicate email) burns nothing.
+				const returned = (ctx.context as { returned?: unknown } | undefined)?.returned;
+				if (returned instanceof APIError) {
+					await releaseInvitationByCode(code);
 					return;
 				}
-				// Sign-up failed after the code was consumed — give it back.
-				await releaseInvitationByCode(code);
+
+				const email = typeof body?.email === "string" ? body.email : "";
+				if (email) await markInvitationUsedBy(code, email);
 			}),
 		},
 
