@@ -57,14 +57,15 @@ services:
       - ENCRYPTION_SECRET=${ENCRYPTION_SECRET:?ENCRYPTION_SECRET is required}
       - REDIS_URL=redis://redis:6379
       - LOCAL_STORAGE_PATH=/app/data
-      # The host has no direct IPv4 egress; the pre-existing mihomo proxy on the
-      # host (port 7890) is the server's outbound path. Node 24's built-in proxy
-      # support routes fetch() (e.g. CDN font downloads for PDF rendering)
-      # through it. NO_PROXY keeps self-hairpin and internal services direct.
+      # The pre-existing mihomo proxy on the host (port 7890) is the server's
+      # general outbound path. Node 24's built-in proxy support routes fetch()
+      # through it. NO_PROXY keeps self-hairpin, internal services, and the PDF
+      # font CDNs (verified directly reachable from the host on 2026-10-28,
+      # when the mihomo upstream subscription was returning 405) direct.
       - NODE_USE_ENV_PROXY=1
       - HTTP_PROXY=http://host.docker.internal:7890
       - HTTPS_PROXY=http://host.docker.internal:7890
-      - NO_PROXY=localhost,127.0.0.1,postgres,redis,8.148.199.165
+      - NO_PROXY=localhost,127.0.0.1,postgres,redis,8.148.199.165,fonts.gstatic.com,cdn.jsdelivr.net
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
