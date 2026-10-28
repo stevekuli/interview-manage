@@ -64,6 +64,40 @@
 4. **验证**：重建后冒烟全绿（见上表）。本地 `tooling/deployment/server/compose.yml` 已同步该 NO_PROXY 与注释（本次提交），防止下次部署回退。
 5. **遗留影响**：mihomo 订阅仍失效——app 的其他出站流量（如自定义 AI provider baseURL 调用、`fonts.googleapis.com`）仍会失败，需用户更新 mihomo 订阅凭据；本次未动订阅配置。
 
+## S3 MCP 端到端验收（真实线上环境）
+
+### 测试账号与凭据
+
+- 合成测试账号 `mcp-e2e-1793187264542@example.com`（API 注册，含样本数据简历「基准简历（测试）」）；API Key 经 Better Auth `api-key/create` 创建，仅存本机 `artifacts/mcp-e2e-credentials.json`（git-ignored），未进版本库。
+- 准备过程中两个脚本中断产生的孤儿账号已从数据库删除（`DELETE 2`，全部外键 `ON DELETE CASCADE`，先查后删）；主测试账号保留供 WorkBuddy/Codex 真机联调。
+
+### MCP 协议层验证（Streamable HTTP，等价 Codex 客户端行为）
+
+- `initialize`：`serverInfo.name = "interview-manage"`、`title = "求职管理"`、protocol `2025-03-26` ✓
+- `tools/list`：44 个工具 ✓
+
+### 5 步工作流（全部真实验证，`ALL 10 CHECKS PASSED`）
+
+| 步骤 | 结果 |
+| :--- | :--- |
+| 1 读取基准简历 | `list_resumes` + `read_resume` 返回真实经历（Cascade Studios, March 2022 - Present, headline 完整）✓ |
+| 2 差距分析素材 | 服务端数据足以区分「已覆盖（Python）」与「差距（Go/Kubernetes/vLLM/Redis/PostgreSQL）」；差距仅提示不编造是 SKILL.md 对客户端 AI 的约束 ✓ |
+| 3 克隆与定向改写 | `duplicate_resume` 建副本 → `apply_resume_patch` 改副本 headline 成功；**原主简历 headline/company/summary 复核未变** ✓；受保护字段探测：副本上公司名可被改写（P4 前无服务端护栏，符合主计划预期，P4 交付「受保护字段服务端校验」） |
+| 4 PDF 一步交付 | `download_resume_pdf` 返回带 token 的 `downloadUrl`；下载 HTTP 200、64.9 KiB、`%PDF` 魔数 ✓ |
+| 5 投递与面试记录 | `create_application`（绑定副本 resumeId）→ `update_application`（status=interview）→ `add_application_interview`（技术面 60 分钟）全部成功 ✓ |
+
+### 事故与处置：私有简历 PDF 渲染 500（长驻进程网络状态残留）
+
+- 现象：NO_PROXY 修复并重启后，公开 PDF（冒烟）通过，但 MCP 私有简历 PDF 连续 500；日志为 `fonts.gstatic.com:443` undici `ConnectTimeoutError`（10s）。
+- 排查：容器内单次 fetch 6/6、并发 12 fetch 12/12 全部成功（含默认与 ipv4first DNS 顺序）——网络本身正常，仅长驻主进程失败。
+- 处置：`docker restart interview-manage-app-1` 后 PDF 立即恢复（200）。定性为**长驻进程在先前 mihomo 故障期的连接/dispatcher 状态残留**，重启即恢复；已保留 `NODE_OPTIONS=--dns-result-order=ipv4first`（本地 compose 已同步提交）作为防御。若再现，先重启 app 容器再排查。
+- 遗留观察项：mihomo 上游订阅仍 405 失效；依赖代理的其他出站（自定义 AI provider baseURL 等）在订阅更新前不可用。
+
+### WorkBuddy 打包与提审状态
+
+- 连接器包已制作：`artifacts/workbuddy-connector-20261028.zip`（connector-meta.json、mcp.json、icon.svg、SKILL.md，共 5 项；artifacts/ 为 git-ignored，`git status --short` 无 zip 遗留）。
+- **待用户执行**：WorkBuddy 开放平台上传提审（需用户账号）；WorkBuddy/Codex 客户端真机挂载联调（测试账号凭据见 `artifacts/mcp-e2e-credentials.json`）。服务端 5 步链路已全绿，客户端侧按 `tooling/integrations/README.md` 第三节步骤执行即可。
+
 ## 回滚方式
 
 - 镜像回滚：`/opt/interview-manage/compose.yml` 的 app tag 改回 `interview-manage:20261005` + `docker compose up -d app`（无表结构差异；NO_PROXY 变更独立于镜像层，可保留）。
