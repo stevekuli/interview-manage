@@ -28,8 +28,9 @@ import {
 import { buildAiExtractionTemplate } from "@reactive-resume/ai/resume/extraction-template";
 import { sanitizeAndParseResumeJson } from "@reactive-resume/ai/resume/sanitize";
 import { AI_PROVIDER_DEFAULT_BASE_URLS, AI_PROVIDER_DISPLAY_NAMES, aiProviderSchema } from "@reactive-resume/ai/types";
+import { env } from "@reactive-resume/env/server";
 import { supportsProviderNativeWebSearch } from "./capabilities";
-import { resolveAiBaseUrl } from "./url-policy";
+import { createSsrfGuardedFetch, resolveAiBaseUrl } from "./url-policy";
 
 const aiExtractionTemplate = buildAiExtractionTemplate();
 
@@ -96,23 +97,31 @@ export function getModel(input: GetModelInput) {
 	const { provider, model, apiKey } = input;
 	const baseURL = resolveAiBaseUrl(input);
 
+	// A custom base URL is user input: route every request (and every redirect hop)
+	// through the SSRF-guarded fetch. Provider-built-in endpoints keep the default.
+	const fetchOption = input.baseURL?.trim()
+		? { fetch: createSsrfGuardedFetch({ allowUnsafe: env.FLAG_ALLOW_UNSAFE_AI_BASE_URL }) }
+		: {};
+
 	return match(provider)
-		.with("openai", () => createOpenAI({ apiKey, baseURL }).chat(model))
-		.with("anthropic", () => createAnthropic({ apiKey, baseURL }).languageModel(model))
-		.with("gemini", () => createGoogleGenerativeAI({ apiKey, baseURL }).languageModel(model))
-		.with("vercel-ai-gateway", () => createGateway({ apiKey, baseURL }).languageModel(model))
-		.with("openrouter", () => createOpenAICompatible({ name: "openrouter", apiKey, baseURL }).languageModel(model))
-		.with("mistral", () => createMistral({ apiKey, baseURL }).languageModel(model))
-		.with("cohere", () => createCohere({ apiKey, baseURL }).languageModel(model))
-		.with("xai", () => createXai({ apiKey, baseURL }).languageModel(model))
-		.with("groq", () => createGroq({ apiKey, baseURL }).languageModel(model))
-		.with("deepseek", () => createDeepSeek({ apiKey, baseURL }).languageModel(model))
-		.with("togetherai", () => createTogetherAI({ apiKey, baseURL }).languageModel(model))
-		.with("fireworks", () => createFireworks({ apiKey, baseURL }).languageModel(model))
-		.with("cerebras", () => createCerebras({ apiKey, baseURL }).languageModel(model))
-		.with("perplexity", () => createPerplexity({ apiKey, baseURL }).languageModel(model))
+		.with("openai", () => createOpenAI({ apiKey, baseURL, ...fetchOption }).chat(model))
+		.with("anthropic", () => createAnthropic({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("gemini", () => createGoogleGenerativeAI({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("vercel-ai-gateway", () => createGateway({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("openrouter", () =>
+			createOpenAICompatible({ name: "openrouter", apiKey, baseURL, ...fetchOption }).languageModel(model),
+		)
+		.with("mistral", () => createMistral({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("cohere", () => createCohere({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("xai", () => createXai({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("groq", () => createGroq({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("deepseek", () => createDeepSeek({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("togetherai", () => createTogetherAI({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("fireworks", () => createFireworks({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("cerebras", () => createCerebras({ apiKey, baseURL, ...fetchOption }).languageModel(model))
+		.with("perplexity", () => createPerplexity({ apiKey, baseURL, ...fetchOption }).languageModel(model))
 		.with("openai-compatible", () =>
-			createOpenAICompatible({ name: "openai-compatible", apiKey, baseURL }).languageModel(model),
+			createOpenAICompatible({ name: "openai-compatible", apiKey, baseURL, ...fetchOption }).languageModel(model),
 		)
 		.with("ollama", () => {
 			const ollama = createOllama({
@@ -201,7 +210,7 @@ function redactApiKey(message: string, apiKey: string): string {
 	return message.replaceAll(apiKey, "***");
 }
 
-function describeTestConnectionFailure(input: TestConnectionInput, error: unknown): string {
+export function describeTestConnectionFailure(input: TestConnectionInput, error: unknown): string {
 	const provider = AI_PROVIDER_DISPLAY_NAMES[input.provider];
 	const endpoint = input.baseURL.trim() || AI_PROVIDER_DEFAULT_BASE_URLS[input.provider];
 
@@ -222,8 +231,16 @@ function describeTestConnectionFailure(input: TestConnectionInput, error: unknow
 		const status = error.statusCode;
 
 		if (status === 401 || status === 403) return `${provider} rejected the API key.`;
+		if (status === 402)
+			return `${provider} rejected the request: the account balance or quota is exhausted. Top up the account or switch API key.`;
 		if (status === 404) return `${provider} has no model named "${input.model}", or the base URL is wrong.`;
-		if (status === 429) return `${provider} rate-limited the test. Wait a moment and try again.`;
+		if (status === 429) {
+			const message = error.message.toLowerCase();
+			if (/(quota|balance|credit|arrears|insufficient)/.test(message)) {
+				return `${provider} reports the account balance or quota is exhausted. Top up the account or switch API key.`;
+			}
+			return `${provider} rate-limited the test. Wait a moment and try again.`;
+		}
 		if (status !== undefined && status >= 500) {
 			return `${provider} reported a server error (${status}). This is a problem on the provider's side.`;
 		}
@@ -275,6 +292,63 @@ export async function testConnection(input: TestConnectionInput): Promise<TestCo
 		ok: false,
 		message: `${provider} is reachable, but the model replied with unexpected output instead of a simple confirmation.`,
 	};
+}
+
+export type VisionTestResult = {
+	status: "supported" | "unsupported" | "failed";
+	message: string;
+};
+
+// Minimal 1x1 transparent PNG; probing with it keeps vision-test cost at one image token.
+const VISION_PROBE_IMAGE_BASE64 =
+	"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8z8BQDwAEhQGAhKmMIQAAAABJRU5ErkJggg==";
+
+/**
+ * Probes whether the configured model accepts image input, independently of the
+ * text probe: text-only models stay fully usable, the UI just disables image
+ * entry points. Re-run by editing the model, key or address and testing again.
+ */
+export async function testVisionConnection(input: TestConnectionInput): Promise<VisionTestResult> {
+	const model = getModel(input);
+
+	try {
+		await generateText({
+			model,
+			maxOutputTokens: 1,
+			temperature: 0,
+			maxRetries: 0,
+			abortSignal: AbortSignal.timeout(TEST_CONNECTION_TIMEOUT_MS),
+			messages: [
+				{
+					role: "user",
+					content: [
+						{ type: "text", text: "1" },
+						{ type: "image", image: VISION_PROBE_IMAGE_BASE64, mediaType: "image/png" },
+					],
+				},
+			],
+		});
+		// Any non-error response means the endpoint accepted the multimodal payload.
+		// Nonsense replies from quirky text-only gateways land in `unsupported` below via
+		// their 4xx, so treat a 2xx here as supported regardless of the literal text.
+		return { status: "supported", message: "" };
+	} catch (error) {
+		if (APICallError.isInstance(error)) {
+			const status = error.statusCode;
+			if (status !== undefined && status < 500) {
+				return {
+					status: "unsupported",
+					message: `The model did not accept image input (${status === undefined ? "" : status}${
+						error.message ? `: ${redactApiKey(error.message, input.apiKey).slice(0, 120)}` : ""
+					}). Image-based features stay disabled; text features are unaffected.`,
+				};
+			}
+		}
+		return {
+			status: "failed",
+			message: describeTestConnectionFailure(input, error),
+		};
+	}
 }
 
 type ParsePdfInput = z.infer<typeof aiCredentialsSchema> & {

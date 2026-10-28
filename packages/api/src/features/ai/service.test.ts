@@ -1,12 +1,23 @@
 import type { UIMessage } from "ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { convertToModelMessages, modelMessageSchema } from "ai";
+import { APICallError, convertToModelMessages, modelMessageSchema } from "ai";
 
 const envMock = vi.hoisted(() => ({
 	FLAG_ALLOW_UNSAFE_AI_BASE_URL: false,
 }));
 
 vi.mock("@reactive-resume/env/server", () => ({ env: envMock }));
+
+// DNS stays hermetic in unit tests. On developer machines behind fake-IP proxies every
+// hostname resolves into the reserved 198.18.0.0/15 range, which would make the SSRF
+// resolver check reject even the example.test endpoints these tests use.
+vi.mock("@reactive-resume/utils/url-security.node", async (importOriginal) => {
+	const actual = await importOriginal<typeof import("@reactive-resume/utils/url-security.node")>();
+	return {
+		...actual,
+		hostnameResolvesToPrivateAddress: async () => false,
+	};
+});
 
 afterEach(() => {
 	vi.unstubAllEnvs();
@@ -69,7 +80,7 @@ function stubRejectedFetch(error: unknown) {
 	return fetchMock;
 }
 
-const { testConnection } = await import("./service");
+const { describeTestConnectionFailure, testConnection } = await import("./service");
 
 describe("AI provider connection test", () => {
 	it("names the rejected key instead of reporting a transport failure", async () => {
@@ -315,5 +326,47 @@ describe("AI chat service", () => {
 		for (const message of modelMessages) {
 			expect(modelMessageSchema.safeParse(message).success).toBe(true);
 		}
+	});
+});
+
+describe("describeTestConnectionFailure classification", () => {
+	const input = {
+		provider: "openai-compatible" as const,
+		model: "test-model",
+		apiKey: "sk-secret",
+		baseURL: "https://api.example.com/v1",
+	};
+
+	function apiCallError(statusCode: number | undefined, message: string) {
+		return new APICallError({
+			url: "https://api.example.com/v1/chat/completions",
+			requestBodyValues: {},
+			...(statusCode !== undefined ? { statusCode } : {}),
+			message,
+			responseBody: "",
+		});
+	}
+
+	it("reports exhausted balance for HTTP 402", () => {
+		const message = describeTestConnectionFailure(input, apiCallError(402, "Payment Required"));
+		expect(message).toContain("balance or quota is exhausted");
+	});
+
+	it("separates quota-exhausted 429s from plain rate limiting", () => {
+		const quota = describeTestConnectionFailure(
+			input,
+			apiCallError(429, "You exceeded your current quota, please check your plan and billing details."),
+		);
+		expect(quota).toContain("balance or quota is exhausted");
+
+		const rateLimit = describeTestConnectionFailure(input, apiCallError(429, "Rate limit reached for requests."));
+		expect(rateLimit).toContain("rate-limited");
+		expect(rateLimit).not.toContain("balance or quota is exhausted");
+	});
+
+	it("redacts the API key from passthrough error messages", () => {
+		const message = describeTestConnectionFailure(input, apiCallError(400, "bad key sk-secret in request"));
+		expect(message).not.toContain("sk-secret");
+		expect(message).toContain("***");
 	});
 });

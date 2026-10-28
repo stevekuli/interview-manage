@@ -10,7 +10,7 @@ import {
 	encryptCredential,
 	redactEncryptedCredential,
 } from "../ai/credentials";
-import { testConnection } from "../ai/service";
+import { testConnection, testVisionConnection } from "../ai/service";
 import { resolveAiBaseUrl } from "../ai/url-policy";
 
 type AiProviderRecord = typeof schema.aiProvider.$inferSelect;
@@ -24,6 +24,8 @@ export type AiProviderResponse = {
 	enabled: boolean;
 	testStatus: string;
 	testError: string | null;
+	visionTestStatus: string;
+	visionTestError: string | null;
 	apiKeyPreview: string;
 	apiKeyFingerprint: string;
 	lastTestedAt: Date | null;
@@ -70,6 +72,8 @@ function toResponse(row: AiProviderRecord): AiProviderResponse {
 		enabled: row.enabled,
 		testStatus: row.testStatus,
 		testError: row.testError,
+		visionTestStatus: row.visionTestStatus,
+		visionTestError: row.visionTestError,
 		apiKeyPreview,
 		apiKeyFingerprint,
 		lastTestedAt: row.lastTestedAt,
@@ -202,7 +206,16 @@ export const aiProvidersService = {
 				...(input.model !== undefined ? { model: input.model.trim() } : {}),
 				...(input.baseURL !== undefined ? { baseUrl: nextBaseUrl } : {}),
 				...(input.enabled !== undefined && !runtimeChanged ? { enabled: input.enabled } : {}),
-				...(runtimeChanged ? { enabled: false, testStatus: "untested", lastTestedAt: null, testError: null } : {}),
+				...(runtimeChanged
+					? {
+							enabled: false,
+							testStatus: "untested",
+							lastTestedAt: null,
+							testError: null,
+							visionTestStatus: "untested",
+							visionTestError: null,
+						}
+					: {}),
 				...encrypted,
 			})
 			.where(and(eq(schema.aiProvider.id, input.id), eq(schema.aiProvider.userId, input.userId)))
@@ -235,6 +248,23 @@ export const aiProvidersService = {
 				baseURL: provider.baseUrl ?? "",
 			});
 
+			// Vision is probed independently and only when the endpoint is reachable at
+			// all: a text-probe failure says nothing about image support, so it stays
+			// `untested` until the user fixes the connection and re-tests.
+			let vision: { status: "untested" | "supported" | "unsupported" | "failed"; message: string } = {
+				status: "untested",
+				message: "",
+			};
+			if (result.ok) {
+				const visionResult = await testVisionConnection({
+					provider: parsedProvider,
+					model: provider.model,
+					apiKey,
+					baseURL: provider.baseUrl ?? "",
+				});
+				vision = { status: visionResult.status, message: visionResult.message };
+			}
+
 			// A provider that answers "no" is a completed test, not a failed request: it comes back as
 			// data so the client can show why, instead of a generic transport error.
 			const [updated] = await db
@@ -243,6 +273,8 @@ export const aiProvidersService = {
 					enabled: result.ok,
 					testStatus: result.ok ? "success" : "failure",
 					testError: result.ok ? null : result.message,
+					visionTestStatus: vision.status,
+					visionTestError: vision.status === "supported" || vision.status === "untested" ? null : vision.message,
 					lastTestedAt: new Date(),
 				})
 				.where(and(eq(schema.aiProvider.id, input.id), eq(schema.aiProvider.userId, input.userId)))

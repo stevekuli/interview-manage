@@ -1,3 +1,4 @@
+import { lookup } from "node:dns/promises";
 import { BlockList, isIP } from "node:net";
 
 function normalizeHostname(hostname: string) {
@@ -62,6 +63,40 @@ export function isPrivateOrLoopbackHost(hostname: string) {
 	if (ipVersion === 6) return blockedIpv6s.check(normalized, "ipv6");
 
 	return false;
+}
+
+export function isPrivateIpAddress(address: string): boolean {
+	const normalized = stripIpv6Brackets(normalizeHostname(address));
+	const ipVersion = isIP(normalized);
+	if (ipVersion === 4) return blockedIpv4s.check(normalized, "ipv4");
+	if (ipVersion === 6) return blockedIpv6s.check(normalized, "ipv6");
+	return false;
+}
+
+/**
+ * True when the hostname is a literal private/blocked IP, or when any of its DNS
+ * A/AAAA records resolves to one. Catching the resolution (not just the literal
+ * hostname) blocks the classic `evil.com -> 127.0.0.1` custom-endpoint move.
+ *
+ * DNS failures resolve to `false` — a hostname that cannot be resolved will fail
+ * at connect time anyway, and blocking here would turn provider outages into
+ * confusing "unsafe address" errors.
+ *
+ * Note: this closes the hostname-literal gap, not the full TOCTOU window — a
+ * rebinding server can still return a public IP here and a private one when the
+ * HTTP client connects. Fully closing that requires pinning the resolved IP for
+ * the actual socket connection, which is beyond this check's scope.
+ */
+export async function hostnameResolvesToPrivateAddress(hostname: string): Promise<boolean> {
+	const normalized = stripIpv6Brackets(normalizeHostname(hostname));
+	if (isPrivateOrLoopbackHost(normalized)) return true;
+
+	try {
+		const addresses = await lookup(normalized, { all: true, verbatim: true });
+		return addresses.some((entry) => isPrivateIpAddress(entry.address));
+	} catch {
+		return false;
+	}
 }
 
 export function parseUrl(input: string) {

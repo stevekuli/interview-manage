@@ -169,6 +169,24 @@ const emptyForm = {
 	...providerDefaults("openai"),
 };
 
+// Vision capability is probed independently of the text connection: a text-only
+// model is a fully usable provider, image entry points just stay disabled.
+function visionBadge(provider: SavedProvider) {
+	if (provider.testStatus !== "success" || provider.visionTestStatus === "untested") return null;
+	if (provider.visionTestStatus === "supported") {
+		return (
+			<Badge variant="outline">
+				<Trans comment="Badge meaning the model accepts image input">Vision</Trans>
+			</Badge>
+		);
+	}
+	return (
+		<Badge variant="outline" className="text-muted-foreground">
+			<Trans comment="Badge meaning the model does not accept image input">Text only</Trans>
+		</Badge>
+	);
+}
+
 function statusBadge(provider: SavedProvider) {
 	if (provider.testStatus === "success") {
 		return (
@@ -280,6 +298,7 @@ function ProviderRow({ provider }: ProviderRowProps) {
 				<div className="flex flex-wrap items-center gap-2">
 					<h3 className="truncate font-semibold">{provider.label}</h3>
 					{statusBadge(provider)}
+					{visionBadge(provider)}
 					{provider.enabled ? (
 						<Badge variant="outline">
 							<Trans>Enabled</Trans>
@@ -317,6 +336,7 @@ function ProviderRow({ provider }: ProviderRowProps) {
 						<Trans>Key</Trans>: {provider.apiKeyPreview}
 					</p>
 					{provider.testError ? <p className="text-rose-600">{provider.testError}</p> : null}
+					{provider.visionTestError ? <p className="text-muted-foreground">{provider.visionTestError}</p> : null}
 				</div>
 			</div>
 

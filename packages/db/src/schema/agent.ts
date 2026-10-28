@@ -36,6 +36,8 @@ export const aiProvider = pg.pgTable(
 		apiKeyPreview: pg.text("api_key_preview").notNull(),
 		testStatus: pg.text("test_status").notNull().default("untested"),
 		testError: pg.text("test_error"),
+		visionTestStatus: pg.text("vision_test_status").notNull().default("untested"),
+		visionTestError: pg.text("vision_test_error"),
 		lastTestedAt: pg.timestamp("last_tested_at", { withTimezone: true }),
 		lastUsedAt: pg.timestamp("last_used_at", { withTimezone: true }),
 		enabled: pg.boolean("enabled").notNull().default(false),
