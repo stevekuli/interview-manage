@@ -2,9 +2,9 @@
 name: career-assistant
 display_name: 求职管理
 display_name_en: Career Workspace
-description: Manage job applications, analyze JD fit against verified resumes, tailor job-specific resume copies, export PDFs, and track interviews.
-description_zh: 基于真实经历档案解析目标岗位 JD、评估匹配度与差距、派生岗位专属简历并导出 PDF、跟踪投递与面试进度
-description_en: Analyze job descriptions against verified resumes, tailor job-specific resumes, export PDFs, and track applications and interviews
+description: Manage job applications, analyze JD fit against your resume, tailor job-specific resume copies, export PDFs, and track interviews.
+description_zh: 基于你的真实简历解析目标岗位 JD、评估匹配度与差距、派生岗位专属简历副本并导出 PDF、跟踪投递与面试进度
+description_en: Analyze job descriptions against your resume, tailor job-specific resume copies, export PDFs, and track applications and interviews
 version: 1.0.0
 author: 求职管理 (Career Workspace)
 ---

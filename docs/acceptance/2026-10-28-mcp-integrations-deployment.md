@@ -96,7 +96,9 @@
 ### WorkBuddy 打包与提审状态
 
 - 连接器包已制作：`artifacts/workbuddy-connector-20261028.zip`（connector-meta.json、mcp.json、icon.svg、SKILL.md，共 5 项；artifacts/ 为 git-ignored，`git status --short` 无 zip 遗留）。
-- **待用户执行**：WorkBuddy 开放平台上传提审（需用户账号）；WorkBuddy/Codex 客户端真机挂载联调（测试账号凭据见 `artifacts/mcp-e2e-credentials.json`）。服务端 5 步链路已全绿，客户端侧按 `tooling/integrations/README.md` 第三节步骤执行即可。
+- 2026-10-28 上架前合规修正（用户决定跳过客户端真机联调、直接上架后执行）：`connector-meta.json` `description_en` 与两份 `SKILL.md` frontmatter 中 "verified experience / verified resumes / 真实经历档案" 措辞指向未实现的 P2 事实版本系统，已统一改为 "your existing resume / job-specific resume copies / 你的真实简历"——描述当前真实能力（基于主简历克隆副本定向改写）；SKILL.md 正文「用户真实经历（不编造）」语义准确保留。修正后 mcp 单测 72 全过（防漂移契约未破）、markdownlint 0 问题，zip 已重新打包。
+- 端点合规核验（上架前复核）：connector-meta 宣称的 4 个 URL 全部在线（MCP 端点、server-card、两个 OAuth 元数据端点 200；未认证 MCP 请求正确 401）；SKILL.md 引用的 31 个工具与线上 44 工具清单逐一比对，零缺失、零虚构。
+- **由用户执行**：WorkBuddy 开放平台上传 `artifacts/workbuddy-connector-20261028.zip` 提审（需用户账号）；客户端真机联调按用户 2026-10-28 决定跳过（服务端 5 步链路已全绿替代验证；测试账号凭据见 `artifacts/mcp-e2e-credentials.json` 备后用）。
 
 ## 回滚方式
 

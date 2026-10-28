@@ -5,7 +5,7 @@
 	"name_en": "Career Workspace",
 	"version": "1.0.0",
 	"description": "管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。",
-	"description_en": "Manage job applications, tailor resumes from verified experience, export PDFs, and track interviews.",
+	"description_en": "Manage job applications, tailor job-specific resume copies from your existing resume, export PDFs, and track interviews.",
 	"icon": "./icon.svg",
 	"homepage_url": "https://interview.unlimit.ltd",
 	"mcp": {
