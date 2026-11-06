@@ -159,6 +159,8 @@ describe("AISettingsSection", () => {
 			"Fireworks",
 			"Cerebras",
 			"Perplexity",
+			"自定义 (OpenAI 兼容)",
+			"自定义 (Anthropic 兼容)",
 			"Ollama Cloud",
 		]) {
 			expect(screen.getByRole("option", { name: label })).toBeInTheDocument();

@@ -17,6 +17,7 @@ const AI_PROVIDERS = [
 	"perplexity",
 	"ollama",
 	"openai-compatible",
+	"anthropic-compatible",
 ] as const;
 
 export type AIProvider = (typeof AI_PROVIDERS)[number];
@@ -40,6 +41,7 @@ export const AI_PROVIDER_DEFAULT_BASE_URLS: Record<AIProvider, string> = {
 	perplexity: "https://api.perplexity.ai",
 	ollama: "https://ollama.com/api",
 	"openai-compatible": "",
+	"anthropic-compatible": "",
 };
 
 // Brand names, used when a message has to name the provider outside a translated UI string. Every
@@ -61,4 +63,5 @@ export const AI_PROVIDER_DISPLAY_NAMES: Record<AIProvider, string> = {
 	perplexity: "Perplexity",
 	ollama: "Ollama",
 	"openai-compatible": "The provider",
+	"anthropic-compatible": "The provider",
 };

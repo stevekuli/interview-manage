@@ -30,14 +30,22 @@ import { getOrpcErrorMessage } from "@/libs/error-message";
 import { orpc } from "@/libs/orpc/client";
 
 type SavedProvider = RouterOutput["aiProviders"]["list"][number];
-type AIProviderOption = ComboboxOption<AIProvider> & { defaultBaseURL: string; defaultModel: string };
+type AIProviderOption = ComboboxOption<AIProvider> & {
+	defaultBaseURL: string;
+	defaultModel: string;
+	// Shown under the Base URL field for custom gateways: the AI SDK appends the API path
+	// (e.g. "/messages") directly to this URL, so it must already include the version segment.
+	baseUrlHint?: string;
+};
 
 type ProviderRowProps = {
 	provider: SavedProvider;
 };
 
-// Provider labels are brand names and stay untranslated on purpose, so every locale shows the
+// Vendor labels are brand names and stay untranslated on purpose, so every locale shows the
 // vendor's own spelling instead of a literal translation (e.g. "Google Gemini", not "谷歌双子座").
+// The two 自定义 entries are feature descriptors rather than brands, so their labels follow the
+// primary UI language (中文) per product decision.
 const providerOptions: AIProviderOption[] = [
 	{
 		value: "openai",
@@ -138,18 +146,27 @@ const providerOptions: AIProviderOption[] = [
 		defaultModel: "sonar-pro",
 	},
 	{
+		value: "openai-compatible",
+		label: "自定义 (OpenAI 兼容)",
+		keywords: ["compatible", "custom", "gateway", "自定义", "兼容"],
+		defaultBaseURL: AI_PROVIDER_DEFAULT_BASE_URLS["openai-compatible"],
+		defaultModel: "",
+		baseUrlHint: "需包含版本路径，如 https://gateway.example.com/v1（智谱为 https://open.bigmodel.cn/api/paas/v4）",
+	},
+	{
+		value: "anthropic-compatible",
+		label: "自定义 (Anthropic 兼容)",
+		keywords: ["anthropic", "claude", "compatible", "custom", "自定义", "兼容", "glm"],
+		defaultBaseURL: AI_PROVIDER_DEFAULT_BASE_URLS["anthropic-compatible"],
+		defaultModel: "",
+		baseUrlHint: "需包含版本路径，如智谱 GLM 为 https://open.bigmodel.cn/api/anthropic/v1",
+	},
+	{
 		value: "ollama",
 		label: "Ollama Cloud",
 		keywords: ["ollama", "cloud"],
 		defaultBaseURL: AI_PROVIDER_DEFAULT_BASE_URLS.ollama,
 		defaultModel: "llama3.1",
-	},
-	{
-		value: "openai-compatible",
-		label: "OpenAI-compatible",
-		keywords: ["compatible", "custom", "gateway"],
-		defaultBaseURL: AI_PROVIDER_DEFAULT_BASE_URLS["openai-compatible"],
-		defaultModel: "",
 	},
 ];
 
@@ -602,6 +619,9 @@ function CreateProviderForm() {
 								autoCapitalize="off"
 								spellCheck="false"
 							/>
+							{selectedOption?.baseUrlHint ? (
+								<p className="text-muted-foreground text-xs">{selectedOption.baseUrlHint}</p>
+							) : null}
 						</div>
 					</div>
 				</details>

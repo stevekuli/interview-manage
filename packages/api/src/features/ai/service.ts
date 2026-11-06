@@ -123,6 +123,7 @@ export function getModel(input: GetModelInput) {
 		.with("openai-compatible", () =>
 			createOpenAICompatible({ name: "openai-compatible", apiKey, baseURL, ...fetchOption }).languageModel(model),
 		)
+		.with("anthropic-compatible", () => createAnthropic({ apiKey, baseURL, ...fetchOption }).languageModel(model))
 		.with("ollama", () => {
 			const ollama = createOllama({
 				name: "ollama",
