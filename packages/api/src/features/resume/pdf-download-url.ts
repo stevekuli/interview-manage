@@ -4,10 +4,17 @@ import { env } from "@reactive-resume/env/server";
 
 export const MAX_PDF_DOWNLOAD_URL_TTL_SECONDS = 10 * 60;
 
+/**
+ * What a signed download token grants access to. Tokens minted before this field existed carry no
+ * `kind` and always mean the rendered PDF, so absent must keep behaving as "rendered".
+ */
+export type ResumeDownloadKind = "rendered" | "original";
+
 type PdfDownloadTokenPayload = {
 	v: 1;
 	resumeId: string;
 	userId: string;
+	kind?: ResumeDownloadKind;
 	target?: ResumeExportTarget;
 	expiresAt: number;
 	issuedAt: number;
@@ -18,6 +25,13 @@ type CreateResumePdfDownloadUrlInput = {
 	userId: string;
 	now?: Date;
 	target?: ResumeExportTarget;
+	ttlSeconds?: number;
+};
+
+type CreateResumeOriginalFileDownloadUrlInput = {
+	resumeId: string;
+	userId: string;
+	now?: Date;
 	ttlSeconds?: number;
 };
 
@@ -32,6 +46,7 @@ type VerifyResumePdfDownloadTokenResult =
 			ok: true;
 			resumeId: string;
 			userId: string;
+			kind?: ResumeDownloadKind;
 			target?: ResumeExportTarget;
 			expiresAt: string;
 	  }
@@ -71,11 +86,19 @@ function parsePayload(value: unknown): PdfDownloadTokenPayload | null {
 	if (payload.v !== 1) return null;
 	if (typeof payload.resumeId !== "string" || payload.resumeId.length === 0) return null;
 	if (typeof payload.userId !== "string" || payload.userId.length === 0) return null;
+	if (payload.kind !== undefined && payload.kind !== "rendered" && payload.kind !== "original") return null;
 	if (payload.target !== undefined && payload.target !== "resume" && payload.target !== "cover-letter") return null;
 	if (typeof payload.expiresAt !== "number" || !Number.isFinite(payload.expiresAt)) return null;
 	if (typeof payload.issuedAt !== "number" || !Number.isFinite(payload.issuedAt)) return null;
 
 	return payload as PdfDownloadTokenPayload;
+}
+
+function buildDownloadUrl(pathname: string, resumeId: string, token: string) {
+	const url = new URL(`/api/resumes/${encodeURIComponent(resumeId)}${pathname}`, env.APP_URL);
+	url.searchParams.set("token", token);
+
+	return url.toString();
 }
 
 export function createResumePdfDownloadUrl({
@@ -91,6 +114,7 @@ export function createResumePdfDownloadUrl({
 		v: 1,
 		resumeId,
 		userId,
+		kind: "rendered",
 		target: target ?? "resume",
 		expiresAt: expiresAt.getTime(),
 		issuedAt: now.getTime(),
@@ -102,6 +126,31 @@ export function createResumePdfDownloadUrl({
 
 	return {
 		url: url.toString(),
+		expiresAt: expiresAt.toISOString(),
+		expiresInSeconds,
+	};
+}
+
+export function createResumeOriginalFileDownloadUrl({
+	resumeId,
+	userId,
+	now = new Date(),
+	ttlSeconds,
+}: CreateResumeOriginalFileDownloadUrlInput) {
+	const expiresInSeconds = resolveTtlSeconds(ttlSeconds);
+	const expiresAt = new Date(now.getTime() + expiresInSeconds * 1000);
+	const payload = encodeJson({
+		v: 1,
+		resumeId,
+		userId,
+		kind: "original",
+		expiresAt: expiresAt.getTime(),
+		issuedAt: now.getTime(),
+	} satisfies PdfDownloadTokenPayload);
+	const token = `${payload}.${sign(payload)}`;
+
+	return {
+		url: buildDownloadUrl("/original", resumeId, token),
 		expiresAt: expiresAt.toISOString(),
 		expiresInSeconds,
 	};
@@ -126,6 +175,7 @@ export function verifyResumePdfDownloadToken({
 			ok: true,
 			resumeId: parsed.resumeId,
 			userId: parsed.userId,
+			...(parsed.kind ? { kind: parsed.kind } : {}),
 			...(parsed.target ? { target: parsed.target } : {}),
 			expiresAt: new Date(parsed.expiresAt).toISOString(),
 		};

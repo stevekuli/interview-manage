@@ -5,6 +5,7 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import { afterEach, beforeAll, beforeEach, describe, expect, it, vi } from "vitest";
 import { i18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { defaultResumeData } from "@reactive-resume/schema/resume/default";
 import { sampleResumeData } from "@reactive-resume/schema/resume/sample";
 
@@ -68,7 +69,10 @@ afterEach(() => {
 const renderExport = () =>
 	render(
 		<I18nProvider i18n={i18n}>
-			<ExportSectionBuilder />
+			{/* The download dialog asks the server for the preserved original file, which needs a query client. */}
+			<QueryClientProvider client={new QueryClient()}>
+				<ExportSectionBuilder />
+			</QueryClientProvider>
 		</I18nProvider>,
 	);
 

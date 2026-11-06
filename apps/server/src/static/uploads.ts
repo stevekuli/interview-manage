@@ -73,7 +73,10 @@ function isValidPathSegments(path: string): boolean {
 }
 
 function isPrivateUploadPath(path: string): boolean {
-	return path.split("/")[0] === "agent";
+	const topSegment = path.split("/")[0];
+	// `agent/` holds chat attachments; `originals/` holds preserved resume originals. Both are
+	// personal data reachable only through authenticated or signed routes, never this public one.
+	return topSegment === "agent" || topSegment === "originals";
 }
 
 function isNotModified(headers: Headers, etag: string): boolean {

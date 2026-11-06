@@ -1296,6 +1296,10 @@ msgstr "Përmbajë"
 msgid "Content"
 msgstr "Përmbajtja"
 
+#: src/features/resume/export/download-dialog.tsx
+msgid "Content changed since import"
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Content is laid out in a grid."
 msgstr "Përmbajtja është vendosur në një rrjetë."
@@ -1431,6 +1435,10 @@ msgstr "PDF-ja nuk u gjenerua dot. Ju lutemi provoni përsëri."
 #: src/features/cover-letters/library.tsx
 msgid "Could not load cover letters."
 msgstr "Letrat motivuese nuk mund të ngarkoheshin."
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "Could not load the original file. Please try again."
+msgstr ""
 
 #: src/features/cover-letters/library.tsx
 msgid "Could not load the selected resume."
@@ -3554,6 +3562,10 @@ msgstr "Marku e refuzoi"
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Match scoring failed."
 msgstr "Shënimi i ndeshjes dështoi."
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "Matches current content"
+msgstr ""
 
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
 msgid "Medium impact"
@@ -5756,6 +5768,10 @@ msgstr "Kontrollet më sipër janë mekanike. Ky pyet një model gjuhësor se ç
 msgid "The deep check could not finish. Please try again."
 msgstr "Kontrolli i thelluar nuk mundi të përfundonte. Ju lutemi provoni përsëri."
 
+#: src/dialogs/resume/import.tsx
+msgid "The file is larger than 10MB, so its original copy won't be kept. The content itself still imports."
+msgstr ""
+
 #. Error shown when AI parsing returns invalid resume structure during import
 #: src/dialogs/resume/import.tsx
 msgid "The imported file could not be parsed into a valid resume."
@@ -6673,6 +6689,10 @@ msgstr ""
 #: src/libs/locale.ts
 msgid "Vietnamese"
 msgstr "Vietnameze"
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "View"
+msgstr ""
 
 #: src/features/applications/components/calendar-view.tsx
 msgid "View application"

@@ -140,6 +140,50 @@ describe("ImportResumeDialog — PDF without a provider", () => {
 
 		expect(screen.getByRole("button", { name: "Import" })).not.toBeDisabled();
 	});
+
+	it("carries the original PDF into the import payload", async () => {
+		importResume.mockResolvedValue("imported-resume-id");
+		renderDialog();
+		const input = document.querySelector<HTMLInputElement>('input[type="file"]');
+		if (!input) throw new Error("File input not found");
+
+		fireEvent.change(input, { target: { files: [createPdfFile()] } });
+		await screen.findByText(/read the text out of the PDF here in your browser/);
+		fireEvent.click(screen.getByRole("button", { name: "Import" }));
+
+		await waitFor(() => {
+			expect(importResume).toHaveBeenCalledOnce();
+		});
+
+		const payload = importResume.mock.calls[0][0] as {
+			originalFile?: { name: string; mediaType: string; data: string };
+		};
+		expect(payload.originalFile).toMatchObject({ name: "resume.pdf", mediaType: "application/pdf" });
+		expect(typeof payload.originalFile?.data).toBe("string");
+		expect(payload.originalFile?.data.length).toBeGreaterThan(0);
+	});
+
+	it("drops the original for an oversized PDF but still imports the content", async () => {
+		importResume.mockResolvedValue("imported-resume-id");
+		renderDialog();
+		const input = document.querySelector<HTMLInputElement>('input[type="file"]');
+		if (!input) throw new Error("File input not found");
+
+		const oversized = new File(
+			[new Uint8Array([0x25, 0x50, 0x44, 0x46]), new Uint8Array(10 * 1024 * 1024)],
+			"big.pdf",
+			{ type: "application/pdf" },
+		);
+		fireEvent.change(input, { target: { files: [oversized] } });
+		await screen.findByText(/read the text out of the PDF here in your browser/);
+		fireEvent.click(screen.getByRole("button", { name: "Import" }));
+
+		await waitFor(() => {
+			expect(importResume).toHaveBeenCalledOnce();
+		});
+
+		expect(importResume.mock.calls[0][0]).not.toHaveProperty("originalFile");
+	});
 });
 
 describe("ImportResumeDialog — detected files without MIME metadata", () => {

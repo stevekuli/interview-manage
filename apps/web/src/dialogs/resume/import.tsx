@@ -101,6 +101,21 @@ function fileToBase64(file: File): Promise<string> {
 	});
 }
 
+// Media type for the preserved original; `type` is the detected import type, so the PDF branch can
+// trust its own detection even when the browser reports an empty `file.type`.
+function mediaTypeForOriginal(
+	file: File,
+	type: "pdf" | "docx",
+):
+	| "application/pdf"
+	| "application/msword"
+	| "application/vnd.openxmlformats-officedocument.wordprocessingml.document" {
+	if (type === "pdf") return "application/pdf";
+	return file.type === "application/msword"
+		? "application/msword"
+		: "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+}
+
 // #7: sniff the source format from magic bytes + JSON shape rather than trusting the extension/MIME
 // (multiple resume interchange formats share the .json extension). Returns "" when unrecognized.
 async function detectImportType(file: File): Promise<ImportType> {
@@ -137,6 +152,10 @@ async function detectImportType(file: File): Promise<ImportType> {
 
 	return "";
 }
+
+// Same ceiling the server enforces on preserved originals; larger files still import, just without
+// a preserved original.
+const MAX_ORIGINAL_FILE_BYTES = 10 * 1024 * 1024;
 
 export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 	const confirm = useConfirm();
@@ -244,7 +263,35 @@ export function ImportResumeDialog(_: DialogProps<"resume.import">) {
 					);
 				}
 
-				const id = await importResume({ data });
+				// PDF/DOCX imports carry the untouched original file so it stays downloadable
+				// byte-identical; JSON/LinkedIn sources have no rendered original to preserve.
+				let originalFile:
+					| {
+							name: string;
+							mediaType:
+								| "application/pdf"
+								| "application/msword"
+								| "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+							data: string;
+					  }
+					| undefined;
+
+				if ((value.type === "pdf" || value.type === "docx") && value.file.size <= MAX_ORIGINAL_FILE_BYTES) {
+					const importType = value.type;
+					originalFile = {
+						name: value.file.name,
+						mediaType: mediaTypeForOriginal(value.file, importType),
+						data: await fileToBase64(value.file),
+					};
+				} else if (value.type === "pdf" || value.type === "docx") {
+					toast.add({
+						type: "warning",
+						title: null,
+						description: t`The file is larger than 10MB, so its original copy won't be kept. The content itself still imports.`,
+					});
+				}
+
+				const id = await importResume({ data, ...(originalFile ? { originalFile } : {}) });
 				toast.add({
 					type: "success",
 					title: null,

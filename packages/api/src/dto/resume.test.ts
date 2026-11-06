@@ -185,3 +185,55 @@ describe("resume DTO write bounds", () => {
 		});
 	});
 });
+
+describe("resume import original file input", () => {
+	const base64 = Buffer.from("original pdf bytes").toString("base64");
+
+	it("accepts an import without a preserved original (JSON/LinkedIn sources)", () => {
+		const parsed = resumeDto.import.input.parse({ data: structuredClone(defaultResumeData) });
+		expect(parsed).not.toHaveProperty("originalFile");
+	});
+
+	it("accepts a PDF original alongside the parsed data", () => {
+		const parsed = resumeDto.import.input.parse({
+			data: structuredClone(defaultResumeData),
+			originalFile: { name: "原始简历.pdf", mediaType: "application/pdf", data: base64 },
+		});
+		expect(parsed.originalFile).toEqual({ name: "原始简历.pdf", mediaType: "application/pdf", data: base64 });
+	});
+
+	it("accepts Word media types for DOCX originals", () => {
+		for (const mediaType of [
+			"application/msword",
+			"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+		]) {
+			expect(
+				resumeDto.import.input.safeParse({
+					data: structuredClone(defaultResumeData),
+					originalFile: { name: "resume.doc", mediaType, data: base64 },
+				}).success,
+			).toBe(true);
+		}
+	});
+
+	it("rejects unsupported media types", () => {
+		expect(
+			resumeDto.import.input.safeParse({
+				data: structuredClone(defaultResumeData),
+				originalFile: { name: "photo.jpg", mediaType: "image/jpeg", data: base64 },
+			}).success,
+		).toBe(false);
+	});
+
+	it("rejects payloads that would decode far past the 10MB ceiling", () => {
+		// The string-length cap is intentionally approximate (base64 padding absorbs ±2 bytes); the
+		// exact decoded-size ceiling is enforced after decoding in saveResumeOriginalFile.
+		const oversized = Buffer.alloc(11 * 1024 * 1024).toString("base64");
+		expect(
+			resumeDto.import.input.safeParse({
+				data: structuredClone(defaultResumeData),
+				originalFile: { name: "big.pdf", mediaType: "application/pdf", data: oversized },
+			}).success,
+		).toBe(false);
+	});
+});

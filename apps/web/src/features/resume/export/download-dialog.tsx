@@ -1,17 +1,22 @@
 import type { ResumeExportTarget } from "@reactive-resume/resume/export-sections";
 import type { ReactElement, ReactNode } from "react";
+import { t } from "@lingui/core/macro";
 import { Trans } from "@lingui/react/macro";
 import {
 	CircleNotchIcon,
 	DownloadSimpleIcon,
 	EnvelopeSimpleIcon,
+	EyeIcon,
 	FileDocIcon,
 	FileJsIcon,
 	FilePdfIcon,
 	FileTextIcon,
 	MarkdownLogoIcon,
+	SealCheckIcon,
+	WarningCircleIcon,
 } from "@phosphor-icons/react";
 import { useId, useState } from "react";
+import { Badge } from "@reactive-resume/ui/components/badge";
 import { Button } from "@reactive-resume/ui/components/button";
 import {
 	Dialog,
@@ -23,8 +28,11 @@ import {
 } from "@reactive-resume/ui/components/dialog";
 import { Switch } from "@reactive-resume/ui/components/switch";
 import { Tabs, TabsList, TabsTrigger } from "@reactive-resume/ui/components/tabs";
+import { toast } from "@reactive-resume/ui/components/toast";
+import { downloadWithAnchor } from "@reactive-resume/utils/file";
 import { cn } from "@reactive-resume/utils/style";
 import { useResumeExport } from "./use-resume-export";
+import { fetchResumeOriginalFileUrl, useResumeOriginalFile } from "./use-resume-original";
 
 type DownloadableResume = Parameters<typeof useResumeExport>[0];
 
@@ -61,6 +69,11 @@ function FormatRow({ action, description, disabled, icon, title }: FormatRowProp
 	);
 }
 
+function formatFileSize(bytes: number): string {
+	if (bytes < 1024 * 1024) return `${Math.max(1, Math.round(bytes / 1024))} KB`;
+	return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 export function ResumeDownloadDialog({ resume, trigger }: ResumeDownloadDialogProps) {
 	const [open, setOpen] = useState(false);
 	const [scope, setScope] = useState<ResumeExportTarget>("resume");
@@ -69,6 +82,38 @@ export function ResumeDownloadDialog({ resume, trigger }: ResumeDownloadDialogPr
 	const { hasCoverLetter, isExporting, onDownloadDOCX, onDownloadJSON, onDownloadMarkdown, onDownloadPDF } =
 		useResumeExport(resume);
 	const disabled = !resume || isExporting;
+	const originalFile = useResumeOriginalFile(resume?.id ?? "", open);
+
+	const onDownloadOriginal = async () => {
+		if (!resume?.id) return;
+		setOpen(false);
+
+		const url = await fetchResumeOriginalFileUrl(resume.id);
+		if (!url) {
+			toast.add({ type: "error", title: null, description: t`Could not load the original file. Please try again.` });
+			return;
+		}
+
+		const response = await fetch(url);
+		if (!response.ok) {
+			toast.add({ type: "error", title: null, description: t`Could not load the original file. Please try again.` });
+			return;
+		}
+
+		downloadWithAnchor(await response.blob(), originalFile.data?.filename ?? "original-file");
+	};
+
+	const onViewOriginal = async () => {
+		if (!resume?.id) return;
+
+		const url = await fetchResumeOriginalFileUrl(resume.id);
+		if (!url) {
+			toast.add({ type: "error", title: null, description: t`Could not load the original file. Please try again.` });
+			return;
+		}
+
+		window.open(`${url}&inline=1`, "_blank", "noopener");
+	};
 
 	// Cover letter can't be the active scope when the resume has none (also guards a stale toggle).
 	const activeScope: ResumeExportTarget = scope === "cover-letter" && !hasCoverLetter ? "resume" : scope;
@@ -128,6 +173,54 @@ export function ResumeDownloadDialog({ resume, trigger }: ResumeDownloadDialogPr
 				)}
 
 				<div className="grid gap-2">
+					{originalFile.data && (
+						<FormatRow
+							icon={
+								originalFile.data.mediaType === "application/pdf" ? (
+									<FilePdfIcon className="size-5" />
+								) : (
+									<FileDocIcon className="size-5" />
+								)
+							}
+							title={originalFile.data.filename}
+							description={
+								<span className="flex flex-wrap items-center gap-2">
+									<span>{formatFileSize(originalFile.data.size)}</span>
+									{originalFile.data.unchanged ? (
+										<Badge className="gap-1" variant="outline">
+											<SealCheckIcon weight="fill" className="text-emerald-600" />
+											<Trans>Matches current content</Trans>
+										</Badge>
+									) : (
+										<Badge className="gap-1" variant="outline">
+											<WarningCircleIcon weight="fill" className="text-amber-600" />
+											<Trans>Content changed since import</Trans>
+										</Badge>
+									)}
+								</span>
+							}
+							action={
+								<div className="flex shrink-0 gap-2">
+									{originalFile.data.mediaType === "application/pdf" && (
+										<Button
+											size="sm"
+											variant="outline"
+											aria-label="View original file"
+											onClick={() => void onViewOriginal()}
+										>
+											<EyeIcon />
+											<Trans>View</Trans>
+										</Button>
+									)}
+									<Button size="sm" aria-label="Download original file" onClick={() => void onDownloadOriginal()}>
+										<DownloadSimpleIcon />
+										<Trans>Download</Trans>
+									</Button>
+								</div>
+							}
+						/>
+					)}
+
 					<FormatRow
 						icon={
 							isExporting ? <CircleNotchIcon className="size-5 animate-spin" /> : <FilePdfIcon className="size-5" />

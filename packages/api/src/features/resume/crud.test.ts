@@ -9,6 +9,8 @@ const mocks = vi.hoisted(() => ({
 	update: vi.fn(),
 	snapshot: vi.fn(),
 }));
+const saveOriginalMock = vi.hoisted(() => vi.fn());
+const copyOriginalMock = vi.hoisted(() => vi.fn());
 
 vi.mock("../../context", async () => {
 	const { os } = await vi.importActual<typeof import("@orpc/server")>("@orpc/server");
@@ -28,6 +30,11 @@ vi.mock("./service", () => ({
 		update: mocks.update,
 		versions: { snapshot: mocks.snapshot },
 	},
+}));
+
+vi.mock("./original-file", () => ({
+	saveResumeOriginalFile: saveOriginalMock,
+	copyResumeOriginalFile: copyOriginalMock,
 }));
 
 const { crudRouter } = await import("./crud");
@@ -129,4 +136,89 @@ describe("resume sharing update route", () => {
 			expect(result.showDownloadButtons).toBe(showDownloadButtons);
 		},
 	);
+});
+
+describe("resume import and duplicate original-file wiring", () => {
+	beforeEach(() => {
+		vi.clearAllMocks();
+		mocks.create.mockResolvedValue("new-resume-id");
+		mocks.snapshot.mockResolvedValue(undefined);
+	});
+
+	function makeClient() {
+		return createRouterClient(crudRouter, {
+			context: { locale: "en-US", reqHeaders: new Headers(), user: { id: "user-id" } } as never,
+		});
+	}
+
+	it("passes the uploaded original through to the save service", async () => {
+		const client = makeClient();
+
+		await client.import({
+			data: structuredClone(defaultResumeData),
+			originalFile: {
+				name: "resume.pdf",
+				mediaType: "application/pdf",
+				data: Buffer.from("bytes").toString("base64"),
+			},
+		});
+
+		// The import handler mints the resume id locally before create; reuse whatever it chose.
+		const createdId = mocks.create.mock.calls[0][0].id as string;
+		expect(createdId).toBeTruthy();
+		expect(saveOriginalMock).toHaveBeenCalledWith({
+			userId: "user-id",
+			resumeId: createdId,
+			filename: "resume.pdf",
+			mediaType: "application/pdf",
+			dataBase64: Buffer.from("bytes").toString("base64"),
+		});
+	});
+
+	it("does not touch the original-file service when the import has none", async () => {
+		const client = makeClient();
+
+		await client.import({ data: structuredClone(defaultResumeData) });
+
+		expect(saveOriginalMock).not.toHaveBeenCalled();
+	});
+
+	it("still imports the content when preserving the original fails", async () => {
+		saveOriginalMock.mockRejectedValueOnce(new Error("storage down"));
+		const consoleSpy = vi.spyOn(console, "error").mockImplementation(() => {});
+		const client = makeClient();
+
+		const id = await client.import({
+			data: structuredClone(defaultResumeData),
+			originalFile: {
+				name: "resume.pdf",
+				mediaType: "application/pdf",
+				data: Buffer.from("bytes").toString("base64"),
+			},
+		});
+
+		expect(id).toBe(mocks.create.mock.calls[0][0].id);
+		expect(mocks.snapshot).toHaveBeenCalledOnce();
+		consoleSpy.mockRestore();
+	});
+
+	it("copies the preserved original onto the duplicate", async () => {
+		mocks.getById.mockResolvedValue({
+			id: "resume-id",
+			name: "Resume",
+			slug: "resume",
+			tags: [],
+			data: structuredClone(defaultResumeData),
+		});
+		const client = makeClient();
+
+		await client.duplicate({ id: "resume-id", name: "Copy", slug: "copy", tags: [] });
+
+		// The duplicate id comes from resumeService.create (mocked to a fixed value).
+		expect(copyOriginalMock).toHaveBeenCalledWith({
+			userId: "user-id",
+			sourceResumeId: "resume-id",
+			targetResumeId: "new-resume-id",
+		});
+	});
 });

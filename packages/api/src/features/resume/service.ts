@@ -822,11 +822,13 @@ export const resumeService = {
 			await tx.delete(schema.resume).where(and(eq(schema.resume.id, input.id), eq(schema.resume.userId, input.userId)));
 		});
 
-		// Clean up storage files after the DB transaction succeeds
+		// Clean up storage files after the DB transaction succeeds (the resume_original_file row and
+		// its storage blob go away via the resume cascade + the originals key below)
 		const storageService = getStorageService();
 		await Promise.allSettled([
 			storageService.delete(`uploads/${input.userId}/screenshots/${input.id}`),
 			storageService.delete(`uploads/${input.userId}/pdfs/${input.id}`),
+			storageService.delete(`uploads/${input.userId}/originals/${input.id}`),
 		]);
 
 		await notifyResumeUpdated({

@@ -67,6 +67,28 @@ export const resumeVersion = pg.pgTable(
 	(t) => [pg.index().on(t.resumeId, t.createdAt.desc())],
 );
 
+// Original uploaded file (PDF/DOCX) preserved at import time, one per resume. The file bytes live in
+// storage under uploads/<userId>/originals/<resumeId>; this row carries its metadata plus the sha256
+// of resume.data at import time, so "unchanged since import" can be decided without trusting updatedAt
+// (which every mutation touches) or the pruned "Imported" version snapshot.
+export const resumeOriginalFile = pg.pgTable("resume_original_file", {
+	resumeId: pg
+		.text("resume_id")
+		.notNull()
+		.primaryKey()
+		.references(() => resume.id, { onDelete: "cascade" }),
+	userId: pg
+		.text("user_id")
+		.notNull()
+		.references(() => user.id, { onDelete: "cascade" }),
+	storageKey: pg.text("storage_key").notNull(),
+	filename: pg.text("filename").notNull(),
+	mediaType: pg.text("media_type").notNull(),
+	size: pg.integer("size").notNull(),
+	dataHash: pg.text("data_hash").notNull(),
+	createdAt: pg.timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
+});
+
 export const resumeStatistics = pg.pgTable("resume_statistics", {
 	id: pg
 		.text("id")

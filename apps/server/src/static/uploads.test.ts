@@ -51,4 +51,17 @@ describe("handleUpload", () => {
 		expect(response.status).toBe(404);
 		expect(readMock).not.toHaveBeenCalled();
 	});
+
+	it("does not serve preserved resume originals through the public uploads route", async () => {
+		readMock.mockResolvedValueOnce({
+			data: new TextEncoder().encode("%PDF-secret"),
+			size: 11,
+			contentType: "application/pdf",
+		});
+
+		const response = await handleUpload(new Request("https://example.com/api/uploads/user-1/originals/resume-1"));
+
+		expect(response.status).toBe(404);
+		expect(readMock).not.toHaveBeenCalled();
+	});
 });

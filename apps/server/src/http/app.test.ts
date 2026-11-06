@@ -9,6 +9,7 @@ const mocks = vi.hoisted(() => ({
 	handleUpload: vi.fn(),
 	handleMcp: vi.fn(),
 	handleResumePdfDownload: vi.fn(),
+	handleResumeOriginalDownload: vi.fn(),
 	handlePublicResumePdf: vi.fn(),
 	handleMcpServerCard: vi.fn(),
 	handleOAuthAuthorizationServer: vi.fn(),
@@ -70,6 +71,10 @@ vi.mock("./resume-pdf", () => ({
 	handleResumePdfDownload: mocks.handleResumePdfDownload,
 }));
 
+vi.mock("./resume-original", () => ({
+	handleResumeOriginalDownload: mocks.handleResumeOriginalDownload,
+}));
+
 vi.mock("./public-resume-pdf", () => ({
 	handlePublicResumePdf: mocks.handlePublicResumePdf,
 }));
@@ -89,6 +94,7 @@ beforeEach(() => {
 	mocks.handleUpload.mockResolvedValue(new Response("upload"));
 	mocks.handleMcp.mockResolvedValue(new Response("mcp"));
 	mocks.handleResumePdfDownload.mockResolvedValue(new Response("pdf"));
+	mocks.handleResumeOriginalDownload.mockResolvedValue(new Response("original"));
 	mocks.handlePublicResumePdf.mockResolvedValue(new Response("public-pdf"));
 	mocks.handleMcpServerCard.mockReturnValue(new Response("server-card"));
 	mocks.handleOAuthAuthorizationServer.mockReturnValue(new Response("oauth-authorization-server"));

@@ -30,6 +30,8 @@ export async function handleResumePdfDownload(request: Request, id: string) {
 
 	const verification = verifyResumePdfDownloadToken({ resumeId: id, token });
 	if (!verification.ok) return verification.reason === "expired" ? expiredResponse() : unauthorizedResponse();
+	// Tokens minted for the preserved original file only unlock /api/resumes/:id/original.
+	if (verification.kind === "original") return unauthorizedResponse();
 	const queryTarget = searchParams.get("target");
 	if (
 		verification.target

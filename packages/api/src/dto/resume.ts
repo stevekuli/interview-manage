@@ -5,6 +5,25 @@ import { jsonPatchOperationSchema } from "@reactive-resume/resume/patch";
 import { resumeDataSchema } from "@reactive-resume/schema/resume/data";
 import { writableResumeDataSchema } from "@reactive-resume/schema/resume/write";
 
+// Media types whose original file can be preserved at import time (PDF and Word documents; the
+// runtime whitelist also lives in features/resume/original-file.ts).
+export const ORIGINAL_FILE_MEDIA_TYPES = [
+	"application/pdf",
+	"application/msword",
+	"application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+] as const;
+
+// Original uploaded file preserved alongside an imported resume. The bytes travel base64-encoded
+// inside the JSON import request; cap the string just above the decoded 10 MiB ceiling.
+const MAX_ORIGINAL_FILE_BYTES = 10 * 1024 * 1024;
+const MAX_ORIGINAL_FILE_BASE64_CHARS = Math.ceil((MAX_ORIGINAL_FILE_BYTES / 3) * 4) + 1024;
+
+const originalFileInputSchema = z.object({
+	name: z.string().min(1).max(255).describe("Original file name as uploaded."),
+	mediaType: z.enum(ORIGINAL_FILE_MEDIA_TYPES).describe("Media type of the original file."),
+	data: z.base64().max(MAX_ORIGINAL_FILE_BASE64_CHARS).describe("Base64-encoded file bytes (max 10MB decoded)."),
+});
+
 const resumeSchema = createSelectSchema(schema.resume, {
 	id: z.string().describe("The ID of the resume."),
 	name: z.string().trim().min(1).describe("The name of the resume."),
@@ -56,7 +75,7 @@ export const resumeDto = {
 	},
 
 	import: {
-		input: z.object({ data: writableResumeDataSchema }),
+		input: z.object({ data: writableResumeDataSchema, originalFile: originalFileInputSchema.optional() }),
 		output: z.string().describe("The ID of the imported resume."),
 	},
 

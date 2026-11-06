@@ -9,6 +9,7 @@
 		"./features/agent/streams": "./src/features/agent/streams.ts",
 		"./features/flags": "./src/features/flags/index.ts",
 		"./features/resume/export": "./src/features/resume/export.ts",
+		"./features/resume/original-file": "./src/features/resume/original-file.ts",
 		"./features/resume/public-pdf": "./src/features/resume/public-pdf.ts",
 		"./features/resume/social-meta": "./src/features/resume/social-meta.ts",
 		"./features/storage": "./src/features/storage/index.ts",

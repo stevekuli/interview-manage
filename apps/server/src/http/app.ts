@@ -21,6 +21,7 @@ import { handleWebApp, serveWebDistStatic } from "../static/web";
 import { handleAuth, handleOAuth } from "./auth";
 import { handleHealth } from "./health";
 import { handlePublicResumePdf } from "./public-resume-pdf";
+import { handleResumeOriginalDownload } from "./resume-original";
 import { handleResumePdfDownload } from "./resume-pdf";
 
 type ServerEnvironment = { Bindings: HttpBindings | Http2Bindings };
@@ -63,6 +64,7 @@ export function createApp(options: AppOptions = {}) {
 		handlePublicResumePdf(c.req.raw, c.req.param("username"), c.req.param("slug"), client(c)),
 	);
 	app.get("/api/resumes/:id/pdf", (c) => handleResumePdfDownload(c.req.raw, c.req.param("id")));
+	app.get("/api/resumes/:id/original", (c) => handleResumeOriginalDownload(c.req.raw, c.req.param("id")));
 	app.get("/api/uploads/*", (c) => handleUpload(c.req.raw));
 	app.get("/uploads/*", (c) => handleUpload(c.req.raw));
 	app.get("/schema.json", () => handleSchemaJson());

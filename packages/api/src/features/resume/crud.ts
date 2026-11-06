@@ -3,6 +3,7 @@ import { protectedProcedure } from "../../context";
 import { resumeDto } from "../../dto/resume";
 import { resumeMutationRateLimit } from "../../middleware/rate-limit";
 import { createResumeData } from "./initial-data";
+import { copyResumeOriginalFile, saveResumeOriginalFile } from "./original-file";
 import { parseStoredResumeData } from "./resume-data-validation";
 import { resumeService } from "./service";
 
@@ -122,6 +123,22 @@ export const crudRouter = {
 				label: "Imported",
 			});
 
+			// Preserve the uploaded original (PDF/DOCX) so it can be downloaded byte-identical later.
+			// Best-effort: a failed save must not lose the already-imported content.
+			if (input.originalFile) {
+				try {
+					await saveResumeOriginalFile({
+						userId: context.user.id,
+						resumeId: id,
+						filename: input.originalFile.name,
+						mediaType: input.originalFile.mediaType,
+						dataBase64: input.originalFile.data,
+					});
+				} catch (error) {
+					console.error("[Resume Import] Failed to preserve the original file", { resumeId: id, error });
+				}
+			}
+
 			return id;
 		}),
 
@@ -231,7 +248,7 @@ export const crudRouter = {
 			const original = await resumeService.getById({ id: input.id, userId: context.user.id });
 			const data = parseStoredResumeData(original.data);
 
-			return resumeService.create({
+			const id = await resumeService.create({
 				userId: context.user.id,
 				name: input.name ?? original.name,
 				slug: input.slug ?? original.slug,
@@ -239,6 +256,19 @@ export const crudRouter = {
 				locale: context.locale,
 				data,
 			});
+
+			// Carry the preserved original over to the copy (best-effort, same as import).
+			try {
+				await copyResumeOriginalFile({
+					userId: context.user.id,
+					sourceResumeId: input.id,
+					targetResumeId: id,
+				});
+			} catch (error) {
+				console.error("[Resume Duplicate] Failed to copy the original file", { resumeId: id, error });
+			}
+
+			return id;
 		}),
 
 	delete: protectedProcedure

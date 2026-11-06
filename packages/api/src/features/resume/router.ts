@@ -1,6 +1,7 @@
 import { publicProcedure } from "../../context";
 import { crudRouter } from "./crud";
 import { updatesRouter } from "./event-router";
+import { originalFileRouter } from "./original-file";
 import { getRootResume } from "./root";
 import { sharingRouter } from "./sharing";
 import { resumeStatisticsRouter } from "./statistics";
@@ -17,6 +18,7 @@ export const resumeRouter = {
 	tags: tagsRouter,
 	statistics: resumeStatisticsRouter,
 	updates: updatesRouter,
+	originalFile: originalFileRouter,
 
 	list: crudRouter.list,
 	getById: crudRouter.getById,

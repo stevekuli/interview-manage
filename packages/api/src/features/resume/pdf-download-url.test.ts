@@ -8,9 +8,12 @@ vi.mock("@reactive-resume/env/server", () => ({
 	},
 }));
 
-const { MAX_PDF_DOWNLOAD_URL_TTL_SECONDS, createResumePdfDownloadUrl, verifyResumePdfDownloadToken } = await import(
-	"./pdf-download-url"
-);
+const {
+	MAX_PDF_DOWNLOAD_URL_TTL_SECONDS,
+	createResumePdfDownloadUrl,
+	createResumeOriginalFileDownloadUrl,
+	verifyResumePdfDownloadToken,
+} = await import("./pdf-download-url");
 
 describe("resume PDF signed download URLs", () => {
 	it("creates a URL with a token that is capped at 10 minutes", () => {
@@ -44,6 +47,7 @@ describe("resume PDF signed download URLs", () => {
 			ok: true,
 			resumeId: "resume-1",
 			userId: "user-1",
+			kind: "rendered",
 			target: "resume",
 			expiresAt: "2026-06-01T10:10:00.000Z",
 		});
@@ -68,6 +72,35 @@ describe("resume PDF signed download URLs", () => {
 				now: new Date("2026-06-01T10:01:00.000Z"),
 			}),
 		).toMatchObject({ ok: true, target: "cover-letter" });
+	});
+
+	it("signs original-file URLs with the original kind on a dedicated path", () => {
+		const result = createResumeOriginalFileDownloadUrl({
+			resumeId: "resume-1",
+			userId: "user-1",
+			now: new Date("2026-06-01T10:00:00.000Z"),
+		});
+		const url = new URL(result.url);
+		const token = url.searchParams.get("token");
+
+		expect(url.pathname).toBe("/api/resumes/resume-1/original");
+		expect(url.searchParams.get("target")).toBeNull();
+		if (!token) throw new Error("Expected signed URL token");
+
+		const verification = verifyResumePdfDownloadToken({
+			resumeId: "resume-1",
+			token,
+			now: new Date("2026-06-01T10:01:00.000Z"),
+		});
+
+		expect(verification).toEqual({
+			ok: true,
+			resumeId: "resume-1",
+			userId: "user-1",
+			kind: "original",
+			expiresAt: "2026-06-01T10:10:00.000Z",
+		});
+		expect("target" in verification).toBe(false);
 	});
 
 	it("accepts still-valid legacy tokens without a target", () => {

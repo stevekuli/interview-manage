@@ -1291,6 +1291,10 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
+#: src/features/resume/export/download-dialog.tsx
+msgid "Content changed since import"
+msgstr ""
+
 #: src/features/ats-checker/messages.ts
 msgid "Content is laid out in a grid."
 msgstr ""
@@ -1425,6 +1429,10 @@ msgstr ""
 
 #: src/features/cover-letters/library.tsx
 msgid "Could not load cover letters."
+msgstr ""
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "Could not load the original file. Please try again."
 msgstr ""
 
 #: src/features/cover-letters/library.tsx
@@ -3548,6 +3556,10 @@ msgstr ""
 
 #: src/features/applications/components/application-ai-copilot.tsx
 msgid "Match scoring failed."
+msgstr ""
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "Matches current content"
 msgstr ""
 
 #: src/features/ats-checker/ai-review/ai-review-results.tsx
@@ -5751,6 +5763,10 @@ msgstr ""
 msgid "The deep check could not finish. Please try again."
 msgstr ""
 
+#: src/dialogs/resume/import.tsx
+msgid "The file is larger than 10MB, so its original copy won't be kept. The content itself still imports."
+msgstr ""
+
 #. Error shown when AI parsing returns invalid resume structure during import
 #: src/dialogs/resume/import.tsx
 msgid "The imported file could not be parsed into a valid resume."
@@ -6667,6 +6683,10 @@ msgstr ""
 
 #: src/libs/locale.ts
 msgid "Vietnamese"
+msgstr ""
+
+#: src/features/resume/export/download-dialog.tsx
+msgid "View"
 msgstr ""
 
 #: src/features/applications/components/calendar-view.tsx
