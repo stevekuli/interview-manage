@@ -1,11 +1,25 @@
 {
 	"schema_version": "1.0",
 	"id": "interview-manage",
+	"source": "interview-manage",
 	"name": "求职管理",
 	"name_en": "Career Workspace",
 	"version": "1.0.0",
 	"description": "管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。",
+	"description_zh": "管理求职岗位、编辑简历、导出 PDF 和 Word，并跟踪投递进度。AI 辅助需配置自己的模型服务后按范围使用。",
 	"description_en": "Manage job applications, tailor job-specific resume copies from your existing resume, export PDFs, and track interviews.",
+	"examples_zh": [
+		"读取我的简历，分析这份岗位 JD 的匹配亮点和差距",
+		"把这个岗位存进投递看板，并克隆一份岗位专属简历副本",
+		"按这份 JD 改写简历副本，然后导出 PDF 下载链接",
+		"更新这条投递的状态，并记录下周二的面试时间"
+	],
+	"examples_en": [
+		"Read my resume and analyze how this job description matches, including the gaps",
+		"Save this job to my application tracker and clone a job-specific resume copy",
+		"Tailor the resume copy for this job description and export it as a PDF download link",
+		"Update this application's status and schedule next Tuesday's interview"
+	],
 	"icon": "./icon.svg",
 	"homepage_url": "https://interview.unlimit.ltd",
 	"mcp": {

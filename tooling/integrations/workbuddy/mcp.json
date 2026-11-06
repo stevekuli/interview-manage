@@ -1,11 +1,8 @@
 {
 	"mcpServers": {
 		"interview-manage": {
-			"type": "streamable-http",
-			"url": "https://interview.unlimit.ltd/mcp",
-			"headers": {
-				"x-api-key": "${INTERVIEW_MANAGE_API_KEY}"
-			}
+			"type": "streamableHttp",
+			"url": "https://interview.unlimit.ltd/mcp"
 		}
 	}
 }

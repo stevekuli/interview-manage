@@ -98,7 +98,15 @@
 - 连接器包已制作：`artifacts/workbuddy-connector-20261028.zip`（connector-meta.json、mcp.json、icon.svg、SKILL.md，共 5 项；artifacts/ 为 git-ignored，`git status --short` 无 zip 遗留）。
 - 2026-10-28 上架前合规修正（用户决定跳过客户端真机联调、直接上架后执行）：`connector-meta.json` `description_en` 与两份 `SKILL.md` frontmatter 中 "verified experience / verified resumes / 真实经历档案" 措辞指向未实现的 P2 事实版本系统，已统一改为 "your existing resume / job-specific resume copies / 你的真实简历"——描述当前真实能力（基于主简历克隆副本定向改写）；SKILL.md 正文「用户真实经历（不编造）」语义准确保留。修正后 mcp 单测 72 全过（防漂移契约未破）、markdownlint 0 问题，zip 已重新打包。
 - 端点合规核验（上架前复核）：connector-meta 宣称的 4 个 URL 全部在线（MCP 端点、server-card、两个 OAuth 元数据端点 200；未认证 MCP 请求正确 401）；SKILL.md 引用的 31 个工具与线上 44 工具清单逐一比对，零缺失、零虚构。
-- **由用户执行**：WorkBuddy 开放平台上传 `artifacts/workbuddy-connector-20261028.zip` 提审（需用户账号）；客户端真机联调按用户 2026-10-28 决定跳过（服务端 5 步链路已全绿替代验证；测试账号凭据见 `artifacts/mcp-e2e-credentials.json` 备后用）。
+- **提审已完成（2026-10-28 23:0x）**：初版审核编号 `oc_539a4e7c802ec926`，状态「审核中」，版本 v1.0.0，类目「工具 - 办公」，账号「肖天佑个人 · 超管」。平台提交确认页仅提示「已提交审核，审核结果将通过通知告知」，**未公示审核编号以外的预计审核时长**。
+- **按官方规范修正后重新提审（2026-10-28 深夜）**：用户要求将 `mcp.json` 的 `type` 从 `streamable-http` 改为官方写法 `streamableHttp`，并移除 OAuth 模式下会原样发出字面量 `${INTERVIEW_MANAGE_API_KEY}` 的无效 `x-api-key` header（该占位符仅在 token 模式 + `token-schema.json` 下才被替换，OAuth 模式无人赋值会致 401）。旧资产 `oc_539a4e7c802ec926` 先平台撤回——**实测撤回等于整条删除**（资产列表不再出现，名字释放），故往旧链接 `…/publish/oc_539a4e7c802ec926…` 重传会报「资源不存在或无权访问」。改为走**全新提交**，新资产 ID `oc_ca1f0557f622ae2e`，状态「审核中」，类目「工具 - 办公」，账号「肖天佑个人 · 超管」。旧编号已作废，无需另行撤回。
+- 提审前必须补齐的必填字段（平台解析报错实测，官方文档 `open.workbuddy.cn/docs/connector` 为准）：`source`、`description_zh`、`examples_zh`、`examples_en`（后两项各至少 1 条非空）。本次已按最小改动补齐：`source` 复用原 `id`（`interview-manage`）、`description_zh` 沿用原中文 `description` 原文、`examples` 各 4 条按 SKILL.md 真实场景撰写；原 `id`/`icon`/`homepage_url`/`mcp`/`authentication`/`skills` 全部保留未删改。
+- **自动化边界（实测）**：开放平台上传控件在浏览器自动化点击下**不弹出系统文件选择框**（截图确认页面无遮罩、仍显示「目前未上传代码包」），输入路径、剪贴板粘贴、脚本发操作系统级按键（`Start-Process` / `cscript` 均被本机安全策略拦截）全部无效——**该步骤必须由人工拖拽 zip 完成**。后续同流程不要再尝试自动化上传。
+- 客户端真机联调按用户 2026-10-28 决定跳过（服务端 5 步链路已全绿替代验证；测试账号凭据见 `artifacts/mcp-e2e-credentials.json` 备后用）。
+- **提审后遗留风险（待用户拍板）**：
+  - ① `mcp.json` 的 `type` 已改为官方写法 `streamableHttp` 并重传（**已解决**，见上条重新提审）。
+  - ② 双认证拆分：**已按官方规范落地为两张独立卡片，均已提交审核**——主卡「求职管理」（OAuth，`oc_ca1f0557f622ae2e`）+ 副卡「求职管理（API Key）」（`oc_e45919b81c5b3b76`，`id`/`source` 均为 `interview-manage-apikey`，`authentication.schemes=["api_key"]`，密钥经 `authentication.api_key.header: x-api-key` 注入）。
+  - **踩坑记录（token 模式不可用于提审）**：副卡最初按官方文档写 `auth_mode: token` + `token-schema.json` + `minWorkbuddyVersion: 4.23.0` + mcp.json `${INTERVIEW_MANAGE_API_KEY}` 占位，平台提审解析连续失败（报「路径不存在或无权访问」「密钥不存在或无权访问」「上传失败，请重试」三种）；改为「主包结构复刻 + 仅改 id/名称 + schemes 收敛为 api_key-only（去掉 auth_mode/token-schema.json/${VAR} 占位）」后一次通过。主包 mcp.json 无 headers 时，平台按 `authentication.api_key.header` 声明注入密钥，无需 `${VAR}` 占位。
 
 ## 回滚方式
 
