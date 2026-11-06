@@ -39,7 +39,7 @@
 
 - 工作区：`D:\program\interview-manage`。
 - 开发计划：`docs/plans/2026-10-02-ai-job-resume-management.md`。
-- 上游基线：`reactive-resume/reactive-resume` 的提交 `b53c43c3722741946603ac46beda173931aeb646`（已通过 git 历史核实，main 分支初始提交即该提交）；MIT 许可证及版权声明（Copyright (c) 2026 Amruth Pillai）随上游 `LICENSE` 保留。
+- 上游基线：`reactive-resume/reactive-resume` 的提交 `b53c43c3722741946603ac46beda173931aeb646`（上游 main 初始提交）；本仓根提交 `18f7dd4` 是其去父重写版（2026-10-24 历史重写，解决浅克隆推送报错，内容与上游一致，重写前的旧 hash 在本仓不可达）；MIT 许可证及版权声明（Copyright (c) 2026 Amruth Pillai）随上游 `LICENSE` 保留。
 - 依赖和命令以固定提交的实际配置为准；不可把文档中的示例当作已经执行成功。
 - 底座引入后运行适用的 `pnpm typecheck`、`pnpm test`、`pnpm build`、`pnpm test:e2e`、`pnpm exec turbo boundaries`。
 - 上游 `pnpm check` 会修改文件；只读检查使用无写入参数的 Biome 命令。
@@ -59,7 +59,7 @@
 - 公网入口 `https://interview.unlimit.ltd`（2026-10-25 起，Nginx 443 → `127.0.0.1:3001` → 容器 3000；2026-10-27 起 `APP_URL` 已切换为该域名，旧 IP 入口 `http://8.148.199.165:3012` 变为 301 跳转，不再直连登录）；部署文件在 `tooling/deployment/server/`（nginx 站点文件与服务器 `/etc/nginx/sites-available/interview-manage` 同步），服务器目录 `/opt/interview-manage/`。
 - **站点域名变更/新增入口时**：`APP_URL` 保持唯一对外主入口；其余需要直连登录的 origin（如旧 IP 入口）写入 `TRUSTED_ORIGINS`（逗号分隔，`packages/auth` 的 `getTrustedOrigins` 消费），否则 Better Auth 对浏览器请求按 `INVALID_ORIGIN` 403 拒绝且前端只弹英文原文。注意 `useSecureCookies` 跟随 APP_URL 是否为 https，https 主入口 + http 旧入口并存时旧入口无法种 Secure 会话 Cookie，旧入口应做 301 跳转到主入口。
 - 镜像在本机构建后传输（`docker save | gzip`，约 300MB）；SSH 大流量会被链路间歇掐断，用分片并行断点续传（每片独立续传、拼接后整体 sha256 校验，坏片单独重传），必要时走阿里云云助手（`aliyun ecs RunCommand --profile deploy`，数组参数写 `--InstanceId.1 i-xxx`；agent 可能停运需先确认）。
-- **增量补丁路径**：若仅改构建产物（依赖树与 migrations 未变，需核对 lockfile 与 `migrations/` diff），只传 `apps/web/dist + apps/server/dist` 的 gzip 包，服务器上 `docker create → docker cp → docker commit` 出新 tag，体积小一个数量级。
+- **增量补丁路径**：若仅改构建产物（依赖树与 migrations 未变，需核对 lockfile 与 `migrations/` diff），只传 `apps/web/dist + apps/server/dist` 的 gzip 包，服务器上 `docker create → docker cp → docker commit` 出新 tag，体积小一个数量级；部署完成后同步仓内 `tooling/deployment/server/compose.yml` 的 image tag（20261106 部署时曾漏，导致仓内副本落后服务器）。
 - 服务器无公网出口：镜像 tag 需用服务器已有镜像；app 字体等出站 fetch 依赖宿主机 mihomo（compose 内 `NODE_USE_ENV_PROXY` 已配）。
 - 服务器磁盘小且容器日志可暴涨（mihomo 曾涨到 29GB 撑爆磁盘导致 postgres recovery），已配 `/etc/logrotate.d/docker-containers`；部署前后查 `df -h`。
 - 测试自连优先 `https://interview.unlimit.ltd`（服务器上 hairpin 不可靠时用 `curl --resolve interview.unlimit.ltd:443:127.0.0.1 -k`；3012 已改为 301 跳转，不再作为自连入口）；冒烟时 APP_URL 与 SMOKE_URL origin 必须一致；远程长任务用 `nohup … < /dev/null > log 2>&1 &` 落盘后短连接轮询，远程 `pkill -f` 用括号正则避免匹配到自己的命令行。

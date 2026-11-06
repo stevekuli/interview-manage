@@ -3,7 +3,7 @@
 > 执行者：先阅读根目录 `AGENTS.md`，按 executing-plans 分阶段执行。用户本次只要求保存计划，不代表授权开始开发、提交、推送或部署。复选框用于记录后续实施状态。
 
 - 日期：2026-10-04
-- 状态：Chunk 1（T0—T5 品牌清理与主入口整理）已于 2026-10-04 实施并本地验证（验收记录：`docs/acceptance/2026-10-04-product-branding.md`）；Chunk 2（F1—F6）未实施。Chunk 1 已提交（commit `5a32dee`），并于 2026-10-05 部署公网验证（镜像 `interview-manage:20261005`，验收：`docs/acceptance/2026-10-05-branding-deployment.md`）；本仓无自有远端，未推送。
+- 状态：Chunk 1（T0—T5 品牌清理与主入口整理）已于 2026-10-04 实施并本地验证（验收记录：`docs/acceptance/2026-10-04-product-branding.md`）；Chunk 2（F1—F6）未实施。Chunk 1 已提交（commit `5a32dee`，2026-10-24 历史重写后该 hash 不可达，对应现历史 `3aa2600`），并于 2026-10-05 部署公网验证（镜像 `interview-manage:20261005`，验收：`docs/acceptance/2026-10-05-branding-deployment.md`）。【2026-11-06 更新】自有远端 `origin`（stevekuli/interview-manage）已建立，含本批次的 main 已推送。
 - 工作区：`D:\program\interview-manage`
 - 本文件：`D:\program\interview-manage\docs\plans\2026-10-04-product-branding-and-optimization.md`
 - 关联计划：`docs/plans/2026-10-02-ai-job-resume-management.md`
@@ -259,8 +259,8 @@ git diff --check
 
 当前状态（2026-10-05 收尾核对更新）：
 
-- 已完成：源码初查与本计划编写；Chunk 1（T0—T5）已实施、本地验证并提交（commit `5a32dee`）；后续功能与交互复查见 `docs/acceptance/2026-10-05-product-ux-review.md`。
+- 已完成：源码初查与本计划编写；Chunk 1（T0—T5）已实施、本地验证并提交（commit `5a32dee`；历史重写后不可达，对应现历史 `3aa2600`）；后续功能与交互复查见 `docs/acceptance/2026-10-05-product-ux-review.md`。
 - 已部署：Chunk 1 品牌版本于 2026-10-05 部署公网并冒烟通过（镜像 `interview-manage:20261005`，验收记录 `docs/acceptance/2026-10-05-branding-deployment.md`）。
-- 尚未实施：Chunk 2（F1—F6，即原计划 P1—P5 的功能衔接）。复查报告 R1—R7、U1—U5 的修复已于 2026-10-05 实施并本地验证，未提交、未部署（`docs/plans/2026-10-05-functional-and-ux-optimization.md`）。
+- 尚未实施：Chunk 2（F1—F6，即原计划 P1—P5 的功能衔接）。复查报告 R1—R7、U1—U5 的修复已于 2026-10-05 实施并本地验证，未提交、未部署（`docs/plans/2026-10-05-functional-and-ux-optimization.md`）。【2026-11-06 更新】该修复批次已提交（`b0641ea`，2026-10-20）并已上线。
 - 尚未验证：真实邮件投递、真实模型调用；R1—R7、U1—U5 批次的登录态人工走查与线上验证。
 - 下一位执行者从 R 批次登录态走查、Chunk 2 或原计划 P1 开始；遵循原计划的数据真实性和隐私边界。

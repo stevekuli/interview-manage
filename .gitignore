@@ -66,3 +66,7 @@ graphify-out
 
 # Verification artifacts (AGENTS.md: 禁止进入 Git)
 artifacts/
+
+# Agent runtime state (ZCode CLI, WorkBuddy SDK) — 本机工具状态，不入 Git
+.zcode/
+.workbuddy/

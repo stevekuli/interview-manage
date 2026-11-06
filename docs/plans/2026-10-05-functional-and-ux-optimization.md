@@ -3,7 +3,7 @@
 > 执行者先阅读根目录 `AGENTS.md`，使用 executing-plans 按阶段推进。用户于 2026-10-05 授权执行本计划；按项目规范未自动提交、推送或部署。
 
 - 日期：2026-10-05
-- 状态：T0—T12 已于 2026-10-05 实施，本地验证通过（验收记录：`docs/acceptance/2026-10-05-functional-and-ux-optimization.md`）。登录态人工走查、真实模型调用、390px 真机截图与中文导出人工目检仍为缺口。未提交、未推送、未部署。
+- 状态：T0—T12 已于 2026-10-05 实施，本地验证通过（验收记录：`docs/acceptance/2026-10-05-functional-and-ux-optimization.md`）。登录态人工走查、真实模型调用、390px 真机截图与中文导出人工目检仍为缺口。【2026-11-06 更新】已提交（`b0641ea`，2026-10-20）并已推送；已上线——生产 zh-CN 语言包含 T0—T12 全部新增文案（live 验证 2026-11-06）。
 - 工作区：`D:\program\interview-manage`
 - 复查依据：`docs/acceptance/2026-10-05-product-ux-review.md`
 - 品牌计划：`docs/plans/2026-10-04-product-branding-and-optimization.md`

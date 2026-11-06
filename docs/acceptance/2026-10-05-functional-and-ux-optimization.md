@@ -6,6 +6,7 @@
 - 依据报告：`docs/acceptance/2026-10-05-product-ux-review.md`（R1—R7、U1—U5）
 - 工作区：`D:\program\interview-manage`；运行环境 Node 24.9.0（`D:\Development_environment\nvm\v24.9.0`）、pnpm 12.6.0、Windows 11。
 - 本次未提交、未推送、未部署。品牌改动的未提交工作区文件（AGENTS.md、CLAUDE.md、docs 下 4 个文件）保持原样未覆盖。
+- 2026-11-06 更新：本批改动已提交（`b0641ea`，2026-10-20）并已推送；已上线（生产 zh-CN 语言包含 T0—T12 文案，live 验证）。上文"未提交、未部署"为验收时点状态。
 
 ## 一、实施范围与结果
 
