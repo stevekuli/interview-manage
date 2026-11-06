@@ -43,7 +43,7 @@ services:
       - internal
 
   app:
-    image: interview-manage:20261005
+    image: interview-manage:20261106
     restart: unless-stopped
     depends_on:
       postgres:
@@ -57,11 +57,16 @@ services:
       - ENCRYPTION_SECRET=${ENCRYPTION_SECRET:?ENCRYPTION_SECRET is required}
       - REDIS_URL=redis://redis:6379
       - LOCAL_STORAGE_PATH=/app/data
+      # Invite-only sign-up (packages/env default is false). Pulled from the
+      # host .env via compose variable substitution; flip there to disable.
+      - FLAG_INVITATION_ONLY=${FLAG_INVITATION_ONLY:-false}
       # The pre-existing mihomo proxy on the host (port 7890) is the server's
       # general outbound path. Node 24's built-in proxy support routes fetch()
-      # through it. NO_PROXY keeps self-hairpin, internal services, and the PDF
-      # font CDNs (verified directly reachable from the host on 2026-10-28,
-      # when the mihomo upstream subscription was returning 405) direct.
+      # through it. NO_PROXY keeps self-hairpin, internal services, the PDF
+      # font CDNs, and open.bigmodel.cn direct — the font CDNs were verified
+      # directly reachable on 2026-10-28 (mihomo upstream subscription was
+      # returning 405), and the Zhipu AI endpoint is a domestic service that
+      # custom AI providers call without needing the proxy.
       - NODE_USE_ENV_PROXY=1
       # Node fetch defaults to trying IPv6 first for the font CDNs; the host has
       # no IPv6 route, so undici connect attempts intermittently hit the 10s
@@ -70,7 +75,7 @@ services:
       - NODE_OPTIONS=--dns-result-order=ipv4first
       - HTTP_PROXY=http://host.docker.internal:7890
       - HTTPS_PROXY=http://host.docker.internal:7890
-      - NO_PROXY=localhost,127.0.0.1,postgres,redis,8.148.199.165,fonts.gstatic.com,cdn.jsdelivr.net
+      - NO_PROXY=localhost,127.0.0.1,postgres,redis,8.148.199.165,fonts.gstatic.com,cdn.jsdelivr.net,open.bigmodel.cn
     extra_hosts:
       - "host.docker.internal:host-gateway"
     ports:
